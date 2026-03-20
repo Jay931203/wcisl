@@ -102,3 +102,191 @@
 - 서두를 쓰더라도 extract_answer가 다단계로 잡아냄
 - 48 토큰은 bare letter 출력에 충분히 넉넉 (1-5 토큰이면 됨)
 - 실험 공정성 유지: 모든 4개 조건이 동일한 Rx 로직 사용
+
+---
+
+## 2026-03-21 Fixed-Budget Results Analysis
+
+### Raw Results
+
+**48 token Tx budget (20 questions, cross-domain physics+chemistry):**
+
+| Condition | Accuracy | Score |
+|-----------|----------|-------|
+| blind     | 50%      | 10/20 |
+| tx_aware  | 55%      | 11/20 |
+| rx_aware  | 55%      | 11/20 |
+| mutual    | 55%      | 11/20 |
+
+**96 token Tx budget (same 20 questions):**
+
+| Condition | Accuracy | Score |
+|-----------|----------|-------|
+| blind     | 65%      | 13/20 |
+| tx_aware  | 50%      | 10/20 |
+| rx_aware  | 65%      | 13/20 |
+| mutual    | 55%      | 11/20 |
+
+**Per-question breakdown (48tok) where conditions disagree:**
+
+| Q# | Subject         | blind | tx_aware | rx_aware | mutual | Pattern                |
+|----|-----------------|-------|----------|----------|--------|------------------------|
+| 3  | college_chem    | X     | O        | X        | O      | Knowing Rx helps       |
+| 4  | conceptual_phys | X     | X        | O        | O      | Knowing Tx helps       |
+| 8  | conceptual_phys | O     | X        | O        | X      | Awareness HURTS        |
+| 10 | college_chem    | X     | O        | X        | X      | Inconsistent           |
+| 11 | hs_phys         | O     | X        | O        | X      | Awareness HURTS        |
+| 12 | hs_chem         | X     | O        | X        | O      | Knowing Rx helps       |
+| 14 | college_chem    | O     | X        | O        | X      | Awareness HURTS        |
+| 18 | hs_chem         | X     | O        | X        | O      | Knowing Rx helps       |
+
+### Diagnosis 1: Why 96tok aware conditions perform WORSE than blind
+
+At 96 tokens, blind (65%) beats mutual (55%) by 10 percentage points. tx_aware (50%) is
+the worst condition overall. This is not a fluke -- it points to a real mechanism:
+
+**The "overthinking with wrong framing" problem.** When you tell a 4B model "send a
+message to a SCIENCE expert, focus on what a scientist needs to hear," it changes what
+it writes. At 48 tokens, this change is minor because there is barely any room to
+elaborate either way. At 96 tokens, the model has enough room to actually act on the
+instruction -- and it acts on it badly. Specifically:
+
+1. **tx_aware distorts content selection.** The blind Tx writes whatever it thinks is
+   most relevant. The tx_aware Tx tries to guess what a "science expert" would want to
+   hear, and a 4B model's theory-of-mind for this is poor. It may over-emphasize
+   scientific jargon, skip the actual reasoning step, or reframe the problem in a way
+   that sounds scientific but loses the discriminating information Rx needs.
+
+2. **More tokens amplify bad framing.** At 48tok, both blind and aware Tx produce
+   roughly the same truncated output -- the awareness prompt barely changes the first
+   48 tokens. At 96tok, the aware Tx has room to go wrong: it writes more
+   "science-expert-targeted" content that is actually less useful than the blind Tx's
+   straightforward analysis.
+
+3. **Prompt tax at scale.** The aware conditions have slightly longer system prompts.
+   This is a constant cost, but at 96tok the model is also trying to satisfy TWO
+   objectives (analyze the problem AND tailor for a science expert), splitting its
+   limited capacity.
+
+### Diagnosis 2: Why mutual sometimes helps and sometimes hurts
+
+Looking at the per-question breakdown, there is no coherent pattern. Questions where
+mutual helps (Q3, Q4, Q12, Q18) and questions where it hurts (Q8, Q11, Q14) do not
+cluster by subject, difficulty, or question type. This is the signature of noise, not
+signal:
+
+- **Same model, same weights.** Both Tx and Rx are Qwen3-4B. "Telling Tx that Rx is a
+  science expert" and "telling Rx that Tx is a science expert" just adds a few tokens
+  to the prompt. The model does not actually have a different knowledge base or
+  reasoning style for "science mode" vs "general mode." It is the same 4B parameters
+  every time.
+
+- **Prompt sensitivity at small scale.** A 4B model's output is highly sensitive to
+  small prompt changes. Adding "science expert" to the prompt changes the generation
+  trajectory in unpredictable ways -- sometimes this nudge happens to produce a better
+  token sequence for a particular question, sometimes worse. This is not mutual
+  cognition; it is prompt perturbation.
+
+- **No real asymmetry to exploit.** Mutual cognition theory assumes Agent A knows
+  something about Agent B that it can exploit to communicate more efficiently. But
+  Qwen3-4B-as-math-expert and Qwen3-4B-as-science-expert share identical weights.
+  There is no genuine expertise gap that awareness could bridge. The "awareness" is
+  just a system prompt string that mildly perturbs outputs.
+
+### Diagnosis 3: Is N=20 enough?
+
+No. The observed differences are 1-3 questions out of 20. A simple power analysis:
+
+- At 50% baseline accuracy (pure chance among conditions), the standard error for a
+  proportion with N=20 is sqrt(0.5 * 0.5 / 20) = 0.112, or 11.2 percentage points.
+- The 95% confidence interval for the blind condition at 50% is roughly [28%, 72%].
+- The observed 5 percentage point difference (50% vs 55%) is well within sampling noise.
+- Even the 96tok result (65% blind vs 50% tx_aware = 15pp gap) has p > 0.20 by a
+  two-proportion z-test. Not significant.
+
+**To detect a true 10 percentage point effect (e.g., 50% -> 60%) at 80% power and
+alpha=0.05, you need approximately N=200 questions per condition.** At 20 questions,
+you can only reliably detect effect sizes of ~25 percentage points or larger.
+
+The honest answer: with N=20, we cannot distinguish any of these results from random
+fluctuation. Every "pattern" in the per-question breakdown is likely pareidolia.
+
+### Diagnosis 4: Honest conclusion
+
+**The fixed-budget experiment does not demonstrate mutual cognition benefits, and
+there are structural reasons why it likely cannot with same-model Qwen3-4B.**
+
+The reasons are:
+
+1. **No real cognitive asymmetry.** Both agents share identical weights. "Math expert"
+   and "science expert" are prompt decorations, not genuine capability differences.
+   The model knows the same things regardless of its system prompt. Mutual cognition
+   requires that knowing your partner's capabilities lets you communicate differently
+   in a way that matters -- but when the partner's capabilities are identical to yours,
+   there is nothing to adapt to.
+
+2. **4B model cannot do theory-of-mind.** Even if there were a real asymmetry, a 4B
+   parameter model does not reliably adjust its communication strategy based on a
+   description of the receiver. The instruction "focus on what a scientist needs" gets
+   interpreted as a surface-level style change (use scientific words), not as a genuine
+   strategic adaptation of information content.
+
+3. **The task is too easy or too hard.** Many MMLU questions are either answerable from
+   the choices alone (Rx does not need Tx) or require specific knowledge that no amount
+   of "tailoring" can convey in 48-96 tokens. The sweet spot -- questions where tailored
+   communication would change the outcome -- may be very narrow, and 20 random questions
+   are unlikely to contain enough of them.
+
+4. **Greedy decoding makes conditions near-identical.** With do_sample=False, the model
+   is deterministic. Small prompt changes cause small output changes. The conditions
+   differ by only a few words in the system prompt, so they often produce nearly
+   identical Tx outputs, making the Rx outcomes the same.
+
+### Diagnosis 5: Is mutual cognition demonstrable with same-model Qwen3-4B?
+
+**Almost certainly not in a scientifically convincing way.** The core problem is that
+mutual cognition is a theory about agents with genuinely different capabilities.
+Running both sides on the same 4B model with different system prompts creates a
+cosmetic difference, not a functional one. This is like testing whether "knowing your
+translator speaks French" helps communication, when both people actually speak the
+same language. The "awareness" has nothing real to act on.
+
+Even with N=200 and a statistically significant result, the interpretation would be
+ambiguous: is it mutual cognition, or is it just that one specific prompt wording
+happens to elicit slightly better outputs from this particular model? You cannot
+separate the two with a same-model design.
+
+### Recommended next steps (practical)
+
+**Option A: Pivot to heterogeneous models (RECOMMENDED)**
+
+Use two genuinely different models -- e.g., a math-specialized model (like DeepSeekMath
+or a math-finetuned LLM) as Tx and a general or science-finetuned model as Rx. This
+creates real capability asymmetry that mutual cognition can exploit. The hypothesis
+becomes testable: does telling the math model "your partner is a science model with
+no math training" cause it to explain mathematical steps more explicitly, improving
+Rx accuracy?
+
+This is the only path that makes the paper's core claim defensible.
+
+**Option B: Pivot the claim (if heterogeneous models are not feasible)**
+
+Reframe the paper away from "mutual cognition improves communication efficiency" and
+toward something demonstrable with same-model agents, such as:
+- Task scheduling (Key Idea 4 already shows domain-order effects with same model)
+- Chain-of-thought delegation effects
+- Information loss across agent chains
+
+These are real, measurable phenomena that do not require genuine cognitive asymmetry.
+
+**Option C: Increase N dramatically (NOT recommended)**
+
+Running N=200 with 4 conditions x 2 budgets = 1600 model calls would take significant
+compute time and would likely confirm the null result with higher confidence. This is
+the responsible thing to do if you want to definitively close the question, but the
+structural arguments above suggest the effect is not there to find.
+
+**Do not pursue:** further prompt engineering (adding more "awareness" details, changing
+wording) or adding more token budgets. The problem is not in the prompts; it is in the
+experimental design. No prompt change will create genuine cognitive asymmetry between
+two copies of the same 4B model.
