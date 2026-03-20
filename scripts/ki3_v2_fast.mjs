@@ -7,7 +7,8 @@
 
 import fs from 'fs';
 
-const OPENAI_API_KEY = 'OPENAI_API_KEY_REDACTED';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 const MODEL = 'gpt-4o-mini';
 const TEMPERATURE = 0;
 

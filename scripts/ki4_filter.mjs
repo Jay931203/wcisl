@@ -9,9 +9,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ─── API Key ───
-const envPath = 'C:/Users/hyunj/studyeng/.env.local';
-const envContent = fs.readFileSync(envPath, 'utf-8');
-const apiKeyMatch = envContent.match(/OPENAI_API_KEY=(.+)/);
 if (!apiKeyMatch) throw new Error('No OPENAI_API_KEY found');
 const OPENAI_API_KEY = apiKeyMatch[1].trim();
 

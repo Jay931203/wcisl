@@ -13,7 +13,7 @@ import OpenAI from "openai";
 import fs from "fs";
 
 const OPENAI_API_KEY =
-  "OPENAI_API_KEY_REDACTED";
+  process.env.OPENAI_API_KEY;
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 

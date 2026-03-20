@@ -5,7 +5,8 @@
  * 15 two-stage numeric problems, 4 conditions, parallel execution
  */
 
-const OPENAI_API_KEY = 'OPENAI_API_KEY_REDACTED';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 const MODEL_A = 'gpt-4o';
 const MODEL_B = 'gpt-4o-mini';
 const TEMP = 0;

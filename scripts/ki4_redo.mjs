@@ -11,8 +11,8 @@ import { readFileSync } from 'fs';
 import { writeFileSync } from 'fs';
 
 // --- API Key ---
-const envContent = readFileSync('C:/Users/hyunj/studyeng/.env.local', 'utf-8');
-const OPENAI_API_KEY = envContent.match(/OPENAI_API_KEY=(.+)/)[1].trim();
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 
 // --- Seeded Random ---
 function mulberry32(seed) {

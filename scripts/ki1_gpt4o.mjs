@@ -11,8 +11,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Read API key from .env.local
-const envContent = fs.readFileSync('C:/Users/hyunj/studyeng/.env.local', 'utf-8');
-const OPENAI_API_KEY = envContent.match(/OPENAI_API_KEY=(.+)/)?.[1]?.trim();
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 if (!OPENAI_API_KEY) throw new Error('No OPENAI_API_KEY found');
 
 const MODEL = 'gpt-4o';

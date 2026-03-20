@@ -4,7 +4,8 @@
 import OpenAI from "openai";
 import { writeFileSync } from "fs";
 
-const OPENAI_API_KEY = "OPENAI_API_KEY_REDACTED";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 

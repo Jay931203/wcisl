@@ -1,7 +1,8 @@
 // KI-4 Adaptive Scheduling - Final Implementation
 // Pipeline: Question → Specialist answers (max_tokens enforced) → Corruption → Receiving Agent → Grader
 
-const OPENAI_API_KEY = "OPENAI_API_KEY_REDACTED";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 
 // ============================================================
 // Seeded RNG (mulberry32)

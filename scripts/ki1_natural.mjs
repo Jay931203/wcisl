@@ -9,9 +9,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Read API key
-const envPath = 'C:\\Users\\hyunj\\studyeng\\.env.local';
-const envContent = fs.readFileSync(envPath, 'utf-8');
-const API_KEY = envContent.match(/OPENAI_API_KEY=(.+)/)?.[1]?.trim();
 if (!API_KEY) throw new Error('No API key found');
 
 const MODEL = 'gpt-4o';

@@ -9,9 +9,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load API key
-const envPath = 'C:/Users/hyunj/studyeng/.env.local';
-const envContent = fs.readFileSync(envPath, 'utf-8');
-const API_KEY = envContent.match(/OPENAI_API_KEY=(.+)/)[1].trim();
 
 const MODEL_A = 'gpt-4o';
 const MODEL_B = 'gpt-4o-mini';

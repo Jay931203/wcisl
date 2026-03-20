@@ -12,9 +12,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ── API Key ──
-const envPath = path.resolve(__dirname, '..', '.env.local');
-const envContent = fs.readFileSync(envPath, 'utf-8');
-const OPENAI_API_KEY = envContent.match(/^OPENAI_API_KEY=(.+)$/m)?.[1]?.trim();
 if (!OPENAI_API_KEY) throw new Error('Missing OPENAI_API_KEY');
 
 // ── Constants ──

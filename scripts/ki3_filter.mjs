@@ -13,8 +13,8 @@
 import { readFileSync } from 'fs';
 import { writeFileSync } from 'fs';
 
-const env = readFileSync('C:/Users/hyunj/studyeng/.env.local', 'utf-8');
-const API_KEY = env.match(/OPENAI_API_KEY=(.+)/)?.[1]?.trim();
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 if (!API_KEY) throw new Error('No API key found');
 
 const MODEL = 'gpt-4o-mini';

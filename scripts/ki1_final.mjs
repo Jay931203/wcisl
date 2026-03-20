@@ -3,7 +3,8 @@
 // Agent B (GPT-4o-mini): Operations expert → final numeric answer using A's value
 // 4 Conditions: No Context, One-Way, Mutual, Progressive (3 rounds)
 
-const OPENAI_API_KEY = "OPENAI_API_KEY_REDACTED";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) { console.error("Set OPENAI_API_KEY env var"); process.exit(1); }
 
 const PROBLEMS = [
   {

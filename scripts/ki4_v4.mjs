@@ -11,7 +11,7 @@
 import fs from "fs";
 
 const OPENAI_API_KEY =
-  "OPENAI_API_KEY_REDACTED";
+  process.env.OPENAI_API_KEY;
 
 // ============================================================
 // Seeded RNG (Mulberry32)

@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
-  apiKey: "OPENAI_API_KEY_REDACTED",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 // ── Pricing ──
