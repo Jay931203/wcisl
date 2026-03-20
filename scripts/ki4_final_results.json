@@ -1,0 +1,1448 @@
+{
+  "metadata": {
+    "experiment": "KI-4 Adaptive Scheduling - Final",
+    "timestamp": "2026-03-19T17:18:45.733Z",
+    "totalTokens": 156290,
+    "channelAssignments": {
+      "medical": "medium",
+      "legal": "medium",
+      "finance": "bad",
+      "tech": "bad"
+    },
+    "seed": 42
+  },
+  "summary": {
+    "1_Fixed_Order": {
+      "avgScore": 8.53,
+      "avgConsultations": 3,
+      "avgCorruptionPct": 23.33,
+      "earlyStops": 0
+    },
+    "2_Expertise_Only": {
+      "avgScore": 8.47,
+      "avgConsultations": 3,
+      "avgCorruptionPct": 25.56,
+      "earlyStops": 0
+    },
+    "3_Channel_Only": {
+      "avgScore": 8.6,
+      "avgConsultations": 3,
+      "avgCorruptionPct": 23.33,
+      "earlyStops": 0
+    },
+    "4_Joint": {
+      "avgScore": 8.67,
+      "avgConsultations": 3,
+      "avgCorruptionPct": 23.33,
+      "earlyStops": 0
+    },
+    "5_Joint_EarlyStop": {
+      "avgScore": 7.93,
+      "avgConsultations": 1.6,
+      "avgCorruptionPct": 21.67,
+      "earlyStops": 12
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "text": "What are the first-line treatments for Type 2 diabetes and their mechanisms of action?",
+      "primary": "medical",
+      "reference": "First-line treatment is metformin, which reduces hepatic glucose production and improves insulin sensitivity. Additional options include SGLT2 inhibitors (block glucose reabsorption in kidneys) and GLP-1 receptor agonists (enhance insulin secretion and slow gastric emptying)."
+    },
+    {
+      "id": 2,
+      "text": "What is the pathophysiology of myocardial infarction and its emergency management?",
+      "primary": "medical",
+      "reference": "MI occurs when coronary artery occlusion (usually from ruptured atherosclerotic plaque and thrombus) causes myocardial ischemia and necrosis. Emergency management includes aspirin, heparin, nitroglycerin, oxygen if hypoxic, and urgent reperfusion via PCI or thrombolytics within the time window."
+    },
+    {
+      "id": 3,
+      "text": "What are the key drug interactions with warfarin that clinicians must monitor?",
+      "primary": "medical",
+      "reference": "Warfarin interacts with CYP2C9/3A4 inhibitors (azole antifungals, amiodarone, SSRIs) increasing bleeding risk, and inducers (rifampin, carbamazepine) reducing efficacy. Vitamin K-rich foods, NSAIDs, and antibiotics also significantly alter INR and require close monitoring."
+    },
+    {
+      "id": 4,
+      "text": "What are the symptoms and diagnostic approach for pulmonary embolism?",
+      "primary": "medical",
+      "reference": "PE presents with acute dyspnea, pleuritic chest pain, tachycardia, and sometimes hemoptysis. Diagnosis uses Wells score for pre-test probability, D-dimer for low-risk exclusion, and CT pulmonary angiography as the gold standard confirmatory test."
+    },
+    {
+      "id": 5,
+      "text": "What constitutes wrongful termination under employment law?",
+      "primary": "legal",
+      "reference": "Wrongful termination occurs when an employer fires an employee in violation of law or contract, including discrimination based on protected characteristics, retaliation for whistleblowing, or breach of implied/express employment contracts. Remedies include reinstatement, back pay, and compensatory damages."
+    },
+    {
+      "id": 6,
+      "text": "How do civil and criminal liability differ in negligence cases?",
+      "primary": "legal",
+      "reference": "Civil negligence requires proving duty, breach, causation, and damages by preponderance of evidence, resulting in monetary compensation. Criminal negligence requires a higher mens rea standard (gross deviation from reasonable care) proven beyond reasonable doubt, with penalties including fines and imprisonment."
+    },
+    {
+      "id": 7,
+      "text": "What are a landlord's legal obligations for property maintenance?",
+      "primary": "legal",
+      "reference": "Landlords must maintain habitable conditions including structural integrity, plumbing, heating, and compliance with building codes (implied warranty of habitability). Failure to repair after proper notice may allow tenants to withhold rent, repair-and-deduct, or terminate the lease depending on jurisdiction."
+    },
+    {
+      "id": 8,
+      "text": "What are the primary defenses against patent infringement claims?",
+      "primary": "legal",
+      "reference": "Key defenses include non-infringement (accused product doesn't meet all claim elements), invalidity (prior art, obviousness, or inadequate disclosure), exhaustion (authorized first sale), and experimental use. Licensees may also assert implied license or equitable estoppel."
+    },
+    {
+      "id": 9,
+      "text": "Calculate the NPV of a $100,000 investment yielding $30,000 per year for 5 years at a 10% discount rate.",
+      "primary": "finance",
+      "reference": "NPV = -100,000 + 30,000/(1.1) + 30,000/(1.1)^2 + 30,000/(1.1)^3 + 30,000/(1.1)^4 + 30,000/(1.1)^5 = -100,000 + 113,724 = $13,724 (approximately). The positive NPV indicates the investment creates value above the required 10% return."
+    },
+    {
+      "id": 10,
+      "text": "Explain FIFO vs LIFO inventory methods and their tax implications.",
+      "primary": "finance",
+      "reference": "FIFO (first-in-first-out) matches oldest costs to COGS, resulting in lower COGS and higher taxable income during inflation. LIFO (last-in-first-out) matches newest costs, yielding higher COGS, lower taxable income, and tax deferral benefits, though IFRS prohibits LIFO."
+    },
+    {
+      "id": 11,
+      "text": "How is goodwill calculated in mergers and acquisitions?",
+      "primary": "finance",
+      "reference": "Goodwill equals the purchase price minus the fair market value of identifiable net assets (assets minus liabilities) acquired. It represents intangible value like brand reputation, customer relationships, and synergies, and must be tested annually for impairment under ASC 350."
+    },
+    {
+      "id": 12,
+      "text": "Compare merge sort and quicksort in terms of time complexity and when to prefer each.",
+      "primary": "tech",
+      "reference": "Merge sort guarantees O(n log n) worst-case but requires O(n) extra space; prefer it for linked lists and stable sorting needs. Quicksort averages O(n log n) with O(log n) space but degrades to O(n^2) worst-case; prefer it for arrays due to better cache locality and lower constant factors."
+    },
+    {
+      "id": 13,
+      "text": "Design a rate limiter for an API handling 1000 requests per second.",
+      "primary": "tech",
+      "reference": "Use a token bucket or sliding window algorithm with atomic operations in Redis for distributed environments. Configure bucket capacity of 1000 tokens refilling at 1000/sec, with per-client tracking via API keys, returning HTTP 429 with Retry-After headers when limits are exceeded."
+    },
+    {
+      "id": 14,
+      "text": "Explain ACID properties vs eventual consistency trade-offs.",
+      "primary": "tech",
+      "reference": "ACID (Atomicity, Consistency, Isolation, Durability) guarantees strong consistency suitable for financial transactions but limits horizontal scalability. Eventual consistency (BASE model) accepts temporary inconsistency for higher availability and partition tolerance per the CAP theorem, suitable for distributed systems like social media feeds."
+    },
+    {
+      "id": 15,
+      "text": "What are effective methods for preventing SQL injection attacks?",
+      "primary": "tech",
+      "reference": "Primary defense is parameterized queries (prepared statements) which separate SQL code from data. Additional layers include input validation/sanitization, stored procedures, least-privilege database accounts, WAF rules, and ORM frameworks that abstract raw SQL."
+    }
+  ],
+  "results": [
+    {
+      "questionId": 1,
+      "condition": "1_Fixed_Order",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 2,
+      "condition": "1_Fixed_Order",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 3,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 4,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 5,
+      "condition": "1_Fixed_Order",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 6,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 7,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 8,
+      "condition": "1_Fixed_Order",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 9,
+      "condition": "1_Fixed_Order",
+      "score": 5,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 10,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 11,
+      "condition": "1_Fixed_Order",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 12,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 13,
+      "condition": "1_Fixed_Order",
+      "score": 7,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 14,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 15,
+      "condition": "1_Fixed_Order",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 1,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "tech",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 2,
+      "condition": "2_Expertise_Only",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "tech",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 3,
+      "condition": "2_Expertise_Only",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "tech",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 4,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "tech",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 5,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 6,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 7,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 8,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 9,
+      "condition": "2_Expertise_Only",
+      "score": 5,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "finance",
+        "legal",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 10,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "finance",
+        "legal",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 11,
+      "condition": "2_Expertise_Only",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "finance",
+        "legal",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 12,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.3166666666666667
+    },
+    {
+      "questionId": 13,
+      "condition": "2_Expertise_Only",
+      "score": 7,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.3166666666666667
+    },
+    {
+      "questionId": 14,
+      "condition": "2_Expertise_Only",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.3166666666666667
+    },
+    {
+      "questionId": 15,
+      "condition": "2_Expertise_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "bad",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.3166666666666667
+    },
+    {
+      "questionId": 1,
+      "condition": "3_Channel_Only",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 2,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 3,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 4,
+      "condition": "3_Channel_Only",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 5,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 6,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 7,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 8,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 9,
+      "condition": "3_Channel_Only",
+      "score": 5,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 10,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 11,
+      "condition": "3_Channel_Only",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 12,
+      "condition": "3_Channel_Only",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 13,
+      "condition": "3_Channel_Only",
+      "score": 7,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 14,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 15,
+      "condition": "3_Channel_Only",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 1,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "tech"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 2,
+      "condition": "4_Joint",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "tech"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 3,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "tech"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 4,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "tech"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 5,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "medical",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 6,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "medical",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 7,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "medical",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 8,
+      "condition": "4_Joint",
+      "score": 8,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "medical",
+        "finance"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 9,
+      "condition": "4_Joint",
+      "score": 7,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 10,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 11,
+      "condition": "4_Joint",
+      "score": 10,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 12,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 13,
+      "condition": "4_Joint",
+      "score": 7,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 14,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 15,
+      "condition": "4_Joint",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 1,
+      "condition": "5_Joint_EarlyStop",
+      "score": 8,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 2,
+      "condition": "5_Joint_EarlyStop",
+      "score": 7,
+      "consultations": 2,
+      "earlyStop": true,
+      "agentsUsed": [
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 3,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "medical",
+        "legal",
+        "tech"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium",
+        "bad"
+      ],
+      "avgCorruption": 0.2333333333333333
+    },
+    {
+      "questionId": 4,
+      "condition": "5_Joint_EarlyStop",
+      "score": 7,
+      "consultations": 2,
+      "earlyStop": true,
+      "agentsUsed": [
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 5,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 6,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 2,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 7,
+      "condition": "5_Joint_EarlyStop",
+      "score": 8,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 8,
+      "condition": "5_Joint_EarlyStop",
+      "score": 8,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 9,
+      "condition": "5_Joint_EarlyStop",
+      "score": 5,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "legal",
+        "finance",
+        "medical"
+      ],
+      "channelsUsed": [
+        "medium",
+        "bad",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 10,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 11,
+      "condition": "5_Joint_EarlyStop",
+      "score": 10,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "legal"
+      ],
+      "channelsUsed": [
+        "medium"
+      ],
+      "avgCorruption": 0.15
+    },
+    {
+      "questionId": 12,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 3,
+      "earlyStop": false,
+      "agentsUsed": [
+        "tech",
+        "medical",
+        "legal"
+      ],
+      "channelsUsed": [
+        "bad",
+        "medium",
+        "medium"
+      ],
+      "avgCorruption": 0.23333333333333336
+    },
+    {
+      "questionId": 13,
+      "condition": "5_Joint_EarlyStop",
+      "score": 6,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "tech"
+      ],
+      "channelsUsed": [
+        "bad"
+      ],
+      "avgCorruption": 0.4
+    },
+    {
+      "questionId": 14,
+      "condition": "5_Joint_EarlyStop",
+      "score": 9,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "tech"
+      ],
+      "channelsUsed": [
+        "bad"
+      ],
+      "avgCorruption": 0.4
+    },
+    {
+      "questionId": 15,
+      "condition": "5_Joint_EarlyStop",
+      "score": 6,
+      "consultations": 1,
+      "earlyStop": true,
+      "agentsUsed": [
+        "tech"
+      ],
+      "channelsUsed": [
+        "bad"
+      ],
+      "avgCorruption": 0.4
+    }
+  ]
+}

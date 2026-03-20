@@ -1,0 +1,4190 @@
+{
+  "experiment": "KI-4 Redo: Agent-to-Agent Communication",
+  "timestamp": "2026-03-19T17:32:56.450Z",
+  "config": {
+    "channels": {
+      "Good": {
+        "maxTokens": 500,
+        "corruptionRate": 0
+      },
+      "Medium": {
+        "maxTokens": 120,
+        "corruptionRate": 0.25
+      },
+      "Bad": {
+        "maxTokens": 50,
+        "corruptionRate": 0.5
+      }
+    },
+    "channelWeights": {
+      "Good": 1,
+      "Medium": 0.4,
+      "Bad": 0.1
+    },
+    "expertiseWeights": {
+      "primary": 1,
+      "secondary": 0.5,
+      "unrelated": 0.2
+    },
+    "models": {
+      "specialist": "gpt-4o-mini",
+      "receiver": "gpt-4o-mini",
+      "grader": "gpt-4o"
+    }
+  },
+  "channelAssignments": {
+    "1": {
+      "0": "Good",
+      "1": "Medium",
+      "2": "Bad",
+      "3": "Bad"
+    },
+    "2": {
+      "0": "Medium",
+      "1": "Medium",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "3": {
+      "0": "Medium",
+      "1": "Bad",
+      "2": "Good",
+      "3": "Good"
+    },
+    "4": {
+      "0": "Bad",
+      "1": "Medium",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "5": {
+      "0": "Bad",
+      "1": "Medium",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "6": {
+      "0": "Medium",
+      "1": "Bad",
+      "2": "Good",
+      "3": "Good"
+    },
+    "7": {
+      "0": "Medium",
+      "1": "Bad",
+      "2": "Bad",
+      "3": "Good"
+    },
+    "8": {
+      "0": "Bad",
+      "1": "Bad",
+      "2": "Medium",
+      "3": "Good"
+    },
+    "9": {
+      "0": "Bad",
+      "1": "Medium",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "10": {
+      "0": "Medium",
+      "1": "Bad",
+      "2": "Medium",
+      "3": "Good"
+    },
+    "11": {
+      "0": "Medium",
+      "1": "Medium",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "12": {
+      "0": "Bad",
+      "1": "Good",
+      "2": "Bad",
+      "3": "Medium"
+    },
+    "13": {
+      "0": "Medium",
+      "1": "Bad",
+      "2": "Good",
+      "3": "Bad"
+    },
+    "14": {
+      "0": "Bad",
+      "1": "Good",
+      "2": "Medium",
+      "3": "Bad"
+    },
+    "15": {
+      "0": "Bad",
+      "1": "Good",
+      "2": "Medium",
+      "3": "Good"
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "text": "What is the first-line treatment for hypertension in a patient with comorbid type 2 diabetes? Include specific drug classes and dosing.",
+      "primary": "medical",
+      "secondary": null,
+      "ref": "ACE inhibitor/ARB, specific dosing"
+    },
+    {
+      "id": 2,
+      "text": "What is the differential diagnosis for acute chest pain with troponin elevation? List the most important conditions and distinguishing features.",
+      "primary": "medical",
+      "secondary": null,
+      "ref": "STEMI, NSTEMI, PE, myocarditis"
+    },
+    {
+      "id": 3,
+      "text": "What are the key warfarin drug interactions and how should INR be managed? Include CYP enzyme details.",
+      "primary": "medical",
+      "secondary": null,
+      "ref": "CYP2C9 interactions, target INR 2-3"
+    },
+    {
+      "id": 4,
+      "text": "Describe the emergency management of anaphylaxis step by step, including drug doses and routes.",
+      "primary": "medical",
+      "secondary": null,
+      "ref": "IM epinephrine 0.3-0.5mg, airway, IV fluids"
+    },
+    {
+      "id": 5,
+      "text": "What are the four elements of negligence in tort law? Explain each element with examples.",
+      "primary": "legal",
+      "secondary": null,
+      "ref": "duty, breach, causation, damages"
+    },
+    {
+      "id": 6,
+      "text": "What is the legal difference between a merger and an acquisition? Include types of mergers and acquisition structures.",
+      "primary": "legal",
+      "secondary": null,
+      "ref": "statutory merger vs asset/stock purchase"
+    },
+    {
+      "id": 7,
+      "text": "What are a tenant's legal rights when a landlord fails to make necessary repairs? Include available remedies.",
+      "primary": "legal",
+      "secondary": null,
+      "ref": "repair and deduct, rent withholding, constructive eviction"
+    },
+    {
+      "id": 8,
+      "text": "What requirements must a non-compete clause meet to be enforceable? Include key factors courts examine.",
+      "primary": "legal",
+      "secondary": null,
+      "ref": "reasonable scope, duration, geography"
+    },
+    {
+      "id": 9,
+      "text": "Calculate the NPV of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate. Show all steps.",
+      "primary": "finance",
+      "secondary": "tech",
+      "ref": "$13,724"
+    },
+    {
+      "id": 10,
+      "text": "Calculate WACC given: 60% equity at 12% cost, 40% debt at 6% cost, corporate tax rate 25%. Show the formula and calculation.",
+      "primary": "finance",
+      "secondary": null,
+      "ref": "9.0%"
+    },
+    {
+      "id": 11,
+      "text": "Calculate break-even point: fixed costs $500,000, variable cost $30/unit, selling price $80/unit. Explain the analysis.",
+      "primary": "finance",
+      "secondary": null,
+      "ref": "10,000 units"
+    },
+    {
+      "id": 12,
+      "text": "Interpret a debt-to-equity ratio of 2.5 when the industry average is 1.2. What does this mean for the company?",
+      "primary": "finance",
+      "secondary": null,
+      "ref": "highly leveraged, risk analysis"
+    },
+    {
+      "id": 13,
+      "text": "Explain TCP vs UDP protocols in detail. Compare their features and provide specific use cases for each.",
+      "primary": "tech",
+      "secondary": null,
+      "ref": "reliable/ordered vs fast/unordered"
+    },
+    {
+      "id": 14,
+      "text": "What are the methods to prevent SQL injection attacks? Explain each method with code-level details.",
+      "primary": "tech",
+      "secondary": "legal",
+      "ref": "parameterized queries, ORM, input validation, WAF"
+    },
+    {
+      "id": 15,
+      "text": "Design a load balancer: what strategies exist and how do health checks work? Include implementation details.",
+      "primary": "tech",
+      "secondary": null,
+      "ref": "round-robin, least-connections, health probes"
+    }
+  ],
+  "results": [
+    {
+      "condition": "Fixed",
+      "questionId": 1,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Good",
+          "rawLength": 1838,
+          "corruptedPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Conv..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 611,
+          "corruptedPreview": "While I [???] an attorney [???] not a medical professional, I can provide a [???] [???] of the legal implications surrounding medical treatment decisi..."
+        }
+      ],
+      "finalAnswerPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Converting Enzyme inhibitors) or **ARBs** (Angiotensin...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, providing detailed information on the first-line treatment for hypertension in patients with type 2 diabetes. It includes specific drug classes (ACE inhibitors and ARBs) and dosing for each medication. The answer is well-organized and includes additional considerations and monitoring guidelines, aligning with clinical guidelines. Specificity is demonstrated with exact drug names and dosages."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 2,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 517,
+          "corruptedPreview": "Acute chest [???] [???] troponin elevation can indicate a variety of conditions, primarily related to cardiac and non-cardiac [???] Here’s a different..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 648,
+          "corruptedPreview": "While I am [???] attorney [???] not a medical professional, I can provide a general overview of the legal [???] [???] medical [???] and the importance..."
+        }
+      ],
+      "finalAnswerPreview": "Acute chest pain with troponin elevation can indicate a range of serious conditions, primarily involving cardiac and non-cardiac causes. Here’s a differential diagnosis of the most important condition...",
+      "score": 9,
+      "reason": "The answer is accurate and covers the key conditions associated with acute chest pain and troponin elevation, including STEMI, NSTEMI, PE, and myocarditis. It provides distinguishing features for each condition, enhancing completeness and detail. Specificity is strong with mention of ECG changes, risk factors, and diagnostic tests. Clarity and organization are excellent. However, the inclusion of unstable angina, which typically does not have elevated troponin, slightly affects accuracy."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 3,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 537,
+          "corruptedPreview": "Warfarin is a vitamin K antagonist [???] for [???] [???] its effectiveness can be significantly affected [???] various [???] [???] Understanding these..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 251,
+          "corruptedPreview": "Warfarin [???] an anticoagulant medication that [???] commonly used [???] prevent [???] [???] Its [???] and [???] can [???] [???] affected by [???] dr..."
+        }
+      ],
+      "finalAnswerPreview": "Warfarin is a vitamin K antagonist commonly used as an anticoagulant to prevent thromboembolic events such as stroke and deep vein thrombosis. Its effectiveness can be significantly affected by variou...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key CYP2C9 interactions and INR management. It is detailed and complete, mentioning specific drugs and their effects on INR. The target INR range of 2-3 is specified, aligning with the reference. The answer is clear and well-organized. Minor improvement could be made by explicitly mentioning CYP2C9, although it is implied through the context."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 4,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] [???] [???] [???] life-threatening allergic [???] that requires [???] medical [???] The emergency [???] of anaphylaxis follows [???] systematic ..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 601,
+          "corruptedPreview": "While I [???] an attorney and not a [???] professional, I can provide a general overview of the emergency management of anaphylaxis based on establish..."
+        }
+      ],
+      "finalAnswerPreview": "Anaphylaxis is a severe, life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphylaxis can be summarized in a step-by-step approach, including d...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key steps like recognizing symptoms, administering IM epinephrine, and calling for help. It includes specific drug doses and routes, enhancing completeness and detail. However, it could improve by explicitly mentioning airway management and IV fluids, which are critical in severe cases. The organization and clarity are excellent."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 5,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] tort law, [???] [???] a [???] to [???] the care [???] [???] [???] prudent [???] [???] exercise in [???] circumstances. [???] [???] elements [???..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 615,
+          "corruptedPreview": "[???] tort [???] negligence is a failure to exercise the [???] that a reasonably [???] [???] [???] exercise [???] [???] circumstances. To establish a ..."
+        }
+      ],
+      "finalAnswerPreview": "In tort law, negligence is defined as a failure to exercise the care that a reasonably prudent person would exercise in similar circumstances. To establish a claim of negligence, a plaintiff must prov...",
+      "score": 10,
+      "reason": "The answer accurately and correctly explains the four elements of negligence in tort law: duty, breach, causation, and damages. It provides detailed explanations and relevant examples for each element, demonstrating completeness and specificity. The answer is well-organized and clear, making it easy to understand."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 6,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 642,
+          "corruptedPreview": "The legal differences between a merger and an acquisition primarily revolve [???] the nature [???] the [???] and the [???] between the [???] involved...."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 277,
+          "corruptedPreview": "[???] [???] distinction between [???] merger and an acquisition [???] revolves [???] [???] nature of the transaction and the relationship between the ..."
+        }
+      ],
+      "finalAnswerPreview": "The legal difference between a merger and an acquisition primarily revolves around the nature of the transaction and the relationship between the entities involved.\n\n### Definitions:\n\n- **Merger**: A ...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing clear definitions and distinctions between mergers and acquisitions. It includes detailed descriptions of types of mergers and acquisition structures, enhancing completeness. Specific examples and terms are used effectively, though more precise legal implications could improve specificity. The organization and clarity are excellent, making the information easy to follow."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 7,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 656,
+          "corruptedPreview": "While I am a physician and not a legal expert, [???] can [???] [???] general [???] [???] [???] rights regarding repairs. However, for specific legal a..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 262,
+          "corruptedPreview": "[???] [???] [???] [???] [???] make necessary repairs, [???] have [???] legal [???] and remedies available to [???] which can [???] [???] [???] [???] [..."
+        }
+      ],
+      "finalAnswerPreview": "When a landlord fails to make necessary repairs, tenants have several legal rights and remedies available to them. While the specifics can vary by jurisdiction, here are some general principles that a...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key legal rights and remedies such as repair and deduct, rent withholding, and legal action. It is detailed and organized, mentioning the right to a habitable environment, notice requirements, and protection against retaliation. However, it lacks specific examples or jurisdictional variations, which would enhance specificity."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 8,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 262,
+          "corruptedPreview": "[???] clauses, also known as restrictive covenants, are legal agreements [???] [???] an [???] ability to [???] [???] [???] [???] business after leavin..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 243,
+          "corruptedPreview": "To [???] [???] [???] [???] clause [???] [???] several requirements that vary by [???] [???] generally include the [???] [???] [???]\n\n1. [???] [???] [?..."
+        }
+      ],
+      "finalAnswerPreview": "A non-compete clause, also known as a restrictive covenant, is a legal agreement that restricts an individual's ability to engage in business activities that compete with their former employer after l...",
+      "score": 9,
+      "reason": "The answer is accurate and covers the key factors courts examine for enforceability of non-compete clauses, such as reasonableness in scope and duration, legitimate business interest, consideration, and public policy. It is complete and detailed, mentioning the variability by jurisdiction. However, it lacks specific examples or exact numbers for scope and duration, which would enhance specificity."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 9,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 137,
+          "corruptedPreview": "To [???] [???] Net [???] Value [???] [???] [???] investment, we use [???] [???]\n\n\\[\nNPV = \\sum [???] [???] [???] r)^t} \\right) [???] [???]\n..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 440,
+          "corruptedPreview": "To calculate the [???] Present [???] (NPV) of an investment, we need to [???] these steps:\n\n[???] **Identify [???] cash flows**: In this case, the [??..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Net Present Value (NPV) of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate, we can follow these steps:\n\n### Step 1: Identify Cash Flows\nThe in...",
+      "score": 9,
+      "reason": "The answer is mostly accurate and correct, with detailed calculations and clear organization. However, the final NPV value is slightly off from the reference answer of $13,724, likely due to rounding differences. Specificity is strong with exact numbers and formulas provided."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 10,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 358,
+          "corruptedPreview": "[???] calculate [???] [???] Average Cost of Capital (WACC), you can use [???] following formula:\n\n\\[\n\\text{WACC} = \\left( E/V [???] r_e \\right) + [???..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 166,
+          "corruptedPreview": "[???] calculate [???] Weighted [???] Cost of [???] (WACC), we [???] [???] following formula:\n\n\\[\nWACC = \\left( [???] [???] [???] \\right) + [???] D/V [..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Weighted Average Cost of Capital (WACC), we can use the following formula:\n\n\\[\n\\text{WACC} = \\left( \\frac{E}{V} \\times r_e \\right) + \\left( \\frac{D}{V} \\times r_d \\times (1 - T) \\righ...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, with a complete and detailed explanation. It includes specific numbers and formulas, and the clarity and organization are excellent. The final result is clearly stated as 9.0%."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 11,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 471,
+          "corruptedPreview": "To calculate the break-even point in [???] you can use the following formula:\n\n[???]\n\\text{Break-even [???] (units)} = \\frac{\\text{Fixed Costs}}{\\text..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 445,
+          "corruptedPreview": "To calculate the break-even point [???] in units, [???] [???] use the [???] [???]\n\n\\[\n\\text{Break-even point (units)} [???] \\frac{\\text{Fixed Costs}}{..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the break-even point, we can use the following formula:\n\n\\[\n\\text{Break-even point (units)} = \\frac{\\text{Fixed Costs}}{\\text{Selling Price per Unit} - \\text{Variable Cost per Unit}}\n\\]\n\n...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, providing a complete and detailed explanation of the break-even point calculation. It includes specific numbers and formulas, and the clarity and organization are excellent."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 12,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 163,
+          "corruptedPreview": "A debt-to-equity [???] ratio of [???] [???] [???] [???] [???] has $2.50 in [???] for [???] $1.00 [???] [???] When compared to [???] [???] [???] [???] ..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2544,
+          "corruptedPreview": "A debt-to-equity ratio (D/E ratio) is a financial metric that indicates the relative proportion of a company's debt to its shareholders' equity. It is..."
+        }
+      ],
+      "finalAnswerPreview": "A debt-to-equity (D/E) ratio of 2.5 indicates that for every dollar of equity, the company has $2.50 in debt. This is significantly higher than the industry average of 1.2, suggesting that the company...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly interprets the implications of a high debt-to-equity ratio. It is detailed and covers multiple aspects such as financial risk, cost of capital, and investor sentiment. Specific numbers are used effectively, and the explanation is clear and well-organized. However, it could include more specific examples or formulas to achieve a perfect score."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 13,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 641,
+          "corruptedPreview": "TCP (Transmission [???] Protocol) and [???] (User Datagram [???] are [???] [???] [???] [???] the Internet Protocol Suite, [???] serving different purp..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 253,
+          "corruptedPreview": "While I specialize [???] legal analysis, I can [???] [???] general overview [???] TCP (Transmission Control Protocol) [???] UDP [???] Datagram [???] [..."
+        }
+      ],
+      "finalAnswerPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols in the Internet Protocol Suite, each serving distinct purposes and use cases in network communication...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a detailed comparison of TCP and UDP protocols. It covers key features such as connection orientation, reliability, flow control, congestion control, and error checking for TCP, and contrasts these with UDP's connectionless nature, lack of reliability, and lower overhead. Specific use cases for each protocol are provided, enhancing completeness and detail. The answer is well-organized and clear. However, it could include more specific technical details, such as exact port numbers or examples of specific applications, to achieve a perfect score."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 14,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.5,
+          "channelWeight": 1,
+          "combinedScore": 0.5
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 275,
+          "corruptedPreview": "While I am a [???] [???] [???] [???] cybersecurity [???] [???] [???] [???] [???] [???] [???] of SQL [???] [???] [???] [???] are some [???] [???] [???]..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2248,
+          "corruptedPreview": "SQL injection (SQLi) is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its datab..."
+        }
+      ],
+      "finalAnswerPreview": "To prevent SQL injection attacks, which are critical vulnerabilities that allow attackers to manipulate SQL queries made by applications, several effective methods can be employed. Below are the prima...",
+      "score": 9,
+      "reason": "The answer is accurate and covers all key methods to prevent SQL injection, including parameterized queries, stored procedures, input validation, escaping inputs, and ORM usage. It provides detailed code examples and explanations for each method. However, it lacks mention of Web Application Firewalls (WAF) as an additional layer of protection, which slightly affects completeness."
+    },
+    {
+      "condition": "Fixed",
+      "questionId": 15,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 239,
+          "corruptedPreview": "While I am [???] [???] [???] [???] an expert [???] IT or network [???] [???] can [???] [???] brief overview [???] load [???] and [???] [???] [???] [??..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2581,
+          "corruptedPreview": "While I am an attorney and not a technical expert in load balancers, I can provide a general overview of load balancing strategies and health checks, ..."
+        }
+      ],
+      "finalAnswerPreview": "### Designing a Load Balancer: Strategies and Health Checks\n\nA load balancer is a critical component in distributed systems, responsible for distributing incoming network traffic across multiple serve...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key load balancing strategies such as round-robin and least-connections, as well as health check methods. It is detailed and includes implementation aspects like configuration and monitoring. Specificity is good, mentioning tools like NGINX and AWS Elastic Load Balancing. The organization is clear, but it could include more specific examples or numbers to achieve a perfect score."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 1,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Good",
+          "rawLength": 1597,
+          "corruptedPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Conv..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 658,
+          "corruptedPreview": "[???] [???] am an attorney [???] not a medical professional, I can provide [???] general overview [???] the legal [???] surrounding [???] treatment [?..."
+        }
+      ],
+      "finalAnswerPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Converting Enzyme inhibitors) or **ARBs** (Angiotensin...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed, providing specific drug classes (ACE inhibitors and ARBs) and dosing for each medication. It also includes relevant clinical guidelines and considerations, demonstrating clarity and organization."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 2,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 491,
+          "corruptedPreview": "Acute [???] pain with [???] elevation can indicate a variety [???] [???] primarily [???] to cardiac [???] non-cardiac causes. [???] a [???] [???] [???..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 648,
+          "corruptedPreview": "While [???] am [???] attorney and not a medical professional, I can [???] a [???] [???] of the legal implications surrounding medical [???] and the im..."
+        }
+      ],
+      "finalAnswerPreview": "Acute chest pain with troponin elevation can indicate a range of conditions, both cardiac and non-cardiac. Here’s a comprehensive differential diagnosis, focusing on the most important conditions and ...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and covers key conditions like STEMI, NSTEMI, PE, and myocarditis, which are relevant to the question. It provides distinguishing features for each condition, enhancing completeness and detail. However, it lacks specificity in terms of exact numbers or names, such as differentiating STEMI from NSTEMI explicitly. The organization is clear, but the inclusion of GERD and pneumothorax, which are less relevant to troponin elevation, slightly detracts from focus."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 3,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 537,
+          "corruptedPreview": "Warfarin is a vitamin K antagonist used [???] [???] [???] its [???] can be [???] affected [???] various [???] [???] Understanding these interactions i..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 251,
+          "corruptedPreview": "[???] is [???] anticoagulant medication [???] [???] [???] [???] to [???] [???] clots. Its effectiveness and [???] can [???] significantly [???] by var..."
+        }
+      ],
+      "finalAnswerPreview": "Warfarin is an anticoagulant medication primarily used to prevent and treat thromboembolic disorders, such as deep vein thrombosis (DVT) and pulmonary embolism (PE). Its effectiveness can be significa...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key interactions with CYP2C9 inhibitors and inducers, and includes specific examples like fluconazole and rifampin. It details INR management, specifying the target range of 2-3, and emphasizes monitoring and patient education. The response is well-organized and clear. However, it could include more specific examples of antibiotics and NSAIDs for completeness."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 4,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] [???] a [???] [???] [???] [???] that [???] immediate medical intervention. The emergency management [???] anaphylaxis follows [???] [???] approa..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 599,
+          "corruptedPreview": "While I [???] [???] attorney [???] not a medical [???] I can provide [???] general [???] of [???] emergency management of anaphylaxis based on establi..."
+        }
+      ],
+      "finalAnswerPreview": "Emergency management of anaphylaxis is critical and should be executed promptly to prevent severe complications or death. Here’s a step-by-step guide based on established medical guidelines:\n\n### Step...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering all key steps in managing anaphylaxis, including the correct dose and route for epinephrine. It is detailed and complete, addressing recognition, administration, positioning, monitoring, and follow-up. Specificity is high with exact doses and routes provided. Clarity and organization are excellent. However, it lacks mention of airway management and IV fluids, which are critical in severe cases, preventing a perfect score."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 5,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 589,
+          "corruptedPreview": "In tort law, negligence [???] a failure to exercise the care that [???] reasonably prudent person would exercise in similar circumstances. The four el..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] tort law, negligence [???] [???] failure [???] [???] [???] care [???] [???] reasonably [???] [???] [???] exercise in similar circumstances. [???..."
+        }
+      ],
+      "finalAnswerPreview": "In tort law, negligence refers to a failure to exercise the care that a reasonably prudent person would exercise in similar circumstances. The four elements of negligence are:\n\n1. **Duty of Care**: Th...",
+      "score": 9,
+      "reason": "The answer accurately and correctly explains the four elements of negligence: duty, breach, causation, and damages, with relevant examples for each. It is complete and detailed, covering all necessary aspects of each element. Specificity is present with examples like a driver running a red light and a store owner failing to clean a spill. The explanation is clear and well-organized. However, it could include more specific legal terms or cases to achieve a perfect score."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 6,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 273,
+          "corruptedPreview": "[???] legal [???] between [???] merger [???] an acquisition [???] revolves [???] [???] nature [???] [???] transaction [???] the resulting [???] [???] ..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 636,
+          "corruptedPreview": "The [???] distinction between a merger and an [???] [???] revolves around the [???] of [???] [???] [???] [???] resulting [???] structure.\n\n### Merger\n..."
+        }
+      ],
+      "finalAnswerPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting corporate structure.\n\n### Definitions\n\n**Merger**: A merger occurs w...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing clear definitions and distinctions between mergers and acquisitions. It includes detailed descriptions of types of mergers and acquisition structures, enhancing completeness. Specific examples and terms are used effectively, though it could benefit from more precise legal terminology regarding statutory mergers. The organization and clarity are excellent, making the information easy to follow."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 7,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 262,
+          "corruptedPreview": "[???] [???] [???] fails to [???] [???] [???] [???] have [???] legal [???] [???] [???] [???] [???] [???] which [???] [???] [???] [???] Below [???] a [?..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 657,
+          "corruptedPreview": "While I am [???] [???] and [???] a legal expert, [???] [???] provide some general [???] about tenant [???] regarding [???] However, [???] specific [??..."
+        }
+      ],
+      "finalAnswerPreview": "When a landlord fails to make necessary repairs, tenants have specific legal rights and remedies available to them. While the messages received were partially corrupted, I can provide a comprehensive ...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key legal rights and remedies such as repair and deduct, rent withholding, and constructive eviction. It is detailed and well-organized, providing a comprehensive overview. However, it lacks specific examples or jurisdictional variations, which would enhance specificity."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 8,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 281,
+          "corruptedPreview": "To be [???] a [???] [???] must meet [???] [???] requirements, which [???] vary by [???] [???] there are common principles and [???] [???] courts gener..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 262,
+          "corruptedPreview": "[???] clauses, [???] [???] as [???] covenants, [???] [???] agreements that [???] an individual's [???] [???] work [???] [???] [???] [???] after leavin..."
+        }
+      ],
+      "finalAnswerPreview": "To be enforceable, a non-compete clause (also known as a non-compete agreement or covenant not to compete) must meet several key requirements. While these requirements can vary by jurisdiction, there ...",
+      "score": 9,
+      "reason": "The answer is accurate and covers the key factors courts examine for enforceability of non-compete clauses, such as reasonableness in scope, legitimate business interest, duration, geographic limitations, public policy considerations, and consideration. It is detailed and well-organized, but could improve by providing specific examples or legal precedents to enhance specificity."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 9,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 0.5,
+          "channelWeight": 0.1,
+          "combinedScore": 0.05
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 1209,
+          "corruptedPreview": "To calculate the Net Present Value (NPV) of an investment, we use the following formula:\n\n\\[\nNPV = \\sum_{t=1}^{n} \\frac{C_t}{(1 + r)^t} - C_0\n\\]\n\nWher..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 143,
+          "corruptedPreview": "[???] calculate [???] Net Present Value (NPV) of an [???] we [???] [???] [???] [???] formula:\n\n\\[\n[???] [???] [???] \\frac{C_t}{(1 + [???] - C..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Net Present Value (NPV) of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate, we will follow these steps:\n\n### Step 1: Identify the Variables\n- ...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and detailed, with a clear step-by-step calculation. However, there is a minor error in the final NPV calculation, which should be $13,724 instead of $13,529.70. The organization and clarity are good, but the incorrect final result affects the accuracy score."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 10,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Medium",
+          "rawLength": 355,
+          "corruptedPreview": "To [???] [???] Weighted Average Cost of [???] (WACC), we [???] the following formula:\n\n\\[\n\\text{WACC} [???] \\left( E/V \\times [???] \\right) + \\left( D..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 370,
+          "corruptedPreview": "To calculate the Weighted Average Cost [???] Capital (WACC), [???] can use the following [???]\n\n\\[\n\\text{WACC} = \\left( E/V \\times r_e \\right) + [???]..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Weighted Average Cost of Capital (WACC), we can use the following formula:\n\n\\[\n\\text{WACC} = \\left( \\frac{E}{V} \\times r_e \\right) + \\left( \\frac{D}{V} \\times r_d \\times (1 - T) \\righ...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed. It correctly applies the WACC formula, includes all necessary calculations, and provides the final result with clarity and organization. Specific numbers and steps are clearly presented."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 11,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2079,
+          "corruptedPreview": "To calculate the break-even point in units, we can use the following formula:\n\n\\[\n\\text{Break-even point (in units)} = \\frac{\\text{Fixed Costs}}{\\text..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 440,
+          "corruptedPreview": "To calculate [???] break-even point [???] [???] you [???] [???] the following formula:\n\n\\[\n\\text{Break-even [???] [???] [???] \\frac{\\text{Fixed Costs}..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the break-even point for a business, we can use the following formula:\n\n\\[\n\\text{Break-even point (in units)} = \\frac{\\text{Fixed Costs}}{\\text{Selling Price per Unit} - \\text{Variable Co...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed. It correctly calculates the break-even point as 10,000 units using the appropriate formula and provides a thorough explanation of the components involved. The answer includes specific numbers and is well-organized, making it clear and easy to understand."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 12,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Bad",
+          "rawLength": 220,
+          "corruptedPreview": "[???] [???] (D/E) ratio [???] a [???] metric that indicates [???] [???] proportion of a company's [???] [???] its shareholders' equity. [???] [???] [?..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 163,
+          "corruptedPreview": "[???] [???] [???] [???] of [???] indicates that the company [???] [???] [???] [???] for [???] $1.00 [???] [???] [???] [???] to the industry [???] D/E ..."
+        }
+      ],
+      "finalAnswerPreview": "The debt-to-equity (D/E) ratio is a financial metric that indicates the proportion of a company's financing that comes from debt compared to equity. A D/E ratio of 2.5 means that for every $1.00 of eq...",
+      "score": 9,
+      "reason": "The answer accurately explains the implications of a high debt-to-equity ratio, comparing it to the industry average. It covers the increased financial risk, potential for higher returns, investor perception, and industry context, providing a complete and detailed analysis. Specific numbers are used effectively. However, it could be slightly more organized for clarity."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 13,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 302,
+          "corruptedPreview": "[???] (Transmission Control Protocol) [???] [???] (User [???] Protocol) are [???] [???] protocols [???] the Internet Protocol [???] [???] [???] [???] ..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 641,
+          "corruptedPreview": "TCP [???] [???] Protocol) and UDP (User [???] Protocol) are [???] core protocols [???] the Internet Protocol Suite, each serving different purposes an..."
+        }
+      ],
+      "finalAnswerPreview": "### TCP vs. UDP Protocols\n\n**Overview:**\nTCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols within the Internet Protocol Suite, specifically operating at the t...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a detailed comparison of TCP and UDP protocols. It covers key features such as connection orientation, reliability, flow control, and congestion control for TCP, and the connectionless nature, lack of reliability, and low latency for UDP. Specific use cases are provided for both protocols, enhancing completeness. The answer is well-organized and clear. However, it could include more specific technical details, such as exact port numbers or examples of specific applications, to achieve a perfect score."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 14,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.5,
+          "channelWeight": 1,
+          "combinedScore": 0.5
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 293,
+          "corruptedPreview": "SQL [???] is [???] common [???] vector [???] [???] [???] [???] [???] interfere [???] [???] queries [???] [???] application [???] [???] [???] [???] [??..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2320,
+          "corruptedPreview": "SQL injection (SQLi) is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its datab..."
+        }
+      ],
+      "finalAnswerPreview": "SQL injection (SQLi) is a significant security vulnerability that allows attackers to manipulate SQL queries made by an application, potentially leading to unauthorized access to sensitive data. To pr...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key methods to prevent SQL injection, including parameterized queries, stored procedures, input validation, ORM, and escaping inputs. It provides detailed code examples for each method, enhancing completeness and specificity. However, it lacks mention of Web Application Firewalls (WAF), which is a minor omission."
+    },
+    {
+      "condition": "ExpertiseOnly",
+      "questionId": 15,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.1,
+          "combinedScore": 0.020000000000000004
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2371,
+          "corruptedPreview": "Designing a load balancer involves understanding various load balancing strategies, health check mechanisms, and implementation details. Below, I will..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 239,
+          "corruptedPreview": "[???] [???] [???] [???] physician [???] not an [???] in IT or [???] [???] I [???] [???] [???] [???] [???] of load balancers and [???] [???] in [???] c..."
+        }
+      ],
+      "finalAnswerPreview": "Designing a load balancer involves understanding various strategies for distributing incoming traffic across multiple servers, as well as implementing health checks to ensure that only operational ser...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key load balancing strategies like round-robin and least-connections, as well as health check methods. It provides detailed implementation steps and use cases for each strategy. However, it lacks specific examples or names of tools/software for implementation, which would enhance specificity."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 1,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Good",
+          "rawLength": 1730,
+          "corruptedPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Conv..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 658,
+          "corruptedPreview": "[???] I [???] [???] attorney and not a medical professional, I can provide a general [???] [???] the legal implications surrounding medical treatment ..."
+        }
+      ],
+      "finalAnswerPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Converting Enzyme inhibitors) or **ARBs** (Angiotensin...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, providing the appropriate first-line treatment for hypertension in patients with type 2 diabetes. It includes specific drug classes (ACE inhibitors and ARBs) and detailed dosing information for each medication. The answer is complete, mentioning clinical guidelines and additional considerations, and is well-organized and clear."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 2,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2107,
+          "corruptedPreview": "Acute chest pain with troponin elevation is a critical clinical scenario that requires a thorough differential diagnosis. Troponin is a biomarker that..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 517,
+          "corruptedPreview": "Acute [???] pain with troponin elevation can [???] [???] variety of [???] [???] [???] to cardiac and non-cardiac causes. Here’s [???] differential dia..."
+        }
+      ],
+      "finalAnswerPreview": "Acute chest pain with troponin elevation is a critical clinical scenario that necessitates a comprehensive differential diagnosis. Troponin is a biomarker indicating myocardial injury, but its elevati...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly identifies key conditions associated with troponin elevation, such as ACS, myocarditis, PE, and aortic dissection. It provides detailed distinguishing features for each condition, enhancing completeness. Specificity is strong with mentions of ECG changes, risk factors, and symptoms. The organization is clear with a structured list format. However, there is a slight redundancy in mentioning AMI separately from ACS, which slightly affects completeness and clarity."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 3,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2127,
+          "corruptedPreview": "Warfarin is an anticoagulant medication that is commonly used to prevent blood clots. It works by inhibiting vitamin K epoxide reductase, which is ess..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2046,
+          "corruptedPreview": "Warfarin is an anticoagulant medication that is commonly used to prevent blood clots. Its effectiveness and safety can be significantly affected by va..."
+        }
+      ],
+      "finalAnswerPreview": "Warfarin is a widely used anticoagulant that functions by inhibiting vitamin K epoxide reductase, which is crucial for the synthesis of clotting factors II, VII, IX, and X. Due to its mechanism of act...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key interactions with CYP2C9 inhibitors and inducers, as well as other relevant interactions. It provides detailed management strategies for INR, including specific dose adjustments and monitoring recommendations. The target INR range of 2-3 is mentioned, aligning with standard practice. The answer is well-organized and clear, but it could include more specific examples or numbers for INR adjustments to achieve a perfect score."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 4,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2090,
+          "corruptedPreview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anap..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 590,
+          "corruptedPreview": "While [???] am an [???] [???] not a [???] professional, I can provide a general overview of the emergency management [???] anaphylaxis [???] on establ..."
+        }
+      ],
+      "finalAnswerPreview": "The emergency management of anaphylaxis is a critical process that requires immediate action. Here’s a step-by-step guide, including drug doses and routes:\n\n### Step 1: Recognize Anaphylaxis\n- **Signs...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering all key steps in managing anaphylaxis, including drug doses and routes. It is detailed and complete, addressing recognition, emergency response, positioning, epinephrine administration, oxygen therapy, IV access, additional medications, monitoring, and transport. Specificity is high with exact dosages and routes provided. Clarity and organization are excellent. Minor deduction for not explicitly mentioning airway management, though it is implied in positioning and oxygen therapy."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 5,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2424,
+          "corruptedPreview": "Negligence in tort law is a legal concept that involves a failure to exercise the care that a reasonably prudent person would exercise in similar circ..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 589,
+          "corruptedPreview": "In tort [???] [???] is a [???] to exercise the care [???] [???] [???] prudent person would [???] in similar [???] The four elements of negligence are:..."
+        }
+      ],
+      "finalAnswerPreview": "In tort law, negligence is a legal concept that arises when an individual fails to exercise the care that a reasonably prudent person would in similar circumstances. To establish a claim of negligence...",
+      "score": 10,
+      "reason": "The answer accurately and correctly explains the four elements of negligence: duty, breach, causation, and damages. It provides detailed explanations and relevant examples for each element, demonstrating completeness and specificity. The organization and clarity of the response are excellent, making it easy to understand."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 6,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2422,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting corporate structur..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2530,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the relationship between the com..."
+        }
+      ],
+      "finalAnswerPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting corporate structure. Here’s a comprehensive overview of the differen...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a comprehensive overview of the legal differences between mergers and acquisitions, including types of mergers and acquisition structures. It is detailed and well-organized, covering key points such as the formation of new entities and legal identities. Specific examples and types are provided, enhancing specificity. However, it could improve by mentioning statutory mergers specifically, which is a key point in the reference answer."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 7,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2733,
+          "corruptedPreview": "While I can provide a general overview of tenant rights and remedies regarding landlord repairs, please note that specific laws can vary significantly..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 656,
+          "corruptedPreview": "While I am a [???] and [???] a legal expert, I can provide [???] [???] [???] about tenant rights regarding repairs. However, for specific legal advice..."
+        }
+      ],
+      "finalAnswerPreview": "When a landlord fails to make necessary repairs, tenants have specific legal rights and remedies available to them. However, it's important to note that these rights can vary significantly depending o...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key tenant rights and remedies such as repair and deduct, rent withholding, and constructive eviction. It is detailed and well-organized, mentioning the implied warranty of habitability, notice requirements, and protection against retaliation. Specific remedies like legal action and contacting authorities are included. However, it lacks specific jurisdictional examples or legal references, which would enhance specificity."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 8,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2547,
+          "corruptedPreview": "A non-compete clause, also known as a non-competition agreement, is a legal contract that restricts an employee from engaging in business activities t..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Medium",
+          "rawLength": 608,
+          "corruptedPreview": "A non-compete [???] also [???] as a [???] agreement (NCA), is a legal contract [???] restricts an individual from engaging in business activities that..."
+        }
+      ],
+      "finalAnswerPreview": "To ensure that a non-compete clause is enforceable, it must meet several key requirements that courts typically examine. While these requirements can vary by jurisdiction, the following factors are co...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key factors courts examine for enforceability of non-compete clauses, such as reasonableness in scope, legitimate business interest, consideration, clarity, public policy, balance of interests, and industry standards. It is detailed and well-organized, but lacks specific examples or case references that could enhance specificity."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 9,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 1186,
+          "corruptedPreview": "To calculate the Net Present Value (NPV) of an investment, we use the following formula:\n\n\\[\nNPV = \\sum_{t=1}^{n} \\frac{C_t}{(1 + r)^t} - C_0\n\\]\n\nWher..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 440,
+          "corruptedPreview": "To calculate [???] Net Present [???] (NPV) [???] an investment, we need to follow [???] steps:\n\n1. [???] the cash flows**: In this case, the [???] [??..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Net Present Value (NPV) of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate, we will follow these steps:\n\n### Step 1: Understand the NPV Formul...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and correct, with a minor error in the final NPV calculation. The detailed steps and calculations are well-organized and clear. However, the final NPV should be $13,724, not $13,327. Specific numbers and formulas are used correctly throughout the explanation."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 10,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 1234,
+          "corruptedPreview": "The Weighted Average Cost of Capital (WACC) is calculated using the following formula:\n\n\\[\n\\text{WACC} = \\left( E/V \\times r_e \\right) + \\left( D/V \\t..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 358,
+          "corruptedPreview": "To calculate the Weighted Average [???] of Capital [???] you can use the following formula:\n\n\\[\n\\text{WACC} = \\left( [???] \\times r_e \\right) [???] \\l..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Weighted Average Cost of Capital (WACC), we use the following formula:\n\n\\[\n\\text{WACC} = \\left( \\frac{E}{V} \\times r_e \\right) + \\left( \\frac{D}{V} \\times r_d \\times (1 - T) \\right)\n\\...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed. It correctly applies the WACC formula, includes all necessary calculations, and provides specific values. The explanation is clear and well-organized, leading to the correct conclusion of a 9.0% WACC."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 11,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2148,
+          "corruptedPreview": "To calculate the break-even point in units, we can use the following formula:\n\n\\[\n\\text{Break-even point (units)} = \\frac{\\text{Fixed Costs}}{\\text{Se..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 471,
+          "corruptedPreview": "To calculate [???] [???] point [???] [???] you [???] use the [???] [???]\n\n[???]\n\\text{Break-even point (units)} = \\frac{\\text{Fixed Costs}}{\\text{Sell..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the break-even point for a business, we can use the following formula:\n\n\\[\n\\text{Break-even point (units)} = \\frac{\\text{Fixed Costs}}{\\text{Selling Price per Unit} - \\text{Variable Cost ...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, providing a complete and detailed explanation of the break-even point calculation. It includes specific numbers and formulas, and the clarity and organization are excellent. The interpretation and industry context add valuable insights."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 12,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2319,
+          "corruptedPreview": "A debt-to-equity ratio (D/E ratio) of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This ratio is a measure of a company..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Medium",
+          "rawLength": 473,
+          "corruptedPreview": "[???] debt-to-equity [???] ratio of 2.5 indicates [???] the [???] [???] $2.50 in debt [???] [???] $1.00 [???] equity. [???] [???] significantly higher..."
+        }
+      ],
+      "finalAnswerPreview": "A debt-to-equity (D/E) ratio of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This ratio is a key measure of financial leverage, reflecting the extent to which a company ...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly interprets the debt-to-equity ratio, explaining the implications of being highly leveraged. It is complete and detailed, covering leverage, risk, cost of capital, growth potential, and investor sentiment. Specific numbers and comparisons to the industry average are provided. The answer is clear and well-organized. Minor improvement could be made by including more specific examples or formulas."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 13,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2469,
+          "corruptedPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, which are used for transmi..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 656,
+          "corruptedPreview": "TCP (Transmission [???] Protocol) and UDP (User [???] Protocol) are two fundamental protocols used for [???] transmission over [???] Internet. [???] [..."
+        }
+      ],
+      "finalAnswerPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols used for data transmission over the Internet. They operate at the transport layer of the Internet Pro...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a detailed comparison of TCP and UDP protocols. It includes specific features and use cases for each protocol, demonstrating completeness and detail. The use of exact terms like 'three-way handshake,' 'sliding window protocol,' and specific use cases like 'HTTP/HTTPS' and 'VoIP' adds specificity. The answer is well-organized and clear. However, it could include more specific examples of congestion control algorithms or additional technical details to achieve a perfect score."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 14,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.5,
+          "channelWeight": 1,
+          "combinedScore": 0.5
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2264,
+          "corruptedPreview": "SQL injection (SQLi) is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its datab..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Medium",
+          "rawLength": 635,
+          "corruptedPreview": "SQL injection is a common [???] [???] vulnerability that allows an attacker to interfere with the queries that an application makes [???] [???] databa..."
+        }
+      ],
+      "finalAnswerPreview": "To prevent SQL injection attacks, developers can implement several effective methods. Below are the most common techniques, along with code-level details for each method.\n\n### 1. Prepared Statements (...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key methods to prevent SQL injection, including parameterized queries, stored procedures, input validation, ORM, and WAF. It provides detailed code examples for each method, enhancing completeness and specificity. However, the explanation of the least privilege principle lacks code-level detail, slightly affecting completeness."
+    },
+    {
+      "condition": "ChannelOnly",
+      "questionId": 15,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2610,
+          "corruptedPreview": "While I am an attorney and not a technical expert in load balancers, I can provide a general overview of load balancing strategies and health checks, ..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2379,
+          "corruptedPreview": "Designing a load balancer involves understanding various load balancing strategies, health check mechanisms, and implementation specifics. Below, I wi..."
+        }
+      ],
+      "finalAnswerPreview": "Designing a load balancer involves understanding various load balancing strategies, health check mechanisms, and implementation specifics. Below is a comprehensive overview based on the information pr...",
+      "score": 9,
+      "reason": "The answer is accurate and covers a wide range of load balancing strategies, including round-robin and least-connections, with detailed implementation details. It also thoroughly explains health check mechanisms. However, it lacks specific examples of hash functions and does not mention specific tools or technologies used in implementation, which would enhance specificity."
+    },
+    {
+      "condition": "Joint",
+      "questionId": 1,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Good",
+          "rawLength": 1731,
+          "corruptedPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Conv..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 611,
+          "corruptedPreview": "[???] I am an attorney and not a [???] professional, I [???] provide [???] [???] overview [???] the legal implications surrounding medical treatment d..."
+        }
+      ],
+      "finalAnswerPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Converting Enzyme inhibitors) or **ARBs** (Angiotensin...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed, providing specific drug classes (ACE inhibitors and ARBs) and dosing for each medication. It includes clinical guidelines and additional considerations, such as contraindications and monitoring, which enhance the completeness and specificity. The organization and clarity are excellent, making it easy to follow.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 2,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 491,
+          "corruptedPreview": "Acute chest pain with troponin elevation can indicate a [???] of conditions, [???] related to cardiac and non-cardiac causes. [???] a [???] diagnosis ..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2118,
+          "corruptedPreview": "Acute chest pain with troponin elevation is a critical clinical scenario that requires a thorough differential diagnosis. Troponin is a biomarker that..."
+        }
+      ],
+      "finalAnswerPreview": "Acute chest pain with troponin elevation is a critical clinical scenario that necessitates a thorough differential diagnosis. Troponin is a biomarker indicating myocardial injury, but its elevation ca...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly identifies key conditions associated with troponin elevation. It is detailed and covers distinguishing features for each condition, including ACS, myocarditis, PE, and others. Specificity is good, with mention of ECG changes and risk factors. Clarity and organization are excellent. However, it could improve by including more specific numbers or statistics related to troponin levels or prevalence of conditions.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 3,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 537,
+          "corruptedPreview": "Warfarin is [???] [???] K antagonist [???] for anticoagulation, and its effectiveness can be [???] affected by various drug [???] [???] [???] interact..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2093,
+          "corruptedPreview": "Warfarin is an anticoagulant medication that is commonly used to prevent blood clots. It works by inhibiting vitamin K epoxide reductase, which is ess..."
+        }
+      ],
+      "finalAnswerPreview": "Warfarin is an anticoagulant medication that functions as a vitamin K antagonist, primarily by inhibiting the enzyme vitamin K epoxide reductase. This action is crucial for the synthesis of clotting f...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key CYP2C9 interactions and INR management. It is detailed and complete, mentioning specific drugs and their effects on warfarin. The target INR range is correctly specified. The organization is clear, but a minor improvement could be made in emphasizing the importance of patient education in managing INR.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 4,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2000,
+          "corruptedPreview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] is [???] severe, [???] allergic reaction that requires [???] [???] [???] The [???] [???] of anaphylaxis follows a [???] [???] [???] [???] [???] ..."
+        }
+      ],
+      "finalAnswerPreview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphylaxis involves several critical steps, including th...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering all key steps in the emergency management of anaphylaxis, including drug doses and routes. It is detailed and complete, with specific numbers and names provided. The organization and clarity are excellent. However, it could slightly improve by emphasizing the importance of airway management more explicitly.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 5,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 589,
+          "corruptedPreview": "In tort law, negligence is a failure [???] exercise the care that a [???] prudent person would exercise in similar circumstances. The four elements [?..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2357,
+          "corruptedPreview": "Negligence in tort law is a legal concept that arises when an individual fails to exercise a reasonable standard of care, resulting in harm to another..."
+        }
+      ],
+      "finalAnswerPreview": "In tort law, negligence is a legal concept that arises when an individual fails to exercise a reasonable standard of care, resulting in harm to another person. To establish a case of negligence, four ...",
+      "score": 9,
+      "reason": "The answer accurately and correctly explains the four elements of negligence: duty, breach, causation, and damages, with clear definitions and relevant examples. It is complete and detailed, covering all necessary aspects of each element. Specificity is demonstrated through examples and explanations of causation types. The organization is clear, with a summary reinforcing the key points. However, it could include more specific legal terminology or case references for a perfect score.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 6,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2423,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the relationship between the com..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2597,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting relationship betwe..."
+        }
+      ],
+      "finalAnswerPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the relationship between the companies involved. Here’s a comprehensive overview o...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a clear distinction between mergers and acquisitions, including types and structures. It is detailed and covers various types of mergers and acquisition structures comprehensively. Specific examples and terms are used effectively. However, the explanation of tender offers and management buyouts could be slightly more detailed, which affects completeness.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 7,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2684,
+          "corruptedPreview": "While I can provide a general overview of tenant rights and remedies regarding landlord repairs, please note that specific laws can vary significantly..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 262,
+          "corruptedPreview": "[???] a [???] [???] to make [???] [???] [???] have [???] legal [???] and remedies [???] [???] [???] which can [???] [???] jurisdiction. [???] [???] a ..."
+        }
+      ],
+      "finalAnswerPreview": "When a landlord fails to make necessary repairs, tenants have specific legal rights and remedies available to them. However, it's important to note that these rights can vary significantly depending o...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key tenant rights and remedies such as repair and deduct, rent withholding, and constructive eviction. It is detailed and well-organized, mentioning specific rights and remedies available to tenants. However, it could improve by providing more specific examples or legal references from particular jurisdictions to enhance specificity.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 8,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2525,
+          "corruptedPreview": "A non-compete clause, also known as a non-compete agreement (NCA), is a legal contract that restricts an employee from engaging in business activities..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 267,
+          "corruptedPreview": "[???] [???] [???] a [???] clause [???] [???] several [???] requirements, which can vary [???] jurisdiction. [???] there are common principles [???] ke..."
+        }
+      ],
+      "finalAnswerPreview": "To ensure that a non-compete clause (NCA) is enforceable, it must meet several key requirements and considerations that courts typically examine. Here’s a comprehensive overview of these factors:\n\n###...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering all key factors courts examine for enforceability of non-compete clauses. It is detailed and complete, addressing scope, business interests, consideration, clarity, public policy, balance of interests, and state-specific laws. Specificity is strong with examples of geographic and temporal scope, and mention of California's restrictive laws. Clarity and organization are excellent. Minor improvement could be made by including more specific examples or case references.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 9,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 1183,
+          "corruptedPreview": "To calculate the Net Present Value (NPV) of an investment, we use the following formula:\n\n\\[\nNPV = \\sum_{t=1}^{n} \\frac{C_t}{(1 + r)^t} - C_0\n\\]\n\nWher..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 440,
+          "corruptedPreview": "To [???] the [???] Present [???] (NPV) of an investment, we need to follow these steps:\n\n[???] [???] [???] cash flows**: In this case, the investment ..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Net Present Value (NPV) of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate, we will follow these steps:\n\n### Step 1: Understand the NPV Formul...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and detailed, with a clear explanation of the NPV calculation process. However, there is a minor error in the final NPV calculation, which should be $13,724 instead of $13,327. The specificity and organization are otherwise strong.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.05,
+          "ew": 0.5,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 10,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Medium",
+          "rawLength": 355,
+          "corruptedPreview": "To calculate [???] Weighted Average Cost [???] Capital (WACC), we use the [???] formula:\n\n\\[\n\\text{WACC} [???] \\left( E/V [???] r_e [???] [???] \\left(..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 1261,
+          "corruptedPreview": "To calculate the Weighted Average Cost of Capital (WACC), we use the following formula:\n\n\\[\n\\text{WACC} = \\left( E/V \\times r_e \\right) + \\left( D/V \\..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Weighted Average Cost of Capital (WACC), we use the following formula:\n\n\\[\n\\text{WACC} = \\left( \\frac{E}{V} \\times r_e \\right) + \\left( \\frac{D}{V} \\times r_d \\times (1 - T) \\right)\n\\...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed. It correctly applies the WACC formula, includes all necessary calculations, and provides specific values. The explanation is clear and well-organized, leading to the correct conclusion of a 9.0% WACC.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 11,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 0.2,
+          "channelWeight": 0.4,
+          "combinedScore": 0.08000000000000002
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2197,
+          "corruptedPreview": "To calculate the break-even point in units, we can use the following formula:\n\n\\[\n\\text{Break-even point (units)} = \\frac{\\text{Fixed Costs}}{\\text{Se..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 440,
+          "corruptedPreview": "To calculate [???] [???] point in units, you can use the following formula:\n\n\\[\n[???] [???] [???] [???] [???] Costs}}{\\text{Selling Price per Unit} - ..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the break-even point for a business with fixed costs of $500,000, a variable cost of $30 per unit, and a selling price of $80 per unit, we can follow a structured approach using the break...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed. It correctly calculates the break-even point as 10,000 units using the appropriate formulas and provides a thorough analysis of the implications. The explanation is clear, well-organized, and includes specific numbers and insights.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 12,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2272,
+          "corruptedPreview": "A debt-to-equity ratio (D/E ratio) of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This is significantly higher than th..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Bad",
+          "rawLength": 220,
+          "corruptedPreview": "The debt-to-equity [???] ratio is [???] financial metric [???] [???] [???] relative proportion [???] [???] company's debt [???] [???] [???] [???] It i..."
+        }
+      ],
+      "finalAnswerPreview": "A debt-to-equity (D/E) ratio of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This is significantly higher than the industry average of 1.2, suggesting that the company i...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly interprets the implications of a high debt-to-equity ratio, covering key aspects such as financial risk, investor perception, cost of capital, regulatory considerations, and covenants. It is detailed and complete, providing a comprehensive analysis. Specific numbers are used effectively, and the answer is well-organized and clear. However, it could include more specific examples or data to achieve a perfect score.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 2,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 13,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2451,
+          "corruptedPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, which are used for transmi..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 302,
+          "corruptedPreview": "TCP (Transmission Control [???] and UDP (User [???] Protocol) [???] [???] core protocols [???] the Internet [???] Suite, operating [???] [???] transpo..."
+        }
+      ],
+      "finalAnswerPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols in the Internet Protocol Suite, specifically operating at the transport layer. They are designed for ...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a detailed comparison of TCP and UDP protocols. It includes specific features and use cases for each protocol, demonstrating completeness and specificity. The explanation is clear and well-organized. However, it could improve by mentioning specific congestion control algorithms for TCP, such as TCP Tahoe and TCP Reno, which were not explicitly named in the context of congestion control.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 14,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.5,
+          "channelWeight": 1,
+          "combinedScore": 0.5
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2334,
+          "corruptedPreview": "SQL injection (SQLi) is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its datab..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 282,
+          "corruptedPreview": "SQL injection is a [???] attack vector [???] [???] [???] [???] [???] interfere [???] the queries [???] an [???] [???] [???] its [???] To prevent [???]..."
+        }
+      ],
+      "finalAnswerPreview": "SQL injection (SQLi) is a serious security vulnerability that allows attackers to manipulate SQL queries by injecting malicious code. Preventing SQL injection is crucial for maintaining the security a...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key methods to prevent SQL injection, including parameterized queries, stored procedures, input validation, ORM, and WAF. It provides detailed code examples for each method, enhancing completeness and specificity. However, the explanation of WAF lacks code-level detail, slightly affecting completeness.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.5,
+          "ew": 0.5,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint",
+      "questionId": 15,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2421,
+          "corruptedPreview": "Designing a load balancer involves understanding various load balancing strategies, health check mechanisms, and implementation specifics. Below, I wi..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2616,
+          "corruptedPreview": "As a legal expert, I can provide insights into the legal implications of technology and software development, but I cannot design a load balancer or p..."
+        }
+      ],
+      "finalAnswerPreview": "Designing a load balancer involves understanding various strategies for distributing traffic, implementing health checks to ensure server reliability, and considering legal implications. Below is a co...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and covers key load balancing strategies like round-robin and least-connections, as well as health check methods. It provides implementation details and use cases, enhancing completeness. However, it lacks specific examples or names of hash functions for IP Hash and does not mention specific tools for monitoring and logging. The legal considerations section is incomplete, which slightly affects completeness. Overall, the answer is well-organized and clear.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 1,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Good",
+          "rawLength": 1774,
+          "corruptedPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically includes the use of **ACE inhibitors** (Angiotensin-Conv..."
+        }
+      ],
+      "finalAnswerPreview": "The first-line treatment for hypertension in patients with comorbid type 2 diabetes typically involves the use of **ACE inhibitors** (Angiotensin-Converting Enzyme inhibitors) or **ARBs** (Angiotensin...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and detailed, covering the first-line treatment with ACE inhibitors and ARBs, including specific drugs and dosing. It also mentions clinical guidelines, monitoring, and second-line options, providing a comprehensive and well-organized response.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": true
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 2,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 491,
+          "corruptedPreview": "Acute chest pain [???] troponin elevation can indicate a variety [???] conditions, primarily related to cardiac and [???] causes. [???] a differential..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2043,
+          "corruptedPreview": "Acute chest pain with troponin elevation can indicate a variety of conditions, primarily related to cardiac issues but also including non-cardiac caus..."
+        }
+      ],
+      "finalAnswerPreview": "Acute chest pain accompanied by troponin elevation can indicate a range of conditions, primarily involving cardiac issues but also including some non-cardiac causes. Here’s a comprehensive differentia...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key conditions like STEMI, NSTEMI, PE, and myocarditis. It is detailed and complete, providing distinguishing features for each condition. Specificity is high with exact symptoms, troponin patterns, and diagnostic tools mentioned. Clarity and organization are excellent, with a structured format. Minor deduction for not explicitly mentioning NSTEMI under AMI, though it is implied.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 3,
+      "selectedAgents": [
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Medium",
+          "rawLength": 532,
+          "corruptedPreview": "Warfarin is a vitamin K [???] used for anticoagulation, and its [???] can be significantly [???] by [???] drug interactions. Understanding these inter..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2018,
+          "corruptedPreview": "Warfarin is an anticoagulant medication that is commonly used to prevent blood clots. It works by inhibiting vitamin K epoxide reductase, which is ess..."
+        }
+      ],
+      "finalAnswerPreview": "Warfarin is an anticoagulant medication that works by inhibiting vitamin K epoxide reductase, which is essential for the synthesis of clotting factors II, VII, IX, and X. Due to its mechanism of actio...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering key CYP2C9 interactions and INR management. It is detailed and complete, mentioning specific drugs and their effects on warfarin. The target INR range of 2-3 is specified, and the answer is well-organized and clear. Minor improvements could be made in specificity regarding initial dosing and monitoring frequency.",
+      "scores": [
+        {
+          "id": 0,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 4,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 0,
+          "name": "MedicalSpecialist",
+          "domain": "medical",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2095,
+          "corruptedPreview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anap..."
+        },
+        {
+          "agentName": "MedicalSpecialist",
+          "channel": "Bad",
+          "rawLength": 264,
+          "corruptedPreview": "[???] [???] a [???] life-threatening allergic [???] that [???] immediate medical intervention. [???] emergency [???] of [???] [???] a systematic [???]..."
+        }
+      ],
+      "finalAnswerPreview": "The emergency management of anaphylaxis is a critical process that requires prompt recognition and intervention. Here’s a step-by-step guide, including drug doses and routes:\n\n### Step 1: Recognize An...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, covering all key steps in anaphylaxis management, including drug doses and routes. It is detailed and complete, with specific numbers and instructions. The organization is clear, but it could be slightly more concise to improve clarity.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 5,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Medium",
+          "rawLength": 615,
+          "corruptedPreview": "In tort [???] negligence is a failure to exercise [???] [???] that a [???] prudent person would exercise in similar circumstances. To [???] a [???] fo..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2373,
+          "corruptedPreview": "Negligence in tort law is a legal concept that arises when an individual fails to exercise a reasonable standard of care, resulting in harm to another..."
+        }
+      ],
+      "finalAnswerPreview": "In tort law, negligence refers to the failure to exercise a reasonable standard of care, which results in harm to another person. To establish a claim for negligence, a plaintiff must prove four essen...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly explains the four elements of negligence: duty, breach, causation, and damages. It provides detailed explanations and relevant examples for each element, enhancing completeness and specificity. The organization is clear, with a summary reinforcing the key points. However, the summary could have been more concise, slightly affecting clarity.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 6,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2412,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting ownership structur..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2561,
+          "corruptedPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting relationship betwe..."
+        }
+      ],
+      "finalAnswerPreview": "The legal distinction between a merger and an acquisition primarily revolves around the nature of the transaction and the resulting ownership structure of the companies involved. Here’s a comprehensiv...",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a clear distinction between mergers and acquisitions, including examples and legal structures. It covers types of mergers and acquisition structures comprehensively. Specificity is strong with examples and definitions, but it could improve by mentioning statutory mergers explicitly. Clarity and organization are excellent.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 7,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2619,
+          "corruptedPreview": "While I can provide a general overview of tenant rights and remedies regarding landlord repairs, please note that specific laws can vary significantly..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 263,
+          "corruptedPreview": "[???] a [???] [???] [???] make [???] [???] [???] [???] several legal [???] [???] [???] available [???] them, [???] can vary by [???] Below is [???] ge..."
+        }
+      ],
+      "finalAnswerPreview": "When a landlord fails to make necessary repairs, tenants have specific legal rights and remedies available to them. However, it's important to note that these rights can vary significantly depending o...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key tenant rights and remedies such as repair and deduct, rent withholding, and lease termination. It is detailed and well-organized, mentioning specific actions like written notice and legal action. However, it could improve by including more specific examples or legal references to enhance specificity.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 2,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 8,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2525,
+          "corruptedPreview": "A non-compete clause, also known as a non-compete agreement (NCA), is a legal contract that restricts an employee from engaging in business activities..."
+        },
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Bad",
+          "rawLength": 254,
+          "corruptedPreview": "[???] be enforceable, a non-compete clause [???] meet several [???] [???] [???] [???] jurisdiction [???] [???] [???] [???] common [???] principles. [?..."
+        }
+      ],
+      "finalAnswerPreview": "To be enforceable, a non-compete clause (NCA) must meet several key requirements, which can vary by jurisdiction. However, there are common factors that courts typically examine to determine the enfor...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key factors courts examine for enforceability of non-compete clauses, such as reasonableness in scope, legitimate business interest, consideration, clarity, public policy, undue hardship, industry standards, and state-specific laws. It is detailed and well-organized, but lacks specific examples or case references that could enhance specificity.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 9,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 1210,
+          "corruptedPreview": "To calculate the Net Present Value (NPV) of an investment, we use the following formula:\n\n\\[\nNPV = \\sum_{t=1}^{n} \\frac{C_t}{(1 + r)^t} - C_0\n\\]\n\nWher..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Net Present Value (NPV) of a $100,000 investment that generates $30,000 per year for 5 years at a 10% discount rate, we will follow the steps outlined in the messages.\n\n### Step 1: Id...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and detailed, with correct calculations for the present value of cash inflows and the NPV formula. However, there is a minor discrepancy in the final NPV value, which should be $13,724 instead of $13,530.23. The organization and clarity are good, but the specific final NPV value is slightly off.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.05,
+          "ew": 0.5,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": true
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 10,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Medium",
+          "expertiseWeight": 1,
+          "channelWeight": 0.4,
+          "combinedScore": 0.4
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Medium",
+          "rawLength": 355,
+          "corruptedPreview": "[???] calculate [???] Weighted Average Cost of [???] (WACC), [???] use the following formula:\n\n[???]\n[???] = \\left( [???] \\times r_e \\right) + \\left( ..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 1274,
+          "corruptedPreview": "To calculate the Weighted Average Cost of Capital (WACC), we use the following formula:\n\n\\[\n\\text{WACC} = \\left( E/V \\times r_e \\right) + \\left( D/V \\..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the Weighted Average Cost of Capital (WACC), we use the following formula:\n\n\\[\n\\text{WACC} = \\left( \\frac{E}{V} \\times r_e \\right) + \\left( \\frac{D}{V} \\times r_d \\times (1 - T) \\right)\n\\...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, with a complete and detailed explanation. It includes specific numbers and formulas, and is clear and well-organized. The final WACC calculation is correct at 9.0%.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.4,
+          "ew": 1,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 11,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2130,
+          "corruptedPreview": "To calculate the break-even point in units, we can use the following formula:\n\n\\[\n\\text{Break-even point (in units)} = \\frac{\\text{Fixed Costs}}{\\text..."
+        }
+      ],
+      "finalAnswerPreview": "To calculate the break-even point for a business with fixed costs of $500,000, a variable cost of $30 per unit, and a selling price of $80 per unit, we can follow a structured approach using the break...",
+      "score": 10,
+      "reason": "The answer is accurate and correct, providing a complete and detailed explanation of the break-even analysis. It includes specific numbers and formulas, and the clarity and organization are excellent. The calculated break-even point of 10,000 units is correct and well-explained.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 3,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": true
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 12,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2420,
+          "corruptedPreview": "A debt-to-equity ratio (D/E ratio) of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This ratio is a measure of a company..."
+        },
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Bad",
+          "rawLength": 220,
+          "corruptedPreview": "[???] debt-to-equity [???] [???] is [???] [???] [???] that [???] the relative proportion of a [???] debt to its shareholders' equity. It is calculated..."
+        }
+      ],
+      "finalAnswerPreview": "A debt-to-equity (D/E) ratio of 2.5 indicates that the company has $2.50 in debt for every $1.00 in equity. This ratio is a key measure of financial leverage, reflecting how much debt a company is usi...",
+      "score": 9,
+      "reason": "The answer is accurate and correctly interprets the implications of a high debt-to-equity ratio, covering key aspects such as leverage, risk, cost of capital, investor sentiment, and industry context. It is detailed and complete, addressing multiple dimensions of the issue. Specific numbers are used effectively, and the explanation is clear and well-organized. However, it could include more specific examples or formulas to achieve a perfect score.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 2,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 3,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 13,
+      "selectedAgents": [
+        {
+          "id": 2,
+          "name": "FinanceSpecialist",
+          "domain": "finance",
+          "channel": "Good",
+          "expertiseWeight": 0.2,
+          "channelWeight": 1,
+          "combinedScore": 0.2
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "FinanceSpecialist",
+          "channel": "Good",
+          "rawLength": 2410,
+          "corruptedPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, which are used for transmi..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 302,
+          "corruptedPreview": "TCP [???] [???] [???] and UDP [???] Datagram [???] [???] [???] core [???] [???] [???] Internet [???] [???] operating at the transport [???] They serve..."
+        }
+      ],
+      "finalAnswerPreview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols in the Internet Protocol Suite, each designed for different types of data transmission over networks....",
+      "score": 9,
+      "reason": "The answer is accurate and correct, providing a detailed comparison of TCP and UDP protocols. It includes specific features and use cases for each protocol, demonstrating completeness and specificity. The explanation is clear and well-organized. However, it could improve by mentioning specific congestion control algorithms like TCP Cubic, which is more commonly used today, for enhanced specificity.",
+      "scores": [
+        {
+          "id": 2,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 0,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 1,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 14,
+      "selectedAgents": [
+        {
+          "id": 1,
+          "name": "LegalSpecialist",
+          "domain": "legal",
+          "channel": "Good",
+          "expertiseWeight": 0.5,
+          "channelWeight": 1,
+          "combinedScore": 0.5
+        },
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Bad",
+          "expertiseWeight": 1,
+          "channelWeight": 0.1,
+          "combinedScore": 0.1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "LegalSpecialist",
+          "channel": "Good",
+          "rawLength": 2208,
+          "corruptedPreview": "SQL injection (SQLi) is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its datab..."
+        },
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Bad",
+          "rawLength": 293,
+          "corruptedPreview": "SQL [???] is a common attack vector that [???] an [???] to interfere [???] the [???] that [???] [???] [???] [???] its [???] To prevent [???] injection..."
+        }
+      ],
+      "finalAnswerPreview": "SQL injection (SQLi) is a serious security vulnerability that allows attackers to manipulate SQL queries made by an application, potentially leading to unauthorized access to data or even complete con...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key methods to prevent SQL injection, including parameterized queries, stored procedures, input validation, ORM, and WAF. It provides detailed code examples for each method, enhancing completeness and specificity. However, the explanation of the least privilege principle lacks code-level detail, slightly affecting completeness.",
+      "scores": [
+        {
+          "id": 1,
+          "score": 0.5,
+          "ew": 0.5,
+          "cw": 1
+        },
+        {
+          "id": 3,
+          "score": 0.1,
+          "ew": 1,
+          "cw": 0.1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": false
+    },
+    {
+      "condition": "Joint+EarlyStop",
+      "questionId": 15,
+      "selectedAgents": [
+        {
+          "id": 3,
+          "name": "TechSpecialist",
+          "domain": "tech",
+          "channel": "Good",
+          "expertiseWeight": 1,
+          "channelWeight": 1,
+          "combinedScore": 1
+        }
+      ],
+      "consultResults": [
+        {
+          "agentName": "TechSpecialist",
+          "channel": "Good",
+          "rawLength": 2419,
+          "corruptedPreview": "Designing a load balancer involves understanding various load balancing strategies, health check mechanisms, and implementation details. Below, I will..."
+        }
+      ],
+      "finalAnswerPreview": "Designing a load balancer involves understanding various strategies for distributing traffic across servers, implementing health checks to ensure server availability, and considering specific implemen...",
+      "score": 9,
+      "reason": "The answer is accurate and covers key load balancing strategies like round-robin and least-connections, as well as health check methods. It provides detailed implementation steps and use cases for each strategy. However, it lacks specific examples or names of load balancer software or tools, which would enhance specificity.",
+      "scores": [
+        {
+          "id": 3,
+          "score": 1,
+          "ew": 1,
+          "cw": 1
+        },
+        {
+          "id": 1,
+          "score": 0.2,
+          "ew": 0.2,
+          "cw": 1
+        },
+        {
+          "id": 2,
+          "score": 0.08000000000000002,
+          "ew": 0.2,
+          "cw": 0.4
+        },
+        {
+          "id": 0,
+          "score": 0.020000000000000004,
+          "ew": 0.2,
+          "cw": 0.1
+        }
+      ],
+      "earlyStop": true
+    }
+  ],
+  "summary": {
+    "conditionScores": {
+      "Fixed": {
+        "avg": 9.266666666666667,
+        "min": 9,
+        "max": 10,
+        "scores": [
+          10,
+          9,
+          9,
+          9,
+          10,
+          9,
+          9,
+          9,
+          9,
+          10,
+          10,
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      "ExpertiseOnly": {
+        "avg": 9.066666666666666,
+        "min": 8,
+        "max": 10,
+        "scores": [
+          10,
+          8,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          8,
+          10,
+          10,
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      "ChannelOnly": {
+        "avg": 9.2,
+        "min": 8,
+        "max": 10,
+        "scores": [
+          10,
+          9,
+          9,
+          9,
+          10,
+          9,
+          9,
+          9,
+          8,
+          10,
+          10,
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      "Joint": {
+        "avg": 9.066666666666666,
+        "min": 8,
+        "max": 10,
+        "scores": [
+          10,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          8,
+          10,
+          10,
+          9,
+          9,
+          9,
+          8
+        ]
+      },
+      "Joint+EarlyStop": {
+        "avg": 9.133333333333333,
+        "min": 8,
+        "max": 10,
+        "scores": [
+          10,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          8,
+          10,
+          10,
+          9,
+          9,
+          9,
+          9
+        ]
+      }
+    },
+    "perDomain": {
+      "medical": {
+        "Fixed": 9.25,
+        "ExpertiseOnly": 9,
+        "ChannelOnly": 9.25,
+        "Joint": 9.25,
+        "Joint+EarlyStop": 9.25
+      },
+      "legal": {
+        "Fixed": 9.25,
+        "ExpertiseOnly": 9,
+        "ChannelOnly": 9.25,
+        "Joint": 9,
+        "Joint+EarlyStop": 9
+      },
+      "finance": {
+        "Fixed": 9.5,
+        "ExpertiseOnly": 9.25,
+        "ChannelOnly": 9.25,
+        "Joint": 9.25,
+        "Joint+EarlyStop": 9.25
+      },
+      "tech": {
+        "Fixed": 9,
+        "ExpertiseOnly": 9,
+        "ChannelOnly": 9,
+        "Joint": 8.666666666666666,
+        "Joint+EarlyStop": 9
+      }
+    }
+  }
+}

@@ -1,0 +1,832 @@
+{
+  "A": {
+    "conditionName": "A: All General",
+    "results": [
+      {
+        "problemId": 1,
+        "groundTruth": 27.6,
+        "rxAnswer": "27.60",
+        "extractedAnswer": 27.6,
+        "correct": true,
+        "messageTokens": 962,
+        "totalInputTokens": 2796,
+        "totalOutputTokens": 1160
+      },
+      {
+        "problemId": 2,
+        "groundTruth": 120,
+        "rxAnswer": "120",
+        "extractedAnswer": 120,
+        "correct": true,
+        "messageTokens": 1048,
+        "totalInputTokens": 3061,
+        "totalOutputTokens": 1371
+      },
+      {
+        "problemId": 3,
+        "groundTruth": 13,
+        "rxAnswer": "13",
+        "extractedAnswer": 13,
+        "correct": true,
+        "messageTokens": 1260,
+        "totalInputTokens": 3081,
+        "totalOutputTokens": 1390
+      },
+      {
+        "problemId": 4,
+        "groundTruth": 16000,
+        "rxAnswer": "16000",
+        "extractedAnswer": 16000,
+        "correct": true,
+        "messageTokens": 875,
+        "totalInputTokens": 2402,
+        "totalOutputTokens": 1034
+      },
+      {
+        "problemId": 5,
+        "groundTruth": 12,
+        "rxAnswer": "12",
+        "extractedAnswer": 12,
+        "correct": true,
+        "messageTokens": 876,
+        "totalInputTokens": 2425,
+        "totalOutputTokens": 1073
+      },
+      {
+        "problemId": 6,
+        "groundTruth": 180,
+        "rxAnswer": "180",
+        "extractedAnswer": 180,
+        "correct": true,
+        "messageTokens": 693,
+        "totalInputTokens": 2070,
+        "totalOutputTokens": 766
+      },
+      {
+        "problemId": 7,
+        "groundTruth": 42,
+        "rxAnswer": "42",
+        "extractedAnswer": 42,
+        "correct": true,
+        "messageTokens": 806,
+        "totalInputTokens": 2567,
+        "totalOutputTokens": 1068
+      },
+      {
+        "problemId": 8,
+        "groundTruth": 2.67,
+        "rxAnswer": "160",
+        "extractedAnswer": 160,
+        "correct": false,
+        "messageTokens": 1283,
+        "totalInputTokens": 4327,
+        "totalOutputTokens": 1748
+      },
+      {
+        "problemId": 9,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 750,
+        "totalInputTokens": 2306,
+        "totalOutputTokens": 993
+      },
+      {
+        "problemId": 10,
+        "groundTruth": 28,
+        "rxAnswer": "28",
+        "extractedAnswer": 28,
+        "correct": true,
+        "messageTokens": 1176,
+        "totalInputTokens": 3335,
+        "totalOutputTokens": 1500
+      },
+      {
+        "problemId": 11,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 754,
+        "totalInputTokens": 2398,
+        "totalOutputTokens": 981
+      },
+      {
+        "problemId": 12,
+        "groundTruth": 45,
+        "rxAnswer": "45",
+        "extractedAnswer": 45,
+        "correct": true,
+        "messageTokens": 919,
+        "totalInputTokens": 2408,
+        "totalOutputTokens": 1050
+      },
+      {
+        "problemId": 13,
+        "groundTruth": 8,
+        "rxAnswer": "8",
+        "extractedAnswer": 8,
+        "correct": true,
+        "messageTokens": 934,
+        "totalInputTokens": 2401,
+        "totalOutputTokens": 957
+      },
+      {
+        "problemId": 14,
+        "groundTruth": 5,
+        "rxAnswer": "5",
+        "extractedAnswer": 5,
+        "correct": true,
+        "messageTokens": 1549,
+        "totalInputTokens": 4496,
+        "totalOutputTokens": 1966
+      },
+      {
+        "problemId": 15,
+        "groundTruth": 2315,
+        "rxAnswer": "2315",
+        "extractedAnswer": 2315,
+        "correct": true,
+        "messageTokens": 845,
+        "totalInputTokens": 2467,
+        "totalOutputTokens": 1071
+      }
+    ],
+    "summary": {
+      "accuracy": 93.3,
+      "correct": 14,
+      "total": 15,
+      "avgMessageTokens": 982,
+      "totalInputTokens": 42540,
+      "totalOutputTokens": 18128,
+      "totalTokens": 60668,
+      "totalCost": 0.01726,
+      "efficiency": 0.00095
+    }
+  },
+  "B": {
+    "conditionName": "B: All Audience-Aware",
+    "results": [
+      {
+        "problemId": 1,
+        "groundTruth": 27.6,
+        "rxAnswer": "27.6",
+        "extractedAnswer": 27.6,
+        "correct": true,
+        "messageTokens": 182,
+        "totalInputTokens": 1569,
+        "totalOutputTokens": 605
+      },
+      {
+        "problemId": 2,
+        "groundTruth": 120,
+        "rxAnswer": "120",
+        "extractedAnswer": 120,
+        "correct": true,
+        "messageTokens": 221,
+        "totalInputTokens": 1949,
+        "totalOutputTokens": 851
+      },
+      {
+        "problemId": 3,
+        "groundTruth": 13,
+        "rxAnswer": "13",
+        "extractedAnswer": 13,
+        "correct": true,
+        "messageTokens": 257,
+        "totalInputTokens": 1718,
+        "totalOutputTokens": 729
+      },
+      {
+        "problemId": 4,
+        "groundTruth": 16000,
+        "rxAnswer": "16000",
+        "extractedAnswer": 16000,
+        "correct": true,
+        "messageTokens": 102,
+        "totalInputTokens": 1216,
+        "totalOutputTokens": 518
+      },
+      {
+        "problemId": 5,
+        "groundTruth": 12,
+        "rxAnswer": "12",
+        "extractedAnswer": 12,
+        "correct": true,
+        "messageTokens": 215,
+        "totalInputTokens": 1625,
+        "totalOutputTokens": 723
+      },
+      {
+        "problemId": 6,
+        "groundTruth": 180,
+        "rxAnswer": "180",
+        "extractedAnswer": 180,
+        "correct": true,
+        "messageTokens": 184,
+        "totalInputTokens": 1620,
+        "totalOutputTokens": 744
+      },
+      {
+        "problemId": 7,
+        "groundTruth": 42,
+        "rxAnswer": "42",
+        "extractedAnswer": 42,
+        "correct": true,
+        "messageTokens": 92,
+        "totalInputTokens": 1324,
+        "totalOutputTokens": 541
+      },
+      {
+        "problemId": 8,
+        "groundTruth": 2.67,
+        "rxAnswer": "\\(\\frac{8}{3}\\)",
+        "extractedAnswer": 3,
+        "correct": false,
+        "messageTokens": 234,
+        "totalInputTokens": 2365,
+        "totalOutputTokens": 1129
+      },
+      {
+        "problemId": 9,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 80,
+        "totalInputTokens": 1261,
+        "totalOutputTokens": 539
+      },
+      {
+        "problemId": 10,
+        "groundTruth": 28,
+        "rxAnswer": "28",
+        "extractedAnswer": 28,
+        "correct": true,
+        "messageTokens": 90,
+        "totalInputTokens": 1220,
+        "totalOutputTokens": 542
+      },
+      {
+        "problemId": 11,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 93,
+        "totalInputTokens": 1442,
+        "totalOutputTokens": 668
+      },
+      {
+        "problemId": 12,
+        "groundTruth": 45,
+        "rxAnswer": "45",
+        "extractedAnswer": 45,
+        "correct": true,
+        "messageTokens": 267,
+        "totalInputTokens": 1659,
+        "totalOutputTokens": 652
+      },
+      {
+        "problemId": 13,
+        "groundTruth": 8,
+        "rxAnswer": "8",
+        "extractedAnswer": 8,
+        "correct": true,
+        "messageTokens": 144,
+        "totalInputTokens": 1434,
+        "totalOutputTokens": 595
+      },
+      {
+        "problemId": 14,
+        "groundTruth": 5,
+        "rxAnswer": "5",
+        "extractedAnswer": 5,
+        "correct": true,
+        "messageTokens": 339,
+        "totalInputTokens": 2788,
+        "totalOutputTokens": 1228
+      },
+      {
+        "problemId": 15,
+        "groundTruth": 2315,
+        "rxAnswer": "2315",
+        "extractedAnswer": 2315,
+        "correct": true,
+        "messageTokens": 88,
+        "totalInputTokens": 1245,
+        "totalOutputTokens": 546
+      }
+    ],
+    "summary": {
+      "accuracy": 93.3,
+      "correct": 14,
+      "total": 15,
+      "avgMessageTokens": 173,
+      "totalInputTokens": 24435,
+      "totalOutputTokens": 10610,
+      "totalTokens": 35045,
+      "totalCost": 0.01003,
+      "efficiency": 0.00541
+    }
+  },
+  "C": {
+    "conditionName": "C: Tx-Only Switch",
+    "results": [
+      {
+        "problemId": 1,
+        "groundTruth": 27.6,
+        "rxAnswer": "27.60",
+        "extractedAnswer": 27.6,
+        "correct": true,
+        "messageTokens": 49,
+        "totalInputTokens": 1756,
+        "totalOutputTokens": 919
+      },
+      {
+        "problemId": 2,
+        "groundTruth": 120,
+        "rxAnswer": "120",
+        "extractedAnswer": 120,
+        "correct": true,
+        "messageTokens": 61,
+        "totalInputTokens": 1900,
+        "totalOutputTokens": 964
+      },
+      {
+        "problemId": 3,
+        "groundTruth": 13,
+        "rxAnswer": "13",
+        "extractedAnswer": 13,
+        "correct": true,
+        "messageTokens": 61,
+        "totalInputTokens": 1884,
+        "totalOutputTokens": 1060
+      },
+      {
+        "problemId": 4,
+        "groundTruth": 16000,
+        "rxAnswer": "16000",
+        "extractedAnswer": 16000,
+        "correct": true,
+        "messageTokens": 76,
+        "totalInputTokens": 1520,
+        "totalOutputTokens": 813
+      },
+      {
+        "problemId": 5,
+        "groundTruth": 12,
+        "rxAnswer": "12",
+        "extractedAnswer": 12,
+        "correct": true,
+        "messageTokens": 80,
+        "totalInputTokens": 1409,
+        "totalOutputTokens": 795
+      },
+      {
+        "problemId": 6,
+        "groundTruth": 180,
+        "rxAnswer": "180",
+        "extractedAnswer": 180,
+        "correct": true,
+        "messageTokens": 104,
+        "totalInputTokens": 1461,
+        "totalOutputTokens": 758
+      },
+      {
+        "problemId": 7,
+        "groundTruth": 42,
+        "rxAnswer": "42",
+        "extractedAnswer": 42,
+        "correct": true,
+        "messageTokens": 33,
+        "totalInputTokens": 1614,
+        "totalOutputTokens": 801
+      },
+      {
+        "problemId": 8,
+        "groundTruth": 2.67,
+        "rxAnswer": "2.67",
+        "extractedAnswer": 2.67,
+        "correct": true,
+        "messageTokens": 106,
+        "totalInputTokens": 2634,
+        "totalOutputTokens": 1450
+      },
+      {
+        "problemId": 9,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 57,
+        "totalInputTokens": 1462,
+        "totalOutputTokens": 804
+      },
+      {
+        "problemId": 10,
+        "groundTruth": 28,
+        "rxAnswer": "28",
+        "extractedAnswer": 28,
+        "correct": true,
+        "messageTokens": 39,
+        "totalInputTokens": 1576,
+        "totalOutputTokens": 847
+      },
+      {
+        "problemId": 11,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 69,
+        "totalInputTokens": 1493,
+        "totalOutputTokens": 786
+      },
+      {
+        "problemId": 12,
+        "groundTruth": 45,
+        "rxAnswer": "45",
+        "extractedAnswer": 45,
+        "correct": true,
+        "messageTokens": 74,
+        "totalInputTokens": 1559,
+        "totalOutputTokens": 849
+      },
+      {
+        "problemId": 13,
+        "groundTruth": 8,
+        "rxAnswer": "8",
+        "extractedAnswer": 8,
+        "correct": true,
+        "messageTokens": 82,
+        "totalInputTokens": 1863,
+        "totalOutputTokens": 982
+      },
+      {
+        "problemId": 14,
+        "groundTruth": 5,
+        "rxAnswer": "5",
+        "extractedAnswer": 5,
+        "correct": true,
+        "messageTokens": 104,
+        "totalInputTokens": 2519,
+        "totalOutputTokens": 1452
+      },
+      {
+        "problemId": 15,
+        "groundTruth": 2315,
+        "rxAnswer": "2315",
+        "extractedAnswer": 2315,
+        "correct": true,
+        "messageTokens": 44,
+        "totalInputTokens": 1452,
+        "totalOutputTokens": 753
+      }
+    ],
+    "summary": {
+      "accuracy": 100,
+      "correct": 15,
+      "total": 15,
+      "avgMessageTokens": 69,
+      "totalInputTokens": 26102,
+      "totalOutputTokens": 14033,
+      "totalTokens": 40135,
+      "totalCost": 0.01234,
+      "efficiency": 0.01444
+    }
+  },
+  "D": {
+    "conditionName": "D: Both Switch (Paper)",
+    "results": [
+      {
+        "problemId": 1,
+        "groundTruth": 27.6,
+        "rxAnswer": "27.60",
+        "extractedAnswer": 27.6,
+        "correct": true,
+        "messageTokens": 60,
+        "totalInputTokens": 2411,
+        "totalOutputTokens": 1371
+      },
+      {
+        "problemId": 2,
+        "groundTruth": 120,
+        "rxAnswer": "120",
+        "extractedAnswer": 120,
+        "correct": true,
+        "messageTokens": 69,
+        "totalInputTokens": 2529,
+        "totalOutputTokens": 1587
+      },
+      {
+        "problemId": 3,
+        "groundTruth": 13,
+        "rxAnswer": "13",
+        "extractedAnswer": 13,
+        "correct": true,
+        "messageTokens": 97,
+        "totalInputTokens": 2411,
+        "totalOutputTokens": 1498
+      },
+      {
+        "problemId": 4,
+        "groundTruth": 16000,
+        "rxAnswer": "16000",
+        "extractedAnswer": 16000,
+        "correct": true,
+        "messageTokens": 73,
+        "totalInputTokens": 1937,
+        "totalOutputTokens": 1170
+      },
+      {
+        "problemId": 5,
+        "groundTruth": 12,
+        "rxAnswer": "12",
+        "extractedAnswer": 12,
+        "correct": true,
+        "messageTokens": 77,
+        "totalInputTokens": 2058,
+        "totalOutputTokens": 1374
+      },
+      {
+        "problemId": 6,
+        "groundTruth": 180,
+        "rxAnswer": "180",
+        "extractedAnswer": 180,
+        "correct": true,
+        "messageTokens": 106,
+        "totalInputTokens": 2154,
+        "totalOutputTokens": 1304
+      },
+      {
+        "problemId": 7,
+        "groundTruth": 42,
+        "rxAnswer": "42",
+        "extractedAnswer": 42,
+        "correct": true,
+        "messageTokens": 59,
+        "totalInputTokens": 2069,
+        "totalOutputTokens": 1265
+      },
+      {
+        "problemId": 8,
+        "groundTruth": 2.67,
+        "rxAnswer": "2.67",
+        "extractedAnswer": 2.67,
+        "correct": true,
+        "messageTokens": 80,
+        "totalInputTokens": 3353,
+        "totalOutputTokens": 2005
+      },
+      {
+        "problemId": 9,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 57,
+        "totalInputTokens": 1789,
+        "totalOutputTokens": 1044
+      },
+      {
+        "problemId": 10,
+        "groundTruth": 28,
+        "rxAnswer": "28",
+        "extractedAnswer": 28,
+        "correct": true,
+        "messageTokens": 37,
+        "totalInputTokens": 2254,
+        "totalOutputTokens": 1400
+      },
+      {
+        "problemId": 11,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 65,
+        "totalInputTokens": 2025,
+        "totalOutputTokens": 1239
+      },
+      {
+        "problemId": 12,
+        "groundTruth": 45,
+        "rxAnswer": "45",
+        "extractedAnswer": 45,
+        "correct": true,
+        "messageTokens": 74,
+        "totalInputTokens": 1937,
+        "totalOutputTokens": 1211
+      },
+      {
+        "problemId": 13,
+        "groundTruth": 8,
+        "rxAnswer": "8",
+        "extractedAnswer": 8,
+        "correct": true,
+        "messageTokens": 81,
+        "totalInputTokens": 2375,
+        "totalOutputTokens": 1379
+      },
+      {
+        "problemId": 14,
+        "groundTruth": 5,
+        "rxAnswer": "5",
+        "extractedAnswer": 5,
+        "correct": true,
+        "messageTokens": 106,
+        "totalInputTokens": 3050,
+        "totalOutputTokens": 1882
+      },
+      {
+        "problemId": 15,
+        "groundTruth": 2315,
+        "rxAnswer": "2315",
+        "extractedAnswer": 2315,
+        "correct": true,
+        "messageTokens": 52,
+        "totalInputTokens": 1922,
+        "totalOutputTokens": 1148
+      }
+    ],
+    "summary": {
+      "accuracy": 100,
+      "correct": 15,
+      "total": 15,
+      "avgMessageTokens": 73,
+      "totalInputTokens": 34274,
+      "totalOutputTokens": 20877,
+      "totalTokens": 55151,
+      "totalCost": 0.01767,
+      "efficiency": 0.01372
+    }
+  },
+  "E": {
+    "conditionName": "E: Reverse Switch",
+    "results": [
+      {
+        "problemId": 1,
+        "groundTruth": 27.6,
+        "rxAnswer": "$38",
+        "extractedAnswer": 38,
+        "correct": false,
+        "messageTokens": 668,
+        "totalInputTokens": 2199,
+        "totalOutputTokens": 902
+      },
+      {
+        "problemId": 2,
+        "groundTruth": 120,
+        "rxAnswer": "120",
+        "extractedAnswer": 120,
+        "correct": true,
+        "messageTokens": 952,
+        "totalInputTokens": 2936,
+        "totalOutputTokens": 1399
+      },
+      {
+        "problemId": 3,
+        "groundTruth": 13,
+        "rxAnswer": "13",
+        "extractedAnswer": 13,
+        "correct": true,
+        "messageTokens": 720,
+        "totalInputTokens": 1916,
+        "totalOutputTokens": 805
+      },
+      {
+        "problemId": 4,
+        "groundTruth": 16000,
+        "rxAnswer": "16000",
+        "extractedAnswer": 16000,
+        "correct": true,
+        "messageTokens": 630,
+        "totalInputTokens": 1827,
+        "totalOutputTokens": 857
+      },
+      {
+        "problemId": 5,
+        "groundTruth": 12,
+        "rxAnswer": "12",
+        "extractedAnswer": 12,
+        "correct": true,
+        "messageTokens": 677,
+        "totalInputTokens": 1824,
+        "totalOutputTokens": 796
+      },
+      {
+        "problemId": 6,
+        "groundTruth": 180,
+        "rxAnswer": "180",
+        "extractedAnswer": 180,
+        "correct": true,
+        "messageTokens": 500,
+        "totalInputTokens": 1513,
+        "totalOutputTokens": 567
+      },
+      {
+        "problemId": 7,
+        "groundTruth": 42,
+        "rxAnswer": "42",
+        "extractedAnswer": 42,
+        "correct": true,
+        "messageTokens": 492,
+        "totalInputTokens": 1624,
+        "totalOutputTokens": 652
+      },
+      {
+        "problemId": 8,
+        "groundTruth": 2.67,
+        "rxAnswer": "2.67",
+        "extractedAnswer": 2.67,
+        "correct": true,
+        "messageTokens": 918,
+        "totalInputTokens": 2978,
+        "totalOutputTokens": 1371
+      },
+      {
+        "problemId": 9,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 653,
+        "totalInputTokens": 2001,
+        "totalOutputTokens": 928
+      },
+      {
+        "problemId": 10,
+        "groundTruth": 28,
+        "rxAnswer": "28",
+        "extractedAnswer": 28,
+        "correct": true,
+        "messageTokens": 477,
+        "totalInputTokens": 1449,
+        "totalOutputTokens": 613
+      },
+      {
+        "problemId": 11,
+        "groundTruth": 400,
+        "rxAnswer": "400",
+        "extractedAnswer": 400,
+        "correct": true,
+        "messageTokens": 733,
+        "totalInputTokens": 2154,
+        "totalOutputTokens": 978
+      },
+      {
+        "problemId": 12,
+        "groundTruth": 45,
+        "rxAnswer": "45",
+        "extractedAnswer": 45,
+        "correct": true,
+        "messageTokens": 882,
+        "totalInputTokens": 2247,
+        "totalOutputTokens": 976
+      },
+      {
+        "problemId": 13,
+        "groundTruth": 8,
+        "rxAnswer": "8",
+        "extractedAnswer": 8,
+        "correct": true,
+        "messageTokens": 712,
+        "totalInputTokens": 2012,
+        "totalOutputTokens": 892
+      },
+      {
+        "problemId": 14,
+        "groundTruth": 5,
+        "rxAnswer": "5",
+        "extractedAnswer": 5,
+        "correct": true,
+        "messageTokens": 947,
+        "totalInputTokens": 3323,
+        "totalOutputTokens": 1534
+      },
+      {
+        "problemId": 15,
+        "groundTruth": 2315,
+        "rxAnswer": "2315",
+        "extractedAnswer": 2315,
+        "correct": true,
+        "messageTokens": 596,
+        "totalInputTokens": 1874,
+        "totalOutputTokens": 876
+      }
+    ],
+    "summary": {
+      "accuracy": 93.3,
+      "correct": 14,
+      "total": 15,
+      "avgMessageTokens": 704,
+      "totalInputTokens": 31877,
+      "totalOutputTokens": 14146,
+      "totalTokens": 46023,
+      "totalCost": 0.01327,
+      "efficiency": 0.00133
+    }
+  }
+}

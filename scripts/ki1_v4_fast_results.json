@@ -1,0 +1,2448 @@
+{
+  "experiment": "KI-1 v4 Fast",
+  "timestamp": "2026-03-19T17:03:21.513Z",
+  "config": {
+    "modelA": "gpt-4o",
+    "modelB": "gpt-4o-mini",
+    "temperature": 0,
+    "concurrency": 5
+  },
+  "problems": [
+    {
+      "id": 1,
+      "category": "Quality Control",
+      "groundTruthA": 0.035,
+      "groundTruthB": 140000,
+      "descriptionA": "200 samples inspected, 7 defective found. Compute the defect rate (proportion).",
+      "descriptionB": "Given a defect rate of {A}, compute the expected defect cost for a batch of 5000 units at $800 replacement cost per defective unit."
+    },
+    {
+      "id": 2,
+      "category": "Quality Control",
+      "groundTruthA": 0.08,
+      "groundTruthB": 146000,
+      "descriptionA": "A machine has 92% uptime over 100 days. Compute the downtime rate (proportion of time down).",
+      "descriptionB": "Given a downtime rate of {A}, compute the annual downtime cost if downtime costs $5000/day and there are 365 days/year."
+    },
+    {
+      "id": 3,
+      "category": "Quality Control",
+      "groundTruthA": 2.4,
+      "groundTruthB": 0,
+      "descriptionA": "500 products tested, 12 fail. Compute the failure rate as a percentage.",
+      "descriptionB": "Given a failure rate of {A}%, a recall is triggered only if the rate exceeds 3%. If triggered, recall cost is $50/unit on 20000 units. What is the expected recall cost? (If no recall, cost is 0.)"
+    },
+    {
+      "id": 4,
+      "category": "Quality Control",
+      "groundTruthA": 2.28,
+      "groundTruthB": 1140,
+      "descriptionA": "Measurement data: mean=10.2, std=0.3, upper spec limit=10.8. Assuming normal distribution, what percentage of items exceed the spec limit? (Use z-score.)",
+      "descriptionB": "Given that {A}% of items are out of spec, how many defective units are expected in a production run of 50000?"
+    },
+    {
+      "id": 5,
+      "category": "Quality Control",
+      "groundTruthA": 0.516,
+      "groundTruthB": 1032,
+      "descriptionA": "3 machines with daily failure probabilities 0.02, 0.05, 0.03. Compute the probability that at least one machine fails in a given week (7 days). Use P(at least one) = 1 - product of (1-p_i)^7 for each machine.",
+      "descriptionB": "Given that the probability of at least one machine failure per week is {A}, compute the expected weekly repair cost if each failure event costs $2000."
+    },
+    {
+      "id": 6,
+      "category": "Risk Assessment",
+      "groundTruthA": 0.06,
+      "groundTruthB": 450000,
+      "descriptionA": "Historical data: 3 floods in 50 years. Compute the annual flood probability.",
+      "descriptionB": "Given annual flood probability of {A} and property value $5M, compute the annual insurance premium at 1.5x the expected annual loss."
+    },
+    {
+      "id": 7,
+      "category": "Risk Assessment",
+      "groundTruthA": 10.2,
+      "groundTruthB": 167800,
+      "descriptionA": "Portfolio: Stock A returns 8%+-15% std, Stock B 5%+-8% std. 60/40 split, correlation 0.3. Compute the portfolio standard deviation. Formula: sqrt(0.6^2*15^2 + 0.4^2*8^2 + 2*0.6*0.4*15*8*0.3).",
+      "descriptionB": "Given portfolio std of {A}%, compute the 95% Value-at-Risk (VaR) for a $1M portfolio. VaR = z * std * portfolio_value, where z=1.645 for 95%."
+    },
+    {
+      "id": 8,
+      "category": "Risk Assessment",
+      "groundTruthA": 8.76,
+      "groundTruthB": 87600,
+      "descriptionA": "Server failure rate: 0.001/hour, operating 24/7. Compute the expected number of failures per year (8760 hours).",
+      "descriptionB": "Given {A} expected failures/year at $10000/failure, compute the annual failure cost."
+    },
+    {
+      "id": 9,
+      "category": "Risk Assessment",
+      "groundTruthA": 1.5625,
+      "groundTruthB": 22.22,
+      "descriptionA": "Drug trial: 120 treated, 15 improved (12.5%). 100 control, 8 improved (8%). Compute the Relative Risk (RR = treatment rate / control rate).",
+      "descriptionB": "Given treatment improvement rate 12.5% and control rate 8%, compute the Number Needed to Treat (NNT = 1 / (treatment_rate - control_rate))."
+    },
+    {
+      "id": 10,
+      "category": "Risk Assessment",
+      "groundTruthA": 0.0902,
+      "groundTruthB": 10000,
+      "descriptionA": "Factory accident rate: 0.5/month (Poisson). Compute P(2 or more accidents next month). Use P(X>=2) = 1 - P(0) - P(1) where P(k)=e^(-λ)*λ^k/k!.",
+      "descriptionB": "Given Poisson rate λ=0.5 accidents/month and $20000/accident, compute the expected monthly accident cost (E[cost] = λ * cost_per_accident)."
+    },
+    {
+      "id": 11,
+      "category": "Resource Optimization",
+      "groundTruthA": 110.2,
+      "groundTruthB": 860.2,
+      "descriptionA": "Daily demand mean=150, std=30. Lead time=5 days. Compute the safety stock for 95% service level (z=1.645). Safety stock = z * std * sqrt(lead_time).",
+      "descriptionB": "Given safety stock of {A} units, mean daily demand 150, and lead time 5 days, compute the reorder point (ROP = mean_demand * lead_time + safety_stock)."
+    },
+    {
+      "id": 12,
+      "category": "Resource Optimization",
+      "groundTruthA": 2,
+      "groundTruthB": 4,
+      "descriptionA": "Call center: 40 calls/hour, avg handle time 3 minutes. Compute the traffic intensity in Erlangs (arrival_rate * avg_service_time_in_hours).",
+      "descriptionB": "Given traffic intensity of {A} Erlangs, determine the minimum number of agents needed so that wait probability is below 5% using Erlang-C. (For 2.0 Erlangs, 4 agents gives ~17% wait, so typically need more — check standard Erlang-C tables.)"
+    },
+    {
+      "id": 13,
+      "category": "Resource Optimization",
+      "groundTruthA": 223.6,
+      "groundTruthB": 5367,
+      "descriptionA": "Monthly demand=1000, ordering cost=$50, holding cost=$2/unit/month. Compute EOQ = sqrt(2*D*S/H).",
+      "descriptionB": "Given EOQ={A}, monthly demand 1000, ordering cost $50, holding cost $2/unit/month: compute total annual inventory cost. Annual orders = 12*1000/{A}, annual ordering cost = orders*50, annual holding = ({A}/2)*2*12, total = ordering + holding."
+    },
+    {
+      "id": 14,
+      "category": "Resource Optimization",
+      "groundTruthA": 8,
+      "groundTruthB": 11,
+      "descriptionA": "Project: 3 tasks with durations 5+-1, 8+-2, 3+-1 days (mean+-std). Tasks 1 and 2 run in parallel, then task 3. The parallel stage duration = max(task1, task2). Compute the expected duration of the parallel stage. (For independent normals, E[max] ≈ 8 days since task 2 dominates.)",
+      "descriptionB": "Given parallel stage expected duration {A} days and task 3 duration 3+-1 days, compute total project duration and its standard deviation. Total = {A}+3, Std = sqrt(std_parallel^2 + std_task3^2) where std_parallel ≈ 2 days."
+    },
+    {
+      "id": 15,
+      "category": "Resource Optimization",
+      "groundTruthA": 0.7143,
+      "groundTruthB": 222.8,
+      "descriptionA": "Newsvendor problem: demand ~ N(200, 40). Unit cost $30, selling price $80, salvage $10. Compute the critical ratio CR = (price-cost)/(price-salvage) = (80-30)/(80-10).",
+      "descriptionB": "Given critical ratio {A}, demand ~ N(200,40). The optimal order quantity Q* = mean + z*std where z = Phi_inv(CR). For CR≈0.714, z≈0.57. Compute Q*."
+    }
+  ],
+  "results": {
+    "no_context": [
+      {
+        "problemId": 1,
+        "category": "Quality Control",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 7,
+          "expected": 0.035,
+          "correct": false,
+          "response": "To compute the defect rate (proportion), we need to determine the ratio of defective samples to the total number of samples inspected. The defect rate is calculated using the following formula:\n\n\\[\n\\text{Defect Rate} = \\frac{\\text{Number of Defective Samples}}{\\text{Total Number of Samples Inspected"
+        },
+        "agentB": {
+          "answer": 0.035,
+          "expected": 140000,
+          "correct": false,
+          "response": "To compute the expected defect cost for a batch of 5000 units given a defect rate of 7 (which means 7 defective units per 200 units), we first need to determine the expected number of defective units in a batch of 5000 units.\n\n1. **Calculate the defect rate as a proportion**:\n   The defect rate is g"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 71,
+          "a_output": 183,
+          "b_input": 272,
+          "b_output": 304
+        }
+      },
+      {
+        "problemId": 2,
+        "category": "Quality Control",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 100,
+          "expected": 0.08,
+          "correct": false,
+          "response": "To find the downtime rate, we need to determine the proportion of time the machine is not operational. The problem states that the machine has a 92% uptime over 100 days. This means that the machine is operational 92% of the time.\n\nTo find the downtime rate, we can use the following steps:\n\n1. **Cal"
+        },
+        "agentB": {
+          "answer": 100,
+          "expected": 146000,
+          "correct": false,
+          "response": "To compute the annual downtime cost given a downtime rate of 100, we first need to clarify what \"downtime rate of 100\" means. It seems to imply that the machine is down for 100% of the time, which is not realistic. However, if we interpret it as the machine being down for a certain number of days, w"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 77,
+          "a_output": 306,
+          "b_input": 393,
+          "b_output": 266
+        }
+      },
+      {
+        "problemId": 3,
+        "category": "Quality Control",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.024,
+          "expected": 2.4,
+          "correct": false,
+          "response": "To calculate the failure rate as a percentage, you need to determine the proportion of products that failed out of the total number of products tested, and then convert that proportion into a percentage.\n\nHere's how you can do it step by step:\n\n1. **Identify the number of failed products**: In this "
+        },
+        "agentB": {
+          "answer": 0,
+          "expected": 0,
+          "correct": true,
+          "response": "To determine the expected recall cost based on the given failure rate and conditions, we can follow these steps:\n\n1. **Identify the failure rate**: The failure rate given is 0.024%. \n\n2. **Determine the threshold for triggering a recall**: A recall is triggered if the failure rate exceeds 3%. \n\n3. *"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 70,
+          "a_output": 240,
+          "b_input": 353,
+          "b_output": 154
+        }
+      },
+      {
+        "problemId": 4,
+        "category": "Quality Control",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 10.2,
+          "expected": 2.28,
+          "correct": false,
+          "response": "To determine the percentage of items that exceed the upper specification limit, we can use the concept of the z-score in a normal distribution. The z-score is a measure of how many standard deviations an element is from the mean.\n\nHere's how you can calculate it step by step:\n\n1. **Identify the give"
+        },
+        "agentB": {
+          "answer": 0.0228,
+          "expected": 1140,
+          "correct": false,
+          "response": "To find the number of defective units expected in a production run of 50,000 items, we can use the percentage of items that are out of specification.\n\nFrom the previous calculation, we found that approximately 2.28% of the items exceed the upper specification limit. \n\nNow, we can calculate the expec"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 95,
+          "a_output": 452,
+          "b_input": 540,
+          "b_output": 222
+        }
+      },
+      {
+        "problemId": 5,
+        "category": "Quality Control",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.02,
+          "expected": 0.516,
+          "correct": false,
+          "response": "To solve this problem, we need to calculate the probability that at least one of the three machines fails in a given week. We are given the daily failure probabilities for each machine:\n\n- Machine 1: \\( p_1 = 0.02 \\)\n- Machine 2: \\( p_2 = 0.05 \\)\n- Machine 3: \\( p_3 = 0.03 \\)\n\nThe probability that a"
+        },
+        "agentB": {
+          "answer": 2000,
+          "expected": 1032,
+          "correct": false,
+          "response": "To compute the expected weekly repair cost given the probability of at least one machine failure per week and the cost associated with each failure, we can use the following formula:\n\n\\[\n\\text{Expected Cost} = P(\\text{at least one fails}) \\times \\text{Cost per failure}\n\\]\n\nFrom the previous calculat"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 114,
+          "a_output": 514,
+          "b_input": 606,
+          "b_output": 166
+        }
+      },
+      {
+        "problemId": 6,
+        "category": "Risk Assessment",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.06,
+          "expected": 0.06,
+          "correct": true,
+          "response": "To compute the annual flood probability based on historical data, we need to determine the likelihood of a flood occurring in any given year. The historical data provided indicates that there have been 3 floods over a period of 50 years.\n\nThe probability of an event occurring is calculated as the nu"
+        },
+        "agentB": {
+          "answer": 0.06,
+          "expected": 450000,
+          "correct": false,
+          "response": "To compute the annual insurance premium based on the annual flood probability and the property value, we first need to calculate the expected annual loss due to flooding.\n\n1. **Annual Flood Probability:** 0.06\n2. **Property Value:** $5,000,000 (or $5M)\n\nThe expected annual loss can be calculated usi"
+        },
+        "score": 0.5,
+        "tokens": {
+          "a_input": 71,
+          "a_output": 302,
+          "b_input": 393,
+          "b_output": 269
+        }
+      },
+      {
+        "problemId": 7,
+        "category": "Risk Assessment",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.6,
+          "expected": 10.2,
+          "correct": false,
+          "response": "To calculate the portfolio standard deviation, we will use the formula for the standard deviation of a two-asset portfolio. The formula is:\n\n\\[\n\\sigma_p = \\sqrt{w_A^2 \\sigma_A^2 + w_B^2 \\sigma_B^2 + 2 w_A w_B \\sigma_A \\sigma_B \\rho_{AB}}\n\\]\n\nWhere:\n- \\( w_A \\) and \\( w_B \\) are the weights of Stock "
+        },
+        "agentB": {
+          "answer": 1.645,
+          "expected": 167800,
+          "correct": false,
+          "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the given portfolio standard deviation of 0.6%, we will use the formula:\n\n\\[\n\\text{VaR} = z \\times \\sigma_p \\times \\text{portfolio value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (the z-score for a 95% confidence level)\n- \\( \\sigma_p = 0.6\\% = 0.0"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 139,
+          "a_output": 513,
+          "b_input": 621,
+          "b_output": 322
+        }
+      },
+      {
+        "problemId": 8,
+        "category": "Risk Assessment",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 8760,
+          "expected": 8.76,
+          "correct": false,
+          "response": "To calculate the expected number of server failures per year, we need to use the given failure rate and the total number of hours in a year.\n\n1. **Understand the failure rate**: The server has a failure rate of 0.001 failures per hour. This means that, on average, the server is expected to fail 0.00"
+        },
+        "agentB": {
+          "answer": 8.76,
+          "expected": 87600,
+          "correct": false,
+          "response": "To compute the annual failure cost based on the expected number of server failures per year and the cost per failure, we can follow these steps:\n\n1. **Identify the expected number of failures per year**: From the previous calculation, we have:\n   \\[\n   \\text{Expected failures per year} = 8.76\n   \\]\n"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 83,
+          "a_output": 329,
+          "b_input": 408,
+          "b_output": 245
+        }
+      },
+      {
+        "problemId": 9,
+        "category": "Risk Assessment",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 15,
+          "expected": 1.5625,
+          "correct": false,
+          "response": "To compute the Relative Risk (RR), we need to compare the probability of improvement in the treated group to the probability of improvement in the control group. The formula for Relative Risk is:\n\n\\[ \\text{RR} = \\frac{\\text{Probability of improvement in treated group}}{\\text{Probability of improveme"
+        },
+        "agentB": {
+          "answer": 12.5,
+          "expected": 22.22,
+          "correct": false,
+          "response": "To compute the Number Needed to Treat (NNT), we can use the formula:\n\n\\[\n\\text{NNT} = \\frac{1}{\\text{treatment rate} - \\text{control rate}}\n\\]\n\nFrom the previous calculations, we have:\n\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nNow, we can calculate the dif"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 92,
+          "a_output": 304,
+          "b_input": 400,
+          "b_output": 240
+        }
+      },
+      {
+        "problemId": 10,
+        "category": "Risk Assessment",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.5,
+          "expected": 0.0902,
+          "correct": false,
+          "response": "To solve this problem, we need to calculate the probability of having 2 or more accidents in a month, given that the accident rate follows a Poisson distribution with an average rate (\\(\\lambda\\)) of 0.5 accidents per month.\n\nThe probability of observing \\(k\\) accidents in a Poisson distribution is "
+        },
+        "agentB": {
+          "answer": 0.5,
+          "expected": 10000,
+          "correct": false,
+          "response": "To compute the expected monthly accident cost, we can use the formula:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost\\_per\\_accident}\n\\]\n\nGiven:\n- \\(\\lambda = 0.5\\) accidents per month\n- \\(\\text{cost\\_per\\_accident} = 20000\\)\n\nNow, substituting the values into the formula:\n\n\\[\nE[\\text{cost}] = 0.5 \\"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 110,
+          "a_output": 526,
+          "b_input": 623,
+          "b_output": 144
+        }
+      },
+      {
+        "problemId": 11,
+        "category": "Resource Optimization",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 1.645,
+          "expected": 110.2,
+          "correct": false,
+          "response": "To compute the safety stock for a 95% service level, we will use the formula provided:\n\n\\[ \\text{Safety Stock} = z \\times \\text{std} \\times \\sqrt{\\text{lead time}} \\]\n\nWhere:\n- \\( z \\) is the z-score corresponding to the desired service level. For a 95% service level, \\( z = 1.645 \\).\n- \\( \\text{std"
+        },
+        "agentB": {
+          "answer": 150,
+          "expected": 860.2,
+          "correct": false,
+          "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[\n\\text{ROP} = \\text{mean demand} \\times \\text{lead time} + \\text{safety stock}\n\\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 1.645 units\n\nNow, let's plug these values into the formula:\n\n1. Calculate th"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 99,
+          "a_output": 302,
+          "b_input": 402,
+          "b_output": 195
+        }
+      },
+      {
+        "problemId": 12,
+        "category": "Resource Optimization",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 0.05,
+          "expected": 2,
+          "correct": false,
+          "response": "To compute the traffic intensity in Erlangs, we need to use the formula:\n\n\\[ \\text{Traffic Intensity (Erlangs)} = \\text{Arrival Rate} \\times \\text{Average Service Time (in hours)} \\]\n\nLet's break down the components:\n\n1. **Arrival Rate**: This is the rate at which calls arrive at the call center. Ac"
+        },
+        "agentB": {
+          "answer": 5,
+          "expected": 4,
+          "correct": false,
+          "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 0.05 Erlangs using the Erlang-C formula, we can refer to standard Erlang-C tables or use a calculator designed for this purpose.\n\nGiven that the traffic intensity is very low (0.05 Er"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 86,
+          "a_output": 269,
+          "b_input": 390,
+          "b_output": 243
+        }
+      },
+      {
+        "problemId": 13,
+        "category": "Resource Optimization",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 1000,
+          "expected": 223.6,
+          "correct": false,
+          "response": "To solve this problem, we need to calculate the Economic Order Quantity (EOQ) using the given formula:\n\n\\[ EOQ = \\sqrt{\\frac{2 \\times D \\times S}{H}} \\]\n\nWhere:\n- \\( D \\) is the demand rate (units per period),\n- \\( S \\) is the ordering cost per order,\n- \\( H \\) is the holding cost per unit per perio"
+        },
+        "agentB": {
+          "answer": 1000,
+          "expected": 5367,
+          "correct": false,
+          "response": "To compute the total annual inventory cost using the provided information, we will follow the steps outlined in the problem.\n\n1. **Given Values:**\n   - Economic Order Quantity (EOQ) = 1000 units\n   - Monthly demand (D) = 1000 units\n   - Ordering cost (S) = $50 per order\n   - Holding cost (H) = $2 pe"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 84,
+          "a_output": 343,
+          "b_input": 470,
+          "b_output": 426
+        }
+      },
+      {
+        "problemId": 14,
+        "category": "Resource Optimization",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 8,
+          "expected": 8,
+          "correct": true,
+          "response": "To solve this problem, we need to determine the expected duration of the parallel stage, which is the maximum of the durations of Task 1 and Task 2. The durations of these tasks are given as normal distributions:\n\n- Task 1: \\( N(5, 1^2) \\)\n- Task 2: \\( N(8, 2^2) \\)\n\nThe parallel stage duration is de"
+        },
+        "agentB": {
+          "answer": 8,
+          "expected": 11,
+          "correct": false,
+          "response": "To compute the total project duration and its standard deviation, we will follow the steps outlined in the problem.\n\n### Given Information:\n- Expected duration of the parallel stage (max of Task 1 and Task 2): \\( E[\\max(\\text{Task 1}, \\text{Task 2})] = 8 \\) days\n- Duration of Task 3: \\( 3 \\pm 1 \\) d"
+        },
+        "score": 0.5,
+        "tokens": {
+          "a_input": 136,
+          "a_output": 383,
+          "b_input": 500,
+          "b_output": 402
+        }
+      },
+      {
+        "problemId": 15,
+        "category": "Resource Optimization",
+        "condition": "no_context",
+        "round": null,
+        "agentA": {
+          "answer": 80,
+          "expected": 0.7143,
+          "correct": false,
+          "response": "To solve the newsvendor problem, we need to compute the critical ratio (CR), which helps determine the optimal order quantity for a product with uncertain demand. The critical ratio is calculated using the formula:\n\n\\[ \\text{CR} = \\frac{\\text{Selling Price} - \\text{Unit Cost}}{\\text{Selling Price} -"
+        },
+        "agentB": {
+          "answer": 200,
+          "expected": 222.8,
+          "correct": false,
+          "response": "To compute the optimal order quantity \\( Q^* \\) using the given information, we will use the formula:\n\n\\[\nQ^* = \\text{mean} + z \\times \\text{std}\n\\]\n\nWhere:\n- The mean demand is given as \\( 200 \\).\n- The standard deviation of demand is given as \\( 40 \\).\n- The critical ratio \\( CR \\) has been calcul"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 108,
+          "a_output": 219,
+          "b_input": 329,
+          "b_output": 262
+        }
+      }
+    ],
+    "one_way": [
+      {
+        "problemId": 1,
+        "category": "Quality Control",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 7,
+          "expected": 0.035,
+          "correct": false,
+          "response": "The defect rate (proportion) is calculated by dividing the number of defective samples by the total number of samples inspected.\n\nDefect rate = Number of defective samples / Total number of samples inspected  \nDefect rate = 7 / 200  \nDefect rate = 0.035\n\nThe defect rate is 0.035."
+        },
+        "agentB": {
+          "answer": 0.035,
+          "expected": 140000,
+          "correct": false,
+          "response": "To compute the expected defect cost for a batch of 5000 units given a defect rate of 0.035 and a replacement cost of $800 per defective unit, we can follow these steps:\n\n1. **Calculate the expected number of defective units**:\n   \\[\n   \\text{Expected number of defective units} = \\text{Defect rate} \\"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 74,
+          "a_output": 67,
+          "b_input": 156,
+          "b_output": 209
+        }
+      },
+      {
+        "problemId": 2,
+        "category": "Quality Control",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 8,
+          "expected": 0.08,
+          "correct": false,
+          "response": "The downtime rate is 8%."
+        },
+        "agentB": {
+          "answer": 365,
+          "expected": 146000,
+          "correct": false,
+          "response": "To compute the annual downtime cost given a downtime rate of 8%, we can follow these steps:\n\n1. **Calculate the total number of downtime days per year**:\n   - There are 365 days in a year.\n   - The downtime rate is 8%, which means that 8% of the days in a year will experience downtime.\n\n   \\[\n   \\te"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 80,
+          "a_output": 7,
+          "b_input": 94,
+          "b_output": 252
+        }
+      },
+      {
+        "problemId": 3,
+        "category": "Quality Control",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 2.4,
+          "expected": 2.4,
+          "correct": true,
+          "response": "The failure rate is calculated as follows:\n\n\\[\n\\text{Failure Rate (\\%)} = \\left( \\frac{\\text{Number of Failures}}{\\text{Total Products Tested}} \\right) \\times 100\n\\]\n\nSubstituting the given values:\n\n\\[\n\\text{Failure Rate (\\%)} = \\left( \\frac{12}{500} \\right) \\times 100 = 2.4\\%\n\\]\n\nThe failure rate i"
+        },
+        "agentB": {
+          "answer": 0,
+          "expected": 0,
+          "correct": true,
+          "response": "To determine the expected recall cost, we first need to assess whether a recall is triggered based on the given failure rate of 2.4%.\n\nSince the failure rate of 2.4% does not exceed the threshold of 3%, a recall is **not** triggered. Therefore, the recall cost will be $0.\n\nThus, the expected recall "
+        },
+        "score": 1,
+        "tokens": {
+          "a_input": 73,
+          "a_output": 102,
+          "b_input": 215,
+          "b_output": 95
+        }
+      },
+      {
+        "problemId": 4,
+        "category": "Quality Control",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 2,
+          "expected": 2.28,
+          "correct": false,
+          "response": "To find the percentage of items that exceed the upper specification limit, we first calculate the z-score for the upper spec limit.\n\nThe z-score is calculated as follows:\n\n\\[ z = \\frac{(X - \\mu)}{\\sigma} \\]\n\nwhere:\n- \\( X \\) is the upper specification limit (10.8),\n- \\( \\mu \\) is the mean (10.2),\n- "
+        },
+        "agentB": {
+          "answer": 0.0228,
+          "expected": 1140,
+          "correct": false,
+          "response": "To find the number of defective units in a production run of 50,000 items, we can use the percentage of items that are out of specification.\n\nGiven that approximately 2.28% of items exceed the upper specification limit, we can calculate the expected number of defective units as follows:\n\n1. Convert "
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 98,
+          "a_output": 246,
+          "b_input": 332,
+          "b_output": 201
+        }
+      },
+      {
+        "problemId": 5,
+        "category": "Quality Control",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 1,
+          "expected": 0.516,
+          "correct": false,
+          "response": "To find the probability that at least one machine fails in a given week, we first calculate the probability that each machine does not fail over the 7 days, and then use the complement rule.\n\nFor Machine 1 with a daily failure probability of 0.02:\n- Probability it does not fail in a day = 1 - 0.02 ="
+        },
+        "agentB": {
+          "answer": 1,
+          "expected": 1032,
+          "correct": false,
+          "response": "To compute the expected weekly repair cost given that the probability of at least one machine failure per week is 1, we first need to determine the expected number of failures per week.\n\nFrom the previous analysis, we found that the probability of at least one machine failing in a week is approximat"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 117,
+          "a_output": 331,
+          "b_input": 421,
+          "b_output": 471
+        }
+      },
+      {
+        "problemId": 6,
+        "category": "Risk Assessment",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 6,
+          "expected": 0.06,
+          "correct": false,
+          "response": "The annual flood probability is 0.06, or 6%."
+        },
+        "agentB": {
+          "answer": 0.06,
+          "expected": 450000,
+          "correct": false,
+          "response": "To compute the annual insurance premium based on the given annual flood probability and property value, we can follow these steps:\n\n1. **Calculate the Expected Annual Loss (EAL)**:\n   The expected annual loss can be calculated using the formula:\n   \\[\n   \\text{EAL} = \\text{Probability of Flood} \\tim"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 74,
+          "a_output": 14,
+          "b_input": 103,
+          "b_output": 259
+        }
+      },
+      {
+        "problemId": 7,
+        "category": "Risk Assessment",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 0.36,
+          "expected": 10.2,
+          "correct": false,
+          "response": "The portfolio standard deviation is calculated as follows:\n\n\\[\n\\sqrt{0.6^2 \\times 15^2 + 0.4^2 \\times 8^2 + 2 \\times 0.6 \\times 0.4 \\times 15 \\times 8 \\times 0.3}\n\\]\n\nCalculating each component:\n\n- \\(0.6^2 \\times 15^2 = 0.36 \\times 225 = 81\\)\n- \\(0.4^2 \\times 8^2 = 0.16 \\times 64 = 10.24\\)\n- \\(2 \\ti"
+        },
+        "agentB": {
+          "answer": 1.645,
+          "expected": 167800,
+          "correct": false,
+          "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the provided standard deviation of 0.36%, we can use the formula:\n\n\\[\n\\text{VaR} = z \\times \\text{std} \\times \\text{portfolio\\_value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (the z-score for a 95% confidence level)\n- \\( \\text{std} = 0.36\\% = 0.00"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 142,
+          "a_output": 256,
+          "b_input": 364,
+          "b_output": 309
+        }
+      },
+      {
+        "problemId": 8,
+        "category": "Risk Assessment",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 0.001,
+          "expected": 8.76,
+          "correct": false,
+          "response": "The expected number of failures per year is calculated by multiplying the failure rate by the total number of operating hours in a year.\n\nFailure rate = 0.001 failures/hour  \nOperating hours per year = 8760 hours\n\nExpected number of failures per year = 0.001 * 8760 = 8.76\n\nThe expected number of fai"
+        },
+        "agentB": {
+          "answer": 8.76,
+          "expected": 87600,
+          "correct": false,
+          "response": "To compute the annual failure cost, we can use the expected number of failures per year and the cost per failure.\n\nGiven:\n- Expected number of failures per year = 8.76\n- Cost per failure = $10,000\n\nAnnual failure cost can be calculated as follows:\n\n\\[\n\\text{Annual Failure Cost} = \\text{Expected Numb"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 86,
+          "a_output": 79,
+          "b_input": 159,
+          "b_output": 154
+        }
+      },
+      {
+        "problemId": 9,
+        "category": "Risk Assessment",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 0.125,
+          "expected": 1.5625,
+          "correct": false,
+          "response": "The treatment improvement rate is 12.5% (0.125) and the control improvement rate is 8% (0.08).\n\nRelative Risk (RR) = Treatment rate / Control rate = 0.125 / 0.08 = 1.5625\n\nThe Relative Risk is 1.5625."
+        },
+        "agentB": {
+          "answer": 12.5,
+          "expected": 22.22,
+          "correct": false,
+          "response": "To compute the Number Needed to Treat (NNT), we can use the formula:\n\n\\[\nNNT = \\frac{1}{(treatment\\_rate - control\\_rate)}\n\\]\n\nGiven:\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nFirst, we calculate the difference between the treatment rate and the control rat"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 95,
+          "a_output": 67,
+          "b_input": 163,
+          "b_output": 210
+        }
+      },
+      {
+        "problemId": 10,
+        "category": "Risk Assessment",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 0.5,
+          "expected": 0.0902,
+          "correct": false,
+          "response": "Given that the accident rate is 0.5 per month, we have \\(\\lambda = 0.5\\).\n\nFirst, calculate \\(P(0)\\):\n\\[ P(0) = e^{-\\lambda} \\cdot \\frac{\\lambda^0}{0!} = e^{-0.5} \\cdot \\frac{0.5^0}{1} = e^{-0.5} \\approx 0.6065 \\]\n\nNext, calculate \\(P(1)\\):\n\\[ P(1) = e^{-\\lambda} \\cdot \\frac{\\lambda^1}{1!} = e^{-0.5"
+        },
+        "agentB": {
+          "answer": 0.5,
+          "expected": 10000,
+          "correct": false,
+          "response": "To compute the expected monthly accident cost, we can use the formula:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost\\_per\\_accident}\n\\]\n\nGiven:\n- \\(\\lambda = 0.5\\) accidents/month\n- \\(\\text{cost\\_per\\_accident} = 20000\\)\n\nNow, substituting the values into the formula:\n\n\\[\nE[\\text{cost}] = 0.5 \\time"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 113,
+          "a_output": 262,
+          "b_input": 359,
+          "b_output": 147
+        }
+      },
+      {
+        "problemId": 11,
+        "category": "Resource Optimization",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 1.645,
+          "expected": 110.2,
+          "correct": false,
+          "response": "Safety stock = 1.645 * 30 * sqrt(5) = 110.37\n\nThe safety stock is 110.37 units."
+        },
+        "agentB": {
+          "answer": 150,
+          "expected": 860.2,
+          "correct": false,
+          "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[\nROP = \\text{mean\\_demand} \\times \\text{lead\\_time} + \\text{safety\\_stock}\n\\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 110.37 units\n\nNow, we can substitute the values into the formula:\n\n1. Calculate "
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 102,
+          "a_output": 31,
+          "b_input": 130,
+          "b_output": 192
+        }
+      },
+      {
+        "problemId": 12,
+        "category": "Resource Optimization",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 40,
+          "expected": 2,
+          "correct": false,
+          "response": "The traffic intensity in Erlangs is calculated as follows:\n\n\\[\n\\text{Traffic Intensity} = \\text{Arrival Rate} \\times \\text{Average Service Time in Hours}\n\\]\n\nGiven:\n- Arrival Rate = 40 calls/hour\n- Average Handle Time = 3 minutes = 3/60 hours = 0.05 hours\n\n\\[\n\\text{Traffic Intensity} = 40 \\times 0.0"
+        },
+        "agentB": {
+          "answer": 0,
+          "expected": 4,
+          "correct": false,
+          "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 40 Erlangs using the Erlang-C formula, we can refer to standard Erlang-C tables or use the Erlang-C formula directly.\n\n### Erlang-C Formula\nThe Erlang-C formula is given by:\n\n\\[\nP(W >"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 89,
+          "a_output": 110,
+          "b_input": 229,
+          "b_output": 392
+        }
+      },
+      {
+        "problemId": 13,
+        "category": "Resource Optimization",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 1000,
+          "expected": 223.6,
+          "correct": false,
+          "response": "EOQ = \\(\\sqrt{\\frac{2 \\times D \\times S}{H}}\\)\n\nWhere:\n- \\(D = 1000\\) units/month (monthly demand)\n- \\(S = 50\\) dollars (ordering cost)\n- \\(H = 2\\) dollars/unit/month (holding cost)\n\nEOQ = \\(\\sqrt{\\frac{2 \\times 1000 \\times 50}{2}}\\)\n\nEOQ = \\(\\sqrt{\\frac{100000}{2}}\\)\n\nEOQ = \\(\\sqrt{50000}\\)\n\nEOQ = "
+        },
+        "agentB": {
+          "answer": 1000,
+          "expected": 5367,
+          "correct": false,
+          "response": "To compute the total annual inventory cost using the provided information, we will follow the steps outlined in the problem.\n\n1. **Given Values:**\n   - EOQ (A) = 1000 units\n   - Monthly demand (D) = 1000 units/month\n   - Ordering cost (S) = $50\n   - Holding cost (H) = $2/unit/month\n\n2. **Calculate A"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 87,
+          "a_output": 138,
+          "b_input": 265,
+          "b_output": 386
+        }
+      },
+      {
+        "problemId": 14,
+        "category": "Resource Optimization",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 8,
+          "expected": 8,
+          "correct": true,
+          "response": "The expected duration of the parallel stage is approximately 8 days."
+        },
+        "agentB": {
+          "answer": 8,
+          "expected": 11,
+          "correct": false,
+          "response": "To compute the total project duration and its standard deviation, we will follow the formulas provided.\n\n1. **Total Project Duration Calculation**:\n   - The expected duration of the parallel stage is given as 8 days.\n   - The duration of task 3 is given as 3 days with a variability of ±1 day. This m"
+        },
+        "score": 0.5,
+        "tokens": {
+          "a_input": 139,
+          "a_output": 13,
+          "b_input": 130,
+          "b_output": 545
+        }
+      },
+      {
+        "problemId": 15,
+        "category": "Resource Optimization",
+        "condition": "one_way",
+        "round": null,
+        "agentA": {
+          "answer": 0.7143,
+          "expected": 0.7143,
+          "correct": true,
+          "response": "The critical ratio \\( CR \\) is calculated as follows:\n\n\\[\nCR = \\frac{\\text{price} - \\text{cost}}{\\text{price} - \\text{salvage}} = \\frac{80 - 30}{80 - 10} = \\frac{50}{70} = 0.7143\n\\]\n\nThe critical ratio \\( CR \\) is 0.7143."
+        },
+        "agentB": {
+          "answer": 200,
+          "expected": 222.8,
+          "correct": false,
+          "response": "To compute the optimal order quantity \\( Q^* \\), we will use the formula:\n\n\\[\nQ^* = \\text{mean} + z \\cdot \\text{std}\n\\]\n\nGiven:\n- Mean demand \\( \\mu = 200 \\)\n- Standard deviation \\( \\sigma = 40 \\)\n- \\( z \\) value corresponding to the critical ratio \\( CR \\approx 0.7143 \\) is \\( z \\approx 0.57 \\)\n\nNo"
+        },
+        "score": 0.5,
+        "tokens": {
+          "a_input": 111,
+          "a_output": 87,
+          "b_input": 200,
+          "b_output": 249
+        }
+      }
+    ],
+    "mutual": [
+      {
+        "problemId": 1,
+        "category": "Quality Control",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 7,
+          "expected": 0.035,
+          "correct": false,
+          "response": "To compute the defect rate (proportion), you divide the number of defective samples by the total number of samples inspected.\n\nNumber of defective samples = 7  \nTotal number of samples inspected = 200  \n\nDefect rate = Number of defective samples / Total number of samples inspected  \nDefect rate = 7 "
+        },
+        "agentB": {
+          "answer": 0.035,
+          "expected": 140000,
+          "correct": false,
+          "response": "To compute the expected defect cost for a batch of 5000 units, we first need to determine the expected number of defective units in that batch using the defect rate we have.\n\n1. **Calculate the expected number of defective units:**\n   \\[\n   \\text{Expected number of defective units} = \\text{Defect ra"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 125,
+          "a_output": 88,
+          "b_input": 182,
+          "b_output": 245
+        }
+      },
+      {
+        "problemId": 2,
+        "category": "Quality Control",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 1,
+          "expected": 0.08,
+          "correct": false,
+          "response": "To find the downtime rate, we first need to determine the proportion of time the machine is down. Given that the machine has an uptime of 92%, the downtime rate is simply the complement of the uptime rate.\n\nDowntime rate = 1 - Uptime rate\n\nSubstituting the given uptime rate:\n\nDowntime rate = 1 - 0.9"
+        },
+        "agentB": {
+          "answer": 5000,
+          "expected": 146000,
+          "correct": false,
+          "response": "To compute the annual downtime cost given a downtime rate of 1, we first need to understand what a downtime rate of 1 means. A downtime rate of 1 indicates that the machine is down 100% of the time.\n\nGiven that the cost of downtime is $5000 per day, we can calculate the annual downtime cost as follo"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 131,
+          "a_output": 97,
+          "b_input": 189,
+          "b_output": 241
+        }
+      },
+      {
+        "problemId": 3,
+        "category": "Quality Control",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 2.4,
+          "expected": 2.4,
+          "correct": true,
+          "response": "To compute the failure rate as a percentage, we use the formula:\n\n\\[\n\\text{Failure Rate (\\%)} = \\left( \\frac{\\text{Number of Failures}}{\\text{Total Number of Products Tested}} \\right) \\times 100\n\\]\n\nSubstituting the given values:\n\n\\[\n\\text{Failure Rate (\\%)} = \\left( \\frac{12}{500} \\right) \\times 10"
+        },
+        "agentB": {
+          "answer": 0,
+          "expected": 0,
+          "correct": true,
+          "response": "To determine the expected recall cost, we first need to assess whether a recall is triggered based on the failure rate provided.\n\n1. **Failure Rate**: The computed failure rate is 2.4%.\n2. **Recall Threshold**: A recall is triggered only if the failure rate exceeds 3%.\n\nSince 2.4% is less than 3%, a"
+        },
+        "score": 1,
+        "tokens": {
+          "a_input": 124,
+          "a_output": 110,
+          "b_input": 228,
+          "b_output": 140
+        }
+      },
+      {
+        "problemId": 4,
+        "category": "Quality Control",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 2,
+          "expected": 2.28,
+          "correct": false,
+          "response": "To determine the percentage of items that exceed the upper specification limit, we first calculate the z-score for the upper spec limit.\n\nThe z-score formula is:\n\\[ z = \\frac{(X - \\mu)}{\\sigma} \\]\n\nWhere:\n- \\( X \\) is the upper specification limit (10.8),\n- \\( \\mu \\) is the mean (10.2),\n- \\( \\sigma "
+        },
+        "agentB": {
+          "answer": 0.02,
+          "expected": 1140,
+          "correct": false,
+          "response": "To find the expected number of defective units in a production run of 50,000 items, we can use the percentage of items that are out of specification.\n\nGiven that 2% of items are out of spec, we can calculate the number of defective units as follows:\n\n1. Convert the percentage to a decimal:\n   \\[\n   "
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 149,
+          "a_output": 273,
+          "b_input": 364,
+          "b_output": 188
+        }
+      },
+      {
+        "problemId": 5,
+        "category": "Quality Control",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 0.02,
+          "expected": 0.516,
+          "correct": false,
+          "response": "To find the probability that at least one machine fails in a given week, we first calculate the probability that each machine does not fail over the 7 days, and then use the complement rule.\n\nFor each machine, the probability that it does not fail on a given day is \\(1 - p_i\\), where \\(p_i\\) is the "
+        },
+        "agentB": {
+          "answer": 0.02,
+          "expected": 1032,
+          "correct": false,
+          "response": "To compute the expected weekly repair cost given the probability of at least one machine failure per week is 0.02 and each failure event costs $2000, we can use the following formula for expected value:\n\n\\[\n\\text{Expected Cost} = \\text{Probability of Failure} \\times \\text{Cost per Failure}\n\\]\n\nSubst"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 168,
+          "a_output": 362,
+          "b_input": 459,
+          "b_output": 166
+        }
+      },
+      {
+        "problemId": 6,
+        "category": "Risk Assessment",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 0.06,
+          "expected": 0.06,
+          "correct": true,
+          "response": "To compute the annual flood probability, we use the historical data provided: 3 floods in 50 years.\n\nThe formula for calculating the probability of an event is:\n\n\\[ \\text{Probability} = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of trials}} \\]\n\nIn this context, the number of favor"
+        },
+        "agentB": {
+          "answer": 5000000,
+          "expected": 450000,
+          "correct": false,
+          "response": "To compute the annual insurance premium based on the annual flood probability and the property value, we first need to calculate the expected annual loss due to flooding.\n\n1. **Calculate the expected annual loss:**\n   \\[\n   \\text{Expected Annual Loss} = \\text{Property Value} \\times \\text{Annual Floo"
+        },
+        "score": 0.5,
+        "tokens": {
+          "a_input": 125,
+          "a_output": 130,
+          "b_input": 226,
+          "b_output": 265
+        }
+      },
+      {
+        "problemId": 7,
+        "category": "Risk Assessment",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 0.36,
+          "expected": 10.2,
+          "correct": false,
+          "response": "To compute the portfolio standard deviation, we use the given formula:\n\n\\[\n\\text{Portfolio Standard Deviation} = \\sqrt{0.6^2 \\times 15^2 + 0.4^2 \\times 8^2 + 2 \\times 0.6 \\times 0.4 \\times 15 \\times 8 \\times 0.3}\n\\]\n\nLet's calculate each component step-by-step:\n\n1. \\(0.6^2 \\times 15^2 = 0.36 \\times "
+        },
+        "agentB": {
+          "answer": 1.645,
+          "expected": 167800,
+          "correct": false,
+          "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the given portfolio standard deviation of 0.36%, we will use the formula:\n\n\\[\n\\text{VaR} = z \\times \\text{std} \\times \\text{portfolio\\_value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (for 95% confidence level)\n- \\( \\text{std} = 0.36\\% = 0.0036 \\) "
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 193,
+          "a_output": 286,
+          "b_input": 399,
+          "b_output": 298
+        }
+      },
+      {
+        "problemId": 8,
+        "category": "Risk Assessment",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 0.001,
+          "expected": 8.76,
+          "correct": false,
+          "response": "To calculate the expected number of server failures per year, we use the failure rate and the total number of operating hours in a year.\n\nFailure rate = 0.001 failures per hour  \nOperating hours per year = 24 hours/day * 365 days/year = 8760 hours/year\n\nExpected number of failures per year = Failure"
+        },
+        "agentB": {
+          "answer": 8.76,
+          "expected": 87600,
+          "correct": false,
+          "response": "To compute the annual failure cost, we can use the expected number of failures per year and the cost per failure.\n\nGiven:\n- Expected number of failures per year = 8.76 failures/year\n- Cost per failure = $10,000\n\nAnnual failure cost can be calculated as follows:\n\n\\[\n\\text{Annual Failure Cost} = \\text"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 137,
+          "a_output": 110,
+          "b_input": 195,
+          "b_output": 176
+        }
+      },
+      {
+        "problemId": 9,
+        "category": "Risk Assessment",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 15,
+          "expected": 1.5625,
+          "correct": false,
+          "response": "To compute the Relative Risk (RR), we first need to determine the improvement rates for both the treated and control groups.\n\n1. **Improvement rate for the treated group:**\n   - Number improved in treated group = 15\n   - Total number in treated group = 120\n   - Improvement rate for treated group = 1"
+        },
+        "agentB": {
+          "answer": 12.5,
+          "expected": 22.22,
+          "correct": false,
+          "response": "To compute the Number Needed to Treat (NNT), we will use the formula:\n\n\\[\nNNT = \\frac{1}{\\text{treatment rate} - \\text{control rate}}\n\\]\n\nFrom the provided information:\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nNow, we can calculate the difference between t"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 146,
+          "a_output": 189,
+          "b_input": 290,
+          "b_output": 225
+        }
+      },
+      {
+        "problemId": 10,
+        "category": "Risk Assessment",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 0.5,
+          "expected": 0.0902,
+          "correct": false,
+          "response": "To solve this problem, we need to calculate the probability of having 2 or more accidents in the next month using the Poisson distribution with a rate (λ) of 0.5 accidents per month.\n\nThe probability mass function for a Poisson distribution is given by:\n\n\\[ P(k) = \\frac{e^{-\\lambda} \\cdot \\lambda^k}"
+        },
+        "agentB": {
+          "answer": 0.5,
+          "expected": 10000,
+          "correct": false,
+          "response": "To compute the expected monthly accident cost, we can use the formula:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost\\_per\\_accident}\n\\]\n\nGiven:\n- \\(\\lambda = 0.5\\) accidents/month\n- \\(\\text{cost\\_per\\_accident} = 20000\\)\n\nNow, substituting the values into the formula:\n\n\\[\nE[\\text{cost}] = 0.5 \\time"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 164,
+          "a_output": 372,
+          "b_input": 474,
+          "b_output": 141
+        }
+      },
+      {
+        "problemId": 11,
+        "category": "Resource Optimization",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 1.645,
+          "expected": 110.2,
+          "correct": false,
+          "response": "To compute the safety stock, we use the formula:\n\n\\[ \\text{Safety Stock} = z \\times \\text{std} \\times \\sqrt{\\text{lead time}} \\]\n\nGiven:\n- \\( z = 1.645 \\)\n- \\( \\text{std} = 30 \\)\n- \\( \\text{lead time} = 5 \\) days\n\nFirst, calculate the square root of the lead time:\n\n\\[ \\sqrt{5} \\approx 2.236 \\]\n\nNow,"
+        },
+        "agentB": {
+          "answer": 150,
+          "expected": 860.2,
+          "correct": false,
+          "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[\n\\text{ROP} = \\text{mean demand} \\times \\text{lead time} + \\text{safety stock}\n\\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 110.34 units (as calculated previously)\n\nNow, we can substitute the values i"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 153,
+          "a_output": 195,
+          "b_input": 299,
+          "b_output": 207
+        }
+      },
+      {
+        "problemId": 12,
+        "category": "Resource Optimization",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 40,
+          "expected": 2,
+          "correct": false,
+          "response": "To calculate the traffic intensity in Erlangs, we use the formula:\n\n\\[ \\text{Traffic Intensity (Erlangs)} = \\text{Arrival Rate (calls/hour)} \\times \\text{Average Service Time (hours)} \\]\n\nGiven:\n- Arrival Rate = 40 calls/hour\n- Average Handle Time = 3 minutes = 3/60 hours = 0.05 hours\n\nNow, compute "
+        },
+        "agentB": {
+          "answer": 40,
+          "expected": 4,
+          "correct": false,
+          "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 40 Erlangs using the Erlang-C formula, we can refer to standard Erlang-C tables or use a calculator designed for this purpose.\n\nGiven:\n- Traffic Intensity (A) = 40 Erlangs\n- Desired w"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 140,
+          "a_output": 120,
+          "b_input": 244,
+          "b_output": 249
+        }
+      },
+      {
+        "problemId": 13,
+        "category": "Resource Optimization",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 1000,
+          "expected": 223.6,
+          "correct": false,
+          "response": "To compute the Economic Order Quantity (EOQ), we use the formula:\n\n\\[ EOQ = \\sqrt{\\frac{2DS}{H}} \\]\n\nwhere:\n- \\( D = 1000 \\) units/month (monthly demand),\n- \\( S = 50 \\) dollars (ordering cost per order),\n- \\( H = 2 \\) dollars/unit/month (holding cost per unit per month).\n\nSubstitute the values into"
+        },
+        "agentB": {
+          "answer": 1000,
+          "expected": 5367,
+          "correct": false,
+          "response": "To compute the total annual inventory cost using the provided information, we will follow the steps outlined in the problem.\n\n1. **Given Values:**\n   - EOQ (A) = 1000 units\n   - Monthly demand (D) = 1000 units/month\n   - Ordering cost (S) = $50 per order\n   - Holding cost (H) = $2 per unit per month"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 138,
+          "a_output": 167,
+          "b_input": 299,
+          "b_output": 412
+        }
+      },
+      {
+        "problemId": 14,
+        "category": "Resource Optimization",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 5,
+          "expected": 8,
+          "correct": false,
+          "response": "To compute the expected duration of the parallel stage, we need to consider the maximum of the durations of Task 1 and Task 2. Given that Task 2 has a larger mean and standard deviation, it tends to dominate the maximum.\n\nTask 1: Mean = 5 days, Std Dev = 1 day  \nTask 2: Mean = 8 days, Std Dev = 2 da"
+        },
+        "agentB": {
+          "answer": 5,
+          "expected": 11,
+          "correct": false,
+          "response": "To compute the total project duration and its standard deviation, we will follow the provided formulas.\n\n1. **Expected Duration of the Parallel Stage**: \n   - Given as 5 days.\n\n2. **Task 3 Duration**: \n   - Given as 3 days with a standard deviation of 1 day. This means Task 3 has a mean of 3 days an"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 190,
+          "a_output": 159,
+          "b_input": 281,
+          "b_output": 429
+        }
+      },
+      {
+        "problemId": 15,
+        "category": "Resource Optimization",
+        "condition": "mutual",
+        "round": null,
+        "agentA": {
+          "answer": 80,
+          "expected": 0.7143,
+          "correct": false,
+          "response": "To solve the newsvendor problem, we need to compute the critical ratio (CR) using the given formula:\n\n\\[ CR = \\frac{\\text{price} - \\text{cost}}{\\text{price} - \\text{salvage}} \\]\n\nSubstituting the given values:\n\n- Price = $80\n- Cost = $30\n- Salvage = $10\n\n\\[ CR = \\frac{80 - 30}{80 - 10} = \\frac{50}{7"
+        },
+        "agentB": {
+          "answer": 200,
+          "expected": 222.8,
+          "correct": false,
+          "response": "To compute the optimal order quantity \\( Q^* \\) using the given formula:\n\n\\[\nQ^* = \\text{mean} + z \\cdot \\text{std}\n\\]\n\nwe need to substitute the values for the mean, standard deviation, and the z-score.\n\nGiven:\n- Mean demand = 200\n- Standard deviation (std) = 40\n- z-score (for \\( CR \\approx 0.714 \\"
+        },
+        "score": 0,
+        "tokens": {
+          "a_input": 162,
+          "a_output": 134,
+          "b_input": 249,
+          "b_output": 246
+        }
+      }
+    ],
+    "progressive": {
+      "round_1": [
+        {
+          "problemId": 1,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 0.035,
+            "expected": 0.035,
+            "correct": true,
+            "response": "To compute the defect rate (proportion), we need to determine the ratio of defective samples to the total number of samples inspected.\n\nHere are the steps to calculate the defect rate:\n\n1. **Identify the number of defective samples**: In this case, 7 defective samples were found.\n\n2. **Identify the "
+          },
+          "agentB": {
+            "answer": 5000,
+            "expected": 140000,
+            "correct": false,
+            "response": "To compute the expected defect cost for a batch of 5000 units given a defect rate of 0.035 and a replacement cost of $800 per defective unit, we can follow these steps:\n\n1. **Calculate the expected number of defective units**:\n   \\[\n   \\text{Expected Defective Units} = \\text{Total Units} \\times \\tex"
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 63,
+            "a_output": 217,
+            "b_input": 308,
+            "b_output": 221
+          }
+        },
+        {
+          "problemId": 2,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 1,
+            "expected": 0.08,
+            "correct": false,
+            "response": "To find the downtime rate, we need to determine the proportion of time the machine is not operational. The machine has an uptime of 92%, which means it is operational 92% of the time.\n\nThe downtime rate is simply the complement of the uptime rate. This can be calculated as follows:\n\n1. **Uptime Rate"
+          },
+          "agentB": {
+            "answer": 5000,
+            "expected": 146000,
+            "correct": false,
+            "response": "To compute the annual downtime cost given a downtime rate of 1 (which means the machine is down all the time), we can use the following steps:\n\n1. **Daily Downtime Cost**: $5000/day\n2. **Number of Days in a Year**: 365 days/year\n\nNow, we can calculate the annual downtime cost:\n\n\\[\n\\text{Annual Downt"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 69,
+            "a_output": 158,
+            "b_input": 246,
+            "b_output": 201
+          }
+        },
+        {
+          "problemId": 3,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 0.024,
+            "expected": 2.4,
+            "correct": false,
+            "response": "To compute the failure rate as a percentage, we need to determine the proportion of products that failed out of the total number of products tested and then convert that proportion into a percentage.\n\nHere are the steps to calculate the failure rate:\n\n1. **Determine the number of failed products**: "
+          },
+          "agentB": {
+            "answer": 0,
+            "expected": 0,
+            "correct": true,
+            "response": "To determine the expected recall cost based on the provided information, we need to follow these steps:\n\n1. **Identify the failure rate**: The failure rate given is 0.024%. \n\n2. **Determine the threshold for triggering a recall**: A recall is triggered if the failure rate exceeds 3%.\n\n3. **Compare t"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 62,
+            "a_output": 248,
+            "b_input": 361,
+            "b_output": 152
+          }
+        },
+        {
+          "problemId": 4,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 10.2,
+            "expected": 2.28,
+            "correct": false,
+            "response": "To determine the percentage of items that exceed the upper specification limit, we need to calculate the z-score for the upper spec limit and then use the standard normal distribution to find the corresponding probability.\n\n### Step-by-step Calculation:\n\n1. **Identify the given values:**\n   - Mean ("
+          },
+          "agentB": {
+            "answer": 10.2,
+            "expected": 1140,
+            "correct": false,
+            "response": "To find the expected number of defective units in a production run of 50,000 items, we can use the percentage of items that are out of specification.\n\nGiven that 10.2% of items are out of spec, we can calculate the expected number of defective units as follows:\n\n1. **Convert the percentage to a deci"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 87,
+            "a_output": 430,
+            "b_input": 518,
+            "b_output": 194
+          }
+        },
+        {
+          "problemId": 5,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 0.02,
+            "expected": 0.516,
+            "correct": false,
+            "response": "To solve this problem, we need to calculate the probability that at least one of the three machines fails in a given week. We are given the daily failure probabilities for each machine:\n\n- Machine 1: \\( p_1 = 0.02 \\)\n- Machine 2: \\( p_2 = 0.05 \\)\n- Machine 3: \\( p_3 = 0.03 \\)\n\nThe probability that a"
+          },
+          "agentB": {
+            "answer": 0.02,
+            "expected": 1032,
+            "correct": false,
+            "response": "To compute the expected weekly repair cost given the probability of at least one machine failure per week and the cost associated with each failure, we can use the following formula:\n\n\\[\n\\text{Expected Cost} = P(\\text{at least one fails}) \\times \\text{Cost per failure}\n\\]\n\nFrom the previous calculat"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 106,
+            "a_output": 484,
+            "b_input": 576,
+            "b_output": 212
+          }
+        },
+        {
+          "problemId": 6,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 3,
+            "expected": 0.06,
+            "correct": false,
+            "response": "To compute the annual flood probability based on historical data, we can use the concept of empirical probability. Empirical probability is calculated by dividing the number of favorable outcomes by the total number of possible outcomes.\n\nIn this case, the favorable outcomes are the number of floods"
+          },
+          "agentB": {
+            "answer": 0.06,
+            "expected": 450000,
+            "correct": false,
+            "response": "To compute the annual insurance premium based on the annual flood probability and the property value, we first need to calculate the expected annual loss due to flooding.\n\n1. **Calculate the expected annual loss:**\n   The expected annual loss can be calculated using the formula:\n\n   \\[\n   \\text{Expe"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 63,
+            "a_output": 213,
+            "b_input": 302,
+            "b_output": 265
+          }
+        },
+        {
+          "problemId": 7,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 0.36,
+            "expected": 10.2,
+            "correct": false,
+            "response": "To compute the portfolio standard deviation, we will use the given formula:\n\n\\[\n\\text{Portfolio Standard Deviation} = \\sqrt{(0.6^2 \\times 15^2) + (0.4^2 \\times 8^2) + (2 \\times 0.6 \\times 0.4 \\times 15 \\times 8 \\times 0.3)}\n\\]\n\nLet's break down the calculation step by step:\n\n1. **Calculate the first"
+          },
+          "agentB": {
+            "answer": 1.645,
+            "expected": 167800,
+            "correct": false,
+            "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the given portfolio standard deviation of 0.36%, we will use the formula:\n\n\\[\n\\text{VaR} = z \\times \\text{std} \\times \\text{portfolio value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (for 95% confidence level)\n- \\( \\text{std} = 0.36\\% = 0.0036 \\) ("
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 131,
+            "a_output": 1024,
+            "b_input": 1132,
+            "b_output": 297
+          }
+        },
+        {
+          "problemId": 8,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 8760,
+            "expected": 8.76,
+            "correct": false,
+            "response": "To calculate the expected number of server failures per year, we need to use the given failure rate and the total number of hours in a year.\n\n1. **Identify the failure rate**: The server failure rate is given as 0.001 failures per hour.\n\n2. **Determine the total number of hours in a year**: Since th"
+          },
+          "agentB": {
+            "answer": 8.76,
+            "expected": 87600,
+            "correct": false,
+            "response": "To compute the annual failure cost based on the expected number of server failures per year and the cost per failure, we can follow these steps:\n\n1. **Identify the expected number of failures per year**: From the previous calculation, we have:\n   \\[\n   \\text{Expected number of failures} = 8.76\n   \\]"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 75,
+            "a_output": 233,
+            "b_input": 312,
+            "b_output": 237
+          }
+        },
+        {
+          "problemId": 9,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 120,
+            "expected": 1.5625,
+            "correct": false,
+            "response": "To compute the Relative Risk (RR), we need to determine the improvement rates for both the treated group and the control group, and then divide the treatment rate by the control rate.\n\n1. **Calculate the improvement rate for the treated group:**\n   - Number of treated individuals = 120\n   - Number o"
+          },
+          "agentB": {
+            "answer": 12.5,
+            "expected": 22.22,
+            "correct": false,
+            "response": "To compute the Number Needed to Treat (NNT), we will use the formula:\n\n\\[\n\\text{NNT} = \\frac{1}{\\text{treatment rate} - \\text{control rate}}\n\\]\n\nFrom the provided information:\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nNow, we can calculate the difference be"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 84,
+            "a_output": 309,
+            "b_input": 405,
+            "b_output": 236
+          }
+        },
+        {
+          "problemId": 10,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 0.5,
+            "expected": 0.0902,
+            "correct": false,
+            "response": "To solve this problem, we need to calculate the probability of having 2 or more accidents in a month given that the accident rate follows a Poisson distribution with a mean (λ) of 0.5 accidents per month.\n\nThe probability of having exactly \\( k \\) accidents in a Poisson distribution is given by the "
+          },
+          "agentB": {
+            "answer": 0.5,
+            "expected": 10000,
+            "correct": false,
+            "response": "To compute the expected monthly accident cost given a Poisson rate of \\( \\lambda = 0.5 \\) accidents per month and a cost of $20,000 per accident, we can use the formula for expected cost:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost per accident}\n\\]\n\nSubstituting the values:\n\n\\[\nE[\\text{cost}] = 0"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 102,
+            "a_output": 482,
+            "b_input": 579,
+            "b_output": 133
+          }
+        },
+        {
+          "problemId": 11,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 1.645,
+            "expected": 110.2,
+            "correct": false,
+            "response": "To compute the safety stock for a 95% service level, we use the formula:\n\n\\[ \\text{Safety Stock} = z \\times \\text{std} \\times \\sqrt{\\text{lead time}} \\]\n\nWhere:\n- \\( z \\) is the z-score corresponding to the desired service level. For a 95% service level, \\( z = 1.645 \\).\n- \\( \\text{std} \\) is the st"
+          },
+          "agentB": {
+            "answer": 150,
+            "expected": 860.2,
+            "correct": false,
+            "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[\n\\text{ROP} = \\text{mean demand} \\times \\text{lead time} + \\text{safety stock}\n\\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 1.645 units\n\nNow, let's plug in the values:\n\n1. Calculate the mean demand ov"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 91,
+            "a_output": 272,
+            "b_input": 371,
+            "b_output": 212
+          }
+        },
+        {
+          "problemId": 12,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 40,
+            "expected": 2,
+            "correct": false,
+            "response": "To compute the traffic intensity in Erlangs, we use the formula:\n\n\\[\n\\text{Traffic Intensity (Erlangs)} = \\text{Arrival Rate} \\times \\text{Average Service Time (in hours)}\n\\]\n\nGiven:\n- Arrival Rate = 40 calls per hour\n- Average Handle Time = 3 minutes per call\n\nFirst, we need to convert the average "
+          },
+          "agentB": {
+            "answer": 40,
+            "expected": 4,
+            "correct": false,
+            "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 40 Erlangs using the Erlang-C formula, we can refer to standard Erlang-C tables or use a calculator designed for this purpose.\n\nGiven that we have a traffic intensity of 40 Erlangs, w"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 78,
+            "a_output": 199,
+            "b_input": 318,
+            "b_output": 315
+          }
+        },
+        {
+          "problemId": 13,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 1000,
+            "expected": 223.6,
+            "correct": false,
+            "response": "To compute the Economic Order Quantity (EOQ), we use the EOQ formula:\n\n\\[\nEOQ = \\sqrt{\\frac{2DS}{H}}\n\\]\n\nwhere:\n- \\( D \\) is the demand rate (units per period),\n- \\( S \\) is the ordering cost per order,\n- \\( H \\) is the holding cost per unit per period.\n\nGiven:\n- Monthly demand (\\( D \\)) = 1000 unit"
+          },
+          "agentB": {
+            "answer": 1000,
+            "expected": 5367,
+            "correct": false,
+            "response": "To compute the total annual inventory cost using the provided information, we will follow the steps outlined in the problem.\n\n1. **Calculate the number of orders per year**:\n   Given that the Economic Order Quantity (EOQ) is 1000 units and the monthly demand is 1000 units, the annual demand \\( D \\) "
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 76,
+            "a_output": 261,
+            "b_input": 388,
+            "b_output": 434
+          }
+        },
+        {
+          "problemId": 14,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 8,
+            "expected": 8,
+            "correct": true,
+            "response": "To solve this problem, we need to determine the expected duration of the parallel stage, which is the maximum of the durations of Task 1 and Task 2. The durations of these tasks are given as normally distributed random variables:\n\n- Task 1: \\( X_1 \\sim N(5, 1^2) \\)\n- Task 2: \\( X_2 \\sim N(8, 2^2) \\)"
+          },
+          "agentB": {
+            "answer": 8,
+            "expected": 11,
+            "correct": false,
+            "response": "To compute the total project duration and its standard deviation, we start with the information provided:\n\n1. The expected duration of the parallel stage is \\( E[\\max(X_1, X_2)] = 8 \\) days.\n2. The duration of Task 3 is given as \\( 3 \\pm 1 \\) days, which means it has a mean of 3 days and a standard "
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 128,
+            "a_output": 316,
+            "b_input": 433,
+            "b_output": 442
+          }
+        },
+        {
+          "problemId": 15,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 1,
+          "agentA": {
+            "answer": 80,
+            "expected": 0.7143,
+            "correct": false,
+            "response": "To solve the newsvendor problem, we need to compute the critical ratio (CR), which helps determine the optimal order quantity for a product with uncertain demand. The critical ratio is calculated using the formula:\n\n\\[ CR = \\frac{\\text{Selling Price} - \\text{Unit Cost}}{\\text{Selling Price} - \\text{"
+          },
+          "agentB": {
+            "answer": 200,
+            "expected": 222.8,
+            "correct": false,
+            "response": "To compute the optimal order quantity \\( Q^* \\) using the given information, we will use the formula:\n\n\\[\nQ^* = \\text{mean} + z^* \\cdot \\text{std}\n\\]\n\nWhere:\n- The mean demand is given as 200.\n- The standard deviation of demand is given as 40.\n- The critical ratio (CR) has been used to find \\( z \\),"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 100,
+            "a_output": 176,
+            "b_input": 286,
+            "b_output": 246
+          }
+        }
+      ],
+      "round_2": [
+        {
+          "problemId": 1,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 7,
+            "expected": 0.035,
+            "correct": false,
+            "response": "The defect rate (proportion) is calculated by dividing the number of defective samples by the total number of samples inspected. \n\nDefect rate = Number of defective samples / Total number of samples inspected\n\nDefect rate = 7 / 200 = 0.035\n\nTherefore, the defect rate is 0.035."
+          },
+          "agentB": {
+            "answer": 0.035,
+            "expected": 140000,
+            "correct": false,
+            "response": "To compute the expected defect cost for a batch of 5000 units given a defect rate of 0.035 and a replacement cost of $800 per defective unit, we can follow these steps:\n\n1. **Calculate the expected number of defective units in the batch:**\n   \\[\n   \\text{Expected number of defective units} = \\text{D"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 74,
+            "a_output": 66,
+            "b_input": 166,
+            "b_output": 212
+          }
+        },
+        {
+          "problemId": 2,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 8,
+            "expected": 0.08,
+            "correct": false,
+            "response": "The downtime rate is the complement of the uptime rate. Given that the uptime rate is 92%, the downtime rate is:\n\n100% - 92% = 8%\n\nTherefore, the downtime rate is 0.08."
+          },
+          "agentB": {
+            "answer": 365,
+            "expected": 146000,
+            "correct": false,
+            "response": "To compute the annual downtime cost given a downtime rate of 8% and a cost of $5000 per day, we can follow these steps:\n\n1. **Calculate the total number of downtime days in a year**:\n   - Since the downtime rate is 8%, this means that 8% of the year will be downtime.\n   - There are 365 days in a yea"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 80,
+            "a_output": 46,
+            "b_input": 144,
+            "b_output": 230
+          }
+        },
+        {
+          "problemId": 3,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 2.4,
+            "expected": 2.4,
+            "correct": true,
+            "response": "The failure rate as a percentage is calculated by dividing the number of failed products by the total number of products tested, and then multiplying by 100.\n\nFailure rate = (Number of failed products / Total number of products) * 100\n\nFailure rate = (12 / 500) * 100 = 2.4%\n\nThe failure rate is 2.4%"
+          },
+          "agentB": {
+            "answer": 0,
+            "expected": 0,
+            "correct": true,
+            "response": "To determine the expected recall cost, we first need to assess whether the recall is triggered based on the failure rate provided.\n\n1. **Failure Rate**: The computed failure rate is 2.4%.\n2. **Recall Trigger Condition**: A recall is triggered only if the failure rate exceeds 3%. Since 2.4% is less t"
+          },
+          "score": 1,
+          "tokens": {
+            "a_input": 73,
+            "a_output": 75,
+            "b_input": 199,
+            "b_output": 114
+          }
+        },
+        {
+          "problemId": 4,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 2,
+            "expected": 2.28,
+            "correct": false,
+            "response": "To find the percentage of items that exceed the upper specification limit, we first calculate the z-score for the upper spec limit.\n\nThe z-score is calculated as follows:\n\n\\[ z = \\frac{(X - \\mu)}{\\sigma} \\]\n\nWhere:\n- \\( X \\) is the upper specification limit (10.8),\n- \\( \\mu \\) is the mean (10.2),\n- "
+          },
+          "agentB": {
+            "answer": 0.0228,
+            "expected": 1140,
+            "correct": false,
+            "response": "To find the expected number of defective units in a production run of 50,000 items, we can use the percentage of items that exceed the upper specification limit, which is 2.28%.\n\nFirst, we convert the percentage to a decimal:\n\n\\[ \n\\text{Defective Rate} = \\frac{2.28}{100} = 0.0228 \n\\]\n\nNext, we multi"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 98,
+            "a_output": 247,
+            "b_input": 344,
+            "b_output": 199
+          }
+        },
+        {
+          "problemId": 5,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.02,
+            "expected": 0.516,
+            "correct": false,
+            "response": "To find the probability that at least one machine fails in a given week, we first calculate the probability that each machine does not fail over the 7 days, and then use the complement rule.\n\nFor each machine, the probability that it does not fail on a given day is \\(1 - p_i\\), where \\(p_i\\) is the "
+          },
+          "agentB": {
+            "answer": 0.02,
+            "expected": 1032,
+            "correct": false,
+            "response": "To compute the expected weekly repair cost given the probability of at least one machine failure per week and the cost per failure, we can use the following formula:\n\n\\[\n\\text{Expected Cost} = \\text{Probability of Failure} \\times \\text{Cost per Failure}\n\\]\n\nFrom the information provided, we have:\n\n-"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 117,
+            "a_output": 372,
+            "b_input": 475,
+            "b_output": 164
+          }
+        },
+        {
+          "problemId": 6,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 3,
+            "expected": 0.06,
+            "correct": false,
+            "response": "The annual flood probability can be calculated by dividing the number of floods by the number of years. \n\nNumber of floods = 3  \nNumber of years = 50  \n\nAnnual flood probability = Number of floods / Number of years = 3 / 50 = 0.06\n\nTherefore, the annual flood probability is 0.06, or 6%."
+          },
+          "agentB": {
+            "answer": 0.06,
+            "expected": 450000,
+            "correct": false,
+            "response": "To compute the annual insurance premium based on the annual flood probability and the property value, we first need to calculate the expected annual loss.\n\n1. **Calculate the expected annual loss:**\n   \\[\n   \\text{Expected Annual Loss} = \\text{Annual Flood Probability} \\times \\text{Property Value}\n "
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 74,
+            "a_output": 73,
+            "b_input": 173,
+            "b_output": 253
+          }
+        },
+        {
+          "problemId": 7,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.36,
+            "expected": 10.2,
+            "correct": false,
+            "response": "To compute the portfolio standard deviation, we use the given formula:\n\n\\[\n\\sqrt{0.6^2 \\times 15^2 + 0.4^2 \\times 8^2 + 2 \\times 0.6 \\times 0.4 \\times 15 \\times 8 \\times 0.3}\n\\]\n\nCalculating each component:\n\n1. \\(0.6^2 \\times 15^2 = 0.36 \\times 225 = 81\\)\n2. \\(0.4^2 \\times 8^2 = 0.16 \\times 64 = 10."
+          },
+          "agentB": {
+            "answer": 1.645,
+            "expected": 167800,
+            "correct": false,
+            "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the given portfolio standard deviation of 0.36%, we will use the formula:\n\n\\[\n\\text{VaR} = z \\times \\text{std} \\times \\text{portfolio\\_value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (for 95% confidence level)\n- \\( \\text{std} = 0.36\\% = 0.0036 \\) "
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 142,
+            "a_output": 265,
+            "b_input": 384,
+            "b_output": 301
+          }
+        },
+        {
+          "problemId": 8,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.001,
+            "expected": 8.76,
+            "correct": false,
+            "response": "The expected number of failures per year can be calculated by multiplying the failure rate by the total number of operating hours in a year.\n\nFailure rate = 0.001 failures/hour  \nOperating hours per year = 8760 hours\n\nExpected number of failures per year = Failure rate × Operating hours per year  \n="
+          },
+          "agentB": {
+            "answer": 8.76,
+            "expected": 87600,
+            "correct": false,
+            "response": "To compute the annual failure cost, we can use the expected number of failures per year and the cost per failure.\n\nGiven:\n- Expected number of failures per year = 8.76 failures\n- Cost per failure = $10,000\n\nAnnual failure cost can be calculated as follows:\n\n\\[\n\\text{Annual Failure Cost} = \\text{Expe"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 86,
+            "a_output": 96,
+            "b_input": 187,
+            "b_output": 169
+          }
+        },
+        {
+          "problemId": 9,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.125,
+            "expected": 1.5625,
+            "correct": false,
+            "response": "To calculate the Relative Risk (RR), we use the formula:\n\n\\[ \\text{RR} = \\frac{\\text{Improvement rate in treatment group}}{\\text{Improvement rate in control group}} \\]\n\nFirst, calculate the improvement rates:\n\n- Improvement rate in the treatment group = \\(\\frac{15}{120} = 0.125\\)\n- Improvement rate "
+          },
+          "agentB": {
+            "answer": 12.5,
+            "expected": 22.22,
+            "correct": false,
+            "response": "To compute the Number Needed to Treat (NNT), we will use the formula:\n\n\\[\n\\text{NNT} = \\frac{1}{\\text{treatment rate} - \\text{control rate}}\n\\]\n\nFrom the previous calculations, we have:\n\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nNow, we can calculate the di"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 95,
+            "a_output": 143,
+            "b_input": 250,
+            "b_output": 224
+          }
+        },
+        {
+          "problemId": 10,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.5,
+            "expected": 0.0902,
+            "correct": false,
+            "response": "To compute the probability of 2 or more accidents next month, we use the Poisson distribution formula:\n\n\\[ P(k) = \\frac{e^{-\\lambda} \\cdot \\lambda^k}{k!} \\]\n\nwhere \\(\\lambda = 0.5\\) accidents per month.\n\nFirst, calculate \\(P(0)\\):\n\n\\[ P(0) = \\frac{e^{-0.5} \\cdot 0.5^0}{0!} = e^{-0.5} \\cdot 1 = e^{-0"
+          },
+          "agentB": {
+            "answer": 0.5,
+            "expected": 10000,
+            "correct": false,
+            "response": "To compute the expected monthly accident cost, we use the formula:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost\\_per\\_accident}\n\\]\n\nGiven:\n- \\(\\lambda = 0.5\\) accidents per month\n- \\(\\text{cost\\_per\\_accident} = 20000\\)\n\nNow, substituting the values into the formula:\n\n\\[\nE[\\text{cost}] = 0.5 \\time"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 113,
+            "a_output": 278,
+            "b_input": 386,
+            "b_output": 143
+          }
+        },
+        {
+          "problemId": 11,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 1.645,
+            "expected": 110.2,
+            "correct": false,
+            "response": "Safety stock = z * std * sqrt(lead_time)\n\nGiven:\n- z = 1.645\n- std = 30\n- lead_time = 5 days\n\nSafety stock = 1.645 * 30 * sqrt(5)\n\nSafety stock = 1.645 * 30 * 2.236\n\nSafety stock = 1.645 * 67.08\n\nSafety stock ≈ 110.34\n\nThe safety stock for a 95% service level is approximately 110 units."
+          },
+          "agentB": {
+            "answer": 150,
+            "expected": 860.2,
+            "correct": false,
+            "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[ ROP = \\text{mean\\_demand} \\times \\text{lead\\_time} + \\text{safety\\_stock} \\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 110.34 units (as computed previously)\n\nNow, we can substitute the values into th"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 102,
+            "a_output": 105,
+            "b_input": 215,
+            "b_output": 200
+          }
+        },
+        {
+          "problemId": 12,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 40,
+            "expected": 2,
+            "correct": false,
+            "response": "To compute the traffic intensity in Erlangs, we use the formula:\n\n\\[ \\text{Traffic Intensity (Erlangs)} = \\text{Arrival Rate (calls/hour)} \\times \\text{Average Service Time (hours)} \\]\n\nGiven:\n- Arrival Rate = 40 calls/hour\n- Average Handle Time = 3 minutes = 3/60 hours = 0.05 hours\n\nNow, calculate "
+          },
+          "agentB": {
+            "answer": 40,
+            "expected": 4,
+            "correct": false,
+            "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 40 Erlangs using Erlang-C, we can refer to standard Erlang-C tables or use the Erlang-C formula.\n\nGiven:\n- Traffic Intensity (A) = 40 Erlangs\n\nWe need to find the minimum number of ag"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 89,
+            "a_output": 119,
+            "b_input": 249,
+            "b_output": 198
+          }
+        },
+        {
+          "problemId": 13,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 1000,
+            "expected": 223.6,
+            "correct": false,
+            "response": "To calculate the Economic Order Quantity (EOQ), we use the formula:\n\n\\[ \\text{EOQ} = \\sqrt{\\frac{2 \\times D \\times S}{H}} \\]\n\nWhere:\n- \\( D = 1000 \\) units/month (monthly demand)\n- \\( S = 50 \\) dollars (ordering cost)\n- \\( H = 2 \\) dollars/unit/month (holding cost)\n\nSubstitute the values into the fo"
+          },
+          "agentB": {
+            "answer": 1000,
+            "expected": 5367,
+            "correct": false,
+            "response": "To compute the total annual inventory cost using the provided values, we will follow the steps outlined in the problem.\n\n1. **Given Values:**\n   - EOQ (A) = 1000 units\n   - Monthly demand (D) = 1000 units/month\n   - Ordering cost (S) = $50\n   - Holding cost (H) = $2/unit/month\n\n2. **Calculate Annual"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 87,
+            "a_output": 189,
+            "b_input": 327,
+            "b_output": 408
+          }
+        },
+        {
+          "problemId": 14,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 8,
+            "expected": 8,
+            "correct": true,
+            "response": "The expected duration of the parallel stage, where tasks 1 and 2 run in parallel, is approximately 8 days."
+          },
+          "agentB": {
+            "answer": 8,
+            "expected": 11,
+            "correct": false,
+            "response": "To compute the total project duration and its standard deviation, we will follow the formulas provided.\n\n1. **Total Project Duration**:\n   - The expected duration of the parallel stage (tasks 1 and 2) is given as 8 days.\n   - The duration of task 3 is given as 3 ± 1 days, which means the expected du"
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 139,
+            "a_output": 25,
+            "b_input": 153,
+            "b_output": 377
+          }
+        },
+        {
+          "problemId": 15,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 2,
+          "agentA": {
+            "answer": 0.7143,
+            "expected": 0.7143,
+            "correct": true,
+            "response": "The critical ratio (CR) is calculated using the formula:\n\n\\[ CR = \\frac{\\text{price} - \\text{cost}}{\\text{price} - \\text{salvage}} \\]\n\nSubstituting the given values:\n\n\\[ CR = \\frac{80 - 30}{80 - 10} = \\frac{50}{70} \\]\n\n\\[ CR = 0.7143 \\]\n\nTherefore, the critical ratio is 0.7143."
+          },
+          "agentB": {
+            "answer": 200,
+            "expected": 222.8,
+            "correct": false,
+            "response": "To compute the optimal order quantity \\( Q^* \\), we will use the formula:\n\n\\[\nQ^* = \\text{mean} + z \\times \\text{std}\n\\]\n\nGiven:\n- Mean demand = 200\n- Standard deviation (std) = 40\n- \\( z \\) value corresponding to the critical ratio (CR) of 0.7143 is approximately 0.57.\n\nNow, substituting the values"
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 111,
+            "a_output": 98,
+            "b_input": 222,
+            "b_output": 200
+          }
+        }
+      ],
+      "round_3": [
+        {
+          "problemId": 1,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 7,
+            "expected": 0.035,
+            "correct": false,
+            "response": "The defect rate (proportion) is calculated by dividing the number of defective samples by the total number of samples inspected.\n\nDefect rate = Number of defective samples / Total number of samples inspected\n\nDefect rate = 7 / 200 = 0.035\n\nThe defect rate is 0.035."
+          },
+          "agentB": {
+            "answer": 0.035,
+            "expected": 140000,
+            "correct": false,
+            "response": "To compute the expected defect cost for a batch of 5000 units given a defect rate of 0.035 and a replacement cost of $800 per defective unit, we can follow these steps:\n\n1. **Calculate the expected number of defective units**:\n   \\[\n   \\text{Expected number of defective units} = \\text{Defect rate} \\"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 74,
+            "a_output": 63,
+            "b_input": 163,
+            "b_output": 209
+          }
+        },
+        {
+          "problemId": 2,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 8,
+            "expected": 0.08,
+            "correct": false,
+            "response": "The downtime rate is the complement of the uptime rate. Given that the uptime rate is 92%, the downtime rate is:\n\n100% - 92% = 8%\n\nTherefore, the downtime rate is 0.08."
+          },
+          "agentB": {
+            "answer": 365,
+            "expected": 146000,
+            "correct": false,
+            "response": "To compute the annual downtime cost given a downtime rate of 8% and a cost of $5000 per day, we can follow these steps:\n\n1. **Calculate the total number of downtime days in a year**:\n   - Since the downtime rate is 8%, this means that 8% of the days in a year will be downtime days.\n   - There are 36"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 80,
+            "a_output": 46,
+            "b_input": 144,
+            "b_output": 238
+          }
+        },
+        {
+          "problemId": 3,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 2.4,
+            "expected": 2.4,
+            "correct": true,
+            "response": "The failure rate as a percentage is calculated by dividing the number of failed products by the total number of products tested, and then multiplying by 100.\n\nFailure rate = (Number of failed products / Total number of products) * 100\n\nFailure rate = (12 / 500) * 100 = 2.4%\n\nThe failure rate is 2.4%"
+          },
+          "agentB": {
+            "answer": 0,
+            "expected": 0,
+            "correct": true,
+            "response": "To determine the expected recall cost, we first need to assess whether the recall is triggered based on the failure rate provided.\n\n1. **Failure Rate**: The failure rate is given as 2.4%.\n2. **Recall Trigger Condition**: A recall is triggered only if the failure rate exceeds 3%. Since 2.4% is less t"
+          },
+          "score": 1,
+          "tokens": {
+            "a_input": 73,
+            "a_output": 75,
+            "b_input": 199,
+            "b_output": 112
+          }
+        },
+        {
+          "problemId": 4,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 2,
+            "expected": 2.28,
+            "correct": false,
+            "response": "To find the percentage of items that exceed the upper specification limit, we first calculate the z-score for the upper spec limit.\n\nThe z-score is calculated using the formula:\n\n\\[ z = \\frac{(X - \\mu)}{\\sigma} \\]\n\nwhere:\n- \\( X \\) is the upper specification limit (10.8),\n- \\( \\mu \\) is the mean (10"
+          },
+          "agentB": {
+            "answer": 0.0228,
+            "expected": 1140,
+            "correct": false,
+            "response": "To find the number of defective units expected in a production run of 50,000 items, we can use the percentage of items that are out of specification.\n\nGiven that approximately 2.28% of items exceed the upper specification limit, we can calculate the expected number of defective units as follows:\n\n1."
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 98,
+            "a_output": 248,
+            "b_input": 345,
+            "b_output": 202
+          }
+        },
+        {
+          "problemId": 5,
+          "category": "Quality Control",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.02,
+            "expected": 0.516,
+            "correct": false,
+            "response": "To find the probability that at least one machine fails in a given week, we first calculate the probability that each machine does not fail over the 7 days, and then use the complement rule.\n\nFor each machine, the probability that it does not fail on a given day is \\(1 - p_i\\), where \\(p_i\\) is the "
+          },
+          "agentB": {
+            "answer": 0.5074,
+            "expected": 1032,
+            "correct": false,
+            "response": "To compute the expected weekly repair cost given the probability of at least one machine failure per week and the cost per failure, we can use the following formula:\n\n\\[\n\\text{Expected Cost} = \\text{Probability of Failure} \\times \\text{Cost per Failure}\n\\]\n\nFrom the information provided, we have:\n\n-"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 117,
+            "a_output": 350,
+            "b_input": 453,
+            "b_output": 167
+          }
+        },
+        {
+          "problemId": 6,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 3,
+            "expected": 0.06,
+            "correct": false,
+            "response": "The annual flood probability can be calculated by dividing the number of floods by the number of years. \n\nNumber of floods = 3  \nNumber of years = 50  \n\nAnnual flood probability = Number of floods / Number of years = 3 / 50 = 0.06\n\nTherefore, the annual flood probability is 0.06, or 6%."
+          },
+          "agentB": {
+            "answer": 0.06,
+            "expected": 450000,
+            "correct": false,
+            "response": "To compute the annual insurance premium based on the annual flood probability and the property value, we first need to calculate the expected annual loss.\n\n1. **Calculate the expected annual loss:**\n   \\[\n   \\text{Expected Annual Loss} = \\text{Annual Flood Probability} \\times \\text{Property Value}\n "
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 74,
+            "a_output": 73,
+            "b_input": 173,
+            "b_output": 227
+          }
+        },
+        {
+          "problemId": 7,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.36,
+            "expected": 10.2,
+            "correct": false,
+            "response": "To compute the portfolio standard deviation, we use the given formula:\n\n\\[\n\\text{Portfolio Standard Deviation} = \\sqrt{0.6^2 \\times 15^2 + 0.4^2 \\times 8^2 + 2 \\times 0.6 \\times 0.4 \\times 15 \\times 8 \\times 0.3}\n\\]\n\nCalculating each component:\n\n1. \\(0.6^2 \\times 15^2 = 0.36 \\times 225 = 81\\)\n2. \\(0"
+          },
+          "agentB": {
+            "answer": 1.645,
+            "expected": 167800,
+            "correct": false,
+            "response": "To compute the 95% Value-at-Risk (VaR) for a $1M portfolio using the given portfolio standard deviation of 0.36%, we will use the formula:\n\n\\[\n\\text{VaR} = z \\times \\text{std} \\times \\text{portfolio value}\n\\]\n\nWhere:\n- \\( z = 1.645 \\) (for 95% confidence level)\n- \\( \\text{std} = 0.36\\% = 0.0036 \\) ("
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 142,
+            "a_output": 266,
+            "b_input": 385,
+            "b_output": 290
+          }
+        },
+        {
+          "problemId": 8,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.001,
+            "expected": 8.76,
+            "correct": false,
+            "response": "The expected number of failures per year can be calculated by multiplying the failure rate by the total number of operating hours in a year.\n\nFailure rate = 0.001 failures/hour  \nOperating hours per year = 8760 hours\n\nExpected number of failures per year = Failure rate × Operating hours  \n= 0.001 fa"
+          },
+          "agentB": {
+            "answer": 8.76,
+            "expected": 87600,
+            "correct": false,
+            "response": "To compute the annual failure cost, we can use the expected number of failures per year and the cost per failure.\n\nGiven:\n- Expected number of failures per year = 8.76 failures\n- Cost per failure = $10,000\n\nAnnual failure cost can be calculated as follows:\n\n\\[\n\\text{Annual Failure Cost} = \\text{Expe"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 86,
+            "a_output": 94,
+            "b_input": 185,
+            "b_output": 168
+          }
+        },
+        {
+          "problemId": 9,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.125,
+            "expected": 1.5625,
+            "correct": false,
+            "response": "To calculate the Relative Risk (RR), we use the formula:\n\n\\[ \\text{RR} = \\frac{\\text{Improvement rate in treatment group}}{\\text{Improvement rate in control group}} \\]\n\nFirst, calculate the improvement rates:\n\n- Improvement rate in the treatment group = \\(\\frac{15}{120} = 0.125\\)\n- Improvement rate "
+          },
+          "agentB": {
+            "answer": 12.5,
+            "expected": 22.22,
+            "correct": false,
+            "response": "To compute the Number Needed to Treat (NNT), we will use the formula:\n\n\\[\n\\text{NNT} = \\frac{1}{\\text{treatment rate} - \\text{control rate}}\n\\]\n\nFrom the previous calculations, we have:\n\n- Treatment improvement rate = 12.5% = 0.125\n- Control improvement rate = 8% = 0.08\n\nNow, we can calculate the di"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 95,
+            "a_output": 143,
+            "b_input": 250,
+            "b_output": 226
+          }
+        },
+        {
+          "problemId": 10,
+          "category": "Risk Assessment",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.5,
+            "expected": 0.0902,
+            "correct": false,
+            "response": "To compute the probability of 2 or more accidents next month using the Poisson distribution, we first need to calculate P(0) and P(1) using the given formula \\( P(k) = e^{-\\lambda} \\cdot \\frac{\\lambda^k}{k!} \\), where \\( \\lambda = 0.5 \\).\n\n1. Calculate \\( P(0) \\):\n   \\[\n   P(0) = e^{-0.5} \\cdot \\fra"
+          },
+          "agentB": {
+            "answer": 0.5,
+            "expected": 10000,
+            "correct": false,
+            "response": "To compute the expected monthly accident cost, we use the formula:\n\n\\[\nE[\\text{cost}] = \\lambda \\times \\text{cost\\_per\\_accident}\n\\]\n\nGiven:\n- \\( \\lambda = 0.5 \\) accidents/month\n- \\(\\text{cost\\_per\\_accident} = 20000\\)\n\nNow, substituting the values into the formula:\n\n\\[\nE[\\text{cost}] = 0.5 \\times "
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 113,
+            "a_output": 290,
+            "b_input": 398,
+            "b_output": 140
+          }
+        },
+        {
+          "problemId": 11,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 1.645,
+            "expected": 110.2,
+            "correct": false,
+            "response": "Safety stock = z * std * sqrt(lead_time)\n\nGiven:\n- z = 1.645\n- std = 30\n- lead_time = 5 days\n\nSafety stock = 1.645 * 30 * sqrt(5)\n\nCalculating:\n\nSafety stock = 1.645 * 30 * 2.2361 ≈ 110.43\n\nTherefore, the safety stock is approximately 110 units."
+          },
+          "agentB": {
+            "answer": 150,
+            "expected": 860.2,
+            "correct": false,
+            "response": "To compute the reorder point (ROP), we will use the formula:\n\n\\[ ROP = \\text{mean\\_demand} \\times \\text{lead\\_time} + \\text{safety\\_stock} \\]\n\nGiven:\n- Mean daily demand = 150 units\n- Lead time = 5 days\n- Safety stock = 110 units (as calculated previously)\n\nNow, we can substitute the values into the"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 102,
+            "a_output": 88,
+            "b_input": 198,
+            "b_output": 178
+          }
+        },
+        {
+          "problemId": 12,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 40,
+            "expected": 2,
+            "correct": false,
+            "response": "To calculate the traffic intensity in Erlangs, we use the formula:\n\n\\[ \\text{Traffic Intensity (Erlangs)} = \\text{Arrival Rate (calls/hour)} \\times \\text{Average Service Time (hours)} \\]\n\nGiven:\n- Arrival Rate = 40 calls/hour\n- Average Handle Time = 3 minutes = 3/60 hours = 0.05 hours\n\nNow, compute "
+          },
+          "agentB": {
+            "answer": 2,
+            "expected": 4,
+            "correct": false,
+            "response": "To determine the minimum number of agents needed so that the wait probability is below 5% for a traffic intensity of 2 Erlangs, we can refer to the Erlang-C formula and tables.\n\nGiven:\n- Traffic Intensity = 2 Erlangs\n\nFrom the Erlang-C tables, we can find the number of agents required for a given tr"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 89,
+            "a_output": 119,
+            "b_input": 249,
+            "b_output": 240
+          }
+        },
+        {
+          "problemId": 13,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 1000,
+            "expected": 223.6,
+            "correct": false,
+            "response": "To compute the Economic Order Quantity (EOQ), we use the formula:\n\n\\[ \\text{EOQ} = \\sqrt{\\frac{2DS}{H}} \\]\n\nwhere:\n- \\( D = 1000 \\) units/month (monthly demand),\n- \\( S = 50 \\) dollars (ordering cost per order),\n- \\( H = 2 \\) dollars/unit/month (holding cost per unit per month).\n\nSubstituting the va"
+          },
+          "agentB": {
+            "answer": 1000,
+            "expected": 5367,
+            "correct": false,
+            "response": "To compute the total annual inventory cost using the provided values, we first need to clarify the variables:\n\n- \\( D = 1000 \\) units/month (monthly demand)\n- \\( S = 50 \\) dollars (ordering cost per order)\n- \\( H = 2 \\) dollars/unit/month (holding cost per unit per month)\n- \\( A = 1000 \\) units (Eco"
+          },
+          "score": 0,
+          "tokens": {
+            "a_input": 87,
+            "a_output": 189,
+            "b_input": 327,
+            "b_output": 428
+          }
+        },
+        {
+          "problemId": 14,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 8,
+            "expected": 8,
+            "correct": true,
+            "response": "The expected duration of the parallel stage, where tasks 1 and 2 run in parallel, is approximately 8 days."
+          },
+          "agentB": {
+            "answer": 8,
+            "expected": 11,
+            "correct": false,
+            "response": "To compute the total project duration and its standard deviation, we will follow the formulas provided.\n\n1. **Total Project Duration**:\n   - The expected duration of the parallel stage (tasks 1 and 2) is given as 8 days.\n   - The duration of task 3 is given as 3 days with a variability of ±1 day. Th"
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 139,
+            "a_output": 25,
+            "b_input": 153,
+            "b_output": 495
+          }
+        },
+        {
+          "problemId": 15,
+          "category": "Resource Optimization",
+          "condition": "progressive",
+          "round": 3,
+          "agentA": {
+            "answer": 0.7143,
+            "expected": 0.7143,
+            "correct": true,
+            "response": "The critical ratio (CR) is calculated as follows:\n\n\\[ CR = \\frac{\\text{price} - \\text{cost}}{\\text{price} - \\text{salvage}} = \\frac{80 - 30}{80 - 10} = \\frac{50}{70} \\]\n\nThus, the critical ratio is:\n\n\\[ CR = 0.7143 \\]\n\nTherefore, the critical ratio is 0.7143."
+          },
+          "agentB": {
+            "answer": 200,
+            "expected": 222.8,
+            "correct": false,
+            "response": "To compute the optimal order quantity \\( Q^* \\), we will use the formula:\n\n\\[\nQ^* = \\text{mean} + z \\times \\text{std}\n\\]\n\nGiven:\n- Mean demand = 200\n- Standard deviation (std) = 40\n- \\( z \\) value corresponding to the critical ratio (CR) of 0.7143 is approximately 0.57.\n\nNow, substituting the values"
+          },
+          "score": 0.5,
+          "tokens": {
+            "a_input": 111,
+            "a_output": 93,
+            "b_input": 217,
+            "b_output": 200
+          }
+        }
+      ]
+    }
+  },
+  "summary": {
+    "no_context": {
+      "avgScore": 0.06666666666666667,
+      "aAccuracy": 0.13333333333333333,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    },
+    "one_way": {
+      "avgScore": 0.13333333333333333,
+      "aAccuracy": 0.2,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    },
+    "mutual": {
+      "avgScore": 0.1,
+      "aAccuracy": 0.13333333333333333,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    },
+    "progressive_r1": {
+      "avgScore": 0.06666666666666667,
+      "aAccuracy": 0.13333333333333333,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    },
+    "progressive_r2": {
+      "avgScore": 0.13333333333333333,
+      "aAccuracy": 0.2,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    },
+    "progressive_r3": {
+      "avgScore": 0.13333333333333333,
+      "aAccuracy": 0.2,
+      "bAccuracy": 0.06666666666666667,
+      "count": 15
+    }
+  },
+  "tokens": {
+    "a_input": 9435,
+    "a_output": 19168,
+    "b_input": 28646,
+    "b_output": 22268
+  },
+  "cost": {
+    "agentA": 0.21526750000000003,
+    "agentB": 0.0176577,
+    "total": 0.23292520000000003
+  },
+  "elapsed_seconds": 256.04
+}

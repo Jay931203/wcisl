@@ -1,0 +1,2244 @@
+{
+  "experiment": "KI-1 Bandwidth Constraint",
+  "timestamp": "2026-03-19T17:43:13.157Z",
+  "model": "gpt-4o",
+  "temperature": 0,
+  "problemCount": 15,
+  "bandwidths": [
+    {
+      "name": "High",
+      "maxTokens": 300
+    },
+    {
+      "name": "Medium",
+      "maxTokens": 100
+    },
+    {
+      "name": "Low",
+      "maxTokens": 40
+    }
+  ],
+  "summary": [
+    {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "NoContext",
+      "accuracy": "73.3%",
+      "correct": 11,
+      "total": 15
+    },
+    {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "OneWay",
+      "accuracy": "60.0%",
+      "correct": 9,
+      "total": 15
+    },
+    {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "Mutual",
+      "accuracy": "60.0%",
+      "correct": 9,
+      "total": 15
+    },
+    {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "NoContext",
+      "accuracy": "46.7%",
+      "correct": 7,
+      "total": 15
+    },
+    {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "OneWay",
+      "accuracy": "60.0%",
+      "correct": 9,
+      "total": 15
+    },
+    {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "Mutual",
+      "accuracy": "60.0%",
+      "correct": 9,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "NoContext",
+      "accuracy": "13.3%",
+      "correct": 2,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "OneWay",
+      "accuracy": "33.3%",
+      "correct": 5,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Mutual",
+      "accuracy": "60.0%",
+      "correct": 9,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R1",
+      "accuracy": "13.3%",
+      "correct": 2,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R2",
+      "accuracy": "46.7%",
+      "correct": 7,
+      "total": 15
+    },
+    {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R3",
+      "accuracy": "66.7%",
+      "correct": 10,
+      "total": 15
+    }
+  ],
+  "details": {
+    "High_NoContext": {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "NoContext",
+      "accuracy": 0.7333333333333333,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "The data provided offers a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated $10 million in revenue.\n   - Cost of Goods Sold (COGS) is $6 million, resulting in a gross profit of $4 million.\n   - Selling, General, and Administrative Expenses (SGA) are $1.5 million, leading to an operating profit of $2.5 million.\n   - After accounting for interest expenses of $300,000, the pre-tax profit is $2.2 million.\n   - With a tax rate of 25%, the tax expense is $550,000, resulting in a net income of $1.65 million.\n\n2. **Profit Margins:**\n   - Gross Profit Margin: 40% ($4M/$10M)\n   - Operating Profit Margin: 25% ($2.5M/$10M)\n   - Net Profit Margin: 16.5% ($1.65M/$10M)\n\n3. **Financial Position:**\n   - The company has total assets of $20 million and equity of $12 million.\n   - This implies liabilities of $8 million ($20M - $12M).\n\n4. **Return on Equity (ROE):**\n   - ROE is calculated as Net Income divided by Equity, which is approximately 13.75% ($1.65M/$12M).\n\n5. **",
+          "bRaw": "-999",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "The data provided outlines a snapshot of a company's financial position, focusing on its assets and liabilities. Here's a summary of the key findings:\n\n1. **Assets:**\n   - **Current Assets:**\n     - Cash: $300K\n     - Accounts Receivable (AR): $600K\n     - Inventory: $900K\n     - Prepaid Expenses: $100K\n     - Total Current Assets: $1.9M\n\n   - **Non-Current Assets:**\n     - Equipment: $5M\n     - Total Assets: $6.9M\n\n2. **Liabilities:**\n   - **Current Liabilities:**\n     - Accounts Payable (AP): $400K\n     - Accrued Liabilities: $200K\n     - Total Current Liabilities: $600K\n\n   - **Long-Term Liabilities:**\n     - Long-Term Debt: $3M\n     - Total Liabilities: $3.6M\n\n3. **Net Position:**\n   - The company has a total asset base of $6.9M against total liabilities of $3.6M, indicating a positive net asset position of $3.3M.\n\n4. **Liquidity:**\n   - The current ratio, calculated as total current assets divided by total current liabilities, is approximately 3.17 ($1.9M / $600K). This suggests a strong liquidity position, as the company has more than three times the current",
+          "bRaw": "3.1666666666666665",
+          "aTokens": 300,
+          "bParsed": 3.1666666666666665,
+          "correct": true
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Based on the provided data, here is a summary of the key financial metrics:\n\n1. **Revenue**: The total revenue can be calculated by multiplying the number of units sold by the price per unit. With 50,000 units sold at $40 each, the total revenue is $2,000,000.\n\n2. **Variable Costs**: The variable cost per unit is $25. Therefore, the total variable costs for 50,000 units amount to $1,250,000.\n\n3. **Contribution Margin**: This is calculated by subtracting the total variable costs from the total revenue. The contribution margin is $2,000,000 - $1,250,000 = $750,000.\n\n4. **Fixed Costs**: The fixed costs are given as $500,000.\n\n5. **Operating Income**: This is determined by subtracting the fixed costs from the contribution margin. The operating income is $750,000 - $500,000 = $250,000.\n\n6. **Interest Expense**: The interest expense is $100,000.\n\n7. **Earnings Before Tax (EBT)**: This is calculated by subtracting the interest expense from the operating income. The EBT is $250,000 - $100,000 = $150,000.\n\n8. **Tax**: The tax rate is 30%. Therefore, the tax expense is 30% of $150,000, which equals $45,000.",
+          "bRaw": "5.25",
+          "aTokens": 300,
+          "bParsed": 5.25,
+          "correct": true
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "The data provided outlines the financial activities of a business over a certain period. Here are the key findings:\n\n1. **Cash Flow Overview**:\n   - The business started with a beginning cash balance of $500,000.\n   - Total cash inflows amounted to $3.5 million, consisting of $3 million from sales receipts and $500,000 from a loan.\n\n2. **Expenditures**:\n   - The total cash outflows were $3.27 million, broken down as follows:\n     - Cost payments: $2 million\n     - Salaries: $400,000\n     - Rent: $120,000\n     - Equipment purchase: $300,000\n     - Loan repayment: $200,000\n     - Taxes: $150,000\n     - Dividends: $100,000\n\n3. **Net Cash Flow**:\n   - The net cash flow, calculated as total inflows minus total outflows, is $230,000 ($3.5 million inflows - $3.27 million outflows).\n\n4. **Ending Cash Balance**:\n   - The ending cash balance is $730,000, which is the sum of the beginning cash balance and the net cash flow ($500,000 + $230,000).\n\n5. **Financial Health Indicators**:\n   - The business has a positive net cash flow, indicating effective cash management and the ability to cover its expenses and investments.\n   - The loan inflow",
+          "bRaw": "730000",
+          "aTokens": 300,
+          "bParsed": 730000,
+          "correct": true
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "The data provides a snapshot of a company's financial health and performance. Here are the key findings:\n\n1. **Profitability**: The company has a net income of $500K, indicating it is profitable. The EBITDA of $1.2M suggests strong earnings before interest, taxes, depreciation, and amortization, which is a positive sign of operational efficiency.\n\n2. **Leverage and Solvency**: With total assets of $10M and equity of $6M, the company has a debt of $4M. This results in a debt-to-equity ratio of 0.67, which is relatively moderate, indicating a balanced approach to leveraging debt for growth without overburdening the company.\n\n3. **Interest Coverage**: The interest expense is $200K, and with an EBITDA of $1.2M, the interest coverage ratio is 6. This suggests the company comfortably covers its interest obligations, reducing the risk of financial distress.\n\n4. **Market Valuation**: The market capitalization is $15M, which is 1.5 times the total assets, indicating that the market values the company higher than its book value. This could reflect investor confidence in the company's future growth prospects.\n\nOverall, the company appears to be in a stable financial position with a good balance between profitability, leverage, and market valuation. The moderate debt levels and strong interest coverage ratio further enhance its financial stability.",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "The data provided outlines key metrics for inventory management and demand forecasting. Here's a summary of the most notable findings:\n\n1. **Daily Demand and Variability**: The average daily demand is 200 units, with a standard deviation of 40 units. This indicates a moderate level of variability in daily demand, which should be considered when planning inventory levels to avoid stockouts or overstocking.\n\n2. **Lead Time**: The lead time for replenishing inventory is 5 days. This is the time it takes from placing an order to receiving the goods. It is crucial to factor this into reorder point calculations to ensure that inventory is replenished before it runs out.\n\n3. **Unit Cost and Holding Rate**: Each unit costs $15, and the holding rate is 20% per year. The holding rate represents the cost of storing inventory, including warehousing, insurance, and opportunity costs. This rate is used to calculate the annual holding cost per unit, which is $3 (20% of $15).\n\n4. **Order Cost**: The cost to place an order is $100. This fixed cost is incurred every time an order is placed, regardless of the order size. It is an important factor in determining the optimal order quantity to minimize total inventory costs.\n\n5. **Service Level and Safety Stock**: The desired service level is 95%, corresponding to a z-score of 1.645. This indicates a high level of service, aiming to meet customer demand",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Based on the provided data, here is a summary of the key findings regarding the performance and cost-effectiveness of the three machines:\n\n1. **Production Rate and Cost Efficiency:**\n   - **Machine A** produces 100 units per hour at a cost of $50 per hour. It has a defect rate of 2%.\n   - **Machine B** produces 80 units per hour at a cost of $40 per hour, with a defect rate of 1%.\n   - **Machine C** produces 120 units per hour at a cost of $60 per hour, with a defect rate of 3%.\n\n2. **Total Production Capacity:**\n   - To meet the order of 10,000 units within the 100-hour deadline:\n     - Machine A would need 100 hours to produce 10,000 units (100 units/hour * 100 hours).\n     - Machine B would need 125 hours to produce 10,000 units (80 units/hour * 125 hours), which exceeds the deadline.\n     - Machine C would need approximately 83.33 hours to produce 10,000 units (120 units/hour * 83.33 hours).\n\n3. **Defect Impact:**\n   - Machine A, with a 2% defect rate, would produce 200 defective units out of 10,000.\n   - Machine B, with a 1% defect rate, would produce 100 defective units out of 10,000.\n   - Machine C",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 300,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "The data provided outlines a service operation with the following key metrics:\n\n1. **Customer Arrival Rate**: The system receives 30 customers per hour.\n\n2. **Service Time and Capacity**: Each server can handle a customer in 4 minutes, equating to a capacity of 15 customers per hour per server.\n\n3. **Number of Servers**: There are 3 servers available to handle the incoming customers.\n\n4. **Total System Capacity**: With 3 servers, the total capacity of the system is 45 customers per hour (15 customers per server x 3 servers).\n\n5. **Hourly Wage**: Each server is paid $20 per hour.\n\n6. **Maximum Wait Time**: The maximum acceptable wait time for customers is 5 minutes.\n\n**Key Findings**:\n\n- **Capacity vs. Demand**: The system's total capacity (45 customers per hour) exceeds the customer arrival rate (30 customers per hour), indicating that the system is well-equipped to handle the current demand without overloading.\n\n- **Service Efficiency**: Given the service time of 4 minutes per customer, the servers are efficiently utilized, as they can collectively manage the incoming flow of customers without delays.\n\n- **Wait Time**: With a capacity that exceeds demand, the likelihood of customers experiencing a wait time exceeding the maximum acceptable limit of 5 minutes is low. This suggests a high level of service efficiency and customer satisfaction.\n\n- **Labor Costs**: The hourly wage for servers is $",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 300,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "The data provided offers insights into the financial and progress status of a project. Here are the key findings:\n\n1. **Budget and Duration**: The project has a total budget of $1 million and is planned to be completed over a 12-month period.\n\n2. **Earned Value (EV)**: The project has achieved an earned value of $600,000. This indicates the value of work actually completed to date.\n\n3. **Actual Cost (AC)**: The actual cost incurred so far is $700,000. This is the amount spent on the project to achieve the current level of completion.\n\n4. **Planned Value (PV)**: The planned value is $650,000, which represents the expected value of work that should have been completed by this point in the project timeline.\n\n5. **Cost Performance Index (CPI)**: The CPI is calculated as EV/AC, which is $600,000/$700,000 = 0.857. A CPI of less than 1 indicates that the project is over budget, as the cost of work performed is higher than planned.\n\n6. **Schedule Performance Index (SPI)**: The SPI is calculated as EV/PV, which is $600,000/$650,000 = 0.923. An SPI of less than 1 suggests that the project is behind schedule, as less work has been completed than planned for this point in time.\n\nOverall, the project is currently over budget and behind schedule.",
+          "bRaw": "0.857",
+          "aTokens": 300,
+          "bParsed": 0.857,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "The data provided outlines key metrics for inventory management and cost analysis. Here's a summary of the findings:\n\n1. **Annual Demand**: The demand for the product is 12,000 units per year. This indicates a relatively high turnover rate, suggesting the product is in consistent demand.\n\n2. **Order Cost**: The cost to place an order is $75. This fixed cost per order will influence the optimal order quantity, as higher order costs typically encourage larger, less frequent orders to minimize total ordering costs.\n\n3. **Holding Cost**: The holding cost is $4 per unit per year. This cost reflects the expense of storing inventory, including warehousing, insurance, and opportunity costs. Lower holding costs generally allow for larger inventory levels without significantly increasing total costs.\n\n4. **Unit Price**: Each unit is priced at $25. This price point will affect revenue calculations and profit margins. It is also a critical factor in determining the economic order quantity (EOQ) and overall inventory strategy.\n\n5. **Lead Time**: The lead time for receiving orders is 7 days. This metric is crucial for inventory planning, as it affects reorder points and safety stock levels. A shorter lead time can reduce the need for high safety stock levels, while a longer lead time might necessitate more inventory on hand to prevent stockouts.\n\nOverall, the data suggests a need for efficient inventory management to balance order and holding costs while meeting demand. The relatively low holding cost and moderate order cost imply",
+          "bRaw": "300",
+          "aTokens": 300,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "The data provided includes several physical parameters that can be used to calculate various forms of energy and forces in a mechanical system. Here are the key findings based on the given data:\n\n1. **Kinetic Energy**: \n   - The kinetic energy (KE) of an object is calculated using the formula \\( KE = \\frac{1}{2}mv^2 \\).\n   - With a mass (m) of 2 kg and a velocity (v) of 10 m/s, the kinetic energy is:\n     \\[\n     KE = \\frac{1}{2} \\times 2 \\, \\text{kg} \\times (10 \\, \\text{m/s})^2 = 100 \\, \\text{Joules}\n     \\]\n\n2. **Potential Energy**:\n   - The gravitational potential energy (PE) is calculated using the formula \\( PE = mgh \\).\n   - With a mass (m) of 2 kg, gravity (g) of 9.81 m/s², and height (h) of 5 m, the potential energy is:\n     \\[\n     PE = 2 \\, \\text{kg} \\times 9.81 \\, \\text{m/s}^2 \\times 5 \\, \\text{m} = 98.1 \\, \\text{Joules}\n     \\]\n\n3. **Spring Potential Energy**:\n   - The potential energy stored in",
+          "bRaw": "100",
+          "aTokens": 300,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "The data provided pertains to an electrical circuit with the following key parameters:\n\n1. **Voltage**: The circuit operates at a voltage of 240 volts. This is a standard voltage level for many residential and commercial electrical systems, indicating that the circuit is likely designed for typical usage scenarios.\n\n2. **Resistance**: The resistance in the circuit is 60 ohms. This resistance level will influence the current flow through the circuit according to Ohm's Law (I = V/R), where I is the current, V is the voltage, and R is the resistance.\n\n3. **Capacitance**: The circuit includes a capacitor with a capacitance of 100 microfarads (μF). This component will affect the circuit's ability to store and release electrical energy, impacting the overall impedance and phase angle between voltage and current.\n\n4. **Frequency**: The circuit operates at a frequency of 50 hertz (Hz), which is a common frequency for AC power systems in many parts of the world, including Europe, Asia, and Africa. This frequency will influence the reactance of the capacitor and the overall impedance of the circuit.\n\n5. **Power Factor**: The power factor is 0.9, which indicates that the circuit is operating efficiently with minimal reactive power. A power factor close to 1 is desirable as it means that most of the power is being effectively converted into useful work, with less energy lost in the form of reactive power.\n\nOverall, the circuit appears",
+          "bRaw": "4",
+          "aTokens": 300,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "The data provides an overview of the population dynamics for a given area with a population of 100,000. Here are the key findings:\n\n1. **Birth Rate**: The birth rate is 12 per 1,000 people. This translates to 1,200 births per year in the population of 100,000.\n\n2. **Death Rate**: The death rate is 8 per 1,000 people, resulting in 800 deaths per year.\n\n3. **Natural Increase**: The natural increase, which is the difference between the birth rate and the death rate, is 4 per 1,000 people. This results in a net increase of 400 people per year due to natural population growth.\n\n4. **Immigration and Emigration**: The area experiences a net positive migration. With 500 people immigrating and 200 people emigrating annually, there is a net gain of 300 people per year due to migration.\n\n5. **Overall Population Growth**: Combining natural increase and net migration, the total population growth is 700 people per year. This indicates a growth rate of 0.7% annually.\n\nIn summary, the population is experiencing a modest growth driven by both natural increase and positive net migration. The birth rate exceeds the death rate, contributing to natural growth, while immigration further boosts the population size.",
+          "bRaw": "700",
+          "aTokens": 300,
+          "bParsed": 700,
+          "correct": true
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "The data provided outlines the dynamics of a tank system with a capacity of 1000 liters. Here are the key findings:\n\n1. **Tank Capacity and Initial Level**: The tank has a total capacity of 1000 liters, and it starts with an initial water level of 400 liters. This means the tank is initially at 40% of its full capacity.\n\n2. **Inflow and Outflow Rates**: The inflow rate is 5 liters per minute, while the outflow rate is 3 liters per minute. This results in a net inflow of 2 liters per minute (5 L/min inflow - 3 L/min outflow).\n\n3. **Net Change in Water Level**: Given the net inflow of 2 liters per minute, the water level in the tank will increase over time. Specifically, the water level will rise by 2 liters every minute.\n\n4. **Time to Fill the Tank**: Starting from an initial level of 400 liters, it will take 300 minutes (or 5 hours) to fill the remaining 600 liters to reach the tank's full capacity of 1000 liters. This is calculated by dividing the remaining capacity (600 liters) by the net inflow rate (2 liters per minute).\n\nOverall, the tank system is in a state of gradual filling due to the positive net inflow. If the inflow and outflow rates remain constant, the tank will reach its full capacity in 5",
+          "bRaw": "300",
+          "aTokens": 300,
+          "bParsed": 300,
+          "correct": true
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "The data provided outlines the key metrics for a 500 km journey, focusing on fuel consumption, cost, and toll expenses. Here is a summary of the findings:\n\n1. **Distance**: The total distance of the journey is 500 kilometers.\n\n2. **Fuel Consumption**: The vehicle has a fuel consumption rate of 8 liters per 100 kilometers. For a 500 km journey, the total fuel required would be:\n   \\[\n   \\text{Total Fuel} = \\left(\\frac{8 \\text{ L}}{100 \\text{ km}}\\right) \\times 500 \\text{ km} = 40 \\text{ L}\n   \\]\n\n3. **Fuel Cost**: With a fuel price of $1.50 per liter, the total cost for fuel would be:\n   \\[\n   \\text{Fuel Cost} = 40 \\text{ L} \\times \\$1.50/\\text{L} = \\$60\n   \\]\n\n4. **Toll Costs**: The journey incurs a toll cost of $30.\n\n5. **Total Cost**: Combining both fuel and toll costs, the total cost for the journey is:\n   \\[\n   \\text{Total Cost} = \\$60 + \\$30 = \\$90\n   \\]\n\nIn summary, for a 500 km journey, the vehicle will consume 40 liters of fuel, costing $60, and incur an additional $30 in tolls, leading to",
+          "bRaw": "60",
+          "aTokens": 300,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "High_OneWay": {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "OneWay",
+      "accuracy": 0.6,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "To compute the financial profitability metric, specifically the Net Profit Margin, you will need the following data points:\n\n1. Revenue: $10M\n2. COGS (Cost of Goods Sold): $6M\n3. SGA (Selling, General and Administrative Expenses): $1.5M\n4. Interest: $300K\n5. Tax Rate: 25%\n\nThese data points will allow you to calculate the Net Income, which is necessary for determining the Net Profit Margin.",
+          "bRaw": "-999",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "To compute a liquidity metric such as the current ratio, you need the current assets and current liabilities. Here are the relevant data points:\n\n- Current Assets:\n  - Cash: $300K\n  - Accounts Receivable (AR): $600K\n  - Inventory: $900K\n  - Prepaid Expenses: $100K\n\n- Current Liabilities:\n  - Accounts Payable (AP): $400K\n  - Accrued Liabilities: $200K\n\nThese figures will help you calculate the current ratio or other liquidity metrics.",
+          "bRaw": "2.5",
+          "aTokens": 300,
+          "bParsed": 2.5,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "To compute the profitability margin, you need the following data points:\n\n1. Units Sold: 50,000\n2. Selling Price per Unit: $40\n3. Variable Cost per Unit: $25\n4. Fixed Costs: $500,000\n5. Interest Expense: $100,000\n6. Tax Rate: 30%\n\nThese will help you calculate the net profit and subsequently the profitability margin.",
+          "bRaw": "To compute the Net Profit Margin (%), we follow these steps:\n\n1. Calculate Revenue:\n   \\[\n   \\text{Revenue} = \\text{Units Sold} \\times \\text{Selling Price per Unit} = 50,000 \\",
+          "aTokens": 300,
+          "bParsed": 1,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "To compute the cash flow, you will need the following data points:\n\n- Begin Cash: $500,000\n- Sales Receipts: $3,000,000\n- Cost Payments: $2,000,000\n- Salary: $400,000\n- Rent: $120,000\n- Equipment Purchase: $300,000\n- Loan Inflow: $500,000\n- Loan Repayment: $200,000\n- Tax Paid: $150,000\n- Dividends: $100,000",
+          "bRaw": "730000",
+          "aTokens": 300,
+          "bParsed": 730000,
+          "correct": true
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "To compute the return on equity (ROE), you will need the following data points:\n\n- Net Income: $500,000\n- Equity: $6,000,000\n\nROE = (Net Income / Equity) * 100\n\nThese figures will allow you to calculate the ROE.",
+          "bRaw": "-999",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "To compute the inventory management metric, specifically the reorder point, you will need the following data points:\n\n1. Daily Demand = 200 units\n2. Demand Standard Deviation (DemandStd) = 40 units\n3. Lead Time = 5 days\n4. Service Level = 95% (z = 1.645)\n\nThese data points will help you calculate the reorder point using the formula:\n\nReorder Point = (Daily Demand * Lead Time) + (z * DemandStd * √Lead Time)",
+          "bRaw": "1164.9",
+          "aTokens": 300,
+          "bParsed": 1164.9,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "To compute the manufacturing cost metric, you will need the following data points:\n\n1. Machine A:\n   - Production Rate: 100 units/hr\n   - Operating Cost: $50/hr\n   - Defect Rate: 2%\n\n2. Machine B:\n   - Production Rate: 80 units/hr\n   - Operating Cost: $40/hr\n   - Defect Rate: 1%\n\n3. Machine C:\n   - Production Rate: 120 units/hr\n   - Operating Cost: $60/hr\n   - Defect Rate: 3%\n\n4. Order Requirement: 10,000 units\n5. Deadline: 100 hours\n\nThese data points will help you calculate the total manufacturing cost, taking into account the production rate, operating cost, defect rate, and the deadline for the order.",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 300,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "To compute a queueing theory metric, you will need the following data points:\n\n- Arrival rate (\\(\\lambda\\)): 30 customers per hour\n- Service rate (\\(\\mu\\)): 15 customers per hour per server\n- Number of servers (\\(s\\)): 3\n\nThese are the key parameters needed for calculating metrics such as the average number of customers in the system, average time a customer spends in the system, and the probability of having to wait in line.",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 300,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "To compute the project management metric, here are the relevant data points:\n\n- Earned Value (EV): $600,000\n- Actual Cost (AC): $700,000\n- Planned Value (PV): $650,000",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 300,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "To compute the Economic Order Quantity (EOQ), which is an inventory optimization metric, you will need the following data points:\n\n- Demand (D): 12,000 units per year\n- Order Cost (S): $75 per order\n- Holding Cost (H): $4 per unit per year\n\nThese are the key inputs required for the EOQ formula:\n\n\\[ EOQ = \\sqrt{\\frac{2DS}{H}} \\]",
+          "bRaw": "300",
+          "aTokens": 300,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "To compute the kinetic energy, you will need the mass and velocity:\n\n- Mass (m) = 2 kg\n- Velocity (v) = 10 m/s\n\nTo compute the potential energy due to gravity, you will need the mass, gravity, and height:\n\n- Mass (m) = 2 kg\n- Gravity (g) = 9.81 m/s²\n- Height (h) = 5 m\n\nTo compute the potential energy stored in a spring, you will need the spring constant:\n\n- Spring constant (k) = 500 N/m\n\nThese data points should help you calculate the respective energy metrics.",
+          "bRaw": "100",
+          "aTokens": 300,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "To compute the electrical circuit metric, here are the most relevant data points:\n\n- Voltage (V): 240 V\n- Resistance (R): 60 Ω\n- Capacitance (C): 100 μF\n- Frequency (f): 50 Hz\n- Power Factor (pf): 0.9",
+          "bRaw": "4",
+          "aTokens": 300,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "To compute the demographics metric, you can use the following data points:\n\n- Population: 100,000\n- Birth Rate: 12 per 1,000 people\n- Death Rate: 8 per 1,000 people\n- Immigration: 500 people per year\n- Emigration: 200 people per year\n\nThese figures will help you calculate the net population change and other related metrics.",
+          "bRaw": "700",
+          "aTokens": 300,
+          "bParsed": 700,
+          "correct": true
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "To compute a fluid dynamics metric, the most relevant data points from the provided information are:\n\n- Inflow rate: 5 L/min\n- Outflow rate: 3 L/min\n- Initial fluid level: 400 L\n\nThese data points will help in calculating the net change in fluid level over time and other related metrics.",
+          "bRaw": "-999",
+          "aTokens": 300,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "To compute the transportation cost metric, you can use the following data points:\n\n1. **Distance**: 500 km\n2. **Fuel Rate**: 8 L/100 km\n3. **Fuel Price**: $1.50/L\n4. **Toll**: $30\n\nThese data points will allow you to calculate the total fuel cost and add the toll to determine the overall transportation cost.",
+          "bRaw": "60.0",
+          "aTokens": 300,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "High_Mutual": {
+      "bandwidth": "High",
+      "maxTokens": 300,
+      "condition": "Mutual",
+      "accuracy": 0.6,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "Revenue: $10M, COGS: $6M, SGA: $1.5M, Interest: $300K, Tax rate: 25%, Shares outstanding: 1M",
+          "bRaw": "2.1",
+          "aTokens": 300,
+          "bParsed": 2.1,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "Cash=$300K, AR=$600K, Inventory=$900K, Prepaid=$100K, AP=$400K, Accrued=$200K",
+          "bRaw": "3.5",
+          "aTokens": 300,
+          "bParsed": 3.5,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Units: 50000, Price: $40, VarCost: $25, FixedCost: $500000, Interest: $100000, Tax rate: 30%",
+          "bRaw": "10",
+          "aTokens": 300,
+          "bParsed": 10,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "BeginCash=$500K, SalesReceipts=$3M, CostPayments=$2M, Salary=$400K, Rent=$120K, EquipPurchase=$300K, LoanIn=$500K, LoanRepay=$200K, TaxPaid=$150K, Dividends=$100K",
+          "bRaw": "1230000",
+          "aTokens": 300,
+          "bParsed": 1230000,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "NetIncome=$500K, TotalAssets=$10M",
+          "bRaw": "0.05",
+          "aTokens": 300,
+          "bParsed": 0.05,
+          "correct": true
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "DailyDemand=200, DemandStd=40, LeadTime=5, z-value=1.645",
+          "bRaw": "1164.6",
+          "aTokens": 300,
+          "bParsed": 1164.6,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Rate: 100 units/hr  \nHourlyCost: $50/hr  \nDefectRate: 2%  \nOrder: 10000 units",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 300,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "Arrival rate: 30/hr  \nService rate per server: 15/hr  \nNumber of servers: 3",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 300,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "EarnedValue: $600,000  \nActualCost: $700,000",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 300,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "Annual Demand: 12000  \nOrderCost: $75  \nHoldingCost: $4/unit/yr",
+          "bRaw": "300",
+          "aTokens": 300,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "Mass: 2kg, Velocity: 10m/s",
+          "bRaw": "100",
+          "aTokens": 300,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "Voltage: 240V, Resistance: 60Ω",
+          "bRaw": "4",
+          "aTokens": 300,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "Population: 100000  \nBirthRate: 0.012  \nDeathRate: 0.008  \nImmigration: 500  \nEmigration: 200",
+          "bRaw": "600",
+          "aTokens": 300,
+          "bParsed": 600,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "TankVolume=1000L, InitialLevel=400L, Inflow=5L/min, Outflow=3L/min",
+          "bRaw": "300",
+          "aTokens": 300,
+          "bParsed": 300,
+          "correct": true
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "FuelCost = 60",
+          "bRaw": "60",
+          "aTokens": 300,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "Medium_NoContext": {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "NoContext",
+      "accuracy": 0.4666666666666667,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "The data provided offers a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated $10 million in revenue.\n   - Cost of Goods Sold (COGS) is $6 million, resulting in a gross profit of $4 million.\n   - Selling, General, and Administrative Expenses (SGA) are $1.5 million, leading to an operating profit of $2.5 million.\n   - After",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "The data provided outlines a snapshot of a company's financial position, focusing on its assets and liabilities. Here's a summary of the key findings:\n\n1. **Assets:**\n   - **Current Assets:**\n     - Cash: $300K\n     - Accounts Receivable (AR): $600K\n     - Inventory: $900K\n     - Prepaid Expenses: $100K\n     - Total Current Assets: $1.9M\n\n   - **Non-Current Assets:**",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Based on the provided data, here is a summary of the key financial metrics:\n\n1. **Revenue**: The total revenue can be calculated by multiplying the number of units sold by the price per unit. With 50,000 units sold at $40 each, the total revenue is $2,000,000.\n\n2. **Variable Costs**: The variable cost per unit is $25. Therefore, the total variable costs for 50,000 units amount to $1,250,000",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "The data provided outlines the financial activities of a business over a certain period. Here are the key findings:\n\n1. **Cash Flow Overview**:\n   - The business started with a beginning cash balance of $500,000.\n   - Total cash inflows amounted to $3.5 million, consisting of $3 million from sales receipts and $500,000 from a loan.\n\n2. **Expenditures**:\n   - The total cash outflows were $3.27 million, broken down",
+          "bRaw": "730000",
+          "aTokens": 100,
+          "bParsed": 730000,
+          "correct": true
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "The data provided offers a snapshot of a company's financial health and performance. Here are the key findings:\n\n1. **Profitability**: The company has a net income of $500K, indicating it is profitable. The EBITDA of $1.2M suggests strong operational performance before accounting for interest, taxes, depreciation, and amortization.\n\n2. **Leverage and Solvency**: \n   - The company has total assets of $10M and equity of $6M, resulting in",
+          "bRaw": "0.05",
+          "aTokens": 100,
+          "bParsed": 0.05,
+          "correct": true
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "The data provided outlines key metrics for inventory management and demand forecasting. Here's a summary of the most notable findings:\n\n1. **Daily Demand and Variability**: The average daily demand is 200 units, with a standard deviation of 40 units. This indicates a moderate level of variability in daily demand, which should be considered when planning inventory levels to avoid stockouts or overstocking.\n\n2. **Lead Time**: The lead time for replenishing inventory is 5 days. This is the",
+          "bRaw": "1164.5",
+          "aTokens": 100,
+          "bParsed": 1164.5,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Based on the provided data, here is a summary of the key findings regarding the performance and cost-effectiveness of the three machines:\n\n1. **Production Rate:**\n   - Machine A produces 100 units per hour.\n   - Machine B produces 80 units per hour.\n   - Machine C produces 120 units per hour.\n\n2. **Operational Cost:**\n   - Machine A costs $50 per hour to operate.\n   - Machine B costs $40 per hour to operate.\n   - Machine",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 100,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "The data provided outlines a service operation with the following key metrics:\n\n1. **Customer Arrival Rate**: The system receives 30 customers per hour.\n\n2. **Service Time and Capacity**: Each server can handle a customer in 4 minutes, equating to a capacity of 15 customers per hour per server.\n\n3. **Number of Servers**: There are 3 servers available to handle the incoming customers.\n\n4. **Total System Capacity**: With 3 servers, the total capacity",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 100,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "The data provided offers insights into the financial and progress status of a project. Here are the key findings:\n\n1. **Budget and Duration**: The project has a total budget of $1 million and is planned to last for 12 months.\n\n2. **Earned Value (EV)**: The Earned Value is $600,000. This metric indicates the value of work actually completed to date, based on the budgeted cost of that work.\n\n3. **Actual Cost (AC)**:",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "The data provided outlines key metrics for inventory management and cost analysis. Here's a summary of the findings:\n\n1. **Annual Demand**: The demand is 12,000 units per year, indicating a consistent need for the product throughout the year.\n\n2. **Order Cost**: The cost to place an order is $75. This fixed cost is incurred every time an order is placed, regardless of the order size.\n\n3. **Holding Cost**: The holding cost is $4 per unit per",
+          "bRaw": "300",
+          "aTokens": 100,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "The data provided includes several physical parameters that can be used to calculate various forms of energy and forces in a mechanical system. Here are the key findings based on the given data:\n\n1. **Kinetic Energy**: \n   - The kinetic energy (KE) of an object is calculated using the formula \\( KE = \\frac{1}{2}mv^2 \\).\n   - With a mass (m) of 2 kg and a velocity (v) of 10 m/s, the",
+          "bRaw": "100",
+          "aTokens": 100,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "The data provided pertains to an electrical circuit with the following key parameters:\n\n1. **Voltage**: The circuit operates at a voltage of 240 volts. This is a standard voltage level for many residential and commercial electrical systems, indicating that the circuit is likely designed for typical usage scenarios.\n\n2. **Resistance**: The resistance in the circuit is 60 ohms. This resistance level will influence the current flow through the circuit according to Ohm's Law (I = V/R), where I is",
+          "bRaw": "4",
+          "aTokens": 100,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "The data provides an overview of the population dynamics for a given area with a population of 100,000. Here are the key findings:\n\n1. **Birth Rate**: The birth rate is 12 per 1,000 people. This translates to 1,200 births per year in the population of 100,000.\n\n2. **Death Rate**: The death rate is 8 per 1,000 people, resulting in 800 deaths per year.\n\n3. **Natural Increase",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "The data provided outlines the dynamics of a tank with a capacity of 1000 liters. Here are the key findings:\n\n1. **Tank Capacity and Initial Level**: The tank has a total capacity of 1000 liters, and it starts with an initial water level of 400 liters. This means the tank is initially at 40% of its full capacity.\n\n2. **Inflow and Outflow Rates**: The tank receives water at an inflow rate of 5 liters per minute",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "The data provided outlines the key metrics for a 500 km journey, focusing on fuel consumption, fuel cost, and toll expenses. Here are the key findings:\n\n1. **Distance and Fuel Consumption**:\n   - The total distance of the journey is 500 kilometers.\n   - The vehicle's fuel consumption rate is 8 liters per 100 kilometers.\n\n2. **Fuel Usage**:\n   - For a 500 km journey, the total fuel required can be calculated as follows:\n     \\[",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        }
+      ]
+    },
+    "Medium_OneWay": {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "OneWay",
+      "accuracy": 0.6,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "To compute the financial profitability metric, specifically the Net Profit Margin, you will need the following data points:\n\n1. Revenue: $10M\n2. COGS (Cost of Goods Sold): $6M\n3. SGA (Selling, General and Administrative Expenses): $1.5M\n4. Interest: $300K\n5. Tax Rate: 25%\n\nThese figures will allow you to calculate the Net Income and subsequently the Net Profit Margin.",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "To compute a liquidity metric such as the current ratio, you need the current assets and current liabilities. Here are the relevant data points:\n\n- Current Assets:\n  - Cash: $300K\n  - Accounts Receivable (AR): $600K\n  - Inventory: $900K\n  - Prepaid Expenses: $100K\n\n- Current Liabilities:\n  - Accounts Payable (AP): $400K\n  - Accrued Liabilities: $200K\n\nThese figures",
+          "bRaw": "2.5",
+          "aTokens": 100,
+          "bParsed": 2.5,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "To compute the profitability margin, you need the following data points:\n\n1. Units Sold: 50,000\n2. Selling Price per Unit: $40\n3. Variable Cost per Unit: $25\n4. Total Fixed Costs: $500,000\n5. Interest Expense: $100,000\n6. Tax Rate: 30%\n\nThese data points will help you calculate the profitability margin by determining the net profit and dividing it by total revenue.",
+          "bRaw": "15.0",
+          "aTokens": 100,
+          "bParsed": 15,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "To compute the cash flow, you can use the following data points:\n\n- Begin Cash: $500,000\n- Sales Receipts: $3,000,000\n- Cost Payments: $2,000,000\n- Salary: $400,000\n- Rent: $120,000\n- Equipment Purchase: $300,000\n- Loan Inflow: $500,000\n- Loan Repayment: $200,000\n- Tax Paid: $150,000",
+          "bRaw": "830000",
+          "aTokens": 100,
+          "bParsed": 830000,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "To compute a return metric, such as Return on Equity (ROE), the most relevant data points are:\n\n- Net Income: $500K\n- Equity: $6M\n\nROE can be calculated using the formula:\n\n\\[ \\text{ROE} = \\left( \\frac{\\text{Net Income}}{\\text{Equity}} \\right) \\times 100 \\]\n\nThese are the precise numbers needed for the calculation.",
+          "bRaw": "-999",
+          "aTokens": 100,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "To compute the inventory management metric, you will need the following data points:\n\n- Daily Demand: 200 units\n- Demand Standard Deviation: 40 units\n- Lead Time: 5 days\n- Service Level: 95% (z = 1.645)\n\nThese data points are essential for calculating metrics such as the reorder point or safety stock.",
+          "bRaw": "1164",
+          "aTokens": 100,
+          "bParsed": 1164,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "To compute the manufacturing cost metric, consider the following data points:\n\n1. **Machine A:**\n   - Production Rate: 100 units/hr\n   - Operating Cost: $50/hr\n   - Defect Rate: 2%\n\n2. **Machine B:**\n   - Production Rate: 80 units/hr\n   - Operating Cost: $40/hr\n   - Defect Rate: 1%\n\n3. **Machine C:**\n   - Production Rate: 120 units/hr",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 100,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "To compute a queueing theory metric, you will need the following data points:\n\n- Arrival rate (\\(\\lambda\\)): 30 customers per hour\n- Service rate per server (\\(\\mu\\)): 15 customers per hour\n- Number of servers (\\(s\\)): 3\n\nThese are the key parameters needed for most queueing theory calculations, such as determining the average number of customers in the system, average wait time, or system utilization.",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 100,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "To compute the project management metric, here are the relevant data points:\n\n- Earned Value (EV): $600,000\n- Actual Cost (AC): $700,000\n- Planned Value (PV): $650,000",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 100,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "To compute the Economic Order Quantity (EOQ) for inventory optimization, you will need the following data points:\n\n- Demand (D): 12,000 units per year\n- Order Cost (S): $75 per order\n- Holding Cost (H): $4 per unit per year\n\nThese are the key inputs required for the EOQ formula:\n\n\\[ EOQ = \\sqrt{\\frac{2DS}{H}} \\]\n\nThe Unit Price and Lead Time are not directly needed for the EO",
+          "bRaw": "300",
+          "aTokens": 100,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "To compute the kinetic energy, you will need the mass and velocity:\n\n- Mass (m) = 2 kg\n- Velocity (v) = 10 m/s\n\nTo compute the potential energy due to gravity, you will need the mass, height, and gravity:\n\n- Mass (m) = 2 kg\n- Height (h) = 5 m\n- Gravity (g) = 9.81 m/s²\n\nIf you need to compute the potential energy stored in a",
+          "bRaw": "100",
+          "aTokens": 100,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "To compute the electrical circuit metric, here are the most relevant data points:\n\n- Voltage (V): 240 V\n- Resistance (R): 60 Ω\n- Capacitance (C): 100 μF\n- Frequency (f): 50 Hz\n- Power Factor (PF): 0.9",
+          "bRaw": "4",
+          "aTokens": 100,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "To compute the demographics metric, you can use the following data points:\n\n- Population: 100,000\n- Birth Rate: 12 per 1,000 people\n- Death Rate: 8 per 1,000 people\n- Immigration: 500 people per year\n- Emigration: 200 people per year\n\nThese figures will help you calculate the natural increase and net migration, which are essential for determining population growth or decline.",
+          "bRaw": "700",
+          "aTokens": 100,
+          "bParsed": 700,
+          "correct": true
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "To compute a fluid dynamics metric, you may need the following data points:\n\n1. **Tank Volume**: 1000 liters\n2. **Inflow Rate**: 5 liters per minute\n3. **Outflow Rate**: 3 liters per minute\n4. **Initial Water Level**: 400 liters\n\nThese data points will help you calculate the change in water level over time, the time to fill or empty the tank, or other related metrics.",
+          "bRaw": "300",
+          "aTokens": 100,
+          "bParsed": 300,
+          "correct": true
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "To compute the transportation cost metric, use the following data points:\n\n1. Distance: 500 km\n2. Fuel Rate: 8 L/100 km\n3. Fuel Price: $1.50/L\n4. Toll: $30",
+          "bRaw": "60.0",
+          "aTokens": 100,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "Medium_Mutual": {
+      "bandwidth": "Medium",
+      "maxTokens": 100,
+      "condition": "Mutual",
+      "accuracy": 0.6,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "Revenue=$10M, COGS=$6M, SGA=$1.5M, Interest=$300K, Tax rate=25%, Shares outstanding=1M",
+          "bRaw": "2.1",
+          "aTokens": 100,
+          "bParsed": 2.1,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "Cash=$300K, AR=$600K, Inventory=$900K, Prepaid=$100K, AP=$400K, Accrued=$200K",
+          "bRaw": "2.5",
+          "aTokens": 100,
+          "bParsed": 2.5,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Units: 50000, Price: $40, VarCost: $25, FixedCost: $500000, Interest: $100000, Tax rate: 30%",
+          "bRaw": "10",
+          "aTokens": 100,
+          "bParsed": 10,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "BeginCash=$500K, SalesReceipts=$3M, CostPayments=$2M, Salary=$400K, Rent=$120K, EquipPurchase=$300K, LoanIn=$500K, LoanRepay=$200K, TaxPaid=$150K, Dividends=$100K",
+          "bRaw": "1230000",
+          "aTokens": 100,
+          "bParsed": 1230000,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "NetIncome=$500K, TotalAssets=$10M",
+          "bRaw": "0.05",
+          "aTokens": 100,
+          "bParsed": 0.05,
+          "correct": true
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "DailyDemand: 200  \nDemandStd: 40  \nLeadTime: 5 days  \nz-value: 1.645",
+          "bRaw": "1164.6",
+          "aTokens": 100,
+          "bParsed": 1164.6,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Rate: 100 units/hr  \nHourlyCost: $50/hr  \nDefectRate: 2%  \nOrder: 10000 units",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 100,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "Arrival rate: 30/hr  \nService rate per server: 15/hr  \nNumber of servers: 3",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 100,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "EarnedValue: $600,000  \nActualCost: $700,000",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 100,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "Annual Demand: 12000  \nOrderCost: $75  \nHoldingCost: $4/unit/yr",
+          "bRaw": "300",
+          "aTokens": 100,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "Mass: 2kg, Velocity: 10m/s",
+          "bRaw": "100",
+          "aTokens": 100,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "Voltage: 240V, Resistance: 60Ω",
+          "bRaw": "4",
+          "aTokens": 100,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "Population: 100000, BirthRate: 0.012, DeathRate: 0.008, Immigration: 500, Emigration: 200",
+          "bRaw": "1200",
+          "aTokens": 100,
+          "bParsed": 1200,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "TankVolume=1000L, InitialLevel=400L, Inflow=5L/min, Outflow=3L/min",
+          "bRaw": "300",
+          "aTokens": 100,
+          "bParsed": 300,
+          "correct": true
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "FuelCost = 60",
+          "bRaw": "60",
+          "aTokens": 100,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "Low_NoContext": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "NoContext",
+      "accuracy": 0.13333333333333333,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "The data provided offers a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated $10 million in revenue.",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "The data provided outlines a snapshot of a company's financial position, focusing on its assets and liabilities. Here's a summary of the key findings:\n\n1. **Assets:**\n   - **Current Assets:**",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Based on the provided data, here is a summary of the key financial metrics:\n\n1. **Revenue**: The total revenue can be calculated by multiplying the number of units sold by the price per unit",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "The data provided outlines the financial activities of a business over a certain period. Here are the key findings:\n\n1. **Cash Flow Overview**:\n   - The business started with a beginning cash balance of",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "The data provided offers a snapshot of a company's financial health and performance. Here are the key findings:\n\n1. **Profitability**: The company has a net income of $500K, indicating it",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "The data provided outlines key metrics for inventory management and demand forecasting. Here's a summary of the most notable findings:\n\n1. **Daily Demand and Variability**: The average daily demand is 200 units",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Based on the provided data, here is a summary of the key findings regarding the performance and cost-effectiveness of the three machines:\n\n1. **Production Rate and Cost Efficiency:**\n   - **Machine",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 40,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "The data provided outlines a service operation with the following key metrics:\n\n1. **Customer Arrival Rate**: The system receives 30 customers per hour.\n\n2. **Service Time and Capacity**: Each",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 40,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "The data provided offers insights into the financial and progress status of a project. Here are the key findings:\n\n1. **Budget and Duration**: The project has a total budget of $1 million and",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "The data provided outlines key metrics for inventory management and cost analysis. Here's a summary of the findings:\n\n1. **Annual Demand**: The demand is 12,000 units per year, indicating a",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "The data provided includes several physical parameters that can be used to calculate various forms of energy and forces acting on an object. Here are the key findings based on the given data:\n\n1. **Kinetic",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "The data provided pertains to an electrical circuit with the following key parameters:\n\n1. **Voltage**: The circuit operates at a voltage of 240 volts. This is a standard voltage level for many residential",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "The data provides an overview of the population dynamics for a given area with a population of 100,000. Here are the key findings:\n\n1. **Birth Rate**: The birth rate is",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "The data provided outlines the dynamics of a tank with a capacity of 1000 liters. Here are the key findings:\n\n1. **Tank Capacity and Initial Level**: The tank has a total capacity",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "The data provided outlines the key metrics for a 500 km journey, focusing on fuel consumption, fuel cost, and toll expenses. Here is a summary of the findings:\n\n1. **Distance**:",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        }
+      ]
+    },
+    "Low_OneWay": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "OneWay",
+      "accuracy": 0.3333333333333333,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "To compute the financial profitability metric, specifically the Net Profit Margin, you will need the following data points:\n\n1. Revenue: $10,000,000\n2. COGS (Cost of",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "To compute a liquidity metric such as the current ratio, you need the current assets and current liabilities. Here are the relevant data points:\n\n- Current Assets:\n  - Cash: $300K",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "To compute the profitability margin, you will need the following data points:\n\n1. **Units Sold**: 50,000\n2. **Price per Unit**: $40\n3. **",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "To compute the cash flow, you can use the following data points:\n\n- Begin Cash: $500,000\n- Sales Receipts: $3,000,000\n- Cost Payments: $",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "To compute a return metric, such as Return on Equity (ROE), you will need the following data points:\n\n- Net Income: $500,000\n- Equity: $6,000,",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "To compute the inventory management metric, specifically the reorder point, you will need the following data points:\n\n1. Daily Demand = 200 units\n2. Demand Standard Deviation (DemandStd) =",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "To compute the manufacturing cost metric, you will need the following data points:\n\n1. Machine A:\n   - Production Rate: 100 units/hr\n   - Operating Cost: $50/hr",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 40,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "To compute a queueing theory metric, you will need the following data points:\n\n- Arrival rate (\\(\\lambda\\)): 30 customers per hour\n- Service rate per server (\\(\\mu\\)):",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 40,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "To compute the project management metric, here are the relevant data points:\n\n- Earned Value (EV): $600,000\n- Actual Cost (AC): $700,000\n- Planned Value",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 40,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "To compute the Economic Order Quantity (EOQ) for inventory optimization, you will need the following data points:\n\n- Demand (D): 12,000 units per year\n- Order Cost (S",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "To compute the kinetic energy, you will need the mass and velocity:\n\n- Mass = 2 kg\n- Velocity = 10 m/s\n\nTo compute the potential energy due to gravity, you will",
+          "bRaw": "100",
+          "aTokens": 40,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "To compute the electrical circuit metric, here are the most relevant data points:\n\n- Voltage (V): 240 V\n- Resistance (R): 60 Ω\n- Capacitance (C):",
+          "bRaw": "4.0",
+          "aTokens": 40,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "To compute the demographics metric, you can use the following data points:\n\n- Population: 100,000\n- Birth Rate: 12 per 1,000 people\n- Death Rate:",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "To compute a fluid dynamics metric, you may need the following data points:\n\n1. **Tank Volume**: 1000 liters\n2. **Inflow Rate**: 5 liters per minute",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "To compute the transportation cost metric, you can use the following data points:\n\n1. **Distance**: 500 km\n2. **Fuel Rate**: 8 L/100 km\n3",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        }
+      ]
+    },
+    "Low_Mutual": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Mutual",
+      "accuracy": 0.6,
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "aMessage": "Revenue: $10M, COGS: $6M, SGA: $1.5M, Interest: $300K, Tax rate: 25%, Shares outstanding: 1",
+          "bRaw": "1. Calculate Operating Income:  \n   Operating Income = Revenue - COGS - SGA  \n   Operating Income = $10M - $6M - $1.5M = $2.5M\n\n2. Calculate Earnings Before Tax",
+          "aTokens": 40,
+          "bParsed": 1,
+          "correct": false
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "aMessage": "Cash=$300K, AR=$600K, Inventory=$900K, Prepaid=$100K, AP=$400K, Accrued=$200K",
+          "bRaw": "3.5",
+          "aTokens": 40,
+          "bParsed": 3.5,
+          "correct": false
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "aMessage": "Units: 50000, Price: $40, VarCost: $25, FixedCost: $500000, Interest: $100000, Tax rate: 30%",
+          "bRaw": "10",
+          "aTokens": 40,
+          "bParsed": 10,
+          "correct": false
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "aMessage": "BeginCash=$500K, SalesReceipts=$3M, CostPayments=$2M, Salary=$400K, Rent=$120K, EquipPurchase=$300K, LoanIn=$500K",
+          "bRaw": "1480000",
+          "aTokens": 40,
+          "bParsed": 1480000,
+          "correct": false
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "aMessage": "NetIncome=$500K, TotalAssets=$10M",
+          "bRaw": "0.05",
+          "aTokens": 40,
+          "bParsed": 0.05,
+          "correct": true
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "aMessage": "DailyDemand: 200  \nDemandStd: 40  \nLeadTime: 5 days  \nz-value: 1.645",
+          "bRaw": "1164.6",
+          "aTokens": 40,
+          "bParsed": 1164.6,
+          "correct": true
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "aMessage": "Rate: 100 units/hr  \nHourlyCost: $50/hr  \nDefectRate: 2%  \nOrder: 10000 units",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 40,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "aMessage": "Arrival rate: 30/hr  \nService rate per server: 15/hr  \nNumber of servers: 3",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 40,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "aMessage": "EarnedValue: $600,000  \nActualCost: $700,000",
+          "bRaw": "0.8571428571428571",
+          "aTokens": 40,
+          "bParsed": 0.8571428571428571,
+          "correct": true
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "aMessage": "Annual Demand: 12000  \nOrderCost: $75  \nHoldingCost: $4/unit/yr",
+          "bRaw": "300",
+          "aTokens": 40,
+          "bParsed": 300,
+          "correct": false
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "aMessage": "Mass: 2kg, Velocity: 10m/s",
+          "bRaw": "100",
+          "aTokens": 40,
+          "bParsed": 100,
+          "correct": true
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "aMessage": "Voltage: 240V, Resistance: 60Ω",
+          "bRaw": "4",
+          "aTokens": 40,
+          "bParsed": 4,
+          "correct": true
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "aMessage": "Population: 100000  \nBirthRate: 0.012  \nDeathRate: 0.008  \nImmigration: 500  \nEmigration: 200",
+          "bRaw": "600",
+          "aTokens": 40,
+          "bParsed": 600,
+          "correct": false
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "aMessage": "TankVolume=1000L, InitialLevel=400L, Inflow=5L/min, Outflow=3L/min",
+          "bRaw": "300",
+          "aTokens": 40,
+          "bParsed": 300,
+          "correct": true
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "aMessage": "FuelCost = 60",
+          "bRaw": "60",
+          "aTokens": 40,
+          "bParsed": 60,
+          "correct": true
+        }
+      ]
+    },
+    "Low_Progressive_R1": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R1",
+      "accuracy": 0.13333333333333333,
+      "results": [
+        {
+          "round": 1,
+          "aMessage": "The data provided offers a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated $10 million in revenue.",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines a snapshot of a company's financial position, focusing on its assets and liabilities. Here's a summary of the key findings:\n\n1. **Assets:**\n   - **Current Assets:**",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "Based on the provided data, here is a summary of the key financial metrics:\n\n1. **Revenue**: The total revenue can be calculated by multiplying the number of units sold by the price per unit",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines the financial activities of a business over a certain period. Here are the key findings:\n\n1. **Cash Flow Overview**:\n   - The business started with a beginning cash balance of",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided offers a snapshot of a company's financial health and performance. Here are the key findings:\n\n1. **Profitability**: The company has a net income of $500K, indicating it",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines key metrics for inventory management and demand forecasting. Here's a summary of the most notable findings:\n\n1. **Daily Demand and Variability**: The average daily demand is 200 units",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "Based on the provided data, here is a summary of the key findings regarding the performance and cost-effectiveness of the three machines:\n\n1. **Production Rate and Cost Efficiency:**\n   - **Machine",
+          "bRaw": "0.5102040816326531",
+          "aTokens": 40,
+          "bParsed": 0.5102040816326531,
+          "correct": true
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines a service operation with the following key metrics:\n\n1. **Customer Arrival Rate**: The system receives 30 customers per hour.\n\n2. **Service Time and Capacity**: Each",
+          "bRaw": "0.6666666666666666",
+          "aTokens": 40,
+          "bParsed": 0.6666666666666666,
+          "correct": true
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided offers insights into the financial and progress status of a project. Here are the key findings:\n\n1. **Budget and Duration**: The project has a total budget of $1 million and",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines key metrics for inventory management and cost analysis. Here's a summary of the findings:\n\n1. **Annual Demand**: The demand is 12,000 units per year, indicating a",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided includes several physical parameters that can be used to calculate various forms of energy and forces in a mechanical system. Here are the key findings based on the given data:\n\n1. **Kinetic",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided pertains to an electrical circuit with the following key parameters:\n\n1. **Voltage**: The circuit operates at a voltage of 240 volts. This is a standard voltage level for many residential",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provides an overview of the population dynamics for a given area with a population of 100,000. Here are the key findings:\n\n1. **Birth Rate**: The birth rate is",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines the dynamics of a tank system with a capacity of 1000 liters. Here are the key findings:\n\n1. **Tank Capacity and Initial Level**: The tank has a total",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        },
+        {
+          "round": 1,
+          "aMessage": "The data provided outlines the key metrics for a 500 km journey, focusing on fuel consumption, fuel cost, and toll expenses. Here's a summary of the findings:\n\n1. **Distance**: The",
+          "bRaw": "-999",
+          "aTokens": 40,
+          "bParsed": -999,
+          "correct": false
+        }
+      ]
+    },
+    "Low_Progressive_R2": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R2",
+      "accuracy": 0.4666666666666667,
+      "results": [
+        {
+          "round": 2,
+          "aMessage": "To compute EPS:\n\n1. Calculate Net Income:\n   - Net Income = (Revenue - COGS - SGA - Interest) × (1 - TaxRate)\n   - Net Income = ($",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Current Ratio:\n\n1. **Current Assets** = Cash + AR + Inventory + Prepaid\n   - Current Assets = $300K + $600K + $900K + $",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Net Profit Margin (%), follow these steps:\n\n1. **Revenue**:  \n   Revenue = Units × Price  \n   Revenue = 50,000 × $40 = $2,",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Ending Cash Balance:\n\n1. **Begin Cash**: $500K\n2. **Inflows**:\n   - Sales Receipts: $3M\n   - Loan In:",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "ROA = NetIncome / TotalAssets = $500K / $10M = 0.05 or 5%",
+          "bRaw": "0.05",
+          "bParsed": 0.05,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Reorder Point (ROP):\n\n1. **Daily Demand (D):** 200 units\n2. **Lead Time (L):** 5 days\n3. **Demand Standard",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the cost per good unit for Machine A:\n\n1. **Time Required**: 10000 units / 100 units/hr = 100 hours\n2. **Total Cost**:",
+          "bRaw": "0.5102040816326531",
+          "bParsed": 0.5102040816326531,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "Compute Server Utilization:  \nλ = 30/hr  \nμ = 15/hr per server  \ns = 3 servers  \n\nUtilization = λ / (s × μ) = 30 /",
+          "bRaw": "0.6666666666666666",
+          "bParsed": 0.6666666666666666,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "CPI = EV / AC = $600K / $700K = 0.857",
+          "bRaw": "0.857",
+          "bParsed": 0.857,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Economic Order Quantity (EOQ), use the formula:\n\nEOQ = √(2×D×S/H)\n\nWhere:\n- D = Demand = 12,000 units/year",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "Compute Kinetic Energy (KE):\n\nKE = 0.5 × mass × velocity²\n\nKE = 0.5 × 2kg × (10m/s)²\n\nKE =",
+          "bRaw": "100",
+          "bParsed": 100,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the current using Ohm's Law:\n\nVoltage (V) = 240V  \nResistance (R) = 60Ω  \n\nCurrent (I) = V / R = 240V",
+          "bRaw": "4",
+          "bParsed": 4,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "To compute the Annual Population Growth:\n\n1. Births = Population * BirthRate = 100,000 * (12/1000) = 1,200\n2. Deaths = Population",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "Compute Time to Fill tank (minutes):\n\nTime = (TankVolume - InitialLevel) / (Inflow - Outflow)\n\nTime = (1000L - 400L) / (5L",
+          "bRaw": "-999",
+          "bParsed": -999,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 2,
+          "aMessage": "Fuel Cost = Distance × (FuelRate/100) × FuelPrice\n\nFuel Cost = 500 km × (8 L/100 km) × $1.50/L\n\nFuel Cost =",
+          "bRaw": "60.0",
+          "bParsed": 60,
+          "correct": true,
+          "aTokens": 40
+        }
+      ]
+    },
+    "Low_Progressive_R3": {
+      "bandwidth": "Low",
+      "maxTokens": 40,
+      "condition": "Progressive_R3",
+      "accuracy": 0.6666666666666666,
+      "results": [
+        {
+          "round": 3,
+          "aMessage": "Revenue: $10M  \nCOGS: $6M  \nSGA: $1.5M  \nInterest: $300K  \nTax Rate: 25%  \nShares: 1M",
+          "bRaw": "2.1",
+          "bParsed": 2.1,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Cash: $300K  \nAR: $600K  \nInventory: $900K  \nPrepaid: $100K  \nAP: $400K  \nAccrued: $200K",
+          "bRaw": "3.0",
+          "bParsed": 3,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Units = 50000  \nPrice = $40  \nVarCost = $25  \nFixedCost = $500,000  \nInterest = $100,000  \nTax = 30%",
+          "bRaw": "10.5",
+          "bParsed": 10.5,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "BeginCash: 500,000  \nSalesReceipts: 3,000,000  \nCostPayments: 2,000,000  \nSalary: 400,000  \nRent: 120",
+          "bRaw": "1098000",
+          "bParsed": 1098000,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "NetIncome: $500K  \nTotalAssets: $10M",
+          "bRaw": "0.05",
+          "bParsed": 0.05,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "DailyDemand = 200  \nLeadTime = 5  \nDemandStd = 40  \nz = 1.645",
+          "bRaw": "1164.5",
+          "bParsed": 1164.5,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Order: 10000  \nRate (MachineA): 100  \nHourlyCost (MachineA): 50  \nDefectRate (MachineA): 0.02",
+          "bRaw": "0.5102040816326531",
+          "bParsed": 0.5102040816326531,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Utilization = 0.6667",
+          "bRaw": "0.6667",
+          "bParsed": 0.6667,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "EV = 600,000  \nAC = 700,000",
+          "bRaw": "0.8571428571428571",
+          "bParsed": 0.8571428571428571,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "EOQ = √(2 × 12000 × 75 / 4)",
+          "bRaw": "300.0",
+          "bParsed": 300,
+          "correct": false,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Mass (m) = 2 kg  \nVelocity (v) = 10 m/s",
+          "bRaw": "100",
+          "bParsed": 100,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "I = 240 / 60",
+          "bRaw": "4",
+          "bParsed": 4,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Pop=100000, BirthRate=12/1000, DeathRate=8/1000, Immigration=500, Emigration=200",
+          "bRaw": "700",
+          "bParsed": 700,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "Time = (1000 - 400) / (5 - 3)",
+          "bRaw": "300",
+          "bParsed": 300,
+          "correct": true,
+          "aTokens": 40
+        },
+        {
+          "round": 3,
+          "aMessage": "500, 0.08, 1.50",
+          "bRaw": "60.0",
+          "bParsed": 60,
+          "correct": true,
+          "aTokens": 40
+        }
+      ]
+    },
+    "Low_Progressive_Full": {
+      "results": [
+        {
+          "problemId": 1,
+          "expected": 1.65,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided offers a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated $10 million in revenue.",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute EPS:\n\n1. Calculate Net Income:\n   - Net Income = (Revenue - COGS - SGA - Interest) × (1 - TaxRate)\n   - Net Income = ($",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Revenue: $10M  \nCOGS: $6M  \nSGA: $1.5M  \nInterest: $300K  \nTax Rate: 25%  \nShares: 1M",
+              "bRaw": "2.1",
+              "bParsed": 2.1,
+              "correct": false,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 2,
+          "expected": 3.167,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines a snapshot of a company's financial position, focusing on its assets and liabilities. Here's a summary of the key findings:\n\n1. **Assets:**\n   - **Current Assets:**",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Current Ratio:\n\n1. **Current Assets** = Cash + AR + Inventory + Prepaid\n   - Current Assets = $300K + $600K + $900K + $",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Cash: $300K  \nAR: $600K  \nInventory: $900K  \nPrepaid: $100K  \nAP: $400K  \nAccrued: $200K",
+              "bRaw": "3.0",
+              "bParsed": 3,
+              "correct": false,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 3,
+          "expected": 5.25,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "Based on the provided data, here is a summary of the key financial metrics:\n\n1. **Revenue**: The total revenue can be calculated by multiplying the number of units sold by the price per unit",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Net Profit Margin (%), follow these steps:\n\n1. **Revenue**:  \n   Revenue = Units × Price  \n   Revenue = 50,000 × $40 = $2,",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Units = 50000  \nPrice = $40  \nVarCost = $25  \nFixedCost = $500,000  \nInterest = $100,000  \nTax = 30%",
+              "bRaw": "10.5",
+              "bParsed": 10.5,
+              "correct": false,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 4,
+          "expected": 730000,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines the financial activities of a business over a certain period. Here are the key findings:\n\n1. **Cash Flow Overview**:\n   - The business started with a beginning cash balance of",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Ending Cash Balance:\n\n1. **Begin Cash**: $500K\n2. **Inflows**:\n   - Sales Receipts: $3M\n   - Loan In:",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "BeginCash: 500,000  \nSalesReceipts: 3,000,000  \nCostPayments: 2,000,000  \nSalary: 400,000  \nRent: 120",
+              "bRaw": "1098000",
+              "bParsed": 1098000,
+              "correct": false,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 5,
+          "expected": 0.05,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided offers a snapshot of a company's financial health and performance. Here are the key findings:\n\n1. **Profitability**: The company has a net income of $500K, indicating it",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "ROA = NetIncome / TotalAssets = $500K / $10M = 0.05 or 5%",
+              "bRaw": "0.05",
+              "bParsed": 0.05,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "NetIncome: $500K  \nTotalAssets: $10M",
+              "bRaw": "0.05",
+              "bParsed": 0.05,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 6,
+          "expected": 1147,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines key metrics for inventory management and demand forecasting. Here's a summary of the most notable findings:\n\n1. **Daily Demand and Variability**: The average daily demand is 200 units",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Reorder Point (ROP):\n\n1. **Daily Demand (D):** 200 units\n2. **Lead Time (L):** 5 days\n3. **Demand Standard",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "DailyDemand = 200  \nLeadTime = 5  \nDemandStd = 40  \nz = 1.645",
+              "bRaw": "1164.5",
+              "bParsed": 1164.5,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 7,
+          "expected": 0.51,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "Based on the provided data, here is a summary of the key findings regarding the performance and cost-effectiveness of the three machines:\n\n1. **Production Rate and Cost Efficiency:**\n   - **Machine",
+              "bRaw": "0.5102040816326531",
+              "aTokens": 40,
+              "bParsed": 0.5102040816326531,
+              "correct": true
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the cost per good unit for Machine A:\n\n1. **Time Required**: 10000 units / 100 units/hr = 100 hours\n2. **Total Cost**:",
+              "bRaw": "0.5102040816326531",
+              "bParsed": 0.5102040816326531,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Order: 10000  \nRate (MachineA): 100  \nHourlyCost (MachineA): 50  \nDefectRate (MachineA): 0.02",
+              "bRaw": "0.5102040816326531",
+              "bParsed": 0.5102040816326531,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 8,
+          "expected": 0.667,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines a service operation with the following key metrics:\n\n1. **Customer Arrival Rate**: The system receives 30 customers per hour.\n\n2. **Service Time and Capacity**: Each",
+              "bRaw": "0.6666666666666666",
+              "aTokens": 40,
+              "bParsed": 0.6666666666666666,
+              "correct": true
+            },
+            {
+              "round": 2,
+              "aMessage": "Compute Server Utilization:  \nλ = 30/hr  \nμ = 15/hr per server  \ns = 3 servers  \n\nUtilization = λ / (s × μ) = 30 /",
+              "bRaw": "0.6666666666666666",
+              "bParsed": 0.6666666666666666,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Utilization = 0.6667",
+              "bRaw": "0.6667",
+              "bParsed": 0.6667,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 9,
+          "expected": 0.857,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided offers insights into the financial and progress status of a project. Here are the key findings:\n\n1. **Budget and Duration**: The project has a total budget of $1 million and",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "CPI = EV / AC = $600K / $700K = 0.857",
+              "bRaw": "0.857",
+              "bParsed": 0.857,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "EV = 600,000  \nAC = 700,000",
+              "bRaw": "0.8571428571428571",
+              "bParsed": 0.8571428571428571,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 10,
+          "expected": 670.8,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines key metrics for inventory management and cost analysis. Here's a summary of the findings:\n\n1. **Annual Demand**: The demand is 12,000 units per year, indicating a",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Economic Order Quantity (EOQ), use the formula:\n\nEOQ = √(2×D×S/H)\n\nWhere:\n- D = Demand = 12,000 units/year",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "EOQ = √(2 × 12000 × 75 / 4)",
+              "bRaw": "300.0",
+              "bParsed": 300,
+              "correct": false,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 11,
+          "expected": 100,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided includes several physical parameters that can be used to calculate various forms of energy and forces in a mechanical system. Here are the key findings based on the given data:\n\n1. **Kinetic",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "Compute Kinetic Energy (KE):\n\nKE = 0.5 × mass × velocity²\n\nKE = 0.5 × 2kg × (10m/s)²\n\nKE =",
+              "bRaw": "100",
+              "bParsed": 100,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Mass (m) = 2 kg  \nVelocity (v) = 10 m/s",
+              "bRaw": "100",
+              "bParsed": 100,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 12,
+          "expected": 4,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided pertains to an electrical circuit with the following key parameters:\n\n1. **Voltage**: The circuit operates at a voltage of 240 volts. This is a standard voltage level for many residential",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the current using Ohm's Law:\n\nVoltage (V) = 240V  \nResistance (R) = 60Ω  \n\nCurrent (I) = V / R = 240V",
+              "bRaw": "4",
+              "bParsed": 4,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "I = 240 / 60",
+              "bRaw": "4",
+              "bParsed": 4,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 13,
+          "expected": 700,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provides an overview of the population dynamics for a given area with a population of 100,000. Here are the key findings:\n\n1. **Birth Rate**: The birth rate is",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "To compute the Annual Population Growth:\n\n1. Births = Population * BirthRate = 100,000 * (12/1000) = 1,200\n2. Deaths = Population",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Pop=100000, BirthRate=12/1000, DeathRate=8/1000, Immigration=500, Emigration=200",
+              "bRaw": "700",
+              "bParsed": 700,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 14,
+          "expected": 300,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines the dynamics of a tank system with a capacity of 1000 liters. Here are the key findings:\n\n1. **Tank Capacity and Initial Level**: The tank has a total",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "Compute Time to Fill tank (minutes):\n\nTime = (TankVolume - InitialLevel) / (Inflow - Outflow)\n\nTime = (1000L - 400L) / (5L",
+              "bRaw": "-999",
+              "bParsed": -999,
+              "correct": false,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "Time = (1000 - 400) / (5 - 3)",
+              "bRaw": "300",
+              "bParsed": 300,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        },
+        {
+          "problemId": 15,
+          "expected": 60,
+          "rounds": [
+            {
+              "round": 1,
+              "aMessage": "The data provided outlines the key metrics for a 500 km journey, focusing on fuel consumption, fuel cost, and toll expenses. Here's a summary of the findings:\n\n1. **Distance**: The",
+              "bRaw": "-999",
+              "aTokens": 40,
+              "bParsed": -999,
+              "correct": false
+            },
+            {
+              "round": 2,
+              "aMessage": "Fuel Cost = Distance × (FuelRate/100) × FuelPrice\n\nFuel Cost = 500 km × (8 L/100 km) × $1.50/L\n\nFuel Cost =",
+              "bRaw": "60.0",
+              "bParsed": 60,
+              "correct": true,
+              "aTokens": 40
+            },
+            {
+              "round": 3,
+              "aMessage": "500, 0.08, 1.50",
+              "bRaw": "60.0",
+              "bParsed": 60,
+              "correct": true,
+              "aTokens": 40
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

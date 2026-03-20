@@ -1,0 +1,301 @@
+{
+  "experiment": "KI-1 Mutual Cognitive Context Inference",
+  "date": "2026-03-19T15:54:06.059Z",
+  "agents": {
+    "A": "gpt-4o",
+    "B": "gpt-4o-mini"
+  },
+  "num_questions": 15,
+  "questions": [
+    {
+      "id": 1,
+      "q": "In massive MIMO, what is the optimal linear precoding strategy when perfect CSI is available at the transmitter?",
+      "choices": [
+        "A) Zero-Forcing (ZF)",
+        "B) Matched Filter / MRT",
+        "C) MMSE precoding",
+        "D) Dirty Paper Coding"
+      ],
+      "answer": "C",
+      "explanation": "MMSE precoding maximizes SINR by balancing interference suppression and noise enhancement, optimal among linear precoders."
+    },
+    {
+      "id": 2,
+      "q": "What is the relationship between OFDM subcarrier spacing (Δf) and the maximum tolerable delay spread (τ_max)?",
+      "choices": [
+        "A) Δf >> 1/τ_max",
+        "B) Δf << 1/τ_max",
+        "C) Δf = τ_max",
+        "D) No relationship"
+      ],
+      "answer": "B",
+      "explanation": "Subcarrier spacing must be much less than the inverse of delay spread so each subcarrier experiences flat fading (coherence bandwidth >> Δf)."
+    },
+    {
+      "id": 3,
+      "q": "In a Rayleigh fading channel, what is the distribution of the instantaneous SNR?",
+      "choices": [
+        "A) Gaussian",
+        "B) Exponential",
+        "C) Rayleigh",
+        "D) Chi-squared with 2 DOF"
+      ],
+      "answer": "B",
+      "explanation": "If the channel amplitude is Rayleigh distributed, the power (and thus SNR) follows an exponential distribution."
+    },
+    {
+      "id": 4,
+      "q": "What is the primary advantage of LDPC codes over turbo codes at very high code rates?",
+      "choices": [
+        "A) Lower encoding complexity",
+        "B) Better error floor performance",
+        "C) Shorter block lengths",
+        "D) Simpler decoder"
+      ],
+      "answer": "B",
+      "explanation": "LDPC codes exhibit lower error floors at high code rates, making them preferred in 5G NR data channels."
+    },
+    {
+      "id": 5,
+      "q": "In compressed sensing for sparse channel estimation, what condition must the measurement matrix satisfy?",
+      "choices": [
+        "A) Orthogonality",
+        "B) Restricted Isometry Property (RIP)",
+        "C) Positive definiteness",
+        "D) Toeplitz structure"
+      ],
+      "answer": "B",
+      "explanation": "RIP ensures that sparse signals can be recovered from underdetermined measurements with high probability."
+    },
+    {
+      "id": 6,
+      "q": "What is the capacity of a point-to-point MIMO channel with n_t transmit and n_r receive antennas at high SNR?",
+      "choices": [
+        "A) min(n_t, n_r) · log2(SNR)",
+        "B) max(n_t, n_r) · log2(SNR)",
+        "C) (n_t + n_r) · log2(SNR)",
+        "D) n_t · n_r · log2(SNR)"
+      ],
+      "answer": "A",
+      "explanation": "At high SNR, MIMO capacity scales linearly with min(n_t, n_r), the multiplexing gain."
+    },
+    {
+      "id": 7,
+      "q": "In OFDM, what is the purpose of the cyclic prefix?",
+      "choices": [
+        "A) Increase spectral efficiency",
+        "B) Eliminate inter-symbol interference (ISI)",
+        "C) Reduce PAPR",
+        "D) Enable frequency hopping"
+      ],
+      "answer": "B",
+      "explanation": "The cyclic prefix absorbs multipath delay spread, converting a linear convolution into a circular one and eliminating ISI."
+    },
+    {
+      "id": 8,
+      "q": "What does the Wiener filter minimize in channel estimation?",
+      "choices": [
+        "A) Bit error rate",
+        "B) Mean squared error (MSE)",
+        "C) Peak-to-average power ratio",
+        "D) Mutual information loss"
+      ],
+      "answer": "B",
+      "explanation": "The Wiener filter (MMSE estimator) minimizes the mean squared error between the estimated and true channel."
+    },
+    {
+      "id": 9,
+      "q": "In a CDMA system, what limits capacity in the uplink?",
+      "choices": [
+        "A) Bandwidth",
+        "B) Near-far problem / multiple access interference",
+        "C) Carrier frequency",
+        "D) Modulation order"
+      ],
+      "answer": "B",
+      "explanation": "Multiple access interference and the near-far problem are the dominant capacity-limiting factors in CDMA uplink."
+    },
+    {
+      "id": 10,
+      "q": "What is the Cramér-Rao Lower Bound (CRLB) used for in signal processing?",
+      "choices": [
+        "A) Maximum data rate",
+        "B) Minimum achievable variance of an unbiased estimator",
+        "C) Maximum channel capacity",
+        "D) Minimum BER"
+      ],
+      "answer": "B",
+      "explanation": "CRLB provides a theoretical lower bound on the variance of any unbiased estimator of a parameter."
+    },
+    {
+      "id": 11,
+      "q": "In hybrid beamforming, why is a combination of analog and digital precoding used?",
+      "choices": [
+        "A) To increase transmit power",
+        "B) To reduce the number of RF chains while maintaining spatial multiplexing",
+        "C) To simplify channel estimation",
+        "D) To avoid OFDM"
+      ],
+      "answer": "B",
+      "explanation": "Hybrid beamforming reduces hardware cost/power by using fewer RF chains than antennas, with analog phase shifters compensating."
+    },
+    {
+      "id": 12,
+      "q": "What is the key idea behind successive interference cancellation (SIC)?",
+      "choices": [
+        "A) Decode all users simultaneously",
+        "B) Decode strongest signal first, subtract it, then decode next",
+        "C) Use orthogonal codes for all users",
+        "D) Apply maximum likelihood detection"
+      ],
+      "answer": "B",
+      "explanation": "SIC decodes users sequentially from strongest to weakest, subtracting each decoded signal from the received composite."
+    },
+    {
+      "id": 13,
+      "q": "In deep learning-based CSI feedback, what is the role of the encoder at the UE?",
+      "choices": [
+        "A) Channel estimation",
+        "B) Compress CSI matrix into a low-dimensional codeword",
+        "C) Beamforming weight calculation",
+        "D) Power control"
+      ],
+      "answer": "B",
+      "explanation": "The encoder (typically a CNN or Transformer) compresses the high-dimensional CSI matrix into a compact representation for feedback."
+    },
+    {
+      "id": 14,
+      "q": "What is the diversity order of a 2x2 MIMO system using Alamouti space-time block coding?",
+      "choices": [
+        "A) 1",
+        "B) 2",
+        "C) 4",
+        "D) 8"
+      ],
+      "answer": "C",
+      "explanation": "Alamouti STBC with 2 Tx and 2 Rx antennas achieves full diversity order of n_t × n_r = 4."
+    },
+    {
+      "id": 15,
+      "q": "In 5G NR, what is the purpose of the SSB (Synchronization Signal Block)?",
+      "choices": [
+        "A) Data transmission",
+        "B) Initial cell search, timing/frequency synchronization, and beam management",
+        "C) HARQ feedback",
+        "D) Uplink power control"
+      ],
+      "answer": "B",
+      "explanation": "SSB carries PSS, SSS, and PBCH for initial access, synchronization, and beam sweeping in 5G NR."
+    }
+  ],
+  "elapsed_seconds": 421.4,
+  "results": [
+    {
+      "condition": "No Context",
+      "agentA_output_tokens": 4991,
+      "agentB_accuracy": 1,
+      "correct": 15,
+      "total": 15,
+      "total_tokens": 12969,
+      "cost_usd": 0.0541943,
+      "breakdown": {
+        "A_in": 1311,
+        "A_out": 4991,
+        "B_in": 6652,
+        "B_out": 15
+      }
+    },
+    {
+      "condition": "One-Way Context",
+      "agentA_output_tokens": 829,
+      "agentB_accuracy": 0.9333333333333333,
+      "correct": 14,
+      "total": 15,
+      "total_tokens": 4925,
+      "cost_usd": 0.01237975,
+      "breakdown": {
+        "A_in": 1476,
+        "A_out": 829,
+        "B_in": 2605,
+        "B_out": 15
+      }
+    },
+    {
+      "condition": "Mutual Context",
+      "agentA_output_tokens": 1636,
+      "agentB_accuracy": 0.9333333333333333,
+      "correct": 14,
+      "total": 15,
+      "total_tokens": 7902,
+      "cost_usd": 0.0237718,
+      "breakdown": {
+        "A_in": 2736,
+        "A_out": 1636,
+        "B_in": 3436,
+        "B_out": 94
+      }
+    },
+    {
+      "condition": "Progressive Inference",
+      "agentA_output_tokens": 1319,
+      "agentB_accuracy": 0.9333333333333333,
+      "correct": 14,
+      "total": 15,
+      "total_tokens": 8086,
+      "cost_usd": 0.09711985000000001,
+      "breakdown": {
+        "A_in": 2501,
+        "A_out": 1319,
+        "B_in": 4169,
+        "B_out": 97
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "agentA_output_tokens": 5223,
+          "agentB_accuracy": 1,
+          "correct": 15,
+          "total": 15,
+          "total_tokens": 13251,
+          "cost_usd": 0.056521800000000004,
+          "breakdown": {
+            "A_in": 1311,
+            "A_out": 5223,
+            "B_in": 6702,
+            "B_out": 15
+          }
+        },
+        {
+          "round": 2,
+          "agentA_output_tokens": 1354,
+          "agentB_accuracy": 0.9333333333333333,
+          "correct": 14,
+          "total": 15,
+          "total_tokens": 8136,
+          "cost_usd": 0.020472,
+          "breakdown": {
+            "A_in": 2501,
+            "A_out": 1354,
+            "B_in": 4198,
+            "B_out": 83
+          }
+        },
+        {
+          "round": 3,
+          "agentA_output_tokens": 1319,
+          "agentB_accuracy": 0.9333333333333333,
+          "correct": 14,
+          "total": 15,
+          "total_tokens": 8086,
+          "cost_usd": 0.020126050000000003,
+          "breakdown": {
+            "A_in": 2501,
+            "A_out": 1319,
+            "B_in": 4169,
+            "B_out": 97
+          }
+        }
+      ]
+    }
+  ]
+}

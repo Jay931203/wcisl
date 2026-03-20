@@ -1,0 +1,1007 @@
+{
+  "experiment": "KI-1 v2: Math + Physics Interdisciplinary",
+  "timestamp": "2026-03-19T16:33:17.060Z",
+  "config": {
+    "agentA": "gpt-4o",
+    "agentB": "gpt-4o-mini",
+    "temperature": 0,
+    "problems": 15,
+    "tolerance": "5%"
+  },
+  "problems": [
+    {
+      "id": 1,
+      "question": "A projectile is launched at 45 degrees with initial velocity 20 m/s. Find the maximum range in meters. (g=10 m/s²)",
+      "answer": 40,
+      "domain": "mechanics"
+    },
+    {
+      "id": 2,
+      "question": "Find the sum of the eigenvalues of the matrix [[3,1],[1,3]].",
+      "answer": 6,
+      "domain": "linear algebra"
+    },
+    {
+      "id": 3,
+      "question": "A capacitor C=10μF is charged to 5V. Calculate the stored energy in μJ.",
+      "answer": 125,
+      "domain": "circuits"
+    },
+    {
+      "id": 4,
+      "question": "Solve the ODE dy/dx = 2xy with y(0)=1. Find y(1). Give the answer as e (use 2.718).",
+      "answer": 2.718,
+      "domain": "differential equations"
+    },
+    {
+      "id": 5,
+      "question": "A 2 kg mass on a spring (k=200 N/m) oscillates. Find the angular frequency ω in rad/s.",
+      "answer": 10,
+      "domain": "mechanics"
+    },
+    {
+      "id": 6,
+      "question": "Evaluate the definite integral of x² from 0 to 3.",
+      "answer": 9,
+      "domain": "calculus"
+    },
+    {
+      "id": 7,
+      "question": "An ideal gas at 300K is compressed adiabatically (γ=5/3) to 1/8 of its volume. Find the final temperature in Kelvin.",
+      "answer": 1200,
+      "domain": "thermodynamics"
+    },
+    {
+      "id": 8,
+      "question": "Find the determinant of the 3×3 matrix [[1,2,3],[0,1,4],[5,6,0]].",
+      "answer": 1,
+      "domain": "linear algebra"
+    },
+    {
+      "id": 9,
+      "question": "A series RL circuit has R=100Ω and L=0.5H. Find the time constant τ in milliseconds.",
+      "answer": 5,
+      "domain": "circuits"
+    },
+    {
+      "id": 10,
+      "question": "Find the gradient magnitude |∇f| of f(x,y)=x²+y² at the point (3,4).",
+      "answer": 10,
+      "domain": "calculus"
+    },
+    {
+      "id": 11,
+      "question": "A ball is dropped from 80 m. How long does it take to hit the ground in seconds? (g=10 m/s²)",
+      "answer": 4,
+      "domain": "mechanics"
+    },
+    {
+      "id": 12,
+      "question": "Compute the Laplace transform of f(t)=e^{-3t} evaluated at s=5. (i.e., F(5) where F(s)=1/(s+3))",
+      "answer": 0.125,
+      "domain": "differential equations"
+    },
+    {
+      "id": 13,
+      "question": "Two resistors of 6Ω and 3Ω are connected in parallel. Find the equivalent resistance in ohms.",
+      "answer": 2,
+      "domain": "circuits"
+    },
+    {
+      "id": 14,
+      "question": "Find the divergence of the vector field F=(x², y², z²) at the point (1,2,3).",
+      "answer": 12,
+      "domain": "calculus"
+    },
+    {
+      "id": 15,
+      "question": "A Carnot engine operates between 600K and 300K. What is its efficiency as a percentage?",
+      "answer": 50,
+      "domain": "thermodynamics"
+    }
+  ],
+  "conditions": {
+    "1_no_context": {
+      "summary": {
+        "accuracy": "15/15 (100.0%)",
+        "accuracyPct": 100,
+        "aOutputTokens": 6635,
+        "totalTokens": 15089,
+        "totalCost": "$0.0700",
+        "totalCostNum": 0.07002175000000001,
+        "correct": 15,
+        "total": 15
+      },
+      "details": [
+        {
+          "problemId": 1,
+          "truth": 40,
+          "extracted": 40,
+          "correct": true,
+          "aOutputTokens": 393,
+          "aCost": 0.00411,
+          "bCost": 0.00006735
+        },
+        {
+          "problemId": 2,
+          "truth": 6,
+          "extracted": 6,
+          "correct": true,
+          "aOutputTokens": 827,
+          "aCost": 0.00842,
+          "bCost": 0.00013245
+        },
+        {
+          "problemId": 3,
+          "truth": 125,
+          "extracted": 125,
+          "correct": true,
+          "aOutputTokens": 425,
+          "aCost": 0.0044075,
+          "bCost": 0.00007214999999999999
+        },
+        {
+          "problemId": 4,
+          "truth": 2.718,
+          "extracted": 2.718,
+          "correct": true,
+          "aOutputTokens": 546,
+          "aCost": 0.00565,
+          "bCost": 0.0000915
+        },
+        {
+          "problemId": 5,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 233,
+          "aCost": 0.0025,
+          "bCost": 0.00004335
+        },
+        {
+          "problemId": 6,
+          "truth": 9,
+          "extracted": 9,
+          "correct": true,
+          "aOutputTokens": 345,
+          "aCost": 0.0035875,
+          "bCost": 0.00006015
+        },
+        {
+          "problemId": 7,
+          "truth": 1200,
+          "extracted": 1200,
+          "correct": true,
+          "aOutputTokens": 590,
+          "aCost": 0.00609,
+          "bCost": 0.0000975
+        },
+        {
+          "problemId": 8,
+          "truth": 1,
+          "extracted": 1,
+          "correct": true,
+          "aOutputTokens": 557,
+          "aCost": 0.005745,
+          "bCost": 0.00009195
+        },
+        {
+          "problemId": 9,
+          "truth": 5,
+          "extracted": 5,
+          "correct": true,
+          "aOutputTokens": 251,
+          "aCost": 0.0026750000000000003,
+          "bCost": 0.000046049999999999994
+        },
+        {
+          "problemId": 10,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 548,
+          "aCost": 0.0056475,
+          "bCost": 0.0000906
+        },
+        {
+          "problemId": 11,
+          "truth": 4,
+          "extracted": 4,
+          "correct": true,
+          "aOutputTokens": 338,
+          "aCost": 0.003555,
+          "bCost": 0.0000591
+        },
+        {
+          "problemId": 12,
+          "truth": 0.125,
+          "extracted": 0.125,
+          "correct": true,
+          "aOutputTokens": 496,
+          "aCost": 0.0051575,
+          "bCost": 0.00008400000000000001
+        },
+        {
+          "problemId": 13,
+          "truth": 2,
+          "extracted": 2,
+          "correct": true,
+          "aOutputTokens": 380,
+          "aCost": 0.0039625,
+          "bCost": 0.0000654
+        },
+        {
+          "problemId": 14,
+          "truth": 12,
+          "extracted": 12,
+          "correct": true,
+          "aOutputTokens": 419,
+          "aCost": 0.0043625,
+          "bCost": 0.00007125
+        },
+        {
+          "problemId": 15,
+          "truth": 50,
+          "extracted": 50,
+          "correct": true,
+          "aOutputTokens": 287,
+          "aCost": 0.0030275000000000002,
+          "bCost": 0.000051450000000000004
+        }
+      ]
+    },
+    "2_one_way": {
+      "summary": {
+        "accuracy": "15/15 (100.0%)",
+        "accuracyPct": 100,
+        "aOutputTokens": 3945,
+        "totalTokens": 10069,
+        "totalCost": "$0.0435",
+        "totalCostNum": 0.04354775,
+        "correct": 15,
+        "total": 15
+      },
+      "details": [
+        {
+          "problemId": 1,
+          "truth": 40,
+          "extracted": 40,
+          "correct": true,
+          "aOutputTokens": 228,
+          "aCost": 0.002515,
+          "bCost": 0.0000429
+        },
+        {
+          "problemId": 2,
+          "truth": 6,
+          "extracted": 6,
+          "correct": true,
+          "aOutputTokens": 134,
+          "aCost": 0.001545,
+          "bCost": 0.0000288
+        },
+        {
+          "problemId": 3,
+          "truth": 125,
+          "extracted": 125,
+          "correct": true,
+          "aOutputTokens": 255,
+          "aCost": 0.0027625,
+          "bCost": 0.00004695
+        },
+        {
+          "problemId": 4,
+          "truth": 2.718,
+          "extracted": 2.718,
+          "correct": true,
+          "aOutputTokens": 374,
+          "aCost": 0.003985,
+          "bCost": 0.000066
+        },
+        {
+          "problemId": 5,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 153,
+          "aCost": 0.0017549999999999998,
+          "bCost": 0.00003165
+        },
+        {
+          "problemId": 6,
+          "truth": 9,
+          "extracted": 9,
+          "correct": true,
+          "aOutputTokens": 229,
+          "aCost": 0.0024825,
+          "bCost": 0.000043049999999999996
+        },
+        {
+          "problemId": 7,
+          "truth": 1200,
+          "extracted": 1200,
+          "correct": true,
+          "aOutputTokens": 488,
+          "aCost": 0.005124999999999999,
+          "bCost": 0.0000825
+        },
+        {
+          "problemId": 8,
+          "truth": 1,
+          "extracted": 1,
+          "correct": true,
+          "aOutputTokens": 408,
+          "aCost": 0.0043100000000000005,
+          "bCost": 0.00006989999999999999
+        },
+        {
+          "problemId": 9,
+          "truth": 5,
+          "extracted": 5,
+          "correct": true,
+          "aOutputTokens": 178,
+          "aCost": 0.002,
+          "bCost": 0.0000354
+        },
+        {
+          "problemId": 10,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 317,
+          "aCost": 0.0033925,
+          "bCost": 0.00005625
+        },
+        {
+          "problemId": 11,
+          "truth": 4,
+          "extracted": 4,
+          "correct": true,
+          "aOutputTokens": 246,
+          "aCost": 0.00269,
+          "bCost": 0.000045600000000000004
+        },
+        {
+          "problemId": 12,
+          "truth": 0.125,
+          "extracted": 0.125,
+          "correct": true,
+          "aOutputTokens": 195,
+          "aCost": 0.0022025,
+          "bCost": 0.00003915
+        },
+        {
+          "problemId": 13,
+          "truth": 2,
+          "extracted": 2,
+          "correct": true,
+          "aOutputTokens": 232,
+          "aCost": 0.0025375,
+          "bCost": 0.0000435
+        },
+        {
+          "problemId": 14,
+          "truth": 12,
+          "extracted": 12,
+          "correct": true,
+          "aOutputTokens": 317,
+          "aCost": 0.0033975,
+          "bCost": 0.00005625
+        },
+        {
+          "problemId": 15,
+          "truth": 50,
+          "extracted": 50,
+          "correct": true,
+          "aOutputTokens": 191,
+          "aCost": 0.0021225,
+          "bCost": 0.00003735
+        }
+      ]
+    },
+    "3_mutual": {
+      "summary": {
+        "accuracy": "15/15 (100.0%)",
+        "accuracyPct": 100,
+        "aOutputTokens": 4542,
+        "totalTokens": 12568,
+        "totalCost": "$0.0526",
+        "totalCostNum": 0.05264945000000001,
+        "correct": 15,
+        "total": 15
+      },
+      "details": [
+        {
+          "problemId": 1,
+          "truth": 40,
+          "extracted": 40,
+          "correct": true,
+          "aOutputTokens": 261,
+          "aCost": 0.0030425,
+          "bCost": 0.00004905
+        },
+        {
+          "problemId": 2,
+          "truth": 6,
+          "extracted": 6,
+          "correct": true,
+          "aOutputTokens": 145,
+          "aCost": 0.0018525,
+          "bCost": 0.00003165
+        },
+        {
+          "problemId": 3,
+          "truth": 125,
+          "extracted": 125,
+          "correct": true,
+          "aOutputTokens": 271,
+          "aCost": 0.0031200000000000004,
+          "bCost": 0.000050549999999999995
+        },
+        {
+          "problemId": 4,
+          "truth": 2.718,
+          "extracted": 2.718,
+          "correct": true,
+          "aOutputTokens": 423,
+          "aCost": 0.0046725000000000004,
+          "bCost": 0.00007455000000000001
+        },
+        {
+          "problemId": 5,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 169,
+          "aCost": 0.0021125000000000002,
+          "bCost": 0.000035249999999999996
+        },
+        {
+          "problemId": 6,
+          "truth": 9,
+          "extracted": 9,
+          "correct": true,
+          "aOutputTokens": 434,
+          "aCost": 0.00473,
+          "bCost": 0.000075
+        },
+        {
+          "problemId": 7,
+          "truth": 1200,
+          "extracted": 1200,
+          "correct": true,
+          "aOutputTokens": 547,
+          "aCost": 0.0059125,
+          "bCost": 0.00009255
+        },
+        {
+          "problemId": 8,
+          "truth": 1,
+          "extracted": 1,
+          "correct": true,
+          "aOutputTokens": 437,
+          "aCost": 0.0047975,
+          "bCost": 0.00007544999999999999
+        },
+        {
+          "problemId": 9,
+          "truth": 5,
+          "extracted": 5,
+          "correct": true,
+          "aOutputTokens": 221,
+          "aCost": 0.0026275,
+          "bCost": 0.000043049999999999996
+        },
+        {
+          "problemId": 10,
+          "truth": 10,
+          "extracted": 10,
+          "correct": true,
+          "aOutputTokens": 312,
+          "aCost": 0.0035399999999999997,
+          "bCost": 0.0000567
+        },
+        {
+          "problemId": 11,
+          "truth": 4,
+          "extracted": 4,
+          "correct": true,
+          "aOutputTokens": 305,
+          "aCost": 0.0034775,
+          "bCost": 0.00005565
+        },
+        {
+          "problemId": 12,
+          "truth": 0.125,
+          "extracted": 0.125,
+          "correct": true,
+          "aOutputTokens": 214,
+          "aCost": 0.00259,
+          "bCost": 0.0000432
+        },
+        {
+          "problemId": 13,
+          "truth": 2,
+          "extracted": 2,
+          "correct": true,
+          "aOutputTokens": 276,
+          "aCost": 0.003175,
+          "bCost": 0.0000513
+        },
+        {
+          "problemId": 14,
+          "truth": 12,
+          "extracted": 12,
+          "correct": true,
+          "aOutputTokens": 311,
+          "aCost": 0.003535,
+          "bCost": 0.00005655
+        },
+        {
+          "problemId": 15,
+          "truth": 50,
+          "extracted": 50,
+          "correct": true,
+          "aOutputTokens": 216,
+          "aCost": 0.0025700000000000002,
+          "bCost": 0.0000423
+        }
+      ]
+    },
+    "4_progressive": [
+      {
+        "round": 1,
+        "summary": {
+          "round": 1,
+          "accuracy": "15/15 (100.0%)",
+          "accuracyPct": 100,
+          "aOutputTokens": 6421,
+          "totalTokens": 14661,
+          "totalCost": "$0.0678",
+          "totalCostNum": 0.06784965,
+          "correct": 15,
+          "total": 15
+        },
+        "details": [
+          {
+            "problemId": 1,
+            "truth": 40,
+            "extracted": 40,
+            "correct": true,
+            "aOutputTokens": 387,
+            "aCost": 0.00405,
+            "bCost": 0.00006644999999999999
+          },
+          {
+            "problemId": 2,
+            "truth": 6,
+            "extracted": 6,
+            "correct": true,
+            "aOutputTokens": 770,
+            "aCost": 0.007850000000000001,
+            "bCost": 0.00012389999999999998
+          },
+          {
+            "problemId": 3,
+            "truth": 125,
+            "extracted": 125,
+            "correct": true,
+            "aOutputTokens": 395,
+            "aCost": 0.0041075,
+            "bCost": 0.00006765
+          },
+          {
+            "problemId": 4,
+            "truth": 2.718,
+            "extracted": 2.718,
+            "correct": true,
+            "aOutputTokens": 547,
+            "aCost": 0.00566,
+            "bCost": 0.00009164999999999999
+          },
+          {
+            "problemId": 5,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 233,
+            "aCost": 0.0025,
+            "bCost": 0.00004335
+          },
+          {
+            "problemId": 6,
+            "truth": 9,
+            "extracted": 9,
+            "correct": true,
+            "aOutputTokens": 319,
+            "aCost": 0.0033275,
+            "bCost": 0.00005625
+          },
+          {
+            "problemId": 7,
+            "truth": 1200,
+            "extracted": 1200,
+            "correct": true,
+            "aOutputTokens": 593,
+            "aCost": 0.0061200000000000004,
+            "bCost": 0.00009795
+          },
+          {
+            "problemId": 8,
+            "truth": 1,
+            "extracted": 1,
+            "correct": true,
+            "aOutputTokens": 547,
+            "aCost": 0.005645,
+            "bCost": 0.00009044999999999999
+          },
+          {
+            "problemId": 9,
+            "truth": 5,
+            "extracted": 5,
+            "correct": true,
+            "aOutputTokens": 251,
+            "aCost": 0.0026750000000000003,
+            "bCost": 0.000046049999999999994
+          },
+          {
+            "problemId": 10,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 549,
+            "aCost": 0.0056575,
+            "bCost": 0.00009075
+          },
+          {
+            "problemId": 11,
+            "truth": 4,
+            "extracted": 4,
+            "correct": true,
+            "aOutputTokens": 341,
+            "aCost": 0.0035849999999999996,
+            "bCost": 0.00005955
+          },
+          {
+            "problemId": 12,
+            "truth": 0.125,
+            "extracted": 0.125,
+            "correct": true,
+            "aOutputTokens": 419,
+            "aCost": 0.0043875,
+            "bCost": 0.00007245
+          },
+          {
+            "problemId": 13,
+            "truth": 2,
+            "extracted": 2,
+            "correct": true,
+            "aOutputTokens": 380,
+            "aCost": 0.0039625,
+            "bCost": 0.0000654
+          },
+          {
+            "problemId": 14,
+            "truth": 12,
+            "extracted": 12,
+            "correct": true,
+            "aOutputTokens": 419,
+            "aCost": 0.0043625,
+            "bCost": 0.00007125
+          },
+          {
+            "problemId": 15,
+            "truth": 50,
+            "extracted": 50,
+            "correct": true,
+            "aOutputTokens": 271,
+            "aCost": 0.0028675000000000003,
+            "bCost": 0.00004905
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "summary": {
+          "round": 2,
+          "accuracy": "15/15 (100.0%)",
+          "accuracyPct": 100,
+          "aOutputTokens": 3675,
+          "totalTokens": 17749,
+          "totalCost": "$0.0439",
+          "totalCostNum": 0.04394374999999999,
+          "correct": 15,
+          "total": 15
+        },
+        "details": [
+          {
+            "problemId": 1,
+            "truth": 40,
+            "extracted": 40,
+            "correct": true,
+            "aOutputTokens": 220,
+            "aCost": 0.0025700000000000002,
+            "bCost": 0.0001158
+          },
+          {
+            "problemId": 2,
+            "truth": 6,
+            "extracted": 6,
+            "correct": true,
+            "aOutputTokens": 111,
+            "aCost": 0.0014500000000000001,
+            "bCost": 0.00009944999999999999
+          },
+          {
+            "problemId": 3,
+            "truth": 125,
+            "extracted": 125,
+            "correct": true,
+            "aOutputTokens": 224,
+            "aCost": 0.0025875,
+            "bCost": 0.0001164
+          },
+          {
+            "problemId": 4,
+            "truth": 2.718,
+            "extracted": 2.718,
+            "correct": true,
+            "aOutputTokens": 377,
+            "aCost": 0.00415,
+            "bCost": 0.00014055
+          },
+          {
+            "problemId": 5,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 167,
+            "aCost": 0.00203,
+            "bCost": 0.00010785
+          },
+          {
+            "problemId": 6,
+            "truth": 9,
+            "extracted": 9,
+            "correct": true,
+            "aOutputTokens": 172,
+            "aCost": 0.0020475,
+            "bCost": 0.0001086
+          },
+          {
+            "problemId": 7,
+            "truth": 1200,
+            "extracted": 1200,
+            "correct": true,
+            "aOutputTokens": 455,
+            "aCost": 0.00493,
+            "bCost": 0.00015165
+          },
+          {
+            "problemId": 8,
+            "truth": 1,
+            "extracted": 1,
+            "correct": true,
+            "aOutputTokens": 369,
+            "aCost": 0.0040550000000000004,
+            "bCost": 0.00013814999999999997
+          },
+          {
+            "problemId": 9,
+            "truth": 5,
+            "extracted": 5,
+            "correct": true,
+            "aOutputTokens": 191,
+            "aCost": 0.002265,
+            "bCost": 0.00011145
+          },
+          {
+            "problemId": 10,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 216,
+            "aCost": 0.0025175,
+            "bCost": 0.0001152
+          },
+          {
+            "problemId": 11,
+            "truth": 4,
+            "extracted": 4,
+            "correct": true,
+            "aOutputTokens": 179,
+            "aCost": 0.002155,
+            "bCost": 0.00010965
+          },
+          {
+            "problemId": 12,
+            "truth": 0.125,
+            "extracted": 0.125,
+            "correct": true,
+            "aOutputTokens": 199,
+            "aCost": 0.0023775,
+            "bCost": 0.00011385
+          },
+          {
+            "problemId": 13,
+            "truth": 2,
+            "extracted": 2,
+            "correct": true,
+            "aOutputTokens": 228,
+            "aCost": 0.0026325,
+            "bCost": 0.000117
+          },
+          {
+            "problemId": 14,
+            "truth": 12,
+            "extracted": 12,
+            "correct": true,
+            "aOutputTokens": 382,
+            "aCost": 0.0041825000000000005,
+            "bCost": 0.0001401
+          },
+          {
+            "problemId": 15,
+            "truth": 50,
+            "extracted": 50,
+            "correct": true,
+            "aOutputTokens": 185,
+            "aCost": 0.0021975000000000002,
+            "bCost": 0.00011055
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "summary": {
+          "round": 3,
+          "accuracy": "15/15 (100.0%)",
+          "accuracyPct": 100,
+          "aOutputTokens": 3827,
+          "totalTokens": 17378,
+          "totalCost": "$0.0454",
+          "totalCostNum": 0.04538530000000001,
+          "correct": 15,
+          "total": 15
+        },
+        "details": [
+          {
+            "problemId": 1,
+            "truth": 40,
+            "extracted": 40,
+            "correct": true,
+            "aOutputTokens": 220,
+            "aCost": 0.0025700000000000002,
+            "bCost": 0.00010905000000000001
+          },
+          {
+            "problemId": 2,
+            "truth": 6,
+            "extracted": 6,
+            "correct": true,
+            "aOutputTokens": 122,
+            "aCost": 0.00156,
+            "bCost": 0.00009435
+          },
+          {
+            "problemId": 3,
+            "truth": 125,
+            "extracted": 125,
+            "correct": true,
+            "aOutputTokens": 245,
+            "aCost": 0.0027975,
+            "bCost": 0.0001128
+          },
+          {
+            "problemId": 4,
+            "truth": 2.718,
+            "extracted": 2.718,
+            "correct": true,
+            "aOutputTokens": 380,
+            "aCost": 0.00418,
+            "bCost": 0.00013424999999999998
+          },
+          {
+            "problemId": 5,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 149,
+            "aCost": 0.00185,
+            "bCost": 0.00009839999999999999
+          },
+          {
+            "problemId": 6,
+            "truth": 9,
+            "extracted": 9,
+            "correct": true,
+            "aOutputTokens": 172,
+            "aCost": 0.0020475,
+            "bCost": 0.00010185
+          },
+          {
+            "problemId": 7,
+            "truth": 1200,
+            "extracted": 1200,
+            "correct": true,
+            "aOutputTokens": 461,
+            "aCost": 0.0049900000000000005,
+            "bCost": 0.0001458
+          },
+          {
+            "problemId": 8,
+            "truth": 1,
+            "extracted": 1,
+            "correct": true,
+            "aOutputTokens": 363,
+            "aCost": 0.003995,
+            "bCost": 0.0001305
+          },
+          {
+            "problemId": 9,
+            "truth": 5,
+            "extracted": 5,
+            "correct": true,
+            "aOutputTokens": 179,
+            "aCost": 0.0021449999999999998,
+            "bCost": 0.0001029
+          },
+          {
+            "problemId": 10,
+            "truth": 10,
+            "extracted": 10,
+            "correct": true,
+            "aOutputTokens": 321,
+            "aCost": 0.0035675000000000004,
+            "bCost": 0.00012419999999999998
+          },
+          {
+            "problemId": 11,
+            "truth": 4,
+            "extracted": 4,
+            "correct": true,
+            "aOutputTokens": 179,
+            "aCost": 0.002155,
+            "bCost": 0.0001029
+          },
+          {
+            "problemId": 12,
+            "truth": 0.125,
+            "extracted": 0.125,
+            "correct": true,
+            "aOutputTokens": 214,
+            "aCost": 0.0025275,
+            "bCost": 0.00010935
+          },
+          {
+            "problemId": 13,
+            "truth": 2,
+            "extracted": 2,
+            "correct": true,
+            "aOutputTokens": 228,
+            "aCost": 0.0026325,
+            "bCost": 0.00011025
+          },
+          {
+            "problemId": 14,
+            "truth": 12,
+            "extracted": 12,
+            "correct": true,
+            "aOutputTokens": 389,
+            "aCost": 0.004252499999999999,
+            "bCost": 0.00013439999999999996
+          },
+          {
+            "problemId": 15,
+            "truth": 50,
+            "extracted": 50,
+            "correct": true,
+            "aOutputTokens": 205,
+            "aCost": 0.0023975000000000003,
+            "bCost": 0.00010680000000000001
+          }
+        ]
+      }
+    ]
+  }
+}

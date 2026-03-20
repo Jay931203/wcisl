@@ -1,0 +1,364 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{kotex}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!8},
+  rulecolor=\color{gray!30},
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  aboveskip=6pt,
+  belowskip=6pt,
+}
+
+\title{A2A Semantic Communication\\Preliminary Experiment Results}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ====================================================================
+\section{KI-1: Mutual Cognitive Context Inference}
+% ====================================================================
+
+\subsection{Experiment A: 정보 필터링 (No Token Limit)}
+
+\paragraph{Setup.}
+\begin{itemize}[nosep]
+  \item Agent A (GPT-4o): 데이터셋(15--20개 항목)을 수신, 요약하여 Agent B에게 전송
+  \item Agent B (GPT-4o): A의 메시지에서 특정 2--3개 데이터를 찾아 수치 계산 (A가 보내지 않은 정보는 사용 불가, $-999$ 출력)
+  \item 15문제, 도메인: 재무/제조/의료/투자/인구통계/물류/에너지/농업/유통/교육/스포츠/기상/통신/항공/부동산
+  \item A의 전송 token limit 없음. A가 자연스럽게 생성하는 토큰 수를 측정.
+\end{itemize}
+
+\paragraph{Conditions.}
+\begin{enumerate}[nosep]
+  \item \textbf{No Context}: A는 B의 태스크를 모름. ``전체 데이터에 대한 종합 분석 리포트를 작성하라''는 지시.
+  \item \textbf{One-Way}: A는 B의 대략적 분야만 앎 (예: ``재무비율 계산이 필요한 수신자''). 관련 데이터 위주 전송.
+  \item \textbf{Mutual}: B가 A에게 필요한 데이터를 명시적으로 요청 (예: ``LongTerm\_Debt과 Equity를 보내달라''). A는 요청된 데이터만 key=value로 전송.
+  \item \textbf{Progressive (3 Rounds)}: R1 = No Context와 동일. R2: A가 B의 R1 응답을 수신 (정답 미제공, B의 출력만 확인)하여 B가 어떤 데이터를 필요로 했는지 추론 후 적응. R3: R2 응답 기반 추가 적응. B의 프롬프트는 전 라운드 동일.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{KI-1A: 조건별 결과.}
+\begin{tabular}{clcc}
+\toprule
+\# & Condition & Avg Tx Tokens & Accuracy (\%) \\
+\midrule
+1 & No Context       & 936 & 80.0 \\
+2 & One-Way          & 175 & 93.3 \\
+3 & Mutual           &  20 & 93.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{KI-1A Progressive: 라운드별.}
+\begin{tabular}{ccc}
+\toprule
+Round & Avg Tx Tokens & Accuracy (\%) \\
+\midrule
+1 & 930 & 86.7 \\
+2 & 119 & 100.0 \\
+3 &  19 & 86.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --------------------------------------------------------------------
+
+\subsection{Experiment B: Token Limit 제약 (40 tokens)}
+
+\paragraph{Setup.}
+\begin{itemize}[nosep]
+  \item Agent A (GPT-4o) $\rightarrow$ Agent B (GPT-4o)
+  \item 수치 문제 15문제 (데이터 8--10개 중 B가 2--3개 필요)
+  \item A의 전송을 API max\_tokens=40으로 강제 제한
+  \item B는 A의 메시지에서만 계산 (정보 부족 시 $-999$)
+\end{itemize}
+
+\paragraph{Conditions.}
+Experiment A와 동일 (1) No Context (2) One-Way (3) Mutual (4) Progressive.
+
+\begin{table}[h]
+\centering
+\caption{KI-1B: Token limit (40) 하 정확도.}
+\begin{tabular}{clc}
+\toprule
+\# & Condition & Accuracy (\%) \\
+\midrule
+1 & No Context  & 13.3 \\
+2 & One-Way     & 33.3 \\
+3 & Mutual      & 60.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{KI-1B Progressive (40 tokens).}
+\begin{tabular}{cc}
+\toprule
+Round & Accuracy (\%) \\
+\midrule
+1 & 13.3 \\
+2 & 46.7 \\
+3 & 66.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --------------------------------------------------------------------
+
+\subsection{Experiment C: 과잉 필터링 현상}
+
+\paragraph{Setup.}
+Experiment A와 동일 (GPT-4o 양쪽, token limit 없음). 단, 데이터 항목 8--10개 (A보다 적음).
+
+\begin{table}[h]
+\centering
+\caption{KI-1C 결과.}
+\begin{tabular}{clc}
+\toprule
+\# & Condition & Accuracy (\%) \\
+\midrule
+1 & No Context  & 86.7 \\
+2 & One-Way     & 60.0 \\
+3 & Mutual      & 93.3 \\
+4 & Progressive R2 & 100.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+One-Way(60\%)가 No Context(86.7\%)보다 낮음. A가 ``관련 데이터만 보내라''는 힌트를 받고 필요한 데이터까지 제외하는 과잉 필터링 발생. 데이터 항목 수가 적을 때(8--10개) GPT-4o가 No Context에서 거의 전부 나열하여 오히려 정보 손실이 없었음.
+
+% ====================================================================
+\section{KI-3: Stage-Wise Model Switching in CoT}
+% ====================================================================
+
+\subsection{Experiment A: GPT-4o-mini}
+
+\paragraph{Setup.}
+\begin{itemize}[nosep]
+  \item Tx Agent (GPT-4o-mini): 3단계 CoT로 문제 풀이 (Stage 1: 이해, Stage 2: 추론, Stage 3: 전달)
+  \item 각 stage 출력이 다음 stage 입력으로 체이닝. Stage 3 출력만 Rx에 전송.
+  \item Rx Agent (GPT-4o-mini): Tx의 메시지를 수신하여 최종 수치 답 도출
+  \item 15문제: 확률/베이즈 5, 최적화 5, 다단계 논리 5 (수치 정답, 10\% 허용 오차)
+\end{itemize}
+
+\paragraph{Conditions.}
+\begin{enumerate}[nosep]
+  \item \textbf{All General}: Tx 3단계 모두 자유 추론. Rx 일반 수신.
+  \item \textbf{All Audience-Aware}: Tx 3단계 모두 ``수학 전문가에게 간결하게'' 지시. Rx 해석 모드.
+  \item \textbf{Tx-Only Switch}: Tx Stage 1--2 자유 추론, Stage 3에서 ``수학 전문가용으로 압축''. Rx 일반 수신.
+  \item \textbf{Both Switch}: Tx는 (3)과 동일. Rx Stage 1: 압축 메시지 해석/검증, Rx Stage 2: 자유 추론으로 최종 답.
+  \item \textbf{Reverse Switch}: Tx Stage 1 압축, Stage 2--3 자유. Rx 역순. (대조군)
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{KI-3A: GPT-4o-mini 결과.}
+\begin{tabular}{clcc}
+\toprule
+\# & Condition & Accuracy (\%) & Msg Tokens \\
+\midrule
+1 & All General        & 60.0  & 329 \\
+2 & All Audience-Aware & 40.0  & 137 \\
+3 & Tx-Only Switch     & 80.0 &  116 \\
+4 & Both Switch        & 73.3 & 122 \\
+5 & Reverse Switch     & 66.7  & 436 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --------------------------------------------------------------------
+
+\subsection{Experiment B: GPT-4o}
+
+\paragraph{Setup.}
+Experiment A와 동일 문제/조건. Tx, Rx 모두 GPT-4o로 변경.
+
+\begin{table}[h]
+\centering
+\caption{KI-3B: GPT-4o 결과.}
+\begin{tabular}{clcc}
+\toprule
+\# & Condition & Accuracy (\%) & Msg Tokens \\
+\midrule
+1 & All General        & 66.7  & 505 \\
+2 & All Audience-Aware & 26.7  & 138 \\
+3 & Tx-Only Switch     & 53.3 &  95 \\
+4 & Both Switch        & 60.0 & 142 \\
+5 & Reverse Switch     & 46.7  & 611 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Mini에서는 Tx-Only(80\%) $>$ Both(73.3\%). GPT-4o에서는 Both(60\%) $>$ Tx-Only(53.3\%).
+
+% ====================================================================
+\section{KI-4: Adaptive Task Scheduling}
+% ====================================================================
+
+\subsection{Experiment A: Receiving Agent 없음}
+
+\paragraph{Setup.}
+\begin{itemize}[nosep]
+  \item 4 Specialist Agents (GPT-4o-mini): Medical, Legal, Finance, Tech
+  \item Grader (GPT-4o): corrupted 텍스트를 직접 0--10 채점
+  \item 15문제: 의료 4, 법률 4, 재무 4, 기술 3
+  \item 채널: 에이전트별 랜덤 배정 (seed=42). Good (500tok, 0\%), Medium (150tok, 20\%), Bad (60tok, 50\%).
+  \item max\_tokens: API 파라미터로 강제. Corruption: 응답의 단어를 확률적으로 {[}???{]}로 치환.
+  \item 에이전트 선택: combined\_score = expertise\_weight $\times$ channel\_weight. 프로그래밍 로직.
+\end{itemize}
+
+\paragraph{Conditions.}
+\begin{enumerate}[nosep]
+  \item \textbf{Fixed Order}: Medical$\rightarrow$Legal$\rightarrow$Finance 고정. 채널 무시.
+  \item \textbf{Expertise Only}: 전문 분야 우선. 채널 무시.
+  \item \textbf{Channel Only}: 채널 좋은 에이전트 우선. 전문성 무시.
+  \item \textbf{Joint}: expertise $\times$ channel 스코어 상위 선택.
+  \item \textbf{Joint + Early Stop}: (4)와 동일. 충분하면 조기 종료.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{KI-4A 결과.}
+\begin{tabular}{clc}
+\toprule
+\# & Condition & Avg Score (0--10) \\
+\midrule
+1 & Fixed Order       & 4.93 \\
+2 & Expertise Only    & 5.80 \\
+3 & Channel Only      & 6.67 \\
+4 & Joint             & 6.73 \\
+5 & Joint + Early Stop & 7.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --------------------------------------------------------------------
+
+\subsection{Experiment B: Receiving Agent 포함 (GPT-4o)}
+
+\paragraph{Setup.}
+\begin{itemize}[nosep]
+  \item Specialists, Receiving Agent, Grader 전부 GPT-4o
+  \item Receiving agent: corrupted 메시지를 해석하여 clean 답변 생성. Grader는 clean 답변 채점.
+  \item Channel: Good (500tok, 0\%), Medium (120tok, 25\%), Bad (50tok, 50\%).
+  \item 나머지 Experiment A와 동일.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{KI-4B 결과.}
+\begin{tabular}{clcc}
+\toprule
+\# & Condition & Avg Score & Consultations \\
+\midrule
+1 & Fixed Order       & 8.67 & 2.0 \\
+2 & Expertise Only    & 8.40 & 2.0 \\
+3 & Channel Only      & 8.73 & 2.0 \\
+4 & Joint             & 9.00 & 2.0 \\
+5 & Joint + Early Stop & 8.93 & 1.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Receiving agent(GPT-4o)가 corrupted 메시지를 자체 지식으로 복원하여 전 조건 8--9점으로 수렴.
+
+% ====================================================================
+\appendix
+\section{Problem Sets}
+% ====================================================================
+
+\subsection{KI-1A: 정보 필터링, 대규모 데이터셋 (15문제)}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\begin{enumerate}[nosep,leftmargin=*]
+  \item Corporate finance (20 items) $\rightarrow$ D/E Ratio \textit{(0.667)}
+  \item Manufacturing (18) $\rightarrow$ Good units/day \textit{(11,115)}
+  \item Hospital (18) $\rightarrow$ Bed turnover \textit{(6.8)}
+  \item Portfolio (20) $\rightarrow$ Expected return \textit{(7.95\%)}
+  \item City demographics (18) $\rightarrow$ Over 65 population \textit{(119,000)}
+  \item Logistics (16) $\rightarrow$ Annual throughput \textit{(18,700)}
+  \item Energy (17) $\rightarrow$ Cost/MWh \textit{(19.05)}
+  \item Agriculture (16) $\rightarrow$ Total yield \textit{(835,200)}
+  \item Retail (18) $\rightarrow$ Revenue/employee \textit{(9.33M)}
+  \item University (17) $\rightarrow$ Student-faculty ratio \textit{(15.91)}
+  \item Sports (15) $\rightarrow$ Points/game \textit{(95.14)}
+  \item Weather (16) $\rightarrow$ Avg high temp \textit{(53)}
+  \item Telecom (18) $\rightarrow$ Data transmitted \textit{(1.375B)}
+  \item Airline (17) $\rightarrow$ Revenue/passenger \textit{(294.74)}
+  \item Real estate (16) $\rightarrow$ Price/sqft \textit{(71.11)}
+\end{enumerate}
+}}
+
+\subsection{KI-1B/C: 정보 필터링, 소규모 데이터셋 (15문제)}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\begin{enumerate}[nosep,leftmargin=*]
+  \item Financial (8 items) $\rightarrow$ EPS \textit{(1.65)}
+  \item Balance sheet $\rightarrow$ Current Ratio \textit{(3.167)}
+  \item Income stmt $\rightarrow$ Net Margin \textit{(5.25\%)}
+  \item Cash flows (10) $\rightarrow$ Ending Cash \textit{(\$730K)}
+  \item Income+assets $\rightarrow$ ROA \textit{(5\%)}
+  \item Demand/lead $\rightarrow$ Reorder Point \textit{(1147)}
+  \item 3 machines $\rightarrow$ Cost/good unit \textit{(0.51)}
+  \item Call center $\rightarrow$ Utilization \textit{(0.667)}
+  \item Project EVM $\rightarrow$ CPI \textit{(0.857)}
+  \item Inventory $\rightarrow$ EOQ \textit{(670.8)}
+  \item Mechanics $\rightarrow$ KE \textit{(100J)}
+  \item Circuit $\rightarrow$ Current \textit{(4A)}
+  \item Demographics $\rightarrow$ Growth \textit{(700)}
+  \item Tank $\rightarrow$ Fill time \textit{(300min)}
+  \item Trip $\rightarrow$ Fuel cost \textit{(\$60)}
+\end{enumerate}
+}}
+
+\subsection{KI-3: 확률 / 최적화 / 다단계 논리 (15문제)}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\begin{enumerate}[nosep,leftmargin=*]
+  \item Disease 1\%, test 95\%. P(disease$|$pos)? \textit{(16.1\%)}
+  \item 3 urns, draw red. P(urn A)? \textit{(45.5\%)}
+  \item Spam filter. P(spam$|$``free'')? \textit{(77.4\%)}
+  \item Two machines. P(M1$|$defective)? \textit{(37.5\%)}
+  \item Monty Hall. P(car door 2)? \textit{(66.7\%)}
+  \item 100m fence, river. Max area? \textit{(1250)}
+  \item Open box, min SA. Side? \textit{(10)}
+  \item $f(x)=x^3-6x^2+9x+1$ on $[0,5]$. Max? \textit{(21)}
+  \item 200m perimeter. Max area? \textit{(2500)}
+  \item LP: max profit? \textit{(320)}
+  \item Clock +5min/hr. Real time at 6PM? \textit{(5PM)}
+  \item Trains + fly distance? \textit{(240km)}
+  \item Earth rope +1m. Height? \textit{(0.159m)}
+  \item 100 lockers open? \textit{(10)}
+  \item 16-player elimination games? \textit{(15)}
+\end{enumerate}
+}}
+
+\subsection{KI-4: 도메인별 (15문제)}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{Medical (4)}:
+Hypertension+diabetes treatment, Chest pain DDx, Anaphylaxis mgmt, Warfarin interactions.\\[3pt]
+\textbf{Legal (4)}:
+Negligence elements, Merger vs acquisition, Tenant rights, Non-compete enforceability.\\[3pt]
+\textbf{Finance (4)}:
+NPV \textit{(\$13,724)}, WACC \textit{(9\%)}, Break-even \textit{(10,000)}, Operating vs financial leverage.\\[3pt]
+\textbf{Tech (3)}:
+TCP vs UDP, SQL injection prevention, CAP theorem.
+}}
+
+\end{document}

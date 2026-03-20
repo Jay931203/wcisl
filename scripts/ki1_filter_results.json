@@ -1,0 +1,1060 @@
+{
+  "experiment": "KI-1 Information Filtering",
+  "timestamp": "2026-03-19T17:23:23.662Z",
+  "models": {
+    "agent_a": "gpt-4o",
+    "agent_b": "gpt-4o-mini"
+  },
+  "temperature": 0,
+  "num_problems": 15,
+  "elapsed_seconds": 167.2,
+  "summary": {
+    "no_context": {
+      "correct": 6,
+      "total": 15,
+      "accuracy": 0.4
+    },
+    "one_way": {
+      "correct": 6,
+      "total": 15,
+      "accuracy": 0.4
+    },
+    "mutual": {
+      "correct": 8,
+      "total": 15,
+      "accuracy": 0.5333333333333333
+    },
+    "progressive_r1": {
+      "correct": 12,
+      "total": 15,
+      "accuracy": 0.8
+    },
+    "progressive_r2": {
+      "correct": 13,
+      "total": 15,
+      "accuracy": 0.8666666666666667
+    },
+    "progressive_r3": {
+      "correct": 9,
+      "total": 15,
+      "accuracy": 0.6
+    }
+  },
+  "problems": [
+    {
+      "id": 1,
+      "domain": "Financial Analysis",
+      "area": "liquidity metrics",
+      "data": "Revenue=$5M, COGS=$3M, OpEx=$800K, Interest=$200K, Tax=25%, Depreciation=$300K, AR=$400K, Inventory=$600K, Current_Liabilities=$500K, LongTermDebt=$2M",
+      "bTask": "Current Ratio = (AR + Inventory) / Current_Liabilities",
+      "bNeeds": "AR, Inventory, Current_Liabilities",
+      "answer": 2
+    },
+    {
+      "id": 2,
+      "domain": "Financial Analysis",
+      "area": "profitability metrics",
+      "data": "Revenue=$8M, COGS=$4.8M, SGA=$1.2M, RnD=$600K, Interest=$400K, Tax=30%, Total_Assets=$15M, Total_Equity=$9M, Depreciation=$500K, Net_Income=$700K",
+      "bTask": "Return on Equity (ROE) = Net_Income / Total_Equity",
+      "bNeeds": "Net_Income, Total_Equity",
+      "answer": 0.0778
+    },
+    {
+      "id": 3,
+      "domain": "Financial Analysis",
+      "area": "inventory efficiency metrics",
+      "data": "Sales=$10M, Beginning_Inventory=$800K, Purchases=$6M, Ending_Inventory=$1.2M, AR=$1.5M, AP=$900K, Operating_Expenses=$2M, Tax=25%, Depreciation=$400K",
+      "bTask": "Inventory Turnover = COGS / Average_Inventory. COGS = Beginning_Inventory + Purchases - Ending_Inventory. Average_Inventory = (Beginning_Inventory + Ending_Inventory) / 2",
+      "bNeeds": "Beginning_Inventory, Purchases, Ending_Inventory",
+      "answer": 5.6
+    },
+    {
+      "id": 4,
+      "domain": "Financial Analysis",
+      "area": "cash flow metrics",
+      "data": "Net_Income=$1.2M, Depreciation=$300K, Change_AR=-$200K, Change_Inventory=$150K, Change_AP=$100K, CapEx=$500K, Dividends=$200K, NewDebt=$1M, DebtRepayment=$400K, Stock_Buyback=$300K",
+      "bTask": "Free Cash Flow = Net_Income + Depreciation - CapEx + Change_in_Working_Capital. Working_Capital_Change = -Change_AR - Change_Inventory + Change_AP = -(-200K) - 150K + 100K = 150K",
+      "bNeeds": "Net_Income, Depreciation, CapEx, Change_AR, Change_Inventory, Change_AP",
+      "answer": 1150000
+    },
+    {
+      "id": 5,
+      "domain": "Financial Analysis",
+      "area": "valuation metrics",
+      "data": "Price=$50, Shares_Outstanding=2M, Total_Debt=$30M, Cash=$5M, EBITDA=$10M, Net_Income=$4M, Revenue=$40M, Book_Value=$25M, Dividends=$1M, CapEx=$3M",
+      "bTask": "EV/EBITDA = (Market_Cap + Total_Debt - Cash) / EBITDA. Market_Cap = Price × Shares_Outstanding",
+      "bNeeds": "Price, Shares_Outstanding, Total_Debt, Cash, EBITDA",
+      "answer": 12.5
+    },
+    {
+      "id": 6,
+      "domain": "Electrical Engineering",
+      "area": "power analysis",
+      "data": "Voltage=220V, Current=15A, PowerFactor=0.85, Frequency=60Hz, Resistance=10Ω, Inductance=0.05H, Capacitance=100μF, WireLength=50m, WireDiameter=2.5mm, Temperature=25°C",
+      "bTask": "Real Power = Voltage × Current × PowerFactor",
+      "bNeeds": "Voltage, Current, PowerFactor",
+      "answer": 2805
+    },
+    {
+      "id": 7,
+      "domain": "Structural Engineering",
+      "area": "beam deflection analysis",
+      "data": "Beam_Length=6m, Load=5000N (uniformly distributed), Width=0.2m, Height=0.3m, E=200GPa, Density=7800kg/m³, Yield_Strength=250MPa, Poisson=0.3, Safety_Factor=2.0, Support_Type=Simply_Supported",
+      "bTask": "Max deflection = (5 × W × L⁴) / (384 × E × I) where I = (Width × Height³) / 12. Use W=5000N total load, L=6m, E=200×10⁹Pa",
+      "bNeeds": "Load, Beam_Length, Width, Height, E",
+      "answer": 0.000386
+    },
+    {
+      "id": 8,
+      "domain": "Fluid Mechanics",
+      "area": "flow characterization",
+      "data": "Flow_Rate=0.5m³/s, Pipe_Diameter=0.3m, Fluid_Density=1000kg/m³, Viscosity=0.001Pa·s, Pipe_Length=100m, Roughness=0.0015mm, Elevation_Change=10m, Inlet_Pressure=300kPa, Temperature=20°C, Pipe_Material=Steel",
+      "bTask": "Reynolds Number = (Fluid_Density × Velocity × Pipe_Diameter) / Viscosity. First compute Velocity = Flow_Rate / (π × (Pipe_Diameter/2)²)",
+      "bNeeds": "Flow_Rate, Pipe_Diameter, Fluid_Density, Viscosity",
+      "answer": 2121000
+    },
+    {
+      "id": 9,
+      "domain": "Automotive Engineering",
+      "area": "aerodynamic force analysis",
+      "data": "Mass=1500kg, Velocity=30m/s, Drag_Coefficient=0.3, Frontal_Area=2.5m², Air_Density=1.225kg/m³, Rolling_Resistance=0.015, Gravity=9.81m/s², Road_Grade=3%, Wheel_Radius=0.35m, Transmission_Efficiency=0.92",
+      "bTask": "Drag Force = 0.5 × Drag_Coefficient × Frontal_Area × Air_Density × Velocity²",
+      "bNeeds": "Drag_Coefficient, Frontal_Area, Air_Density, Velocity",
+      "answer": 413.4
+    },
+    {
+      "id": 10,
+      "domain": "HVAC Engineering",
+      "area": "thermal load analysis",
+      "data": "Room_Volume=60m³, ACH=6, Outdoor_Temp=35°C, Indoor_Temp=24°C, Humidity=60%, Wall_Area=80m², U_Value=0.5W/(m²·K), Window_Area=15m², Window_U=2.5W/(m²·K), Occupants=4",
+      "bTask": "Total heat gain through walls and windows = Wall_Area × U_Value × ΔT + Window_Area × Window_U × ΔT. ΔT = Outdoor_Temp - Indoor_Temp",
+      "bNeeds": "Wall_Area, U_Value, Window_Area, Window_U, Outdoor_Temp, Indoor_Temp",
+      "answer": 852.5
+    },
+    {
+      "id": 11,
+      "domain": "Statistics",
+      "area": "confidence interval estimation",
+      "data": "Sample_Mean=52.3, Sample_Std=8.5, Sample_Size=100, Population_Mean=50, Confidence=95%, Z_critical=1.96, Alpha=0.05, Skewness=0.3, Kurtosis=2.8, Median=51.5",
+      "bTask": "95% Confidence Interval lower bound = Sample_Mean - Z_critical × (Sample_Std / √Sample_Size). Report ONLY the lower bound.",
+      "bNeeds": "Sample_Mean, Sample_Std, Sample_Size, Z_critical",
+      "answer": 50.63
+    },
+    {
+      "id": 12,
+      "domain": "Supply Chain",
+      "area": "inventory safety stock calculation",
+      "data": "Demand_Mean=500/week, Demand_Std=80/week, Lead_Time=2weeks, Lead_Time_Std=0.5weeks, Holding_Cost=$3/unit/week, Shortage_Cost=$25/unit, Order_Cost=$100, Service_Level=95% (Z=1.645), Unit_Cost=$20, Annual_Demand=26000",
+      "bTask": "Safety Stock = Z × √(Lead_Time × Demand_Std² + Demand_Mean² × Lead_Time_Std²). Z=1.645 for 95% service level.",
+      "bNeeds": "Demand_Mean, Demand_Std, Lead_Time, Lead_Time_Std, Z (service level)",
+      "answer": 451.4
+    },
+    {
+      "id": 13,
+      "domain": "Queueing Theory",
+      "area": "queue utilization analysis",
+      "data": "Arrival_Rate=30/hour, Service_Rate=10/hour, Servers=4, Queue_Capacity=∞, Priority_Levels=3, Avg_Wait_Target=5min, Setup_Time=0, Service_Distribution=Exponential, Arrival_Distribution=Poisson, Operating_Hours=10",
+      "bTask": "Traffic Intensity ρ = Arrival_Rate / (Servers × Service_Rate)",
+      "bNeeds": "Arrival_Rate, Servers, Service_Rate",
+      "answer": 0.75
+    },
+    {
+      "id": 14,
+      "domain": "Operations Research",
+      "area": "project selection optimization",
+      "data": "Projects: A($50K cost, $80K return, 2yr), B($30K cost, $55K return, 1yr), C($70K cost, $120K return, 3yr), D($20K cost, $35K return, 1yr), E($45K cost, $75K return, 2yr). Budget=$100K, Min_Return=40%, Max_Projects=3, Discount_Rate=8%, Risk_Tolerance=Medium",
+      "bTask": "Find the combination of projects (max 3) within $100K budget that maximizes total PROFIT (return - cost). Report the maximum total profit.",
+      "bNeeds": "All project costs and returns, Budget constraint",
+      "answer": 70000
+    },
+    {
+      "id": 15,
+      "domain": "Manufacturing",
+      "area": "production cost optimization",
+      "data": "Machine_A=(Production:100/hr, Defect:2%, Setup:30min, Cost:$50/hr), Machine_B=(80/hr, Defect:1%, Setup:45min, Cost:$65/hr), Machine_C=(120/hr, Defect:3%, Setup:20min, Cost:$45/hr). Order=10000units, Deadline=100hrs, Quality_Req=<2% defect rate, Penalty=$10/defective_unit, Setup_changes=2",
+      "bTask": "Find the total cost (production + penalty) for the cheapest machine that meets quality requirement (<2% defect) AND deadline (100hrs). Only machines with defect rate < 2% qualify. Production time = Order/Production_rate. Total cost = production_time × hourly_cost + Order × defect_rate × penalty.",
+      "bNeeds": "All machine specs, Order size, Deadline, Quality_Req, Penalty",
+      "answer": 7000
+    }
+  ],
+  "detailed_results": {
+    "no_context": [
+      {
+        "problem_id": 1,
+        "condition": "no_context",
+        "aMessage": "The financial data provided offers a snapshot of the company's performance and financial position. Here are the key highlights:\n\n1. **Revenue and Profitability:**\n   - The company generated a total revenue of $5 million.\n   - Cost of Goods Sold (COGS) is $3 million, resulting in a gross profit of $2 million.\n   - Operating Expenses (OpEx) are $800,000, leading to an operating income of $1.2 million.\n   - After accounting for interest expenses of $200,000 and depreciation of $300,000, the earnings before tax (EBT) stand at $700,000.\n   - With a tax rate of 25%, the net income is approximately $525,000.\n\n2. **Balance Sheet Metrics:**\n   - Accounts Receivable (AR) is $400,000, indicating the amount owed by customers.\n   - Inventory is valued at $600,000, reflecting the stock on hand.\n   - Current Liabilities total $500,000, representing short-term obligations.\n   - Long-term debt is $2 million, indicating the company's long-term financial commitments.\n\n3. **Financial Ratios:**\n   - Gross Margin: 40% (Gross Profit/Revenue)\n   - Operating Margin: 24% (Operating Income/Revenue)\n   - Net Profit Margin: 10.5% (Net Income/Revenue)\n   - Current Ratio: 2 (Current Assets/Current Liabilities, assuming AR and Inventory are the primary current assets)\n\nOverall, the company demonstrates a solid gross and operating margin, with a healthy net profit margin. The current ratio suggests a good liquidity position, indicating the company can cover its short-term liabilities with its current assets. However, the presence of significant long-term debt may require attention to ensure sustainable financial health.",
+        "bReply": "2",
+        "extracted": 2,
+        "expected": 2,
+        "correct": true
+      },
+      {
+        "problem_id": 2,
+        "condition": "no_context",
+        "aMessage": "The financial data presents a snapshot of the company's performance and financial health. The company generated a revenue of $8 million. The Cost of Goods Sold (COGS) amounted to $4.8 million, indicating a gross profit of $3.2 million. Selling, General, and Administrative expenses (SGA) were $1.2 million, and Research and Development (RnD) expenses were $600,000. \n\nAfter accounting for depreciation of $500,000, the operating income stands at $900,000. Interest expenses were $400,000, leading to an income before tax of $500,000. With a tax rate of 30%, the tax expense is $150,000, resulting in a net income of $700,000.\n\nThe company's total assets are valued at $15 million, with total equity at $9 million, suggesting a debt-to-equity ratio of approximately 0.67, which indicates a moderate level of leverage. Overall, the company appears to be profitable with a net profit margin of 8.75% and is maintaining a balanced approach to managing its expenses and investments.",
+        "bReply": "0.07777777777777778",
+        "extracted": 0.07777777777777778,
+        "expected": 0.0778,
+        "correct": true
+      },
+      {
+        "problem_id": 3,
+        "condition": "no_context",
+        "aMessage": "The financial data provided offers a snapshot of the company's performance and financial position. Here are the key highlights:\n\n1. **Sales and Cost of Goods Sold (COGS):**\n   - Total Sales amounted to $10 million.\n   - The Cost of Goods Sold can be calculated using the formula: COGS = Beginning Inventory + Purchases - Ending Inventory. This results in COGS = $800K + $6M - $1.2M = $5.6M.\n\n2. **Gross Profit:**\n   - Gross Profit is calculated as Sales minus COGS, which is $10M - $5.6M = $4.4M.\n\n3. **Operating Expenses and Operating Income:**\n   - Operating Expenses are reported at $2 million.\n   - Operating Income, before considering depreciation, is Gross Profit minus Operating Expenses, which is $4.4M - $2M = $2.4M.\n   - After accounting for Depreciation of $400K, the Operating Income is $2.4M - $400K = $2M.\n\n4. **Net Income:**\n   - Tax is applied at a rate of 25%. Therefore, the tax expense is 25% of Operating Income, which is $2M * 25% = $500K.\n   - Net Income is Operating Income minus Tax, resulting in $2M - $500K = $1.5M.\n\n5. **Working Capital Metrics:**\n   - Accounts Receivable (AR) stands at $1.5 million, indicating the amount owed by customers.\n   - Accounts Payable (AP) is $900K, representing the company's short-term liabilities to suppliers.\n\nOverall, the company demonstrates a solid gross profit margin and a healthy net income after taxes. The working capital metrics suggest a manageable level of receivables and payables, which are crucial for maintaining liquidity.",
+        "bReply": "5.0",
+        "extracted": 5,
+        "expected": 5.6,
+        "correct": false
+      },
+      {
+        "problem_id": 4,
+        "condition": "no_context",
+        "aMessage": "The financial data presents a snapshot of the company's recent performance and cash flow activities. The company reported a net income of $1.2 million, indicating profitability. Depreciation expenses amounted to $300,000, which is a non-cash charge that impacts the net income but not the cash flow directly.\n\nIn terms of working capital changes, accounts receivable decreased by $200,000, which is a positive cash flow indicator as it suggests improved cash collection. Inventory increased by $150,000, which could imply either stockpiling or slower sales, potentially tying up cash. Accounts payable increased by $100,000, which is a cash inflow as it indicates the company is taking longer to pay its suppliers.\n\nCapital expenditures (CapEx) were $500,000, reflecting investment in long-term assets. The company paid out $200,000 in dividends, returning value to shareholders. Additionally, there was a stock buyback of $300,000, which can be seen as a method to return capital to shareholders and potentially improve earnings per share.\n\nOn the financing side, the company took on new debt amounting to $1 million, while repaying $400,000 of existing debt. This results in a net increase in debt, which could be used to finance operations or investments.\n\nOverall, the company appears to be managing its cash flow effectively, with strategic investments and shareholder returns, while also leveraging debt to support its financial activities.",
+        "bReply": "850000",
+        "extracted": 850000,
+        "expected": 1150000,
+        "correct": false
+      },
+      {
+        "problem_id": 5,
+        "condition": "no_context",
+        "aMessage": "The financial data presents a snapshot of a company's current financial standing. The company's stock is priced at $50 with 2 million shares outstanding, giving it a market capitalization of $100 million. The company has a total debt of $30 million and holds $5 million in cash, resulting in a net debt position of $25 million.\n\nThe company generated $40 million in revenue, with an EBITDA of $10 million, indicating an EBITDA margin of 25%. Net income stands at $4 million, translating to a net profit margin of 10%. The book value of the company is $25 million, suggesting a price-to-book ratio of 4.\n\nThe company has distributed $1 million in dividends, reflecting a dividend payout ratio of 25% based on net income. Capital expenditures amount to $3 million, which is 7.5% of the revenue, indicating a moderate level of reinvestment in the business.\n\nOverall, the company appears to be profitable with a solid EBITDA margin, though it carries a significant amount of debt relative to its cash holdings. The market values the company at a premium to its book value, and it maintains a reasonable dividend payout.",
+        "bReply": "12.5",
+        "extracted": 12.5,
+        "expected": 12.5,
+        "correct": true
+      },
+      {
+        "problem_id": 6,
+        "condition": "no_context",
+        "aMessage": "The provided data outlines several key electrical and physical parameters of a system:\n\n1. **Voltage and Current**: The system operates at a voltage of 220 volts and a current of 15 amperes. This indicates a moderate power system, typical for residential or small commercial applications.\n\n2. **Power Factor**: The power factor is 0.85, which suggests that the system is relatively efficient, though there is some room for improvement. A power factor closer to 1 would indicate more efficient power usage.\n\n3. **Frequency**: The system operates at a frequency of 60 Hz, which is standard for electrical systems in many regions, including North America.\n\n4. **Resistance, Inductance, and Capacitance**: The resistance is 10 ohms, inductance is 0.05 henries, and capacitance is 100 microfarads. These values suggest a balanced RLC circuit, which can affect the system's impedance and phase angle.\n\n5. **Wire Specifications**: The wire length is 50 meters with a diameter of 2.5 mm. These dimensions are typical for medium-duty electrical wiring, providing a balance between current-carrying capacity and physical flexibility.\n\n6. **Temperature**: The system is operating at a temperature of 25°C, which is a standard room temperature, indicating that the system is likely operating under normal environmental conditions.\n\nOverall, the data suggests a well-balanced electrical system suitable for general applications, with standard operating conditions and components. The power factor indicates some inefficiency, which could be addressed for improved performance.",
+        "bReply": "2812.5",
+        "extracted": 2812.5,
+        "expected": 2805,
+        "correct": true
+      },
+      {
+        "problem_id": 7,
+        "condition": "no_context",
+        "aMessage": "The provided data pertains to a structural engineering scenario involving a simply supported beam. Key metrics include:\n\n- **Beam Dimensions**: The beam has a length of 6 meters, a width of 0.2 meters, and a height of 0.3 meters.\n- **Material Properties**: The beam is made of a material with a Young's Modulus (E) of 200 GPa, a density of 7800 kg/m³, a yield strength of 250 MPa, and a Poisson's ratio of 0.3.\n- **Load Characteristics**: The beam is subjected to a uniformly distributed load of 5000 Newtons.\n- **Safety Considerations**: A safety factor of 2.0 is specified, indicating that the design should withstand twice the expected maximum load to ensure safety.\n- **Support Conditions**: The beam is simply supported, which typically allows for rotation at the supports but not translation.\n\nThese parameters are crucial for assessing the structural integrity and performance of the beam under the given loading conditions. The safety factor and material properties will play significant roles in determining the beam's ability to withstand the applied load without failure.",
+        "bReply": "0.00125",
+        "extracted": 0.00125,
+        "expected": 0.000386,
+        "correct": false
+      },
+      {
+        "problem_id": 8,
+        "condition": "no_context",
+        "aMessage": "The provided data describes a fluid flow scenario through a steel pipe. Key metrics include:\n\n1. **Flow Rate**: The fluid is moving at a rate of 0.5 cubic meters per second.\n2. **Pipe Specifications**: The pipe has a diameter of 0.3 meters and a length of 100 meters, with a roughness of 0.0015 millimeters, indicating a relatively smooth surface typical for steel pipes.\n3. **Fluid Properties**: The fluid has a density of 1000 kg/m³ and a viscosity of 0.001 Pa·s, which are characteristic of water at 20°C.\n4. **Pressure and Elevation**: The inlet pressure is 300 kPa, and there is an elevation change of 10 meters, which will affect the pressure drop and energy requirements for the flow.\n5. **Temperature**: The fluid temperature is 20°C, which is standard room temperature and suggests no significant thermal effects on viscosity or density.\n\nOverall, this data provides a comprehensive view of the fluid flow conditions, including the physical properties of the fluid, the characteristics of the pipe, and the environmental conditions affecting the flow. These parameters are crucial for calculating pressure drops, flow velocity, and energy losses in the system.",
+        "bReply": "Reynolds Number = 15000.0",
+        "extracted": 15000,
+        "expected": 2121000,
+        "correct": false
+      },
+      {
+        "problem_id": 9,
+        "condition": "no_context",
+        "aMessage": "The provided data pertains to an automotive engineering scenario, focusing on a vehicle with specific characteristics and environmental conditions. Here are the key findings:\n\n1. **Vehicle Mass and Velocity**: The vehicle has a mass of 1500 kg and is traveling at a velocity of 30 m/s. These parameters are crucial for calculating kinetic energy and dynamic performance.\n\n2. **Aerodynamic Properties**: The drag coefficient is 0.3, and the frontal area is 2.5 m². Combined with an air density of 1.225 kg/m³, these factors influence the aerodynamic drag force experienced by the vehicle, which affects fuel efficiency and speed.\n\n3. **Rolling Resistance**: The rolling resistance coefficient is 0.015. This value, along with the vehicle's weight and gravity (9.81 m/s²), determines the rolling resistance force, impacting the vehicle's energy consumption.\n\n4. **Road Conditions**: The road grade is 3%, indicating a slight incline. This affects the gravitational force component acting against the vehicle's motion, requiring additional power to maintain speed.\n\n5. **Wheel and Transmission**: The wheel radius is 0.35 m, which is relevant for calculating the torque and rotational dynamics. The transmission efficiency is 0.92, indicating that 92% of the engine's power is effectively transmitted to the wheels, with the rest lost to friction and other inefficiencies.\n\nOverall, these metrics provide a comprehensive overview of the vehicle's performance characteristics, including its aerodynamic efficiency, rolling resistance, and power transmission efficiency, all of which are critical for evaluating its operational efficiency and energy consumption.",
+        "bReply": "67.875",
+        "extracted": 67.875,
+        "expected": 413.4,
+        "correct": false
+      },
+      {
+        "problem_id": 10,
+        "condition": "no_context",
+        "aMessage": "The data provided pertains to an HVAC engineering scenario, focusing on a specific room's thermal and environmental conditions. Key metrics include:\n\n1. **Room Volume and Air Changes per Hour (ACH):** The room has a volume of 60 cubic meters with an air change rate of 6 times per hour, indicating a relatively high ventilation rate which can impact heating and cooling loads.\n\n2. **Temperature and Humidity:** The outdoor temperature is 35°C, while the indoor temperature is maintained at 24°C, suggesting a significant cooling requirement. The indoor humidity level is at 60%, which is moderately high and may require dehumidification for comfort.\n\n3. **Thermal Properties of Walls and Windows:**\n   - **Wall Area and U-Value:** The walls cover an area of 80 square meters with a U-value of 0.5 W/(m²·K), indicating moderate insulation quality.\n   - **Window Area and U-Value:** The windows cover 15 square meters with a higher U-value of 2.5 W/(m²·K), suggesting they are less insulated compared to the walls and could be a significant source of heat gain or loss.\n\n4. **Occupancy:** The room is occupied by 4 people, which will contribute to the internal heat load and affect the HVAC system's performance.\n\nOverall, the data suggests a need for efficient cooling and possibly dehumidification to maintain indoor comfort, given the high outdoor temperature and moderate indoor humidity. The insulation properties of the walls are better than those of the windows, which may require attention to improve energy efficiency. The high ventilation rate could also influence the system's energy consumption.",
+        "bReply": "1500",
+        "extracted": 1500,
+        "expected": 852.5,
+        "correct": false
+      },
+      {
+        "problem_id": 11,
+        "condition": "no_context",
+        "aMessage": "The data provided pertains to a statistical analysis of a sample with a size of 100. The sample mean is 52.3, which is slightly higher than the population mean of 50. The standard deviation of the sample is 8.5, indicating the variability of the data around the sample mean.\n\nA confidence level of 95% is used, with a corresponding Z-critical value of 1.96, suggesting that the analysis is conducted under standard confidence interval assumptions. The alpha level is set at 0.05, which is typical for hypothesis testing, indicating a 5% risk of concluding that a difference exists when there is none.\n\nThe skewness of the data is 0.3, which suggests a slight positive skew, meaning the data distribution has a longer tail on the right side. The kurtosis is 2.8, which is close to the normal distribution kurtosis of 3, indicating that the data has a relatively normal peak and tails.\n\nThe median of the sample is 51.5, which is slightly lower than the sample mean, suggesting a slight asymmetry in the data distribution. Overall, the data appears to be relatively normally distributed with a slight positive skew, and the sample mean is higher than the population mean, which could be of interest for further analysis or hypothesis testing.",
+        "bReply": "48.64",
+        "extracted": 48.64,
+        "expected": 50.63,
+        "correct": true
+      },
+      {
+        "problem_id": 12,
+        "condition": "no_context",
+        "aMessage": "The supply chain data provided outlines key metrics for managing inventory and meeting demand efficiently. The average weekly demand is 500 units, with a standard deviation of 80 units, indicating some variability in demand. The lead time for orders is 2 weeks, with a standard deviation of 0.5 weeks, suggesting relatively stable delivery times.\n\nThe cost structure includes a holding cost of $3 per unit per week, which is the cost of storing inventory. The shortage cost, which is incurred when demand cannot be met, is significantly higher at $25 per unit, emphasizing the importance of maintaining adequate stock levels to avoid stockouts. The fixed cost associated with placing an order is $100.\n\nThe desired service level is set at 95%, corresponding to a Z-score of 1.645, which indicates a high priority on meeting customer demand without shortages. The unit cost of the product is $20, and the total annual demand is projected to be 26,000 units.\n\nOverall, the data suggests a focus on balancing inventory levels to minimize costs while maintaining a high service level to meet customer demand reliably. The relatively high shortage cost compared to holding cost highlights the importance of avoiding stockouts, while the order cost suggests a need for efficient order management to optimize costs.",
+        "bReply": "400.5",
+        "extracted": 400.5,
+        "expected": 451.4,
+        "correct": false
+      },
+      {
+        "problem_id": 13,
+        "condition": "no_context",
+        "aMessage": "The data provided outlines a queueing system with the following key characteristics:\n\n1. **Arrival and Service Rates**: The system experiences an arrival rate of 30 customers per hour, while each server has a service rate of 10 customers per hour. This indicates that the system is likely to experience congestion, as the total service capacity (40 customers per hour with 4 servers) is only slightly above the arrival rate.\n\n2. **Number of Servers**: There are 4 servers available to handle the incoming customers. This setup suggests a multi-server queueing model, which can help distribute the workload but may still face challenges given the high arrival rate.\n\n3. **Queue Capacity**: The queue has an infinite capacity, meaning there is no limit to the number of customers that can wait in line. This ensures that no customers are turned away due to a full queue, but it may lead to longer wait times.\n\n4. **Priority Levels**: The system incorporates 3 priority levels, which implies that customers may be served based on different levels of urgency or importance. This can affect the average wait time for different priority groups.\n\n5. **Average Wait Time Target**: The target average wait time is set at 5 minutes. Given the arrival and service rates, achieving this target may be challenging without adjustments to the system, such as increasing the number of servers or improving service efficiency.\n\n6. **Service and Arrival Distributions**: The service times follow an exponential distribution, and arrivals follow a Poisson distribution. These are common assumptions in queueing theory, which facilitate the mathematical modeling of the system.\n\n7. **Operating Hours**: The system operates for 10 hours a day, which provides a context for evaluating daily performance metrics such as total customers served and average wait times.\n\nOverall, the system is designed to handle a moderate to high volume of customers with some flexibility in queue capacity and priority handling. However, the current configuration may struggle to meet the average wait time target without further optimization or resource allocation.",
+        "bReply": "0.75",
+        "extracted": 0.75,
+        "expected": 0.75,
+        "correct": true
+      },
+      {
+        "problem_id": 14,
+        "condition": "no_context",
+        "aMessage": "The data presents a scenario involving five potential projects (A, B, C, D, and E) with varying costs, returns, and durations. The key metrics to consider include:\n\n1. **Budget Constraint**: The total budget available for these projects is $100,000.\n\n2. **Return on Investment (ROI)**: Each project has a specified cost and return, with the minimum acceptable return set at 40%. Calculating the ROI for each project:\n   - Project A: 60% ROI\n   - Project B: 83.33% ROI\n   - Project C: 71.43% ROI\n   - Project D: 75% ROI\n   - Project E: 66.67% ROI\n\n   All projects meet the minimum return requirement.\n\n3. **Project Duration**: The projects have durations ranging from 1 to 3 years, which may impact the decision based on the time value of money and the discount rate.\n\n4. **Discount Rate**: A discount rate of 8% is applied, which affects the present value of future returns, particularly for longer-duration projects.\n\n5. **Risk Tolerance**: The risk tolerance is set to medium, suggesting a balanced approach between risk and return.\n\n6. **Project Selection Constraints**: A maximum of three projects can be selected, and the selection should optimize returns while staying within the budget and considering the discount rate and risk tolerance.\n\nIn summary, the decision-making process should focus on selecting up to three projects that maximize the net present value of returns while adhering to the budget and risk constraints. Projects B and D offer the highest ROI and shortest duration, potentially making them attractive options. However, a detailed analysis considering the discount rate and risk tolerance is necessary to finalize the optimal project combination.",
+        "bReply": "$83,333.33",
+        "extracted": 83333.33,
+        "expected": 70000,
+        "correct": false
+      },
+      {
+        "problem_id": 15,
+        "condition": "no_context",
+        "aMessage": "The data provided outlines the performance metrics of three machines (A, B, and C) in a manufacturing scenario, along with an order requirement and associated constraints.\n\n1. **Production Rates**: \n   - Machine A produces 100 units per hour.\n   - Machine B produces 80 units per hour.\n   - Machine C produces 120 units per hour.\n\n2. **Defect Rates**:\n   - Machine A has a defect rate of 2%.\n   - Machine B has a defect rate of 1%.\n   - Machine C has a defect rate of 3%.\n\n3. **Setup Times**:\n   - Machine A requires 30 minutes for setup.\n   - Machine B requires 45 minutes for setup.\n   - Machine C requires 20 minutes for setup.\n\n4. **Operational Costs**:\n   - Machine A costs $50 per hour to operate.\n   - Machine B costs $65 per hour.\n   - Machine C costs $45 per hour.\n\n5. **Order Requirements**:\n   - The order is for 10,000 units with a deadline of 100 hours.\n   - The quality requirement specifies a defect rate of less than 2%.\n   - There is a penalty of $10 for each defective unit.\n   - The setup changes are limited to 2.\n\n**Key Considerations**:\n- Machine B meets the quality requirement with the lowest defect rate of 1%, but it has the lowest production rate and highest operational cost.\n- Machine C has the highest production rate but exceeds the defect rate requirement, which could incur penalties.\n- Machine A meets the defect rate requirement exactly and has a moderate production rate and cost.\n\n**Overall Assessment**:\n- To meet the order within the deadline, a strategic combination of machines may be necessary, considering production rates, defect rates, and costs.\n- Machine B is optimal for quality but may require additional time due to its lower production rate.\n- Machine C offers the fastest production but may lead to higher penalties due to its defect rate.\n- Machine A provides a balanced option between production rate, defect rate, and cost, but careful monitoring is needed to ensure the defect rate does not exceed the requirement.",
+        "bReply": "5000",
+        "extracted": 5000,
+        "expected": 7000,
+        "correct": false
+      }
+    ],
+    "one_way": [
+      {
+        "problem_id": 1,
+        "condition": "one_way",
+        "aMessage": "For liquidity metrics analysis, the most relevant data points are:\n\n- Accounts Receivable (AR): $400,000\n- Inventory: $600,000\n- Current Liabilities: $500,000",
+        "bReply": "2.0",
+        "extracted": 2,
+        "expected": 2,
+        "correct": true
+      },
+      {
+        "problem_id": 2,
+        "condition": "one_way",
+        "aMessage": "Here are the data points relevant for profitability metrics:\n\n1. Revenue: $8,000,000\n2. Cost of Goods Sold (COGS): $4,800,000\n3. Selling, General and Administrative Expenses (SGA): $1,200,000\n4. Research and Development Expenses (RnD): $600,000\n5. Interest Expense: $400,000\n6. Depreciation: $500,000\n7. Net Income: $700,000\n8. Tax Rate: 30%",
+        "bReply": "0.0875",
+        "extracted": 0.0875,
+        "expected": 0.0778,
+        "correct": false
+      },
+      {
+        "problem_id": 3,
+        "condition": "one_way",
+        "aMessage": "For inventory efficiency metrics, the most relevant data points are:\n\n- Beginning Inventory: $800,000\n- Purchases: $6,000,000\n- Ending Inventory: $1,200,000\n- Sales: $10,000,000\n\nThese values will help in calculating metrics such as Inventory Turnover Ratio and Days Sales of Inventory (DSI).",
+        "bReply": "6.0",
+        "extracted": 6,
+        "expected": 5.6,
+        "correct": true
+      },
+      {
+        "problem_id": 4,
+        "condition": "one_way",
+        "aMessage": "Here are the data points relevant for cash flow analysis:\n\n1. Net Income: $1.2M\n2. Depreciation: $300K\n3. Change in Accounts Receivable (Change_AR): -$200K\n4. Change in Inventory: $150K\n5. Change in Accounts Payable (Change_AP): $100K\n6. Capital Expenditures (CapEx): $500K\n7. Dividends: $200K\n8. New Debt: $1M\n9. Debt Repayment: $400K\n10. Stock Buyback: $300K\n\nThese values will help in calculating cash flow from operating activities, investing activities, and financing activities.",
+        "bReply": "1050000",
+        "extracted": 1050000,
+        "expected": 1150000,
+        "correct": true
+      },
+      {
+        "problem_id": 5,
+        "condition": "one_way",
+        "aMessage": "Here are the data points relevant for valuation metrics:\n\n- Price: $50\n- Shares Outstanding: 2,000,000\n- Total Debt: $30,000,000\n- Cash: $5,000,000\n- EBITDA: $10,000,000\n- Net Income: $4,000,000\n- Revenue: $40,000,000\n- Book Value: $25,000,000\n- Dividends: $1,000,000\n- Capital Expenditures (CapEx): $3,000,000",
+        "bReply": "3.25",
+        "extracted": 3.25,
+        "expected": 12.5,
+        "correct": false
+      },
+      {
+        "problem_id": 6,
+        "condition": "one_way",
+        "aMessage": "For power analysis, the most relevant data points are:\n\n- Voltage: 220 V\n- Current: 15 A\n- Power Factor: 0.85\n- Frequency: 60 Hz\n\nThese values will allow you to compute real power, apparent power, and reactive power.",
+        "bReply": "2815",
+        "extracted": 2815,
+        "expected": 2805,
+        "correct": true
+      },
+      {
+        "problem_id": 7,
+        "condition": "one_way",
+        "aMessage": "For beam deflection analysis, the most relevant data points are:\n\n- Beam Length: 6 meters\n- Load: 5000 Newtons (uniformly distributed)\n- Width: 0.2 meters\n- Height: 0.3 meters\n- Young's Modulus (E): 200 GigaPascals\n\nThese values will be essential for calculating the deflection of the beam under the given load and support conditions.",
+        "bReply": "0.00125",
+        "extracted": 0.00125,
+        "expected": 0.000386,
+        "correct": false
+      },
+      {
+        "problem_id": 8,
+        "condition": "one_way",
+        "aMessage": "For flow characterization, the most relevant data points are:\n\n- Flow Rate: 0.5 m³/s\n- Pipe Diameter: 0.3 m\n- Fluid Density: 1000 kg/m³\n- Viscosity: 0.001 Pa·s\n- Pipe Length: 100 m\n- Roughness: 0.0015 mm\n- Elevation Change: 10 m\n- Inlet Pressure: 300 kPa\n\nThese values will help in calculating parameters such as Reynolds number, friction factor, and pressure drop.",
+        "bReply": "1666.67",
+        "extracted": 1666.67,
+        "expected": 2121000,
+        "correct": false
+      },
+      {
+        "problem_id": 9,
+        "condition": "one_way",
+        "aMessage": "For aerodynamic force analysis, the most relevant data points are:\n\n- Velocity: 30 m/s\n- Drag Coefficient: 0.3\n- Frontal Area: 2.5 m²\n- Air Density: 1.225 kg/m³\n\nThese values are essential for calculating the aerodynamic drag force.",
+        "bReply": "11.4375",
+        "extracted": 11.4375,
+        "expected": 413.4,
+        "correct": false
+      },
+      {
+        "problem_id": 10,
+        "condition": "one_way",
+        "aMessage": "For thermal load analysis, the following data points are most relevant:\n\n1. Room Volume: 60 m³\n2. Air Changes per Hour (ACH): 6\n3. Outdoor Temperature: 35°C\n4. Indoor Temperature: 24°C\n5. Wall Area: 80 m²\n6. Wall U-Value: 0.5 W/(m²·K)\n7. Window Area: 15 m²\n8. Window U-Value: 2.5 W/(m²·K)\n9. Number of Occupants: 4\n\nThese values will help in calculating the heat transfer through walls and windows, as well as the ventilation and internal heat gains.",
+        "bReply": "1050",
+        "extracted": 1050,
+        "expected": 852.5,
+        "correct": false
+      },
+      {
+        "problem_id": 11,
+        "condition": "one_way",
+        "aMessage": "For confidence interval estimation, the most relevant data points are:\n\n- Sample Mean: 52.3\n- Sample Standard Deviation: 8.5\n- Sample Size: 100\n- Z-critical value for 95% confidence: 1.96",
+        "bReply": "49.81",
+        "extracted": 49.81,
+        "expected": 50.63,
+        "correct": true
+      },
+      {
+        "problem_id": 12,
+        "condition": "one_way",
+        "aMessage": "For inventory safety stock calculation, the most relevant data points are:\n\n- Demand Mean: 500 units/week\n- Demand Standard Deviation: 80 units/week\n- Lead Time: 2 weeks\n- Lead Time Standard Deviation: 0.5 weeks\n- Service Level: 95% (Z-score = 1.645)\n\nThese values will help you compute the safety stock needed to maintain the desired service level.",
+        "bReply": "400.25",
+        "extracted": 400.25,
+        "expected": 451.4,
+        "correct": false
+      },
+      {
+        "problem_id": 13,
+        "condition": "one_way",
+        "aMessage": "For queue utilization analysis, the most relevant data points are:\n\n- Arrival Rate: 30 per hour\n- Service Rate: 10 per hour\n- Number of Servers: 4\n\nThese values will help in calculating the utilization factor and other performance metrics of the queueing system.",
+        "bReply": "0.75",
+        "extracted": 0.75,
+        "expected": 0.75,
+        "correct": true
+      },
+      {
+        "problem_id": 14,
+        "condition": "one_way",
+        "aMessage": "Here are the relevant data points for project selection optimization:\n\n1. **Projects Details:**\n   - Project A: Cost = $50,000, Return = $80,000, Duration = 2 years\n   - Project B: Cost = $30,000, Return = $55,000, Duration = 1 year\n   - Project C: Cost = $70,000, Return = $120,000, Duration = 3 years\n   - Project D: Cost = $20,000, Return = $35,000, Duration = 1 year\n   - Project E: Cost = $45,000, Return = $75,000, Duration = 2 years\n\n2. **Constraints:**\n   - Total Budget = $100,000\n   - Minimum Required Return = 40%\n   - Maximum Number of Projects = 3\n\n3. **Financial Parameters:**\n   - Discount Rate = 8%\n\n4. **Risk Consideration:**\n   - Risk Tolerance = Medium\n\nThese data points should assist in optimizing the selection of projects based on cost, return, duration, budget constraints, and risk tolerance.",
+        "bReply": "$85,000",
+        "extracted": 85000,
+        "expected": 70000,
+        "correct": false
+      },
+      {
+        "problem_id": 15,
+        "condition": "one_way",
+        "aMessage": "For production cost optimization, the following data points are most relevant:\n\n1. **Machine Production Rates:**\n   - Machine_A: 100 units/hr\n   - Machine_B: 80 units/hr\n   - Machine_C: 120 units/hr\n\n2. **Defect Rates:**\n   - Machine_A: 2%\n   - Machine_B: 1%\n   - Machine_C: 3%\n\n3. **Setup Times:**\n   - Machine_A: 30 minutes\n   - Machine_B: 45 minutes\n   - Machine_C: 20 minutes\n\n4. **Operating Costs:**\n   - Machine_A: $50/hr\n   - Machine_B: $65/hr\n   - Machine_C: $45/hr\n\n5. **Order Requirements:**\n   - Total Units Required: 10,000 units\n   - Deadline: 100 hours\n   - Quality Requirement: <2% defect rate\n\n6. **Penalty for Defective Units:**\n   - $10 per defective unit\n\n7. **Number of Setup Changes:**\n   - 2 setup changes\n\nThese data points will help in calculating the optimal machine usage to minimize costs while meeting production and quality requirements.",
+        "bReply": "5000",
+        "extracted": 5000,
+        "expected": 7000,
+        "correct": false
+      }
+    ],
+    "mutual": [
+      {
+        "problem_id": 1,
+        "condition": "mutual",
+        "bRequest": "To compute the Current Ratio using the formula \\( \\text{Current Ratio} = \\frac{\\text{AR} + \\text{Inventory}}{\\text{Current_Liabilities}} \\), I need the following specific data points from the analyst:\n\n1. **AR (Accounts Receivable)**: The total value of accounts receivable, which should be labeled as `Accounts_Receivable` or `AR`.\n\n2. **Inventory**: The total value of inventory, which should be labeled as `Inventory`.\n\n3. **Current_Liabilities**: The total value of current liabilities, which should be labeled as `Current_Liabilities`.\n\nPlease ensure that these values are as of the most recent reporting date available.",
+        "aMessage": "1. **AR (Accounts Receivable)**: $400K\n2. **Inventory**: $600K\n3. **Current_Liabilities**: $500K",
+        "bReply": "2.0",
+        "extracted": 2,
+        "expected": 2,
+        "correct": true
+      },
+      {
+        "problem_id": 2,
+        "condition": "mutual",
+        "bRequest": "To compute the Return on Equity (ROE), I need the following specific data points from the analyst:\n\n1. **Net_Income**: The total net income for the period you are analyzing. This should be a single value representing the profit after all expenses, taxes, and costs have been deducted from total revenue.\n\n2. **Total_Equity**: The total equity of the company at the end of the period you are analyzing. This should include all shareholder equity, which is the difference between total assets and total liabilities.\n\nPlease ensure that both values are for the same reporting period (e.g., quarterly or annually) to ensure accuracy in the calculation.",
+        "aMessage": "1. **Net_Income**: $700,000\n2. **Total_Equity**: $9,000,000",
+        "bReply": "0.07777777777777778",
+        "extracted": 0.07777777777777778,
+        "expected": 0.0778,
+        "correct": true
+      },
+      {
+        "problem_id": 3,
+        "condition": "mutual",
+        "bRequest": "To compute the Inventory Turnover, I need the following specific data points from the analyst:\n\n1. **Beginning_Inventory**: The inventory value at the start of the period.\n2. **Purchases**: The total value of inventory purchased during the period.\n3. **Ending_Inventory**: The inventory value at the end of the period.\n\nWith these data points, I can calculate COGS and Average_Inventory, and subsequently compute the Inventory Turnover.",
+        "aMessage": "1. **Beginning_Inventory**: $800,000\n2. **Purchases**: $6,000,000\n3. **Ending_Inventory**: $1,200,000",
+        "bReply": "5.0",
+        "extracted": 5,
+        "expected": 5.6,
+        "correct": false
+      },
+      {
+        "problem_id": 4,
+        "condition": "mutual",
+        "bRequest": "To compute Free Cash Flow, I need the following specific data points from the analyst:\n\n1. **Net_Income**: The total net income for the period (in currency, e.g., USD).\n2. **Depreciation**: The total depreciation expense for the period (in currency, e.g., USD).\n3. **CapEx**: The total capital expenditures for the period (in currency, e.g., USD).\n4. **Change_AR**: The change in accounts receivable for the period (in currency, e.g., USD).\n5. **Change_Inventory**: The change in inventory for the period (in currency, e.g., USD).\n6. **Change_AP**: The change in accounts payable for the period (in currency, e.g., USD).\n\nPlease provide these data points to compute the Free Cash Flow accurately.",
+        "aMessage": "1. **Net_Income**: $1.2M\n2. **Depreciation**: $300K\n3. **CapEx**: $500K\n4. **Change_AR**: -$200K\n5. **Change_Inventory**: $150K\n6. **Change_AP**: $100K",
+        "bReply": "1150000",
+        "extracted": 1150000,
+        "expected": 1150000,
+        "correct": true
+      },
+      {
+        "problem_id": 5,
+        "condition": "mutual",
+        "bRequest": "To compute the EV/EBITDA metric, I need the following specific data points from the analyst:\n\n1. **Price**: The current market price per share of the company.\n2. **Shares_Outstanding**: The total number of shares outstanding for the company.\n3. **Total_Debt**: The total amount of debt the company has (this should include both short-term and long-term debt).\n4. **Cash**: The total amount of cash and cash equivalents the company has on its balance sheet.\n5. **EBITDA**: The Earnings Before Interest, Taxes, Depreciation, and Amortization for the company.\n\nPlease ensure that these data points are the most recent and accurate available.",
+        "aMessage": "1. **Price**: $50\n2. **Shares_Outstanding**: 2M\n3. **Total_Debt**: $30M\n4. **Cash**: $5M\n5. **EBITDA**: $10M",
+        "bReply": "4.5",
+        "extracted": 4.5,
+        "expected": 12.5,
+        "correct": false
+      },
+      {
+        "problem_id": 6,
+        "condition": "mutual",
+        "bRequest": "To compute the Real Power using the formula \\( \\text{Real Power} = \\text{Voltage} \\times \\text{Current} \\times \\text{PowerFactor} \\), I need the following specific data points from the analyst:\n\n1. **Voltage (V)**: The voltage value in volts (V) at which the system operates. Please provide the RMS (Root Mean Square) voltage value.\n\n2. **Current (I)**: The current value in amperes (A) flowing through the system. Please provide the RMS current value.\n\n3. **Power Factor (PF)**: The power factor value, which is a dimensionless number between 0 and 1. This represents the phase difference between voltage and current. Please provide the actual power factor value.\n\nPlease ensure that the values are provided in the correct units and are representative of the same operating conditions for accurate computation of Real Power.",
+        "aMessage": "1. **Voltage (V)**: 220 V\n2. **Current (I)**: 15 A\n3. **Power Factor (PF)**: 0.85",
+        "bReply": "2815",
+        "extracted": 2815,
+        "expected": 2805,
+        "correct": true
+      },
+      {
+        "problem_id": 7,
+        "condition": "mutual",
+        "bRequest": "To compute the maximum deflection using the formula provided, I need the following specific data points from the analyst:\n\n1. **Width (b)**: The width of the beam in meters (m).\n2. **Height (h)**: The height of the beam in meters (m).\n\nPlease provide the values for Width and Height so that I can calculate the moment of inertia (I) and subsequently the maximum deflection.",
+        "aMessage": "1. **Width (b)**: 0.2 m\n2. **Height (h)**: 0.3 m",
+        "bReply": "0.00125",
+        "extracted": 0.00125,
+        "expected": 0.000386,
+        "correct": false
+      },
+      {
+        "problem_id": 8,
+        "condition": "mutual",
+        "bRequest": "To compute the Reynolds Number, I need the following specific data points:\n\n1. **Fluid_Density**: The density of the fluid (in kg/m³).\n2. **Flow_Rate**: The volumetric flow rate of the fluid (in m³/s).\n3. **Pipe_Diameter**: The diameter of the pipe (in meters).\n4. **Viscosity**: The dynamic viscosity of the fluid (in Pa·s or kg/(m·s)).\n\nPlease ensure that all values are provided in the specified units for accurate calculations.",
+        "aMessage": "1. **Fluid_Density**: 1000 kg/m³\n2. **Flow_Rate**: 0.5 m³/s\n3. **Pipe_Diameter**: 0.3 m\n4. **Viscosity**: 0.001 Pa·s",
+        "bReply": "15000",
+        "extracted": 15000,
+        "expected": 2121000,
+        "correct": false
+      },
+      {
+        "problem_id": 9,
+        "condition": "mutual",
+        "bRequest": "To compute the Drag Force using the formula you provided, I need the following specific data points from the analyst:\n\n1. **Drag_Coefficient**: The coefficient of drag for the vehicle (dimensionless).\n2. **Frontal_Area**: The frontal area of the vehicle (in square meters, m²).\n3. **Air_Density**: The density of air at the given conditions (in kilograms per cubic meter, kg/m³).\n4. **Velocity**: The speed of the vehicle relative to the air (in meters per second, m/s).\n\nPlease ensure that these values are accurate and up-to-date for the specific conditions under which the vehicle is operating.",
+        "aMessage": "Certainly. Here are the specific data points you requested:\n\n1. **Drag_Coefficient**: 0.3\n2. **Frontal_Area**: 2.5 m²\n3. **Air_Density**: 1.225 kg/m³\n4. **Velocity**: 30 m/s",
+        "bReply": "11.4375",
+        "extracted": 11.4375,
+        "expected": 413.4,
+        "correct": false
+      },
+      {
+        "problem_id": 10,
+        "condition": "mutual",
+        "bRequest": "To compute the total heat gain through walls and windows, I need the following specific data points:\n\n1. **Wall_Area**: The total area of the walls in square feet (or square meters).\n2. **U_Value**: The overall heat transfer coefficient for the walls in BTU/hr·ft²·°F (or W/m²·K).\n3. **Window_Area**: The total area of the windows in square feet (or square meters).\n4. **Window_U**: The overall heat transfer coefficient for the windows in BTU/hr·ft²·°F (or W/m²·K).\n5. **Outdoor_Temp**: The outdoor temperature in degrees Fahrenheit (or degrees Celsius).\n6. **Indoor_Temp**: The indoor temperature in degrees Fahrenheit (or degrees Celsius).\n\nPlease ensure that the units for U_Value and Window_U are consistent with the area units used for Wall_Area and Window_Area.",
+        "aMessage": "1. **Wall_Area**: 80 m²\n2. **U_Value**: 0.5 W/m²·K\n3. **Window_Area**: 15 m²\n4. **Window_U**: 2.5 W/m²·K\n5. **Outdoor_Temp**: 35°C\n6. **Indoor_Temp**: 24°C",
+        "bReply": "880",
+        "extracted": 880,
+        "expected": 852.5,
+        "correct": true
+      },
+      {
+        "problem_id": 11,
+        "condition": "mutual",
+        "bRequest": "To compute the 95% Confidence Interval lower bound, I need the following specific data points from you:\n\n1. **Sample_Mean**: The mean of the sample data.\n2. **Sample_Std**: The standard deviation of the sample data.\n3. **Sample_Size**: The number of observations in the sample.\n\nAdditionally, for the Z_critical value at a 95% confidence level, you can use the standard value of **1.96**. \n\nPlease provide the values for Sample_Mean, Sample_Std, and Sample_Size.",
+        "aMessage": "Sample_Mean=52.3, Sample_Std=8.5, Sample_Size=100",
+        "bReply": "49.8",
+        "extracted": 49.8,
+        "expected": 50.63,
+        "correct": true
+      },
+      {
+        "problem_id": 12,
+        "condition": "mutual",
+        "bRequest": "To compute the Safety Stock using the formula provided, I need the following specific data points from the analyst:\n\n1. **Lead_Time**: The average lead time for the product (in days).\n   - Variable name: `Lead_Time`\n\n2. **Demand_Std**: The standard deviation of the demand (units per day).\n   - Variable name: `Demand_Std`\n\n3. **Demand_Mean**: The average demand (units per day).\n   - Variable name: `Demand_Mean`\n\n4. **Lead_Time_Std**: The standard deviation of the lead time (in days).\n   - Variable name: `Lead_Time_Std`\n\nPlease ensure that these data points are provided with their respective values for accurate computation of the Safety Stock.",
+        "aMessage": "1. **Lead_Time**: 14 days\n2. **Demand_Std**: 11.43 units per day\n3. **Demand_Mean**: 71.43 units per day\n4. **Lead_Time_Std**: 3.5 days",
+        "bReply": "42.56",
+        "extracted": 42.56,
+        "expected": 451.4,
+        "correct": false
+      },
+      {
+        "problem_id": 13,
+        "condition": "mutual",
+        "bRequest": "To compute the Traffic Intensity (ρ), I need the following specific data points from you:\n\n1. **Arrival_Rate (λ)**: The average number of arrivals per time unit (e.g., customers per hour).\n\n2. **Servers (s)**: The total number of servers available to serve the arrivals.\n\n3. **Service_Rate (μ)**: The average number of customers that each server can serve per time unit (e.g., customers per hour).\n\nPlease provide the values for these variables so that I can calculate the Traffic Intensity.",
+        "aMessage": "1. **Arrival_Rate (λ)**: 30/hour\n2. **Servers (s)**: 4\n3. **Service_Rate (μ)**: 10/hour",
+        "bReply": "0.75",
+        "extracted": 0.75,
+        "expected": 0.75,
+        "correct": true
+      },
+      {
+        "problem_id": 14,
+        "condition": "mutual",
+        "bRequest": "To compute the maximum total profit from a combination of projects within a $100K budget, I need the following specific data points from the analyst:\n\n1. **Project ID**: A unique identifier for each project (e.g., `project_id`).\n2. **Cost**: The cost associated with each project (e.g., `cost`).\n3. **Return**: The expected return from each project (e.g., `return`).\n\nThe data should be structured in a table format with the following columns:\n\n- `project_id`: (e.g., P1, P2, P3, ...)\n- `cost`: (e.g., 20000, 30000, 50000, ...)\n- `return`: (e.g., 30000, 60000, 80000, ...)\n\nAdditionally, please ensure that:\n\n- The number of projects does not exceed 3.\n- The total cost of the selected projects does not exceed $100,000.\n\nWith this data, I will be able to calculate the total profit for each combination of projects and identify the combination that maximizes profit.",
+        "aMessage": "Here are the specific data points requested, structured in a table format:\n\n| project_id | cost  | return |\n|------------|-------|--------|\n| A          | 50000 | 80000  |\n| B          | 30000 | 55000  |\n| D          | 20000 | 35000  |\n\nThese projects have been selected to ensure that the total cost does not exceed $100,000 and the number of projects does not exceed 3.",
+        "bReply": "35000",
+        "extracted": 35000,
+        "expected": 70000,
+        "correct": false
+      },
+      {
+        "problem_id": 15,
+        "condition": "mutual",
+        "bRequest": "To compute the total cost for the cheapest machine that meets the quality requirement and deadline, I need the following specific data points:\n\n1. **Machine Data:**\n   - `machine_id`: Unique identifier for each machine.\n   - `production_rate`: The production rate of each machine (units per hour).\n   - `defect_rate`: The defect rate of each machine (percentage of defective units).\n   - `hourly_cost`: The hourly operational cost of each machine.\n\n2. **Order Data:**\n   - `Order`: The total number of units required for the order.\n\n3. **Penalty Data:**\n   - `penalty`: The cost incurred per defective unit.\n\n4. **Quality and Deadline Constraints:**\n   - `quality_requirement`: The maximum allowable defect rate (set at 2%).\n   - `deadline`: The maximum allowable production time (set at 100 hours).\n\nWith these data points, I can calculate the total cost for each machine that meets the specified criteria and identify the cheapest option.",
+        "aMessage": "Here are the specific data points requested:\n\n1. **Machine Data:**\n   - `machine_id`: Machine_B\n   - `production_rate`: 80 units per hour\n   - `defect_rate`: 1%\n   - `hourly_cost`: $65 per hour\n\n2. **Order Data:**\n   - `Order`: 10,000 units\n\n3. **Penalty Data:**\n   - `penalty`: $10 per defective unit\n\n4. **Quality and Deadline Constraints:**\n   - `quality_requirement`: 2% defect rate\n   - `deadline`: 100 hours",
+        "bReply": "$6,500",
+        "extracted": 6500,
+        "expected": 7000,
+        "correct": true
+      }
+    ],
+    "progressive": [
+      {
+        "problem_id": 1,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The financial analysis of the system reveals several key metrics that provide insight into its performance and financial health:\n\n1. **Revenue and Profitability:**\n   - The total revenue generated is $5 million.\n   - Cost of Goods Sold (COGS) amounts to $3 million, resulting in a gross profit of $2 million.\n   - Operating Expenses (OpEx) are $800,000, leading to an operating income of $1.2 million before interest, taxes, and depreciation.\n\n2. **Net Income Calculation:**\n   - After accounting for interest expenses of $200,000 and depreciation of $300,000, the earnings before tax (EBT) stand at $700,000.\n   - With a tax rate of 25%, the tax expense is $175,000.\n   - This results in a net income of $525,000.\n\n3. **Asset Management:**\n   - Accounts Receivable (AR) is $400,000, indicating the amount of revenue yet to be collected.\n   - Inventory is valued at $600,000, which reflects the goods available for sale.\n\n4. **Liabilities and Debt:**\n   - Current liabilities are $500,000, representing short-term financial obligations.\n   - Long-term debt is $2 million, indicating the amount owed over a longer period.\n\n5. **Financial Ratios:**\n   - The gross profit margin is 40% (Gross Profit/Revenue).\n   - The operating profit margin is 24% (Operating Income/Revenue).\n   - The net profit margin is 10.5% (Net Income/Revenue).\n   - The current ratio, which measures liquidity, is 2 (Current Assets/Current Liabilities), assuming current assets include AR and inventory.\n\nOverall, the system demonstrates a solid revenue base with a healthy gross and operating profit margin. The net profit margin indicates a reasonable level of profitability after accounting for all expenses. The current ratio suggests good short-term financial health, although the long-term debt level should be monitored to ensure sustainable financial leverage.",
+            "bReply": "To compute the current ratio, we need to sum the Accounts Receivable (AR) and Inventory, and then divide that sum by the Current Liabilities.\n\nGiven data:\n- Accounts Receivable (AR) = $400,000\n- Inventory = $600,000\n- Current Liabilities = $500,000\n\nNow, we can calculate the current ratio:\n\nCurrent Assets = AR + Inventory = $400,000 + $600,000 = $1,000,000\n\nCurrent Ratio = Current Assets / Current Liabilities = $1,000,000 / $500,000 = 2\n\nThus, the current ratio is:\n\n2.0",
+            "extracted": 2,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "Based on the specialist's response, it seems they were focused on verifying the calculation of the current ratio. Here is a more targeted data package that specifically addresses the components needed for this calculation:\n\n---\n\n**Targeted Data Package for Current Ratio Calculation:**\n\n1. **Accounts Receivable (AR):**\n   - Value: $400,000\n\n2. **Inventory:**\n   - Value: $600,000\n\n3. **Current Liabilities:**\n   - Value: $500,000\n\n**Calculation:**\n\n- **Current Assets:**\n  - AR + Inventory = $400,000 + $600,000 = $1,000,000\n\n- **Current Ratio:**\n  - Current Assets / Current Liabilities = $1,000,000 / $500,000 = 2.0\n\nThis confirms that the current ratio is indeed 2.0, indicating the company's ability to cover its short-term liabilities with its short-term assets.\n\n---\n\nThis package provides the specific data and calculation steps needed to verify the current ratio, ensuring clarity and accuracy for the specialist's analysis.",
+            "bReply": "2.0",
+            "extracted": 2,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "Accounts Receivable (AR) = $400,000  \nInventory = $600,000  \nCurrent Liabilities = $500,000",
+            "bReply": "2.0",
+            "extracted": 2,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 2,
+        "expected": 2,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 2,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The financial analysis of the system reveals several key metrics:\n\n1. **Revenue and Profitability**: The total revenue generated is $8 million. After accounting for the Cost of Goods Sold (COGS) of $4.8 million, the gross profit stands at $3.2 million. Operating expenses include Selling, General, and Administrative (SGA) expenses of $1.2 million and Research and Development (RnD) costs of $600,000. Depreciation is recorded at $500,000. \n\n2. **Operating Income**: Subtracting the operating expenses and depreciation from the gross profit, the operating income is calculated. This figure is crucial for understanding the core business profitability before interest and taxes.\n\n3. **Interest and Taxes**: Interest expenses amount to $400,000. The tax rate is 30%, which impacts the net income calculation.\n\n4. **Net Income**: After accounting for interest and taxes, the net income is reported at $700,000. This is the profit available to shareholders and is a critical indicator of overall financial health.\n\n5. **Asset and Equity Position**: The total assets of the company are valued at $15 million, while total equity is $9 million. This suggests a debt-to-equity ratio that can be further analyzed to understand the company's leverage and financial stability.\n\n6. **Profit Margins**: The net profit margin, calculated as net income divided by revenue, is approximately 8.75%. This metric provides insight into the efficiency of the company in converting revenue into actual profit.\n\nOverall, the data indicates a profitable operation with a solid revenue base and a reasonable net income margin. The balance between assets and equity suggests a stable financial position, though further analysis of liabilities would be necessary for a comprehensive assessment of financial leverage.",
+            "bReply": "To compute the Return on Equity (ROE), we use the formula:\n\n\\[ \\text{ROE} = \\frac{\\text{Net Income}}{\\text{Total Equity}} \\]\n\nFrom the data provided:\n- Net Income = $700,000\n- Total Equity = $9,000,000\n\nNow, substituting the values into the formula:\n\n\\[ \\text{ROE} = \\frac{700,000}{9,000,000} \\]\n\nCalculating this gives:\n\n\\[ \\text{ROE} = 0.0778 \\text{ or } 7.78\\% \\]\n\nThus, the Return on Equity (ROE) is approximately 7.78%.\n\n7.78%",
+            "extracted": 7.78,
+            "correct": false
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of the Return on Equity (ROE), here is a more targeted data package focusing on the necessary components:\n\n1. **Net Income**: $700,000\n   - This is the profit available to shareholders after all expenses, interest, and taxes have been deducted.\n\n2. **Total Equity**: $9,000,000\n   - This represents the shareholders' equity in the company, which is used as the denominator in the ROE calculation.\n\n3. **Return on Equity (ROE) Calculation**:\n   - Formula: \\[ \\text{ROE} = \\frac{\\text{Net Income}}{\\text{Total Equity}} \\]\n   - Substituting the values: \\[ \\text{ROE} = \\frac{700,000}{9,000,000} \\]\n   - Result: \\[ \\text{ROE} = 0.0778 \\text{ or } 7.78\\% \\]\n\nThis data package provides the specific figures needed to calculate the Return on Equity, ensuring clarity and precision in the financial analysis.",
+            "bReply": "0.0778",
+            "extracted": 0.0778,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "Net_Income = $700,000  \nTotal_Equity = $9,000,000",
+            "bReply": "0.07777777777777778",
+            "extracted": 0.07777777777777778,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 0.07777777777777778,
+        "expected": 0.0778,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 3,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The financial analysis of the system reveals several key metrics:\n\n1. **Sales Revenue**: The total sales revenue for the period is $10 million, indicating the overall income generated from business operations.\n\n2. **Cost of Goods Sold (COGS)**: To calculate COGS, we use the formula: \n   \\[\n   \\text{COGS} = \\text{Beginning Inventory} + \\text{Purchases} - \\text{Ending Inventory}\n   \\]\n   Substituting the given values:\n   \\[\n   \\text{COGS} = \\$800K + \\$6M - \\$1.2M = \\$5.6M\n   \\]\n\n3. **Gross Profit**: This is calculated by subtracting COGS from Sales:\n   \\[\n   \\text{Gross Profit} = \\$10M - \\$5.6M = \\$4.4M\n   \\]\n\n4. **Operating Expenses**: The total operating expenses are $2 million, which includes all costs necessary to maintain the business operations excluding COGS.\n\n5. **Operating Income**: This is calculated by subtracting Operating Expenses and Depreciation from Gross Profit:\n   \\[\n   \\text{Operating Income} = \\$4.4M - \\$2M - \\$400K = \\$2M\n   \\]\n\n6. **Net Income Before Tax**: This is equivalent to the Operating Income as no other income or expenses are provided:\n   \\[\n   \\text{Net Income Before Tax} = \\$2M\n   \\]\n\n7. **Tax Expense**: With a tax rate of 25%, the tax expense is:\n   \\[\n   \\text{Tax Expense} = 25\\% \\times \\$2M = \\$500K\n   \\]\n\n8. **Net Income**: This is calculated by subtracting the Tax Expense from the Net Income Before Tax:\n   \\[\n   \\text{Net Income} = \\$2M - \\$500K = \\$1.5M\n   \\]\n\n9. **Accounts Receivable (AR)**: The accounts receivable stands at $1.5 million, indicating the amount owed to the company by its customers.\n\n10. **Accounts Payable (AP)**: The accounts payable is $900,000, representing the company's obligations to its suppliers.\n\nOverall, the company has generated a net income of $1.5 million after accounting for all expenses and taxes. The financial health appears stable with a positive operating income and manageable levels of accounts receivable and payable.",
+            "bReply": "To compute the Inventory Turnover, we need to calculate the Average Inventory first. The formula for Average Inventory is:\n\n\\[\n\\text{Average Inventory} = \\frac{\\text{Beginning Inventory} + \\text{Ending Inventory}}{2}\n\\]\n\nFrom the data provided:\n- Beginning Inventory = $800,000\n- Ending Inventory = $1,200,000\n\nNow, substituting these values into the formula:\n\n\\[\n\\text{Average Inventory} = \\frac{800,000 + 1,200,000}{2} = \\frac{2,000,000}{2} = 1,000,000\n\\]\n\nNext, we already have the COGS calculated as $5,600,000.\n\nNow we can compute the Inventory Turnover using the formula:\n\n\\[\n\\text{Inventory Turnover} = \\frac{\\text{COGS}}{\\text{Average Inventory}} = \\frac{5,600,000}{1,000,000} = 5.6\n\\]\n\nThus, the Inventory Turnover is:\n\n5.6",
+            "extracted": 5.6,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of Inventory Turnover, here is the specific data package you need:\n\n1. **Beginning Inventory**: $800,000\n2. **Ending Inventory**: $1,200,000\n3. **Purchases**: $6,000,000\n\nFrom this data, you can calculate:\n\n- **Cost of Goods Sold (COGS)**:\n  \\[\n  \\text{COGS} = \\text{Beginning Inventory} + \\text{Purchases} - \\text{Ending Inventory} = \\$800,000 + \\$6,000,000 - \\$1,200,000 = \\$5,600,000\n  \\]\n\n- **Average Inventory**:\n  \\[\n  \\text{Average Inventory} = \\frac{\\text{Beginning Inventory} + \\text{Ending Inventory}}{2} = \\frac{\\$800,000 + \\$1,200,000}{2} = \\$1,000,000\n  \\]\n\n- **Inventory Turnover**:\n  \\[\n  \\text{Inventory Turnover} = \\frac{\\text{COGS}}{\\text{Average Inventory}} = \\frac{\\$5,600,000}{\\$1,000,000} = 5.6\n  \\]\n\nThis data package provides all the necessary components to calculate the Inventory Turnover ratio, which is 5.6.",
+            "bReply": "5.6",
+            "extracted": 5.6,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the Inventory Turnover, the specialist needs the following precise values:\n\n1. **COGS (Cost of Goods Sold):**\n   - Beginning_Inventory = $800,000\n   - Purchases = $6,000,000\n   - Ending_Inventory = $1,200,000\n   - COGS = Beginning_Inventory + Purchases - Ending_Inventory\n   - COGS = $800,000 + $6,000,000 - $1,200,000 = $5,600,000\n\n2. **Average_Inventory:**\n   - Beginning_Inventory = $800,000\n   - Ending_Inventory = $1,200,000\n   - Average_Inventory = (Beginning_Inventory + Ending_Inventory) / 2\n   - Average_Inventory = ($800,000 + $1,200,000) / 2 = $1,000,000\n\nThese are the exact values needed for the calculation:\n\n- COGS = $5,600,000\n- Average_Inventory = $1,000,000",
+            "bReply": "5.6",
+            "extracted": 5.6,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 5.6,
+        "expected": 5.6,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 4,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The financial analysis of the system reveals several key metrics that provide insight into its performance and financial health:\n\n1. **Net Income**: The system generated a net income of $1.2 million, indicating profitability over the period analyzed.\n\n2. **Cash Flow Adjustments**:\n   - **Depreciation**: A non-cash expense of $300,000 was recorded, which is typically added back to net income in cash flow calculations.\n   - **Changes in Working Capital**:\n     - Accounts Receivable (AR) decreased by $200,000, which positively impacts cash flow as it indicates improved collections.\n     - Inventory increased by $150,000, which is a cash outflow as more capital is tied up in stock.\n     - Accounts Payable (AP) increased by $100,000, which is a cash inflow as it indicates delayed payments to suppliers.\n\n3. **Capital Expenditures (CapEx)**: The system invested $500,000 in capital expenditures, reflecting spending on long-term assets.\n\n4. **Financing Activities**:\n   - **Dividends**: $200,000 was paid out as dividends, indicating a return of profits to shareholders.\n   - **Debt Activities**: The system took on new debt amounting to $1 million, while repaying $400,000 of existing debt, resulting in a net increase in debt of $600,000.\n   - **Stock Buyback**: $300,000 was spent on repurchasing stock, which can be a strategy to return value to shareholders or consolidate ownership.\n\nOverall, the system shows a positive net income and has engaged in significant financing activities, including taking on new debt and repurchasing stock. The changes in working capital suggest improved cash flow from operations, although increased inventory levels may need monitoring. The capital expenditures indicate ongoing investment in the system's growth or maintenance.",
+            "bReply": "To compute Free Cash Flow (FCF), we will use the formula provided:\n\nFree Cash Flow = Net Income + Depreciation - CapEx + Change in Working Capital\n\nWe have the following values from the data summary:\n\n- Net Income = $1,200,000\n- Depreciation = $300,000\n- CapEx = $500,000\n- Change in Working Capital = $150,000 (as calculated)\n\nNow, substituting these values into the formula:\n\nFree Cash Flow = $1,200,000 + $300,000 - $500,000 + $150,000\n\nCalculating step-by-step:\n\n1. $1,200,000 + $300,000 = $1,500,000\n2. $1,500,000 - $500,000 = $1,000,000\n3. $1,000,000 + $150,000 = $1,150,000\n\nThus, the Free Cash Flow is:\n\n1,150,000",
+            "extracted": 1150000,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of Free Cash Flow (FCF), here is a more targeted data package that focuses specifically on the components needed for the FCF calculation:\n\n1. **Net Income**: $1,200,000\n\n2. **Depreciation**: $300,000\n\n3. **Capital Expenditures (CapEx)**: $500,000\n\n4. **Change in Working Capital**:\n   - **Accounts Receivable (AR)**: Decreased by $200,000\n   - **Inventory**: Increased by $150,000\n   - **Accounts Payable (AP)**: Increased by $100,000\n\n   **Calculation of Change in Working Capital**:\n   \\[\n   \\text{Change in Working Capital} = -(\\text{Change in AR}) - (\\text{Change in Inventory}) + (\\text{Change in AP})\n   \\]\n   \\[\n   = -(-200,000) - 150,000 + 100,000 = 200,000 - 150,000 + 100,000 = 150,000\n   \\]\n\nWith these components, you can calculate the Free Cash Flow using the formula:\n\n\\[\n\\text{Free Cash Flow} = \\text{Net Income} + \\text{Depreciation} - \\text{CapEx} + \\text{Change in Working Capital}\n\\]\n\nSubstituting the values:\n\n\\[\n\\text{Free Cash Flow} = 1,200,000 + 300,000 - 500,000 + 150,000 = 1,150,000\n\\]\n\nThis package provides the specific data needed for the FCF calculation, ensuring clarity and accuracy in your financial analysis.",
+            "bReply": "1150000",
+            "extracted": 1150000,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "Net_Income = 1200000  \nDepreciation = 300000  \nCapEx = 500000  \nChange_in_Working_Capital = 150000  \n\nThese are the exact values needed to compute the Free Cash Flow.",
+            "bReply": "1350000",
+            "extracted": 1350000,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 1350000,
+        "expected": 1150000,
+        "finalCorrect": false
+      },
+      {
+        "problem_id": 5,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "Based on the provided financial data, here is a general overview of the key metrics:\n\n1. **Market Capitalization**: With a share price of $50 and 2 million shares outstanding, the market capitalization of the company is $100 million.\n\n2. **Debt and Cash Position**: The company has a total debt of $30 million and cash reserves of $5 million, resulting in a net debt position of $25 million.\n\n3. **Profitability**:\n   - **EBITDA**: The company has an EBITDA of $10 million, indicating its earnings before interest, taxes, depreciation, and amortization.\n   - **Net Income**: The net income stands at $4 million, reflecting the company's profit after all expenses and taxes.\n   - **Revenue**: The company generated $40 million in revenue.\n\n4. **Valuation Metrics**:\n   - **Price-to-Earnings (P/E) Ratio**: With a net income of $4 million, the P/E ratio is 25, calculated as market capitalization divided by net income.\n   - **Price-to-Book (P/B) Ratio**: The book value is $25 million, resulting in a P/B ratio of 4, calculated as market capitalization divided by book value.\n\n5. **Dividend and Capital Expenditure**:\n   - **Dividends**: The company paid out $1 million in dividends.\n   - **Capital Expenditures (CapEx)**: The company invested $3 million in capital expenditures.\n\nOverall, the company appears to be profitable with a solid revenue base and a reasonable level of debt relative to its market capitalization. The valuation metrics suggest a moderate to high valuation in terms of earnings and book value. The dividend payout indicates a return to shareholders, while the capital expenditures reflect ongoing investments in the business.",
+            "bReply": "To compute the EV/EBITDA ratio, we will use the formula:\n\n\\[\nEV/EBITDA = \\frac{(Market\\_Cap + Total\\_Debt - Cash)}{EBITDA}\n\\]\n\nFrom the data summary, we have:\n\n- Market Capitalization (Market_Cap) = $100 million\n- Total Debt = $30 million\n- Cash = $5 million\n- EBITDA = $10 million\n\nNow, we can calculate the Enterprise Value (EV):\n\n\\[\nEV = Market\\_Cap + Total\\_Debt - Cash\n\\]\n\\[\nEV = 100\\ million + 30\\ million - 5\\ million = 125\\ million\n\\]\n\nNext, we can compute the EV/EBITDA:\n\n\\[\nEV/EBITDA = \\frac{125\\ million}{10\\ million} = 12.5\n\\]\n\nThus, the EV/EBITDA ratio is:\n\n12.5",
+            "extracted": 12.5,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of the EV/EBITDA ratio, here is the specific data package you need:\n\n1. **Market Capitalization (Market_Cap)**:\n   - Share Price: $50\n   - Shares Outstanding: 2 million\n   - Calculation: Market_Cap = Price × Shares_Outstanding = $50 × 2M = $100 million\n\n2. **Total Debt**: $30 million\n\n3. **Cash**: $5 million\n\n4. **EBITDA**: $10 million\n\nUsing these data points, you can calculate the Enterprise Value (EV) and the EV/EBITDA ratio as follows:\n\n- **Enterprise Value (EV)**:\n  \\[\n  EV = Market\\_Cap + Total\\_Debt - Cash = 100\\ million + 30\\ million - 5\\ million = 125\\ million\n  \\]\n\n- **EV/EBITDA Ratio**:\n  \\[\n  EV/EBITDA = \\frac{EV}{EBITDA} = \\frac{125\\ million}{10\\ million} = 12.5\n  \\]\n\nThis targeted data package provides all the necessary components for calculating the EV/EBITDA ratio.",
+            "bReply": "12.5",
+            "extracted": 12.5,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the EV/EBITDA ratio, the specialist needs the following precise values:\n\n1. **Price**: $50\n2. **Shares Outstanding**: 2,000,000 (2M)\n3. **Total Debt**: $30,000,000 ($30M)\n4. **Cash**: $5,000,000 ($5M)\n5. **EBITDA**: $10,000,000 ($10M)\n\nThese values are used to calculate:\n\n- **Market Cap**: Price × Shares Outstanding = $50 × 2,000,000 = $100,000,000\n- **Enterprise Value (EV)**: Market Cap + Total Debt - Cash = $100,000,000 + $30,000,000 - $5,000,000 = $125,000,000\n\nFinally, the EV/EBITDA ratio is calculated as:\n\n- **EV/EBITDA**: $125,000,000 / $10,000,000 = 12.5\n\nThese are the exact values needed for the calculation.",
+            "bReply": "12.5",
+            "extracted": 12.5,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 12.5,
+        "expected": 12.5,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 6,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The provided data pertains to an electrical system characterized by several key parameters:\n\n1. **Voltage and Current**: The system operates at a voltage of 220 volts and a current of 15 amperes. These values are typical for many residential and commercial electrical systems.\n\n2. **Power Factor**: The power factor is 0.85, indicating that the system is relatively efficient, though there is some room for improvement. A power factor closer to 1 would indicate more efficient power usage.\n\n3. **Frequency**: The system operates at a frequency of 60 Hz, which is standard for electrical systems in many regions, including North America.\n\n4. **Resistance, Inductance, and Capacitance**: The resistance is 10 ohms, inductance is 0.05 henries, and capacitance is 100 microfarads. These values suggest the system has a moderate level of impedance, affecting how it responds to alternating current.\n\n5. **Wire Specifications**: The wire used in the system has a length of 50 meters and a diameter of 2.5 millimeters. These dimensions are important for determining the wire's current-carrying capacity and resistance.\n\n6. **Temperature**: The system is operating at a temperature of 25°C, which is a typical ambient temperature and should not significantly affect the electrical properties of the system.\n\nOverall, the system appears to be a standard electrical setup with typical values for voltage, current, and frequency. The power factor suggests some inefficiency, which could be addressed to improve performance. The wire specifications and temperature are within normal ranges, indicating no immediate concerns regarding thermal or electrical stress.",
+            "bReply": "To compute the Real Power (P) in the electrical system, we can use the formula:\n\n\\[ P = V \\times I \\times \\text{Power Factor} \\]\n\nWhere:\n- \\( V \\) = Voltage = 220 volts\n- \\( I \\) = Current = 15 amperes\n- Power Factor = 0.85\n\nNow, substituting the values into the formula:\n\n\\[ P = 220 \\, \\text{volts} \\times 15 \\, \\text{amperes} \\times 0.85 \\]\n\nCalculating step-by-step:\n\n1. Calculate \\( V \\times I \\):\n   \\[ 220 \\times 15 = 3300 \\, \\text{VA} \\]\n\n2. Now multiply by the Power Factor:\n   \\[ 3300 \\times 0.85 = 2805 \\, \\text{W} \\]\n\nThus, the Real Power is:\n\n2805",
+            "extracted": 2805,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the specialist's calculation of Real Power, here is a more targeted data package focusing on the necessary parameters:\n\n**Targeted Data Package for Real Power Calculation:**\n\n1. **Voltage (V)**: 220 volts\n2. **Current (I)**: 15 amperes\n3. **Power Factor**: 0.85\n\nThese are the specific parameters needed to calculate the Real Power using the formula:\n\n\\[ P = V \\times I \\times \\text{Power Factor} \\]\n\nWith these values, the calculation steps are:\n\n1. Calculate the apparent power (\\( V \\times I \\)):\n   \\[ 220 \\, \\text{volts} \\times 15 \\, \\text{amperes} = 3300 \\, \\text{VA} \\]\n\n2. Multiply the apparent power by the Power Factor to find the Real Power:\n   \\[ 3300 \\, \\text{VA} \\times 0.85 = 2805 \\, \\text{W} \\]\n\nThus, the Real Power is 2805 watts.",
+            "bReply": "2805",
+            "extracted": 2805,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "The exact numeric values needed for the computation of Real Power are:\n\n- Voltage = 220\n- Current = 15\n- PowerFactor = 0.85",
+            "bReply": "2815",
+            "extracted": 2815,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 2815,
+        "expected": 2805,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 7,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The provided data pertains to a structural engineering scenario involving a simply supported beam. Here are the key findings:\n\n1. **Beam Dimensions and Material Properties**:\n   - The beam has a length of 6 meters, a width of 0.2 meters, and a height of 0.3 meters.\n   - It is made from a material with a density of 7800 kg/m³, indicating it is likely a type of steel.\n   - The material has a Young's Modulus (E) of 200 GPa, which is typical for structural steel, providing information on its stiffness.\n   - The Poisson's ratio is 0.3, which is a common value for metals, indicating the material's deformation characteristics under load.\n\n2. **Load and Support Conditions**:\n   - The beam is subjected to a uniformly distributed load of 5000 N.\n   - It is simply supported, meaning it is supported at both ends without any moment resistance, which affects how the load is distributed and the resulting bending moments.\n\n3. **Strength and Safety Considerations**:\n   - The yield strength of the material is 250 MPa, which is the stress level at which the material will begin to deform plastically.\n   - A safety factor of 2.0 is applied, suggesting that the design is intended to withstand twice the expected maximum load, providing a margin for safety and reliability.\n\nOverall, the data suggests a standard structural analysis scenario where the beam's ability to withstand the applied load without yielding is assessed, considering both material properties and safety factors. The simply supported condition and uniformly distributed load are typical in structural design, allowing for straightforward calculations of bending moments and deflections.",
+            "bReply": "To compute the maximum deflection of the beam, we first need to calculate the moment of inertia (I) of the beam's cross-section. The formula for the moment of inertia for a rectangular section is:\n\n\\[ I = \\frac{Width \\times Height^3}{12} \\]\n\nGiven:\n- Width = 0.2 m\n- Height = 0.3 m\n\nCalculating I:\n\n\\[ I = \\frac{0.2 \\times (0.3)^3}{12} \\]\n\\[ I = \\frac{0.2 \\times 0.027}{12} \\]\n\\[ I = \\frac{0.0054}{12} \\]\n\\[ I = 0.00045 \\, m^4 \\]\n\nNext, we can use the maximum deflection formula:\n\n\\[ \\text{Max deflection} = \\frac{5 \\times W \\times L^4}{384 \\times E \\times I} \\]\n\nWhere:\n- W = 5000 N\n- L = 6 m\n- E = 200 × 10^9 Pa\n- I = 0.00045 m^4\n\nSubstituting the values into the formula:\n\n\\[ \\text{Max deflection} = \\frac{5 \\times 5000 \\times (6)^4}{384 \\times (200 \\times 10^9) \\times 0.00045} \\]\n\nCalculating \\( L^4 \\):\n\n\\[ (6)^4 = 1296 \\]\n\nNow substituting this value:\n\n\\[ \\text{Max deflection} = \\frac{5 \\times 5000 \\times 1296}{384 \\times (200 \\times 10^9) \\times 0.00045} \\]\n\nCalculating the numerator:\n\n\\[ 5 \\times 5000 \\times 1296 = 32400000 \\]\n\nCalculating the denominator:\n\n\\[ 384 \\times (200 \\times 10^9) \\times 0.00045 = 384 \\times 200 \\times 0.00045 \\times 10^9 \\]\n\\[ = 384 \\times 0.09 \\times 10^9 \\]\n\\[ = 34.56 \\times 10^9 \\]\n\nNow substituting back into the deflection formula:\n\n\\[ \\text{Max deflection} = \\frac{32400000}{34.56 \\times 10^9} \\]\n\nCalculating the final value:\n\n\\[ \\text{Max deflection} = \\frac{32400000}{34560000000} \\]\n\\[ \\text{Max deflection} \\approx 0.0009375 \\, m \\]\n\nConverting to millimeters for clarity:\n\n\\[ \\text{Max deflection} \\approx 0.9375 \\, mm \\]\n\nThus, the maximum deflection of the beam is approximately:\n\n0.9375",
+            "extracted": 0.9375,
+            "correct": false
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of the maximum deflection of the beam, here is a more targeted data package focusing on the specific parameters needed for the deflection formula:\n\n1. **Beam Cross-Sectional Properties**:\n   - **Width (b)**: 0.2 meters\n   - **Height (h)**: 0.3 meters\n   - **Moment of Inertia (I)**: Calculated using the formula \\( I = \\frac{b \\times h^3}{12} \\)\n     - \\( I = \\frac{0.2 \\times (0.3)^3}{12} = 0.00045 \\, m^4 \\)\n\n2. **Load and Beam Length**:\n   - **Total Load (W)**: 5000 N (uniformly distributed)\n   - **Beam Length (L)**: 6 meters\n\n3. **Material Properties**:\n   - **Young's Modulus (E)**: 200 GPa (or \\( 200 \\times 10^9 \\, Pa \\))\n\n4. **Deflection Calculation Formula**:\n   - **Maximum Deflection (\\(\\delta_{max}\\))**: \n     \\[\n     \\delta_{max} = \\frac{5 \\times W \\times L^4}{384 \\times E \\times I}\n     \\]\n   - Substituting the values:\n     \\[\n     \\delta_{max} = \\frac{5 \\times 5000 \\times (6)^4}{384 \\times (200 \\times 10^9) \\times 0.00045}\n     \\]\n\nThis package provides the necessary parameters and calculations to determine the maximum deflection of the beam under the given conditions. If further assistance is needed, please let me know.",
+            "bReply": "0.0020833333333333335",
+            "extracted": 0.0020833333333333333,
+            "correct": false
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the maximum deflection, the specialist needs the following precise values:\n\n1. Total Load (W): 5000 N\n2. Beam Length (L): 6 m\n3. Modulus of Elasticity (E): 200,000,000,000 Pa (or 200 GPa)\n4. Width of the beam (Width): 0.2 m\n5. Height of the beam (Height): 0.3 m\n\nAdditionally, the moment of inertia (I) needs to be calculated using the formula:\n\\[ I = \\frac{\\text{Width} \\times \\text{Height}^3}{12} \\]\n\nSubstituting the given values:\n\\[ I = \\frac{0.2 \\times (0.3)^3}{12} = \\frac{0.2 \\times 0.027}{12} = \\frac{0.0054}{12} = 0.00045 \\, \\text{m}^4 \\]\n\nThese are the exact values needed for the calculation:\n- W = 5000 N\n- L = 6 m\n- E = 200,000,000,000 Pa\n- I = 0.00045 m\\(^4\\)",
+            "bReply": "0.001125",
+            "extracted": 0.001125,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 0.001125,
+        "expected": 0.000386,
+        "finalCorrect": false
+      },
+      {
+        "problem_id": 8,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The provided data pertains to a fluid flow scenario in a pipe system, characterized by several key parameters:\n\n1. **Flow Rate**: The fluid is flowing at a rate of 0.5 cubic meters per second. This is a moderate flow rate, indicating a steady movement of fluid through the system.\n\n2. **Pipe Specifications**: \n   - The pipe has a diameter of 0.3 meters and a length of 100 meters.\n   - The pipe material is steel, which is commonly used for its strength and durability.\n   - The roughness of the pipe is 0.0015 millimeters, suggesting a relatively smooth internal surface, which will affect the frictional losses in the system.\n\n3. **Fluid Properties**:\n   - The fluid has a density of 1000 kg/m³, which is typical for water at standard conditions.\n   - The viscosity is 0.001 Pa·s, indicating a low-viscosity fluid, again consistent with water at 20°C.\n\n4. **Pressure and Elevation**:\n   - The inlet pressure is 300 kPa, providing the driving force for the fluid flow.\n   - There is an elevation change of 10 meters, which will impact the potential energy and pressure head in the system.\n\n5. **Temperature**: The fluid temperature is 20°C, a standard reference temperature for many fluid mechanics calculations, affecting both density and viscosity.\n\nOverall, this system involves the flow of a low-viscosity fluid (likely water) through a steel pipe with moderate diameter and length. The smoothness of the pipe and the given inlet pressure suggest that the system is designed to minimize energy losses due to friction and elevation changes. The elevation change and inlet pressure will be critical in determining the overall pressure drop and energy requirements for maintaining the flow rate.",
+            "bReply": "To compute the Reynolds Number, we first need to calculate the velocity of the fluid in the pipe using the formula:\n\n\\[ \\text{Velocity} = \\frac{\\text{Flow Rate}}{\\pi \\times \\left(\\frac{\\text{Pipe Diameter}}{2}\\right)^2} \\]\n\nGiven:\n- Flow Rate = 0.5 m³/s\n- Pipe Diameter = 0.3 m\n\nNow, we can calculate the cross-sectional area of the pipe:\n\n\\[ \\text{Area} = \\pi \\times \\left(\\frac{0.3}{2}\\right)^2 \\]\n\\[ \\text{Area} = \\pi \\times (0.15)^2 \\]\n\\[ \\text{Area} = \\pi \\times 0.0225 \\]\n\\[ \\text{Area} \\approx 0.0706858 \\, \\text{m}^2 \\]\n\nNow, we can calculate the velocity:\n\n\\[ \\text{Velocity} = \\frac{0.5}{0.0706858} \\]\n\\[ \\text{Velocity} \\approx 7.07 \\, \\text{m/s} \\]\n\nNext, we can compute the Reynolds Number using the formula:\n\n\\[ \\text{Reynolds Number} = \\frac{\\text{Fluid Density} \\times \\text{Velocity} \\times \\text{Pipe Diameter}}{\\text{Viscosity}} \\]\n\nGiven:\n- Fluid Density = 1000 kg/m³\n- Velocity ≈ 7.07 m/s\n- Pipe Diameter = 0.3 m\n- Viscosity = 0.001 Pa·s\n\nNow substituting the values:\n\n\\[ \\text{Reynolds Number} = \\frac{1000 \\times 7.07 \\times 0.3}{0.001} \\]\n\\[ \\text{Reynolds Number} = \\frac{2121}{0.001} \\]\n\\[ \\text{Reynolds Number} = 2121000 \\]\n\nThus, the Reynolds Number is:\n\n2121000",
+            "extracted": 2121000,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of the Reynolds Number, here is a more targeted data package focusing on the specific parameters needed for the calculation:\n\n1. **Flow Rate**: 0.5 m³/s\n\n2. **Pipe Diameter**: 0.3 m\n\n3. **Fluid Density**: 1000 kg/m³\n\n4. **Viscosity**: 0.001 Pa·s\n\nAdditionally, here is the step-by-step calculation for the velocity and Reynolds Number:\n\n### Step 1: Calculate the Cross-Sectional Area of the Pipe\n\\[ \\text{Area} = \\pi \\times \\left(\\frac{\\text{Pipe Diameter}}{2}\\right)^2 \\]\n\\[ \\text{Area} = \\pi \\times (0.15)^2 \\]\n\\[ \\text{Area} = \\pi \\times 0.0225 \\]\n\\[ \\text{Area} \\approx 0.0706858 \\, \\text{m}^2 \\]\n\n### Step 2: Calculate the Velocity of the Fluid\n\\[ \\text{Velocity} = \\frac{\\text{Flow Rate}}{\\text{Area}} \\]\n\\[ \\text{Velocity} = \\frac{0.5}{0.0706858} \\]\n\\[ \\text{Velocity} \\approx 7.07 \\, \\text{m/s} \\]\n\n### Step 3: Calculate the Reynolds Number\n\\[ \\text{Reynolds Number} = \\frac{\\text{Fluid Density} \\times \\text{Velocity} \\times \\text{Pipe Diameter}}{\\text{Viscosity}} \\]\n\\[ \\text{Reynolds Number} = \\frac{1000 \\times 7.07 \\times 0.3}{0.001} \\]\n\\[ \\text{Reynolds Number} = 2121000 \\]\n\nThis data package and calculation should provide the necessary information for determining the Reynolds Number accurately.",
+            "bReply": "2121000",
+            "extracted": 2121000,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the Reynolds Number, the specialist needs the following precise values:\n\n1. **Flow Rate**: 0.5 m³/s\n2. **Pipe Diameter**: 0.3 m\n3. **Fluid Density**: 1000 kg/m³\n4. **Viscosity**: 0.001 Pa·s\n\nFirst, compute the Velocity using the formula:\n\\[ \\text{Velocity} = \\frac{\\text{Flow Rate}}{\\pi \\times (\\text{Pipe Diameter}/2)^2} \\]\n\nSubstitute the values:\n\\[ \\text{Velocity} = \\frac{0.5}{\\pi \\times (0.3/2)^2} \\]\n\nCalculate the Velocity:\n\\[ \\text{Velocity} = \\frac{0.5}{\\pi \\times 0.0225} \\]\n\\[ \\text{Velocity} = \\frac{0.5}{0.0706858} \\]\n\\[ \\text{Velocity} \\approx 7.0736 \\, \\text{m/s} \\]\n\nNow, compute the Reynolds Number using the formula:\n\\[ \\text{Reynolds Number} = \\frac{\\text{Fluid Density} \\times \\text{Velocity} \\times \\text{Pipe Diameter}}{\\text{Viscosity}} \\]\n\nSubstitute the values:\n\\[ \\text{Reynolds Number} = \\frac{1000 \\times 7.0736 \\times 0.3}{0.001} \\]\n\nCalculate the Reynolds Number:\n\\[ \\text{Reynolds Number} = \\frac{2122.08}{0.001} \\]\n\\[ \\text{Reynolds Number} = 2122080 \\]\n\nThe exact numeric values needed are:\n- **Velocity**: 7.0736 m/s\n- **Reynolds Number**: 2122080",
+            "bReply": "2122080",
+            "extracted": 2122080,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 2122080,
+        "expected": 2121000,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 9,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The provided data pertains to an automotive engineering scenario, focusing on a vehicle's dynamics and efficiency. Here are the key findings:\n\n1. **Mass and Velocity**: The vehicle has a mass of 1500 kg and is traveling at a velocity of 30 m/s. These parameters are crucial for calculating kinetic energy and understanding the vehicle's momentum.\n\n2. **Aerodynamic Drag**: The drag coefficient is 0.3, and the frontal area is 2.5 m². Combined with the air density of 1.225 kg/m³, these factors contribute to the aerodynamic drag force experienced by the vehicle. This force opposes the vehicle's motion and affects fuel efficiency and performance.\n\n3. **Rolling Resistance**: The rolling resistance coefficient is 0.015. This value, along with the vehicle's weight (mass times gravity), determines the rolling resistance force, which is another factor opposing motion.\n\n4. **Road Grade**: The road grade is 3%, indicating a slight incline. This affects the gravitational component of the force acting against the vehicle's motion, requiring additional power to maintain speed.\n\n5. **Wheel and Transmission**: The wheel radius is 0.35 m, which is relevant for calculating the torque required at the wheels. The transmission efficiency is 0.92, indicating that 92% of the engine's power is effectively transmitted to the wheels, with 8% lost in the transmission process.\n\nOverall, these metrics provide a comprehensive view of the vehicle's performance characteristics, including the forces acting on it and the efficiency of power transmission. These factors are essential for evaluating the vehicle's energy consumption, acceleration capabilities, and overall efficiency.",
+            "bReply": "To compute the drag force, we will use the formula provided:\n\n\\[ \\text{Drag Force} = 0.5 \\times \\text{Drag Coefficient} \\times \\text{Frontal Area} \\times \\text{Air Density} \\times \\text{Velocity}^2 \\]\n\nSubstituting the values from the data summary:\n\n- Drag Coefficient = 0.3\n- Frontal Area = 2.5 m²\n- Air Density = 1.225 kg/m³\n- Velocity = 30 m/s\n\nNow, we can plug in these values:\n\n\\[ \\text{Drag Force} = 0.5 \\times 0.3 \\times 2.5 \\times 1.225 \\times (30)^2 \\]\n\nCalculating step-by-step:\n\n1. Calculate \\( (30)^2 = 900 \\)\n2. Calculate \\( 0.5 \\times 0.3 = 0.15 \\)\n3. Calculate \\( 0.15 \\times 2.5 = 0.375 \\)\n4. Calculate \\( 0.375 \\times 1.225 = 0.459375 \\)\n5. Finally, calculate \\( 0.459375 \\times 900 = 413.4375 \\)\n\nThus, the drag force is approximately:\n\n413.44 N (rounded to two decimal places).\n\nFinal answer:\n413.44",
+            "extracted": 413.44,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of the drag force, here is a more targeted data package focusing specifically on the parameters needed for this calculation:\n\n**Data for Drag Force Calculation:**\n\n1. **Drag Coefficient**: 0.3\n2. **Frontal Area**: 2.5 m²\n3. **Air Density**: 1.225 kg/m³\n4. **Velocity**: 30 m/s\n\n**Formula for Drag Force**:\n\\[ \\text{Drag Force} = 0.5 \\times \\text{Drag Coefficient} \\times \\text{Frontal Area} \\times \\text{Air Density} \\times \\text{Velocity}^2 \\]\n\n**Step-by-Step Calculation**:\n\n1. **Velocity Squared**: \n   \\[ (30 \\, \\text{m/s})^2 = 900 \\, \\text{m}^2/\\text{s}^2 \\]\n\n2. **Product of Constants**:\n   \\[ 0.5 \\times 0.3 = 0.15 \\]\n\n3. **Multiply by Frontal Area**:\n   \\[ 0.15 \\times 2.5 = 0.375 \\]\n\n4. **Multiply by Air Density**:\n   \\[ 0.375 \\times 1.225 = 0.459375 \\]\n\n5. **Final Calculation**:\n   \\[ 0.459375 \\times 900 = 413.4375 \\, \\text{N} \\]\n\n**Result**:\nThe calculated drag force is approximately 413.44 N.\n\nThis package provides the necessary data and step-by-step guidance to accurately compute the drag force using the given parameters.",
+            "bReply": "413.4375",
+            "extracted": 413.4375,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "The exact numeric values needed for the computation of the Drag Force are:\n\n- Drag_Coefficient = 0.3\n- Frontal_Area = 2.5 m²\n- Air_Density = 1.225 kg/m³\n- Velocity = 30 m/s",
+            "bReply": "11.4375",
+            "extracted": 11.4375,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 11.4375,
+        "expected": 413.4,
+        "finalCorrect": false
+      },
+      {
+        "problem_id": 10,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided pertains to a HVAC (Heating, Ventilation, and Air Conditioning) engineering scenario, focusing on a specific room environment. Here are the key findings:\n\n1. **Room Specifications**:\n   - The room has a volume of 60 cubic meters, which is a moderate size for residential or small office spaces.\n   - The wall area is 80 square meters, and the window area is 15 square meters, indicating a significant portion of the room's surface is exposed to potential heat exchange.\n\n2. **Thermal Performance**:\n   - The U-Value for the walls is 0.5 W/(m²·K), suggesting moderate insulation quality, as lower U-Values indicate better insulation.\n   - The windows have a U-Value of 2.5 W/(m²·K), which is relatively high, indicating that windows are a potential source of heat loss or gain.\n\n3. **Temperature and Humidity**:\n   - The indoor temperature is maintained at 24°C, while the outdoor temperature is significantly higher at 35°C. This indicates a substantial cooling requirement to maintain indoor comfort.\n   - The humidity level is at 60%, which is within a comfortable range for most indoor environments but may require dehumidification depending on occupant comfort preferences.\n\n4. **Air Changes and Ventilation**:\n   - The Air Changes per Hour (ACH) is 6, which is a relatively high rate, suggesting good ventilation. This is beneficial for air quality but may increase energy consumption due to the need to condition the incoming air.\n\n5. **Occupancy**:\n   - The room is occupied by 4 people, which is a typical number for a space of this size. Occupancy affects both the thermal load and the ventilation requirements.\n\nOverall, the data suggests a room that is well-ventilated but may face challenges in maintaining energy efficiency due to the high U-Value of the windows and the significant temperature difference between indoor and outdoor environments. The HVAC system will need to be efficient in cooling and possibly dehumidifying the air to maintain comfort levels.",
+            "bReply": "To compute the total heat gain through the walls and windows, we first need to calculate the temperature difference (ΔT) between the outdoor and indoor temperatures.\n\nGiven:\n- Outdoor Temperature = 35°C\n- Indoor Temperature = 24°C\n\nΔT = Outdoor_Temp - Indoor_Temp = 35°C - 24°C = 11°C\n\nNow we can use the formula provided:\n\nTotal heat gain = Wall_Area × U_Value × ΔT + Window_Area × Window_U × ΔT\n\nSubstituting the values:\n- Wall_Area = 80 m²\n- U_Value (walls) = 0.5 W/(m²·K)\n- Window_Area = 15 m²\n- Window_U (windows) = 2.5 W/(m²·K)\n\nNow we calculate each component:\n\n1. Heat gain through walls:\n   Heat_gain_walls = Wall_Area × U_Value × ΔT\n   = 80 m² × 0.5 W/(m²·K) × 11 K\n   = 80 × 0.5 × 11\n   = 440 W\n\n2. Heat gain through windows:\n   Heat_gain_windows = Window_Area × Window_U × ΔT\n   = 15 m² × 2.5 W/(m²·K) × 11 K\n   = 15 × 2.5 × 11\n   = 412.5 W\n\nNow, we sum the heat gains from both walls and windows:\n\nTotal heat gain = Heat_gain_walls + Heat_gain_windows\n= 440 W + 412.5 W\n= 852.5 W\n\nThus, the total heat gain through walls and windows is:\n\n852.5",
+            "extracted": 852.5,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the specialist's calculation of the total heat gain through the walls and windows, here is a more targeted data package focusing on the specific parameters needed for their computation:\n\n### Targeted Data Package for Heat Gain Calculation\n\n1. **Temperature Data**:\n   - **Outdoor Temperature**: 35°C\n   - **Indoor Temperature**: 24°C\n   - **Temperature Difference (ΔT)**: 11°C (calculated as Outdoor_Temp - Indoor_Temp)\n\n2. **Wall Specifications**:\n   - **Wall Area**: 80 m²\n   - **Wall U-Value**: 0.5 W/(m²·K)\n\n3. **Window Specifications**:\n   - **Window Area**: 15 m²\n   - **Window U-Value**: 2.5 W/(m²·K)\n\n### Calculation Formula\n\nTo compute the total heat gain through the walls and windows, use the following formula:\n\n\\[ \\text{Total Heat Gain} = (\\text{Wall Area} \\times \\text{Wall U-Value} \\times \\Delta T) + (\\text{Window Area} \\times \\text{Window U-Value} \\times \\Delta T) \\]\n\n### Example Calculation\n\n1. **Heat Gain through Walls**:\n   \\[ \\text{Heat Gain (Walls)} = 80 \\, \\text{m}^2 \\times 0.5 \\, \\text{W/(m}^2\\cdot\\text{K)} \\times 11 \\, \\text{K} = 440 \\, \\text{W} \\]\n\n2. **Heat Gain through Windows**:\n   \\[ \\text{Heat Gain (Windows)} = 15 \\, \\text{m}^2 \\times 2.5 \\, \\text{W/(m}^2\\cdot\\text{K)} \\times 11 \\, \\text{K} = 412.5 \\, \\text{W} \\]\n\n3. **Total Heat Gain**:\n   \\[ \\text{Total Heat Gain} = 440 \\, \\text{W} + 412.5 \\, \\text{W} = 852.5 \\, \\text{W} \\]\n\nThis data package provides all the necessary information and calculations to determine the total heat gain through the walls and windows, ensuring clarity and precision for the specialist's needs.",
+            "bReply": "852.5",
+            "extracted": 852.5,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the total heat gain through walls and windows, the specialist needs the following precise values:\n\n1. Wall_Area: 80 m²\n2. U_Value (for walls): 0.5 W/(m²·K)\n3. Window_Area: 15 m²\n4. Window_U (for windows): 2.5 W/(m²·K)\n5. Outdoor_Temp: 35°C\n6. Indoor_Temp: 24°C\n\nAdditionally, the temperature difference (ΔT) is calculated as follows:\n\n7. ΔT = Outdoor_Temp - Indoor_Temp = 35°C - 24°C = 11 K\n\nThese values will allow the specialist to accurately compute the total heat gain through walls and windows.",
+            "bReply": "880",
+            "extracted": 880,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 880,
+        "expected": 852.5,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 11,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided offers insights into a statistical analysis of a sample compared to a population. Here are the key findings:\n\n1. **Sample Statistics**:\n   - The sample mean is 52.3, which is slightly higher than the population mean of 50.\n   - The sample standard deviation is 8.5, indicating the variability of the sample data around the mean.\n   - The sample size is 100, which is a reasonably large sample size for statistical analysis.\n\n2. **Confidence Interval**:\n   - With a 95% confidence level and a Z-critical value of 1.96, the confidence interval can be calculated to assess the range within which the true population mean is likely to fall. This interval provides a measure of the precision of the sample mean as an estimate of the population mean.\n\n3. **Hypothesis Testing**:\n   - The alpha level is set at 0.05, which is a common threshold for determining statistical significance. This means there is a 5% risk of concluding that a difference exists when there is none.\n   - Given the sample mean and population mean, a hypothesis test could be conducted to determine if the difference between the sample mean and the population mean is statistically significant.\n\n4. **Distribution Shape**:\n   - The skewness of 0.3 suggests that the data distribution is slightly skewed to the right, but it is relatively close to zero, indicating a distribution that is nearly symmetrical.\n   - The kurtosis of 2.8 indicates that the distribution has lighter tails than a normal distribution (kurtosis of 3), suggesting fewer extreme outliers.\n\n5. **Central Tendency**:\n   - The median of 51.5 is close to the sample mean, reinforcing the notion that the data is fairly symmetrical.\n\nOverall, the sample data appears to be a reasonable representation of the population, with a slight deviation in the mean. The distribution is nearly normal, with minimal skewness and kurtosis. Further statistical tests could be conducted to confirm the significance of the observed differences between the sample and population means.",
+            "bReply": "To compute the 95% Confidence Interval lower bound, we can use the formula:\n\n\\[\n\\text{Lower Bound} = \\text{Sample Mean} - Z_{\\text{critical}} \\times \\left(\\frac{\\text{Sample Std}}{\\sqrt{\\text{Sample Size}}}\\right)\n\\]\n\nGiven the values:\n- Sample Mean = 52.3\n- Z-critical = 1.96\n- Sample Standard Deviation = 8.5\n- Sample Size = 100\n\nFirst, we calculate the standard error (SE):\n\n\\[\n\\text{SE} = \\frac{\\text{Sample Std}}{\\sqrt{\\text{Sample Size}}} = \\frac{8.5}{\\sqrt{100}} = \\frac{8.5}{10} = 0.85\n\\]\n\nNow, we can calculate the lower bound:\n\n\\[\n\\text{Lower Bound} = 52.3 - 1.96 \\times 0.85\n\\]\n\nCalculating \\(1.96 \\times 0.85\\):\n\n\\[\n1.96 \\times 0.85 = 1.666\n\\]\n\nNow, substituting back into the lower bound calculation:\n\n\\[\n\\text{Lower Bound} = 52.3 - 1.666 = 50.634\n\\]\n\nThus, the 95% Confidence Interval lower bound is:\n\n50.634",
+            "extracted": 50.634,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with your calculation of the 95% Confidence Interval lower bound, here is the specific data you need:\n\n- **Sample Mean**: 52.3\n- **Z-critical Value**: 1.96\n- **Sample Standard Deviation**: 8.5\n- **Sample Size**: 100\n\nUsing these values, you can calculate the standard error and subsequently the lower bound of the confidence interval as follows:\n\n1. **Standard Error (SE)**:\n   \\[\n   \\text{SE} = \\frac{\\text{Sample Std}}{\\sqrt{\\text{Sample Size}}} = \\frac{8.5}{\\sqrt{100}} = 0.85\n   \\]\n\n2. **Lower Bound Calculation**:\n   \\[\n   \\text{Lower Bound} = \\text{Sample Mean} - Z_{\\text{critical}} \\times \\text{SE} = 52.3 - 1.96 \\times 0.85 = 50.634\n   \\]\n\nTherefore, the 95% Confidence Interval lower bound is **50.634**.",
+            "bReply": "50.634",
+            "extracted": 50.634,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "Sample_Mean = 52.3  \nZ_critical = 1.96  \nSample_Std = 8.5  \nSample_Size = 100",
+            "bReply": "48.82",
+            "extracted": 48.82,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 48.82,
+        "expected": 50.63,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 12,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided outlines key metrics for a supply chain scenario, focusing on demand, costs, and service levels. Here's a summary of the key findings:\n\n1. **Demand Characteristics**:\n   - The average weekly demand is 500 units, with a standard deviation of 80 units. This indicates a moderate level of variability in demand, which could impact inventory management and order planning.\n\n2. **Lead Time**:\n   - The average lead time for orders is 2 weeks, with a standard deviation of 0.5 weeks. This suggests a relatively stable lead time, though some variability exists, which should be considered in safety stock calculations.\n\n3. **Cost Structure**:\n   - Holding costs are $3 per unit per week, which implies a cost for maintaining inventory. This cost needs to be balanced against the benefits of having stock available to meet demand.\n   - Shortage costs are significantly higher at $25 per unit, highlighting the importance of maintaining adequate inventory levels to avoid stockouts.\n   - The fixed cost per order is $100, which should be factored into decisions about order frequency and size.\n   - The unit cost is $20, which is the purchase cost per unit of inventory.\n\n4. **Service Level**:\n   - The target service level is set at 95%, corresponding to a Z-score of 1.645. This indicates a high priority on meeting customer demand and minimizing stockouts, which will influence safety stock levels.\n\n5. **Annual Demand**:\n   - The total annual demand is 26,000 units, which provides a basis for calculating annual inventory requirements and planning for production or procurement.\n\nOverall, the data suggests a supply chain that prioritizes high service levels and is willing to incur higher holding costs to avoid the more substantial costs associated with shortages. The variability in demand and lead time should be carefully managed to maintain the desired service level while optimizing costs.",
+            "bReply": "To compute the safety stock, we will use the formula provided:\n\n\\[ \\text{Safety Stock} = Z \\times \\sqrt{(Lead\\_Time \\times Demand\\_Std^2) + (Demand\\_Mean^2 \\times Lead\\_Time\\_Std^2)} \\]\n\nWhere:\n- \\( Z = 1.645 \\) (for 95% service level)\n- \\( Lead\\_Time = 2 \\) weeks\n- \\( Demand\\_Std = 80 \\) units\n- \\( Demand\\_Mean = 500 \\) units\n- \\( Lead\\_Time\\_Std = 0.5 \\) weeks\n\nNow, we will calculate each component step by step.\n\n1. Calculate \\( Lead\\_Time \\times Demand\\_Std^2 \\):\n   \\[\n   Lead\\_Time \\times Demand\\_Std^2 = 2 \\times (80^2) = 2 \\times 6400 = 12800\n   \\]\n\n2. Calculate \\( Demand\\_Mean^2 \\times Lead\\_Time\\_Std^2 \\):\n   \\[\n   Demand\\_Mean^2 \\times Lead\\_Time\\_Std^2 = (500^2) \\times (0.5^2) = 250000 \\times 0.25 = 62500\n   \\]\n\n3. Add the two results:\n   \\[\n   12800 + 62500 = 75300\n   \\]\n\n4. Take the square root:\n   \\[\n   \\sqrt{75300} \\approx 274.56\n   \\]\n\n5. Finally, multiply by \\( Z \\):\n   \\[\n   \\text{Safety Stock} = 1.645 \\times 274.56 \\approx 451.36\n   \\]\n\nThus, the computed safety stock is approximately:\n\n451.36",
+            "extracted": 451.36,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of safety stock, here is a more targeted data package focusing on the specific variables and calculations needed:\n\n### Key Variables for Safety Stock Calculation:\n\n1. **Demand Standard Deviation (Demand_Std)**:\n   - 80 units per week\n\n2. **Lead Time**:\n   - 2 weeks\n\n3. **Lead Time Standard Deviation (Lead_Time_Std)**:\n   - 0.5 weeks\n\n4. **Z-score for Service Level**:\n   - 1.645 (for 95% service level)\n\n### Calculation Steps:\n\n1. **Calculate \\( Lead\\_Time \\times Demand\\_Std^2 \\)**:\n   - \\( 2 \\times (80^2) = 2 \\times 6400 = 12800 \\)\n\n2. **Calculate \\( Demand\\_Mean^2 \\times Lead\\_Time\\_Std^2 \\)**:\n   - \\( (500^2) \\times (0.5^2) = 250000 \\times 0.25 = 62500 \\)\n\n3. **Sum the Two Components**:\n   - \\( 12800 + 62500 = 75300 \\)\n\n4. **Square Root of the Sum**:\n   - \\( \\sqrt{75300} \\approx 274.56 \\)\n\n5. **Multiply by Z-score**:\n   - \\( 1.645 \\times 274.56 \\approx 451.36 \\)\n\n### Conclusion:\n\nThe calculated safety stock is approximately 451.36 units. This value represents the additional inventory needed to achieve a 95% service level, accounting for variability in both demand and lead time.\n\nThis targeted data package should provide the necessary information and calculations to accurately determine the safety stock required for maintaining the desired service level.",
+            "bReply": "451.36",
+            "extracted": 451.36,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the Safety Stock accurately, the specialist needs the following exact numeric values:\n\n1. Z (Service Level factor): 1.645\n2. Lead_Time: 2 weeks\n3. Demand_Std: 80 units/week\n4. Demand_Mean: 500 units/week\n5. Lead_Time_Std: 0.5 weeks\n\nThese values will be used in the formula:\n\nSafety Stock = Z × √(Lead_Time × Demand_Std² + Demand_Mean² × Lead_Time_Std²)\n\nEnsure that each value is used precisely as listed.",
+            "bReply": "202.679",
+            "extracted": 202.679,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 202.679,
+        "expected": 451.4,
+        "finalCorrect": false
+      },
+      {
+        "problem_id": 13,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided pertains to a queueing system characterized by several key parameters. The system experiences an arrival rate of 30 customers per hour, with arrivals following a Poisson distribution, which is typical for random, independent events occurring over time. The service rate is 10 customers per hour per server, and the service times are exponentially distributed, indicating that the time between services is memoryless.\n\nThe system is equipped with 4 servers, which work concurrently to handle incoming customers. This setup suggests a multi-server queueing model, often referred to as an M/M/c queue in queueing theory, where 'c' represents the number of servers.\n\nThe queue has an infinite capacity, meaning there is no limit to the number of customers that can wait in line. This is important for understanding potential congestion and wait times, as there is no restriction on the queue length.\n\nThere are 3 priority levels in the system, which implies that customers may be served based on different priority rules, potentially affecting the average wait times for different customer groups.\n\nThe system operates for 10 hours a day, and there is a target average wait time of 5 minutes for customers. This target is a critical performance metric, as it reflects the desired level of service efficiency and customer satisfaction.\n\nThere is no setup time involved in the service process, indicating that servers can begin servicing customers immediately upon their arrival.\n\nOverall, the system is designed to handle a moderate level of customer traffic with multiple servers and no queue capacity limitations. However, given the arrival and service rates, the system may experience periods of congestion, especially if the arrival rate approaches or exceeds the combined service capacity of the servers. The presence of priority levels adds complexity to the queue management, potentially impacting the average wait times for different customer segments.",
+            "bReply": "To compute the traffic intensity (ρ) for the queueing system, we can use the formula:\n\n\\[ \\rho = \\frac{\\text{Arrival Rate}}{\\text{Servers} \\times \\text{Service Rate}} \\]\n\nGiven the data:\n- Arrival Rate = 30 customers per hour\n- Service Rate = 10 customers per hour per server\n- Number of Servers = 4\n\nNow, substituting the values into the formula:\n\n\\[ \\rho = \\frac{30}{4 \\times 10} \\]\n\\[ \\rho = \\frac{30}{40} \\]\n\\[ \\rho = 0.75 \\]\n\nThus, the traffic intensity ρ is:\n\n0.75",
+            "extracted": 0.75,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the calculation of traffic intensity (ρ) for the queueing system, here is the specific data needed:\n\n1. **Arrival Rate**: 30 customers per hour\n2. **Service Rate**: 10 customers per hour per server\n3. **Number of Servers**: 4\n\nUsing these parameters, the traffic intensity (ρ) can be calculated using the formula:\n\n\\[ \\rho = \\frac{\\text{Arrival Rate}}{\\text{Servers} \\times \\text{Service Rate}} \\]\n\nSubstituting the provided values:\n\n\\[ \\rho = \\frac{30}{4 \\times 10} \\]\n\\[ \\rho = \\frac{30}{40} \\]\n\\[ \\rho = 0.75 \\]\n\nThis calculation indicates that the traffic intensity ρ is 0.75, meaning the system is operating at 75% of its capacity. This is a critical metric for assessing the efficiency and potential congestion within the queueing system.",
+            "bReply": "0.75",
+            "extracted": 0.75,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To compute the Traffic Intensity (ρ), the specialist needs the following exact numeric values:\n\n- Arrival_Rate = 30\n- Servers = 4\n- Service_Rate = 10\n\nThese values are used in the formula:\n\n\\[ ρ = \\frac{\\text{Arrival_Rate}}{\\text{Servers} \\times \\text{Service_Rate}} \\]\n\nSo, the calculation is:\n\n\\[ ρ = \\frac{30}{4 \\times 10} = \\frac{30}{40} = 0.75 \\]",
+            "bReply": "0.75",
+            "extracted": 0.75,
+            "correct": true
+          }
+        ],
+        "finalExtracted": 0.75,
+        "expected": 0.75,
+        "finalCorrect": true
+      },
+      {
+        "problem_id": 14,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided outlines a selection of five projects, each with associated costs, returns, and durations. The key metrics and constraints for evaluating these projects include a total budget of $100,000, a minimum required return of 40%, a maximum of three projects that can be selected, a discount rate of 8%, and a medium risk tolerance.\n\n1. **Project Costs and Returns**:\n   - Project A: $50,000 cost, $80,000 return over 2 years.\n   - Project B: $30,000 cost, $55,000 return over 1 year.\n   - Project C: $70,000 cost, $120,000 return over 3 years.\n   - Project D: $20,000 cost, $35,000 return over 1 year.\n   - Project E: $45,000 cost, $75,000 return over 2 years.\n\n2. **Budget Constraint**:\n   - The total budget available is $100,000, which limits the combination of projects that can be selected.\n\n3. **Return on Investment (ROI)**:\n   - The minimum required return is 40%. This means each selected project or combination of projects should meet or exceed this threshold when considering the cost and return.\n\n4. **Project Selection Limit**:\n   - A maximum of three projects can be selected, which necessitates careful consideration of which projects offer the best return within the budget and risk constraints.\n\n5. **Discount Rate**:\n   - The discount rate of 8% should be applied to future returns to assess their present value, particularly for projects with longer durations.\n\n6. **Risk Tolerance**:\n   - With a medium risk tolerance, the selection should balance potential returns with associated risks, possibly favoring projects with moderate risk profiles.\n\nIn summary, the decision-making process should focus on selecting up to three projects that collectively do not exceed the $100,000 budget, meet the minimum return requirement of 40%, and align with the medium risk tolerance. The discount rate should be applied to evaluate the present value of returns, especially for projects with longer durations.",
+            "bReply": "To find the combination of projects that maximizes total profit while adhering to the constraints provided, we will evaluate the profit for each project and then consider combinations of up to three projects.\n\n### Step 1: Calculate Profit for Each Project\nProfit is calculated as:\n\\[ \\text{Profit} = \\text{Return} - \\text{Cost} \\]\n\n- **Project A**: \n  - Profit = $80,000 - $50,000 = $30,000\n- **Project B**: \n  - Profit = $55,000 - $30,000 = $25,000\n- **Project C**: \n  - Profit = $120,000 - $70,000 = $50,000\n- **Project D**: \n  - Profit = $35,000 - $20,000 = $15,000\n- **Project E**: \n  - Profit = $75,000 - $45,000 = $30,000\n\n### Step 2: List Projects with Costs and Profits\n| Project | Cost   | Return | Profit  |\n|---------|--------|--------|---------|\n| A       | 50,000 | 80,000 | 30,000  |\n| B       | 30,000 | 55,000 | 25,000  |\n| C       | 70,000 | 120,000| 50,000  |\n| D       | 20,000 | 35,000 | 15,000  |\n| E       | 45,000 | 75,000 | 30,000  |\n\n### Step 3: Evaluate Combinations of Projects\nWe will evaluate combinations of up to three projects that do not exceed the budget of $100,000.\n\n1. **Single Projects**:\n   - A: Profit = $30,000\n   - B: Profit = $25,000\n   - C: Profit = $50,000\n   - D: Profit = $15,000\n   - E: Profit = $30,000\n\n2. **Combinations of Two Projects**:\n   - A + B: Cost = $80,000, Profit = $30,000 + $25,000 = $55,000\n   - A + C: Cost = $120,000 (exceeds budget)\n   - A + D: Cost = $70,000, Profit = $30,000 + $15,000 = $45,000\n   - A + E: Cost = $95,000, Profit = $30,000 + $30,000 = $60,000\n   - B + C: Cost = $100,000, Profit = $25,000 + $50,000 = $75,000\n   - B + D: Cost = $50,000, Profit = $25,000 + $15,000 = $40,000\n   - B + E: Cost = $75,000, Profit = $25,000 + $30,000 = $55,000\n   - C + D: Cost = $90,000, Profit = $50,000 + $15,000 = $65,000\n   - C + E: Cost = $115,000 (exceeds budget)\n   - D + E: Cost = $65,000, Profit = $15,000 + $30,000 = $45,000\n\n3. **Combinations of Three Projects**:\n   - A + B + D: Cost = $100,000, Profit = $30,000 + $25,000 + $15,000 = $70,000\n   - A + B + E: Cost = $105,000 (exceeds budget)\n   - A + C + D: Cost = $140,000 (exceeds budget)\n   - A + C + E: Cost = $165,000 (exceeds budget)\n   - A + D + E: Cost = $95,000, Profit = $30,000 + $15,000 + $30,000 = $75,000\n   - B + C + D: Cost = $100,000, Profit = $25,000 + $50,000 + $15,000 = $90,000\n   - B + C + E: Cost = $105,000 (exceeds budget)\n   - B + D + E: Cost = $75,000, Profit = $25,000 + $15,000 + $30,000 = $70,000\n   - C + D + E: Cost = $110,000 (exceeds budget)\n\n### Step 4: Determine Maximum Profit\nFrom the combinations evaluated, the maximum profit is from the combination of **Projects B, C, and D**:\n- Total Profit = $90,000\n\nThus, the maximum total profit is:\n\n90,000",
+            "extracted": 90000,
+            "correct": false
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist the specialist in finding the combination of projects that maximizes total profit while adhering to the constraints, I have recalculated and organized the data to focus specifically on the profit maximization problem. Here is the targeted data package:\n\n### Project Details\nEach project is evaluated based on its cost, return, and calculated profit:\n\n| Project | Cost   | Return | Profit  |\n|---------|--------|--------|---------|\n| A       | 50,000 | 80,000 | 30,000  |\n| B       | 30,000 | 55,000 | 25,000  |\n| C       | 70,000 | 120,000| 50,000  |\n| D       | 20,000 | 35,000 | 15,000  |\n| E       | 45,000 | 75,000 | 30,000  |\n\n### Combinations of Projects\nBelow are the combinations of up to three projects that do not exceed the $100,000 budget, along with their total costs and profits:\n\n1. **Single Projects**:\n   - A: Cost = $50,000, Profit = $30,000\n   - B: Cost = $30,000, Profit = $25,000\n   - C: Cost = $70,000, Profit = $50,000\n   - D: Cost = $20,000, Profit = $15,000\n   - E: Cost = $45,000, Profit = $30,000\n\n2. **Combinations of Two Projects**:\n   - A + B: Cost = $80,000, Profit = $55,000\n   - A + D: Cost = $70,000, Profit = $45,000\n   - A + E: Cost = $95,000, Profit = $60,000\n   - B + C: Cost = $100,000, Profit = $75,000\n   - B + D: Cost = $50,000, Profit = $40,000\n   - B + E: Cost = $75,000, Profit = $55,000\n   - C + D: Cost = $90,000, Profit = $65,000\n   - D + E: Cost = $65,000, Profit = $45,000\n\n3. **Combinations of Three Projects**:\n   - A + B + D: Cost = $100,000, Profit = $70,000\n   - A + D + E: Cost = $95,000, Profit = $75,000\n   - B + C + D: Cost = $100,000, Profit = $90,000\n   - B + D + E: Cost = $75,000, Profit = $70,000\n\n### Maximum Profit\nThe combination of **Projects B, C, and D** yields the maximum profit within the budget constraints:\n- Total Cost = $100,000\n- Total Profit = $90,000\n\nThis targeted data package should help the specialist in identifying the optimal project combination for maximizing profit.",
+            "bReply": "90,000",
+            "extracted": 90000,
+            "correct": false
+          },
+          {
+            "round": 3,
+            "aMessage": "To find the combination of projects that maximizes total profit within the given constraints, we need to evaluate all possible combinations of up to 3 projects that fit within the $100K budget. The profit for each project is calculated as the return minus the cost.\n\nHere are the profits for each project:\n- Project A: $80K - $50K = $30K\n- Project B: $55K - $30K = $25K\n- Project C: $120K - $70K = $50K\n- Project D: $35K - $20K = $15K\n- Project E: $75K - $45K = $30K\n\nNow, let's evaluate the combinations:\n\n1. A, B, C: Cost = $50K + $30K + $70K = $150K (Exceeds budget)\n2. A, B, D: Cost = $50K + $30K + $20K = $100K, Profit = $30K + $25K + $15K = $70K\n3. A, B, E: Cost = $50K + $30K + $45K = $125K (Exceeds budget)\n4. A, C, D: Cost = $50K + $70K + $20K = $140K (Exceeds budget)\n5. A, C, E: Cost = $50K + $70K + $45K = $165K (Exceeds budget)\n6. A, D, E: Cost = $50K + $20K + $45K = $115K (Exceeds budget)\n7. B, C, D: Cost = $30K + $70K + $20K = $120K (Exceeds budget)\n8. B, C, E: Cost = $30K + $70K + $45K = $145K (Exceeds budget)\n9. B, D, E: Cost = $30K + $20K + $45K = $95K, Profit = $25K + $15K + $30K = $70K\n10. C, D, E: Cost = $70K + $20K + $45K = $135K (Exceeds budget)\n\nThe combinations that fit within the budget and maximize profit are:\n- A, B, D: Total Profit = $70K\n- B, D, E: Total Profit = $70K\n\nThe maximum total profit achievable within the constraints is $70,000. \n\nTherefore, the exact numeric value needed is:\n70,000",
+            "bReply": "70",
+            "extracted": 70,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 70,
+        "expected": 70000,
+        "finalCorrect": false
+      },
+      {
+        "problem_id": 15,
+        "condition": "progressive",
+        "rounds": [
+          {
+            "round": 1,
+            "aMessage": "The data provided outlines the performance and cost metrics for three machines (A, B, and C) involved in a manufacturing process, along with the requirements for fulfilling an order of 10,000 units within a 100-hour deadline. Here are the key findings:\n\n1. **Production Rates**: \n   - Machine C has the highest production rate at 120 units per hour, followed by Machine A at 100 units per hour, and Machine B at 80 units per hour.\n\n2. **Defect Rates**:\n   - Machine B has the lowest defect rate at 1%, meeting the quality requirement of less than 2% defect rate. Machine A has a defect rate of 2%, which is at the threshold of the quality requirement. Machine C exceeds the quality requirement with a 3% defect rate.\n\n3. **Setup Times**:\n   - Machine C has the shortest setup time at 20 minutes, followed by Machine A at 30 minutes, and Machine B at 45 minutes. The total setup time for two changes would be 40 minutes for Machine C, 60 minutes for Machine A, and 90 minutes for Machine B.\n\n4. **Cost Efficiency**:\n   - Machine C is the most cost-effective at $45 per hour, followed by Machine A at $50 per hour, and Machine B at $65 per hour.\n\n5. **Order Fulfillment**:\n   - To meet the order of 10,000 units within 100 hours, the production strategy must consider both the production rate and defect rate. Machine C can produce the required units in the shortest time but may incur penalties due to its higher defect rate. Machine B, while slower, ensures compliance with the quality requirement, potentially avoiding penalties.\n\n6. **Penalty Considerations**:\n   - Given the penalty of $10 per defective unit, the choice of machine should balance production speed, defect rate, and cost to minimize overall expenses.\n\nIn summary, Machine C offers the fastest production and lowest cost per hour but risks higher penalties due to its defect rate. Machine B, although slower and more expensive per hour, ensures compliance with quality standards, potentially avoiding penalties. Machine A provides a middle ground in terms of production rate and cost but is at the limit of the defect rate requirement. The decision on which machine(s) to use should weigh these factors against the order's deadline and quality requirements.",
+            "bReply": "To find the total cost for the cheapest machine that meets the quality requirement (defect rate < 2%) and the deadline (100 hours), we will analyze the machines based on the provided data.\n\n**Machines that meet the quality requirement:**\n- Machine B: Defect rate = 1%\n- Machine A: Defect rate = 2% (at the threshold, but still qualifies)\n\n**Machine C does not qualify** due to a defect rate of 3%.\n\n**Production Rates:**\n- Machine A: 100 units/hour\n- Machine B: 80 units/hour\n\n**Calculating Production Time:**\n- For Machine A:\n  \\[\n  \\text{Production Time} = \\frac{10,000 \\text{ units}}{100 \\text{ units/hour}} = 100 \\text{ hours}\n  \\]\n- For Machine B:\n  \\[\n  \\text{Production Time} = \\frac{10,000 \\text{ units}}{80 \\text{ units/hour}} = 125 \\text{ hours}\n  \\]\n\nMachine B does not meet the deadline of 100 hours, so it cannot be used.\n\n**Only Machine A qualifies:**\n- Production Time = 100 hours\n- Hourly Cost = $50/hour\n- Defect Rate = 2%\n- Penalty = $10 per defective unit\n\n**Calculating the number of defective units for Machine A:**\n\\[\n\\text{Defective Units} = 10,000 \\text{ units} \\times 0.02 = 200 \\text{ units}\n\\]\n\n**Calculating the total penalty:**\n\\[\n\\text{Total Penalty} = 200 \\text{ units} \\times 10 \\text{ dollars/unit} = 2000 \\text{ dollars}\n\\]\n\n**Calculating the total production cost:**\n\\[\n\\text{Total Production Cost} = 100 \\text{ hours} \\times 50 \\text{ dollars/hour} = 5000 \\text{ dollars}\n\\]\n\n**Calculating the total cost:**\n\\[\n\\text{Total Cost} = \\text{Total Production Cost} + \\text{Total Penalty} = 5000 \\text{ dollars} + 2000 \\text{ dollars} = 7000 \\text{ dollars}\n\\]\n\nThus, the total cost for the cheapest machine that meets the quality requirement and the deadline is:\n\n7000",
+            "extracted": 7000,
+            "correct": true
+          },
+          {
+            "round": 2,
+            "aMessage": "To assist with the specialist's calculation, here is a more targeted data package focusing on the specific requirements for determining the total cost for the cheapest machine that meets both the quality requirement (<2% defect rate) and the deadline (100 hours):\n\n### Machines Overview:\n1. **Machine A**:\n   - Production Rate: 100 units/hour\n   - Defect Rate: 2% (at the threshold, qualifies)\n   - Setup Time: 30 minutes\n   - Cost: $50/hour\n\n2. **Machine B**:\n   - Production Rate: 80 units/hour\n   - Defect Rate: 1% (qualifies)\n   - Setup Time: 45 minutes\n   - Cost: $65/hour\n\n3. **Machine C**:\n   - Production Rate: 120 units/hour\n   - Defect Rate: 3% (does not qualify)\n   - Setup Time: 20 minutes\n   - Cost: $45/hour\n\n### Order Details:\n- Total Units Required: 10,000 units\n- Deadline: 100 hours\n- Quality Requirement: <2% defect rate\n- Penalty: $10 per defective unit\n- Setup Changes: 2\n\n### Calculations for Qualified Machines:\n\n#### Machine A:\n- **Production Time**: \n  \\[\n  \\frac{10,000 \\text{ units}}{100 \\text{ units/hour}} = 100 \\text{ hours}\n  \\]\n  - Meets the deadline.\n\n- **Defective Units**:\n  \\[\n  10,000 \\text{ units} \\times 0.02 = 200 \\text{ units}\n  \\]\n\n- **Total Penalty**:\n  \\[\n  200 \\text{ units} \\times 10 \\text{ dollars/unit} = 2000 \\text{ dollars}\n  \\]\n\n- **Total Production Cost**:\n  \\[\n  100 \\text{ hours} \\times 50 \\text{ dollars/hour} = 5000 \\text{ dollars}\n  \\]\n\n- **Total Cost**:\n  \\[\n  5000 \\text{ dollars} + 2000 \\text{ dollars} = 7000 \\text{ dollars}\n  \\]\n\n#### Machine B:\n- **Production Time**: \n  \\[\n  \\frac{10,000 \\text{ units}}{80 \\text{ units/hour}} = 125 \\text{ hours}\n  \\]\n  - Does not meet the deadline.\n\n### Conclusion:\n- **Machine A** is the only machine that meets both the quality requirement and the deadline. The total cost for using Machine A is $7,000.\n\nThis data package provides the necessary calculations and conclusions to determine the most cost-effective machine that meets the specified requirements.",
+            "bReply": "7000",
+            "extracted": 7000,
+            "correct": true
+          },
+          {
+            "round": 3,
+            "aMessage": "To find the total cost for the cheapest machine that meets the quality requirement (<2% defect rate) and the deadline (100 hours), we need to evaluate each machine:\n\n1. **Machine_A**:\n   - Production Rate: 100 units/hr\n   - Defect Rate: 2%\n   - Setup Time: 30 min (0.5 hr)\n   - Cost: $50/hr\n\n   Machine_A does not meet the quality requirement because its defect rate is 2%, which is not less than 2%.\n\n2. **Machine_B**:\n   - Production Rate: 80 units/hr\n   - Defect Rate: 1%\n   - Setup Time: 45 min (0.75 hr)\n   - Cost: $65/hr\n\n   - Production Time = Order / Production Rate = 10000 units / 80 units/hr = 125 hours\n   - Total Time = Production Time + Setup Changes × Setup Time = 125 hours + 2 × 0.75 hours = 126.5 hours\n\n   Machine_B does not meet the deadline requirement because the total time (126.5 hours) exceeds 100 hours.\n\n3. **Machine_C**:\n   - Production Rate: 120 units/hr\n   - Defect Rate: 3%\n   - Setup Time: 20 min (0.33 hr)\n   - Cost: $45/hr\n\n   Machine_C does not meet the quality requirement because its defect rate is 3%, which is not less than 2%.\n\nSince none of the machines meet both the quality requirement and the deadline, there is no machine that qualifies. Therefore, the specialist's latest answer of 7000 is incorrect because no machine meets the criteria.\n\nThe exact numeric values needed are:\n- Machine_A defect rate: 2% (does not qualify)\n- Machine_B total time: 126.5 hours (does not qualify)\n- Machine_C defect rate: 3% (does not qualify)\n\nNo machine meets both the quality and deadline requirements.",
+            "bReply": "0",
+            "extracted": 0,
+            "correct": false
+          }
+        ],
+        "finalExtracted": 0,
+        "expected": 7000,
+        "finalCorrect": false
+      }
+    ]
+  }
+}

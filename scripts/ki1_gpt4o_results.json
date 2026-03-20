@@ -1,0 +1,970 @@
+{
+  "experiment": "KI-1 Information Filtering",
+  "model": "gpt-4o",
+  "temperature": 0,
+  "tolerance": "10%",
+  "timestamp": "2026-03-19T17:33:02.057Z",
+  "problems": [
+    {
+      "id": 1,
+      "domain": "Financial",
+      "answer": 1.275,
+      "categoryHint": "financial ratio (earnings per share)"
+    },
+    {
+      "id": 2,
+      "domain": "Financial",
+      "answer": 3.167,
+      "categoryHint": "financial ratio (liquidity)"
+    },
+    {
+      "id": 3,
+      "domain": "Financial",
+      "answer": 5.25,
+      "categoryHint": "financial ratio (profitability)"
+    },
+    {
+      "id": 4,
+      "domain": "Financial",
+      "answer": 730000,
+      "categoryHint": "cash flow calculation"
+    },
+    {
+      "id": 5,
+      "domain": "Financial",
+      "answer": 0.05,
+      "categoryHint": "financial ratio (return on assets)"
+    },
+    {
+      "id": 6,
+      "domain": "Operations",
+      "answer": 1147,
+      "categoryHint": "inventory management (reorder point)"
+    },
+    {
+      "id": 7,
+      "domain": "Operations",
+      "answer": 0.51,
+      "categoryHint": "production cost analysis"
+    },
+    {
+      "id": 8,
+      "domain": "Operations",
+      "answer": 0.667,
+      "categoryHint": "queueing theory (utilization)"
+    },
+    {
+      "id": 9,
+      "domain": "Operations",
+      "answer": 0.857,
+      "categoryHint": "project management (cost performance)"
+    },
+    {
+      "id": 10,
+      "domain": "Operations",
+      "answer": 670.8,
+      "categoryHint": "inventory management (EOQ)"
+    },
+    {
+      "id": 11,
+      "domain": "Science",
+      "answer": 100,
+      "categoryHint": "physics energy calculation"
+    },
+    {
+      "id": 12,
+      "domain": "Science",
+      "answer": 4,
+      "categoryHint": "electrical engineering calculation"
+    },
+    {
+      "id": 13,
+      "domain": "Science",
+      "answer": 700,
+      "categoryHint": "demographics calculation"
+    },
+    {
+      "id": 14,
+      "domain": "Science",
+      "answer": 300,
+      "categoryHint": "fluid dynamics (fill time)"
+    },
+    {
+      "id": 15,
+      "domain": "Science",
+      "answer": 60,
+      "categoryHint": "transportation cost calculation"
+    }
+  ],
+  "summary": {
+    "no_context": {
+      "score": 13,
+      "total": 15,
+      "pct": 86.7
+    },
+    "one_way": {
+      "score": 9,
+      "total": 15,
+      "pct": 60
+    },
+    "mutual": {
+      "score": 14,
+      "total": 15,
+      "pct": 93.3
+    },
+    "progressive_R1": {
+      "score": 14,
+      "total": 15,
+      "pct": 93.3
+    },
+    "progressive_R2": {
+      "score": 15,
+      "total": 15,
+      "pct": 100
+    },
+    "progressive_R3": {
+      "score": 14,
+      "total": 15,
+      "pct": 93.3
+    }
+  },
+  "details": {
+    "no_context": [
+      {
+        "condition": "no_context",
+        "problemId": 1,
+        "aSummary": "The dataset provides a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability:**\n   - The company generated a total revenue of $10 million.\n   - The Cost of Goods Sold (COGS) is $6 million, resulting in a gross profit of $4 million.\n   - Selling, General, and Administrative Expenses (SGA) amount to $1.5 million, and Research and Development (RnD) expenses are $500,000.\n   - Operating income, calculated as gross profit minus SGA and RnD, is $2 million.\n   - After accounting for interest expenses of $300,000, the pre-tax income is $1.7 million.\n   - With a tax rate of 25%, the tax expense is $425,000, leading to a net income of $1.275 million.\n\n2. **Profit Margins:**\n   - The gross profit margin is 40% (gross profit of $4 million on $10 million revenue).\n   - The operating profit margin is 20% (operating income of $2 million on $10 million revenue).\n   - The net profit margin is 12.75% (net income of $1.275 million on $10 million revenue).\n\n3. **Return on Assets and Equity:**\n   - Return on Assets (ROA) is 6.375% (net income of $1.275 million on total assets of $20 million).\n   - Return on Equity (ROE) is 10.625% (net income of $1.275 million on equity of $12 million).\n\n4. **Earnings Per Share and Dividends:**\n   - Earnings per Share (EPS) is $1.275 (net income of $1.275 million divided by 1 million shares).\n   - The company paid dividends totaling $400,000, which translates to a dividend per share of $0.40.\n\n5. **Financial Leverage:**\n   - The equity ratio is 60% (equity of $12 million on total assets of $20 million), indicating a moderate level of financial leverage.\n\nOverall, the company demonstrates solid profitability with healthy margins and returns on assets and equity. The dividend payout suggests a commitment to returning value to shareholders, while the financial leverage appears to be at a manageable level.",
+        "bOutput": "1.275",
+        "score": 1,
+        "parsed": 1.275,
+        "expected": 1.275
+      },
+      {
+        "condition": "no_context",
+        "problemId": 2,
+        "aSummary": "The dataset provides a snapshot of a company's financial position and performance. Here are the key findings:\n\n1. **Sales Performance**: The company has generated $8 million in sales, indicating a strong revenue stream. This figure is crucial for assessing the company's market performance and growth potential.\n\n2. **Accounts Receivable (AR)**: At $600,000, the accounts receivable represents the amount owed by customers. This is 7.5% of total sales, suggesting a relatively efficient collection process, though it may also indicate room for improvement in credit management.\n\n3. **Inventory**: The inventory is valued at $900,000. This figure is important for understanding the company's stock levels and its ability to meet customer demand without overstocking.\n\n4. **Prepaid Expenses**: The prepaid expenses amount to $100,000, which reflects payments made in advance for services or goods. This is a relatively small portion of the company's assets, indicating limited prepayments.\n\n5. **Accounts Payable (AP)**: The accounts payable stands at $400,000, representing the company's short-term obligations to suppliers. This figure is crucial for assessing the company's liquidity and cash flow management.\n\n6. **Accrued Liabilities**: With $200,000 in accrued liabilities, the company has obligations that have been incurred but not yet paid. This is an important metric for understanding the company's short-term financial commitments.\n\n7. **Cash Position**: The company holds $300,000 in cash, which is a critical indicator of its liquidity and ability to cover immediate expenses.\n\n8. **Long-Term Debt**: The long-term debt is $3 million, a significant liability that impacts the company's financial leverage and interest obligations.\n\n9. **Equipment and Depreciation**: The equipment is valued at $5 million, with accumulated depreciation of $500,000. This suggests that the company has substantial fixed assets, and the depreciation indicates the wear and tear or usage of these assets over time.\n\nOverall, the company appears to have a solid revenue base with $8 million in sales, but it also carries significant long-term debt of $3 million. The cash position and accounts receivable suggest a need for careful liquidity management. The balance between inventory and accounts payable indicates a stable supply chain, while the equipment and depreciation figures highlight the company's investment in fixed assets.",
+        "bOutput": "To compute the Current Ratio, we need to calculate Current Assets and Current Liabilities using the provided data.\n\nCurrent Assets = Cash + AR + Inventory + Prepaid\nCurrent Liabilities = AP + Accrued\n\nFrom the data summary:\n- Cash = $300,000\n- Accounts Receivable (AR) = $600,000\n- Inventory = $900,000\n- Prepaid Expenses = $100,000\n- Accounts Payable (AP) = $400,000\n- Accrued Liabilities = $200,000\n\nNow, calculate Current Assets and Current Liabilities:\n\nCurrent Assets = $300,000 (Cash) + $600,000 (AR) + $900,000 (Inventory) + $100,000 (Prepaid)\nCurrent Assets = $1,900,000\n\nCurrent Liabilities = $400,000 (AP) + $200,000 (Accrued)\nCurrent Liabilities = $600,000\n\nFinally, compute the Current Ratio:\n\nCurrent Ratio = Current Assets / Current Liabilities\nCurrent Ratio = $1,900,000 / $600,000\nCurrent Ratio = 3.1667\n\nTherefore, the Current Ratio is approximately 3.17.",
+        "score": 1,
+        "parsed": 3.17,
+        "expected": 3.167
+      },
+      {
+        "condition": "no_context",
+        "problemId": 3,
+        "aSummary": "The dataset provides a snapshot of a company's financial performance and structure. Here are the key findings:\n\n1. **Revenue and Costs**:\n   - **Revenue**: With 50,000 units sold at a price of $40 each, the total revenue amounts to $2,000,000.\n   - **Variable Costs**: At a variable cost of $25 per unit, the total variable costs are $1,250,000.\n   - **Fixed Costs**: The company incurs fixed costs of $500,000.\n\n2. **Profitability**:\n   - **Gross Profit**: The gross profit, calculated as revenue minus variable costs, is $750,000.\n   - **Operating Profit**: Subtracting fixed costs from the gross profit results in an operating profit of $250,000.\n   - **Interest Expense**: With an interest expense of $100,000, the profit before tax is $150,000.\n   - **Net Profit**: After accounting for a 30% tax rate, the net profit is $105,000.\n\n3. **Capital Structure**:\n   - **Debt and Equity**: The company has a debt of $2 million and equity of $3 million, indicating a debt-to-equity ratio of 0.67, suggesting a balanced approach to financing with a slight preference for equity.\n   - **Retained Earnings**: The retained earnings stand at $800,000, reflecting the cumulative profits retained in the business.\n\n4. **Shareholder Metrics**:\n   - **Earnings Per Share (EPS)**: With 500,000 shares outstanding, the EPS is $0.21, calculated by dividing the net profit by the number of shares.\n   - **Return on Equity (ROE)**: The ROE, calculated as net profit divided by equity, is 3.5%, indicating the efficiency of equity utilization in generating profit.\n\nOverall, the company demonstrates a solid revenue base with a healthy gross margin. However, the net profit margin is relatively modest due to significant fixed costs and interest expenses. The capital structure shows a balanced mix of debt and equity, and the retained earnings suggest a stable financial position. The EPS and ROE provide insights into shareholder value and the company's profitability relative to its equity base.",
+        "bOutput": "5.25",
+        "score": 1,
+        "parsed": 5.25,
+        "expected": 5.25
+      },
+      {
+        "condition": "no_context",
+        "problemId": 4,
+        "aSummary": "The dataset provides a snapshot of financial activities, highlighting cash flow and expenditures. Starting with a Beginning Cash balance of $500,000, the company generated Sales Receipts totaling $3,000,000. This indicates a strong revenue stream.\n\nOn the expenditure side, the company incurred Cost Payments of $2,000,000, which is a significant portion of the sales receipts, suggesting a high cost of goods sold or operational expenses. Salaries amounted to $400,000, reflecting the company's investment in human resources. Rent expenses were $120,000, which is relatively modest compared to other costs.\n\nThe company made an Equipment Purchase of $300,000, indicating capital investment, possibly for expansion or upgrading operations. Additionally, a Loan of $500,000 was received, providing a boost to cash flow, but $200,000 was repaid, showing a commitment to managing debt obligations.\n\nTax payments totaled $150,000, which is a necessary outflow, and dividends of $100,000 were distributed, indicating a return to shareholders.\n\nOverall, the company appears to have a healthy cash inflow from sales and loans, with significant investments in equipment and human resources. The balance between loan management and dividend distribution suggests a strategic approach to financial obligations and shareholder value.",
+        "bOutput": "Beginning_Cash = $500,000\nSales_Receipts = $3,000,000\nLoan_Received = $500,000\n\nTotal_Inflows = Sales_Receipts + Loan_Received\nTotal_Inflows = $3,000,000 + $500,000 = $3,500,000\n\nCost_Payments = $2,000,000\nSalary = $400,000\nRent = $120,000\nEquipment_Purchase = $300,000\nLoan_Repayment = $200,000\nTax_Paid = $150,000\nDividend = $100,000\n\nTotal_Outflows = Cost_Payments + Salary + Rent + Equipment_Purchase + Loan_Repayment + Tax_Paid + Dividend\nTotal_Outflows = $2,000,000 + $400,000 + $120,000 + $300,000 + $200,000 + $150,000 + $100,000 = $3,270,000\n\nEnding_Cash_Balance = Beginning_Cash + Total_Inflows - Total_Outflows\nEnding_Cash_Balance = $500,000 + $3,500,000 - $3,270,000 = $730,000\n\n730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "no_context",
+        "problemId": 5,
+        "aSummary": "The dataset provides a snapshot of the financial performance and position of a company. Here are the key findings:\n\n1. **Revenue and Profitability**: The company generated a revenue of $5 million. From this, the operating income is $800,000, indicating an operating margin of 16%. The net income stands at $500,000, resulting in a net profit margin of 10%. This suggests that the company is able to retain a significant portion of its revenue as profit after accounting for all expenses.\n\n2. **EBITDA**: The Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) is $1.2 million. This metric is often used to assess a company's operational performance and cash flow generation capability, showing that the company has a healthy EBITDA margin of 24%.\n\n3. **Financial Position**: The company has total assets valued at $10 million and total equity of $6 million. This indicates a debt-to-equity ratio of 0.67, suggesting a moderate level of leverage. The total debt is $4 million, and the interest expense is $200,000, which implies an interest coverage ratio of 4, indicating that the company comfortably covers its interest obligations.\n\n4. **Market Valuation**: The market capitalization of the company is $15 million, which is three times its total equity. This reflects the market's valuation of the company relative to its book value.\n\n5. **Cash Flow**: The free cash flow is $600,000, which is a positive indicator of the company's ability to generate cash after accounting for capital expenditures. This is crucial for funding operations, paying dividends, and reducing debt.\n\nOverall, the company appears to be in a strong financial position with solid profitability, manageable debt levels, and good cash flow generation. The market valuation suggests investor confidence in the company's future prospects.",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "no_context",
+        "problemId": 6,
+        "aSummary": "The dataset provides a snapshot of the inventory and supply chain metrics for a business. Here are the key findings:\n\n1. **Daily Demand**: The average daily demand is 200 units, with a standard deviation of 40 units. This indicates a moderate level of variability in daily demand, which could impact inventory management and order planning.\n\n2. **Lead Time**: The lead time for receiving orders is 5 days. This is a critical factor in determining reorder points and ensuring that stock levels are maintained to meet demand without interruption.\n\n3. **Unit Cost and Holding Rate**: Each unit costs $15, and the holding rate is 20% per year. This suggests that the cost of holding inventory is relatively high, which could influence decisions on order quantities and frequency to minimize holding costs.\n\n4. **Order Cost**: The cost to place an order is $100. This fixed cost per order will affect the economic order quantity (EOQ) and the overall cost-efficiency of the ordering process.\n\n5. **Service Level**: The desired service level is 95%, indicating a high priority on meeting customer demand and minimizing stockouts. This service level will influence safety stock calculations and inventory policies.\n\n6. **Warehouse Capacity and Current Stock**: The warehouse has a capacity of 5000 units, with a current stock level of 800 units. This suggests that there is significant available capacity, which could be utilized to accommodate larger orders or buffer stock if needed.\n\n7. **Suppliers**: There are three suppliers, which provides some flexibility and potential for negotiation in terms of pricing, lead times, and reliability. Diversifying suppliers can also mitigate risks associated with supply chain disruptions.\n\nOverall, the data highlights the importance of balancing inventory levels to meet demand while minimizing costs associated with ordering and holding stock. The current stock level is relatively low compared to warehouse capacity, which may necessitate careful planning to avoid stockouts, especially given the variability in daily demand and the lead time. The high service level target underscores the need for efficient inventory management to maintain customer satisfaction.",
+        "bOutput": "To compute the Reorder Point, we need to use the formula:\n\nReorder Point = Mean_Demand × Lead_Time + Safety_Stock\n\nWhere Safety_Stock is calculated as:\n\nSafety_Stock = 1.645 × Demand_Std × sqrt(Lead_Time)\n\nFrom the data summary, we have:\n\n- Mean_Demand = 200 units\n- Demand_Std = 40 units\n- Lead_Time = 5 days\n\nFirst, calculate the Safety_Stock:\n\nSafety_Stock = 1.645 × 40 × sqrt(5)\n\nCalculate sqrt(5):\n\nsqrt(5) ≈ 2.236\n\nNow, calculate Safety_Stock:\n\nSafety_Stock = 1.645 × 40 × 2.236 ≈ 147.196\n\nNow, calculate the Reorder Point:\n\nReorder Point = 200 × 5 + 147.196 = 1000 + 147.196 = 1147.196\n\nRounding to the nearest whole number, the Reorder Point is:\n\n1147",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "no_context",
+        "problemId": 7,
+        "aSummary": "Based on the provided dataset, we can analyze the performance and efficiency of the three machines (A, B, and C) in terms of production rate, cost, defect rate, and setup time. Here are the key findings:\n\n1. **Production Rate:**\n   - Machine C has the highest production rate at 120 units per hour, followed by Machine A at 100 units per hour, and Machine B at 80 units per hour.\n\n2. **Cost Efficiency:**\n   - Machine B is the most cost-effective option at $40 per hour, while Machine A costs $50 per hour, and Machine C is the most expensive at $60 per hour.\n\n3. **Defect Rate:**\n   - Machine B has the lowest defect rate at 1%, making it the most reliable in terms of quality. Machine A has a 2% defect rate, and Machine C has the highest defect rate at 3%.\n\n4. **Setup Time:**\n   - Machine C has the shortest setup time of 1 hour, which could be advantageous for quick start-up. Machine A requires 2 hours for setup, and Machine B requires the longest setup time at 3 hours.\n\n5. **Order Fulfillment:**\n   - The order requires 10,000 units to be produced within a 100-hour deadline. \n   - Machine C, with its highest production rate, can theoretically produce 12,000 units in 100 hours, excluding setup time and defects.\n   - Machine A can produce 10,000 units in 100 hours, meeting the order exactly, excluding setup time and defects.\n   - Machine B, with its lower production rate, can produce 8,000 units in 100 hours, which is insufficient to meet the order within the deadline.\n\n6. **Overall Considerations:**\n   - Machine C, despite its higher cost and defect rate, offers the fastest production and shortest setup time, making it suitable for meeting tight deadlines.\n   - Machine A provides a balance between cost, production rate, and defect rate, making it a viable option if the defect rate of Machine C is a concern.\n   - Machine B, while cost-effective and having the lowest defect rate, may not meet the production deadline due to its lower output capacity.\n\nIn conclusion, the choice of machine will depend on the priority of cost, quality, and speed. Machine C is optimal for speed, Machine A for a balanced approach, and Machine B for cost and quality, albeit with a risk of not meeting the deadline.",
+        "bOutput": "0.51",
+        "score": 1,
+        "parsed": 0.51,
+        "expected": 0.51
+      },
+      {
+        "condition": "no_context",
+        "problemId": 8,
+        "aSummary": "The dataset provides an overview of a service operation with several key metrics. The operation serves an average of 30 customers per hour, with each customer requiring an average service time of 4 minutes. The operation is supported by 3 servers and runs for 10 hours a day.\n\nThe hourly wage for the servers is $20, with an overtime rate of $30. The operation aims to keep the maximum wait time for customers under 5 minutes. Each customer is valued at $50, and there is an abandonment rate of 10%, indicating that 10% of customers leave before being served.\n\nDuring peak times, the customer volume increases by a factor of 1.5, which would increase the number of customers to 45 per hour. This increase could potentially impact service times and wait times, especially if the current staffing levels are maintained.\n\nOverall, the operation appears to be well-structured with a clear understanding of customer value and service targets. However, the abandonment rate suggests there may be room for improvement in managing wait times, particularly during peak periods. Balancing staffing levels and service efficiency will be crucial to maintaining customer satisfaction and maximizing revenue.",
+        "bOutput": "To compute the Server Utilization, we need to use the formula:\n\n\\[ \\text{Server Utilization} = \\frac{\\text{Arrival Rate}}{\\text{Servers} \\times \\text{Service Rate}} \\]\n\nFrom the data summary, we have:\n\n- Arrival Rate = 30 customers per hour\n- Servers = 3\n- Avg_Service_Time = 4 minutes\n\nFirst, we need to calculate the Service Rate:\n\n\\[ \\text{Service Rate} = \\frac{60}{\\text{Avg_Service_Time}} = \\frac{60}{4} = 15 \\text{ customers per hour per server} \\]\n\nNow, we can calculate the Server Utilization:\n\n\\[ \\text{Server Utilization} = \\frac{30}{3 \\times 15} = \\frac{30}{45} = \\frac{2}{3} \\]\n\nTherefore, the Server Utilization is:\n\n\\[ 0.6667 \\] (rounded to four decimal places)",
+        "score": 1,
+        "parsed": 0.6667,
+        "expected": 0.667
+      },
+      {
+        "condition": "no_context",
+        "problemId": 9,
+        "aSummary": "The dataset provides an overview of a project's financial and progress metrics. The project has a budget of $1 million and is planned to be completed over 12 months. Currently, the project has achieved an earned value of $600,000, indicating the value of work completed to date. However, the actual cost incurred is $700,000, which suggests that the project is over budget by $100,000 at this point.\n\nThe planned value, which represents the expected value of work to be completed by now, is $650,000. This indicates that the project is slightly behind schedule, as the earned value ($600,000) is less than the planned value. The project is 55% complete, which aligns with the earned value but falls short of the planned progress.\n\nThe team size is 10 members, and there is a risk reserve of $100,000 set aside to manage unforeseen risks. The overhead costs are calculated at 15% of the project budget. Out of the 8 milestones set for the project, 5 have been successfully achieved, indicating some delays or challenges in meeting project timelines.\n\nOverall, the project is experiencing budget overruns and is slightly behind schedule, with a need to address the cost overrun and improve milestone completion to align with the planned timeline.",
+        "bOutput": "0.857",
+        "score": 1,
+        "parsed": 0.857,
+        "expected": 0.857
+      },
+      {
+        "condition": "no_context",
+        "problemId": 10,
+        "aSummary": "The dataset provides key metrics related to inventory management and order processing for a business. Here is a summary of the notable findings:\n\n1. **Annual Demand**: The business has an annual demand of 12,000 units, indicating a consistent need for inventory replenishment throughout the year.\n\n2. **Order Cost**: Each order placed incurs a cost of $75. This fixed cost per order suggests that optimizing the number of orders could lead to cost savings.\n\n3. **Holding Cost**: The holding cost is $4 per unit per year. This cost is associated with storing inventory and suggests that maintaining a large inventory could lead to higher expenses.\n\n4. **Unit Price**: Each unit is priced at $25. This is the cost per unit before any discounts are applied.\n\n5. **Lead Time**: The lead time for orders is 7 days. This is the time taken from placing an order to receiving it, which is crucial for planning inventory levels to avoid stockouts.\n\n6. **Working Days**: The business operates on 250 working days per year, which affects the frequency and timing of orders.\n\n7. **Warehouse Capacity**: The maximum warehouse capacity is 2,000 units. This limits the amount of inventory that can be stored at any given time and must be considered when planning order quantities.\n\n8. **Minimum Order Quantity**: The minimum order quantity is 500 units. This constraint affects how often orders can be placed and the size of each order.\n\n9. **Discount**: A 5% discount is available for orders of 1,000 units or more. This discount provides an incentive to order in larger quantities, which could reduce the overall cost per unit.\n\n10. **Current Inventory**: The current inventory level is 300 units. This is below the minimum order quantity and suggests that an order will need to be placed soon to meet ongoing demand.\n\nOverall, the data highlights the need to balance order frequency and size to minimize costs while ensuring sufficient inventory levels to meet demand. The discount for larger orders presents an opportunity for cost savings, but must be weighed against the holding costs and warehouse capacity constraints.",
+        "bOutput": "300",
+        "score": 0,
+        "parsed": 300,
+        "expected": 670.8
+      },
+      {
+        "condition": "no_context",
+        "problemId": 11,
+        "aSummary": "The dataset provided contains several physical parameters that can be used to analyze the dynamics of an object in motion. Here is a summary of the key findings based on the given data:\n\n1. **Mass and Velocity**: The object has a mass of 2 kg and is moving with a velocity of 10 m/s. These values are crucial for calculating kinetic energy and momentum. The kinetic energy of the object can be calculated using the formula \\( KE = \\frac{1}{2}mv^2 \\), which results in 100 Joules.\n\n2. **Height and Gravity**: The object is positioned at a height of 5 meters above a reference point, with gravity acting at 9.81 m/s². This setup allows for the calculation of potential energy using the formula \\( PE = mgh \\), resulting in 98.1 Joules.\n\n3. **Spring Constant**: The spring constant is given as 500 N/m, indicating the stiffness of a spring if the object were involved in a spring-mass system. This parameter is essential for determining the force exerted by or on the spring using Hooke's Law, \\( F = kx \\).\n\n4. **Friction Coefficient**: The friction coefficient is 0.3, which is a measure of the resistance to motion when the object is in contact with a surface. This value is important for calculating the frictional force, \\( F_f = \\mu N \\), where \\( N \\) is the normal force.\n\n5. **Angle**: The angle of 30 degrees could be relevant in scenarios involving inclined planes or projectile motion, affecting the components of forces and motion along the plane.\n\n6. **Air Density, Cross-Section, and Drag Coefficient**: The air density is 1.225 kg/m³, the cross-sectional area is 0.1 m², and the drag coefficient is 0.5. These parameters are critical for calculating the drag force experienced by the object as it moves through the air, using the formula \\( F_d = \\frac{1}{2} \\rho v^2 C_d A \\).\n\nOverall, the dataset provides a comprehensive set of parameters that can be used to analyze various physical phenomena such as energy transformations, motion dynamics, and forces acting on the object. Each parameter plays a significant role in understanding the behavior of the object in different physical contexts.",
+        "bOutput": "100",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "no_context",
+        "problemId": 12,
+        "aSummary": "The dataset provides a comprehensive overview of an electrical system with several key parameters. The system operates at a voltage of 240 volts and has a resistance of 60 ohms. The capacitance is measured at 100 microfarads, while the inductance is 0.5 henries. The frequency of the system is 50 hertz, which is typical for many regions around the world.\n\nThe wire used in the system is 100 meters long with a diameter of 2 millimeters, indicating the physical dimensions of the conductor. The temperature is noted to be 25 degrees Celsius, which is a standard room temperature and can affect the resistance and overall performance of the system.\n\nThe power factor is 0.9, suggesting that the system is relatively efficient, as a power factor closer to 1 indicates less energy loss. The system is a three-phase system, which is common in industrial and large-scale electrical applications, providing a more balanced load and efficient power distribution.\n\nOverall, the dataset describes a well-defined electrical system with standard parameters that suggest efficient operation under typical conditions.",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "no_context",
+        "problemId": 13,
+        "aSummary": "The dataset provides a snapshot of demographic and economic indicators for a population of 100,000. The birth rate is 12 per 1,000 people, while the death rate is 8 per 1,000 people, indicating a natural increase in population. Additionally, the net migration rate, calculated from 500 immigrants and 200 emigrants per year, contributes an additional 300 people annually to the population growth.\n\nThe fertility rate is 1.8, which is below the replacement level of 2.1, suggesting that without immigration, the population may eventually decline. Life expectancy is relatively high at 78 years, indicating good health conditions and healthcare services. The median age of the population is 35, which suggests a relatively young population, but not extremely so.\n\nUrbanization is significant, with 65% of the population living in urban areas, which may imply a concentration of resources and services in cities. The growth budget is $2 million, which will need to be allocated efficiently to support the population's needs, particularly in urban areas where the majority reside.\n\nOverall, the data suggests a modestly growing population with a strong urban presence, supported by a positive net migration rate and a relatively high life expectancy. However, the low fertility rate could pose challenges for long-term population sustainability without continued immigration.",
+        "bOutput": "1300",
+        "score": 0,
+        "parsed": 1300,
+        "expected": 700
+      },
+      {
+        "condition": "no_context",
+        "problemId": 14,
+        "aSummary": "The dataset provides information about a tank system with a total volume capacity of 1000 liters. The current level of liquid in the tank is 400 liters. The inflow rate of liquid into the tank is 5 liters per minute, while the outflow rate is 3 liters per minute. This results in a net inflow of 2 liters per minute, indicating that the liquid level in the tank is increasing over time.\n\nThe concentration of a substance in the inflow is 0.5 grams per liter, whereas the current concentration within the tank is 0.2 grams per liter. This suggests that the concentration in the tank is lower than that of the incoming liquid, which may lead to an increase in concentration over time as more of the inflow liquid mixes with the existing liquid in the tank.\n\nThe temperature of the liquid is maintained at 20°C, and the pressure is at 1 atmosphere, which are standard conditions for many liquid systems. The density of the liquid is 1.0 kilograms per liter, which is typical for water, suggesting that the liquid might be water or a similar substance. The viscosity is 0.001 Pascal-seconds, indicating a low resistance to flow, which is also characteristic of water.\n\nOverall, the key findings indicate that the tank is gradually filling up due to a higher inflow rate compared to the outflow rate, and the concentration of the substance in the tank is likely to increase as the inflow continues. The physical conditions such as temperature, pressure, density, and viscosity are consistent with a typical water-like liquid.",
+        "bOutput": "300",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "no_context",
+        "problemId": 15,
+        "aSummary": "The dataset provides information on two vehicles, A and B, traveling a distance of 500 kilometers. Key metrics include speed, fuel consumption, fuel cost, toll charges, and departure times.\n\n1. **Speed and Travel Time:**\n   - Vehicle A travels at a speed of 80 km/h, while Vehicle B travels at 120 km/h.\n   - The travel time for Vehicle A is approximately 6 hours and 15 minutes, including a 15-minute rest stop.\n   - Vehicle B, traveling faster, completes the journey in approximately 4 hours and 15 minutes, also including a 15-minute rest stop.\n\n2. **Fuel Consumption and Cost:**\n   - Vehicle A consumes fuel at a rate of 8 liters per 100 kilometers, resulting in a total fuel consumption of 40 liters for the trip.\n   - Vehicle B consumes fuel at a rate of 12 liters per 100 kilometers, leading to a total fuel consumption of 60 liters.\n   - The fuel cost for Vehicle A is $60 (40 liters x $1.50 per liter), while for Vehicle B, it is $90 (60 liters x $1.50 per liter).\n\n3. **Toll Charges:**\n   - Both vehicles incur a toll charge of $30 for the journey.\n\n4. **Departure Times:**\n   - Vehicle A departs at 8 AM, and Vehicle B departs at 9 AM.\n\nIn summary, Vehicle B completes the journey faster due to its higher speed but incurs higher fuel costs due to greater fuel consumption. Both vehicles face the same toll charges. Vehicle A, despite being slower, is more fuel-efficient and departs earlier.",
+        "bOutput": "60",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ],
+    "one_way": [
+      {
+        "condition": "one_way",
+        "problemId": 1,
+        "aSummary": "Net Income is needed to calculate Earnings Per Share (EPS). Here are the relevant data points:\n\n- Revenue: $10M\n- COGS: $6M\n- SGA: $1.5M\n- RnD: $500K\n- Interest: $300K\n- Tax Rate: 25%\n- Shares: 1M",
+        "bOutput": "2.1",
+        "score": 0,
+        "parsed": 2.1,
+        "expected": 1.275
+      },
+      {
+        "condition": "one_way",
+        "problemId": 2,
+        "aSummary": "To calculate the liquidity ratio, you will need the following data points:\n\n- Accounts Receivable (AR): $600,000\n- Inventory: $900,000\n- Prepaid Expenses: $100,000\n- Accounts Payable (AP): $400,000\n- Accrued Liabilities: $200,000\n- Cash: $300,000\n\nThese figures will help you compute the current ratio or quick ratio, depending on your specific needs.",
+        "bOutput": "2.5",
+        "score": 0,
+        "parsed": 2.5,
+        "expected": 3.167
+      },
+      {
+        "condition": "one_way",
+        "problemId": 3,
+        "aSummary": "To calculate profitability, you will need the following data points:\n\n- Units Sold: 50,000\n- Price per Unit: $40\n- Variable Cost per Unit: $25\n- Fixed Costs: $500,000\n\nThese will help you calculate the total revenue, total costs, and ultimately the profit.",
+        "bOutput": "-999",
+        "score": 0,
+        "parsed": -999,
+        "expected": 5.25
+      },
+      {
+        "condition": "one_way",
+        "problemId": 4,
+        "aSummary": "Beginning Cash: $500,000  \nSales Receipts: $3,000,000  \nCost Payments: $2,000,000  \nSalary: $400,000  \nRent: $120,000  \nEquipment Purchase: $300,000  \nLoan Received: $500,000  \nLoan Repayment: $200,000  \nTax Paid: $150,000  \nDividend: $100,000",
+        "bOutput": "Beginning_Cash = $500,000  \nTotal_Inflows = Sales_Receipts + Loan_Received = $3,000,000 + $500,000 = $3,500,000  \nTotal_Outflows = Cost_Payments + Salary + Rent + Equipment_Purchase + Loan_Repayment + Tax_Paid + Dividend  \nTotal_Outflows = $2,000,000 + $400,000 + $120,000 + $300,000 + $200,000 + $150,000 + $100,000 = $3,270,000  \n\nEnding Cash Balance = Beginning_Cash + Total_Inflows - Total_Outflows  \nEnding Cash Balance = $500,000 + $3,500,000 - $3,270,000 = $730,000  \n\n730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "one_way",
+        "problemId": 5,
+        "aSummary": "Net_Income=$500K, Total_Assets=$10M",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "one_way",
+        "problemId": 6,
+        "aSummary": "Daily_Demand_Mean = 200  \nDaily_Demand_Std = 40  \nLead_Time = 5 days  \nService_Level = 95%  \nCurrent_Stock = 800",
+        "bOutput": "Reorder Point = Mean_Demand × Lead_Time + Safety_Stock\n\nGiven:\n- Mean_Demand = Daily_Demand_Mean = 200\n- Demand_Std = Daily_Demand_Std = 40\n- Lead_Time = 5 days\n\nSafety_Stock = 1.645 × Demand_Std × sqrt(Lead_Time)\nSafety_Stock = 1.645 × 40 × sqrt(5)\n\nFirst, calculate sqrt(5):\nsqrt(5) ≈ 2.236\n\nNow, calculate Safety_Stock:\nSafety_Stock = 1.645 × 40 × 2.236 ≈ 147.196\n\nNow, calculate Reorder Point:\nReorder Point = Mean_Demand × Lead_Time + Safety_Stock\nReorder Point = 200 × 5 + 147.196\nReorder Point = 1000 + 147.196\nReorder Point ≈ 1147.196\n\nRounded to the nearest whole number, the Reorder Point is 1147.\n\n1147",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "one_way",
+        "problemId": 7,
+        "aSummary": "To compute the production cost analysis, here are the relevant data points:\n\n- **Machine A**: \n  - Production rate: 100 units/hr\n  - Operating cost: $50/hr\n  - Defect rate: 2%\n  - Setup time: 2 hours\n\n- **Machine B**: \n  - Production rate: 80 units/hr\n  - Operating cost: $40/hr\n  - Defect rate: 1%\n  - Setup time: 3 hours\n\n- **Machine C**: \n  - Production rate: 120 units/hr\n  - Operating cost: $60/hr\n  - Defect rate: 3%\n  - Setup time: 1 hour\n\n- **Order requirement**: 10,000 units\n- **Deadline**: 100 hours",
+        "bOutput": "0.51",
+        "score": 1,
+        "parsed": 0.51,
+        "expected": 0.51
+      },
+      {
+        "condition": "one_way",
+        "problemId": 8,
+        "aSummary": "To calculate the utilization, you need the following data points:\n\n- Customers per hour: 30\n- Average service time: 4 minutes\n- Number of servers: 3",
+        "bOutput": "0.4166666666666667",
+        "score": 0,
+        "parsed": 0.4166666666666667,
+        "expected": 0.667
+      },
+      {
+        "condition": "one_way",
+        "problemId": 9,
+        "aSummary": "To compute the cost performance, the most relevant data points are:\n\n- Earned Value (EV) = $600,000\n- Actual Cost (AC) = $700,000",
+        "bOutput": "0.8571428571428571",
+        "score": 1,
+        "parsed": 0.8571428571428571,
+        "expected": 0.857
+      },
+      {
+        "condition": "one_way",
+        "problemId": 10,
+        "aSummary": "Annual_Demand = 12000 units  \nOrder_Cost = $75 per order  \nHolding_Cost = $4 per unit per year",
+        "bOutput": "300",
+        "score": 0,
+        "parsed": 300,
+        "expected": 670.8
+      },
+      {
+        "condition": "one_way",
+        "problemId": 11,
+        "aSummary": "The most relevant data points for a physics energy calculation are:\n\n- Mass = 2 kg\n- Velocity = 10 m/s\n- Height = 5 m\n- Gravity = 9.81 m/s²\n\nThese values can be used to calculate kinetic energy, potential energy, or other related energy forms.",
+        "bOutput": "100",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "one_way",
+        "problemId": 12,
+        "aSummary": "Voltage = 240V, Resistance = 60Ω, Capacitance = 100μF, Inductance = 0.5H, Frequency = 50Hz, Power Factor = 0.9, Phase = 3",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "one_way",
+        "problemId": 13,
+        "aSummary": "Population: 100,000  \nBirth Rate: 12 per 1,000  \nDeath Rate: 8 per 1,000  \nImmigration: 500 per year  \nEmigration: 200 per year",
+        "bOutput": "1300",
+        "score": 0,
+        "parsed": 1300,
+        "expected": 700
+      },
+      {
+        "condition": "one_way",
+        "problemId": 14,
+        "aSummary": "Relevant data points for calculating the fill time:\n\n- Tank Volume: 1000 L\n- Inflow Rate: 5 L/min\n- Outflow Rate: 3 L/min\n- Initial Level: 400 L",
+        "bOutput": "300",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "one_way",
+        "problemId": 15,
+        "aSummary": "Distance: 500 km  \nSpeed_A: 80 km/h  \nSpeed_B: 120 km/h  \nFuel_A: 8 L/100 km  \nFuel_B: 12 L/100 km  \nFuel_Price: $1.50/L  \nToll: $30",
+        "bOutput": "60.0",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ],
+    "mutual": [
+      {
+        "condition": "mutual",
+        "problemId": 1,
+        "bRequest": "I need to compute: Compute Earnings Per Share (EPS) = Net_Income / Shares_Outstanding. Net_Income = (Revenue - COGS - SGA - RnD - Interest) × (1 - Tax_Rate).\nI specifically need these data points: Net_Income=$1.275M, Shares_Outstanding=1M",
+        "aSummary": "Net_Income is given as $1.275M, and Shares_Outstanding is 1M.\n\nTo compute Earnings Per Share (EPS):\n\nEPS = Net_Income / Shares_Outstanding = $1.275M / 1M = $1.275",
+        "bOutput": "1.275",
+        "score": 1,
+        "parsed": 1.275,
+        "expected": 1.275
+      },
+      {
+        "condition": "mutual",
+        "problemId": 2,
+        "bRequest": "I need to compute: Compute Current Ratio = Current_Assets / Current_Liabilities. Current_Assets = Cash + AR + Inventory + Prepaid. Current_Liabilities = AP + Accrued.\nI specifically need these data points: Current_Assets=$1.9M (Cash=$300K, AR=$600K, Inventory=$900K, Prepaid=$100K), Current_Liabilities=$600K (AP=$400K, Accrued=$200K)",
+        "aSummary": "Current Ratio = Current_Assets / Current_Liabilities\n\nCurrent_Assets = $1.9M\nCurrent_Liabilities = $600K\n\nCurrent Ratio = $1.9M / $600K = 3.17",
+        "bOutput": "3.17",
+        "score": 1,
+        "parsed": 3.17,
+        "expected": 3.167
+      },
+      {
+        "condition": "mutual",
+        "problemId": 3,
+        "bRequest": "I need to compute: Compute Profit Margin % = Net_Income / Revenue × 100. Revenue = Units_Sold × Price. Gross_Profit = Revenue - (Units_Sold × Variable_Cost). EBIT = Gross_Profit - Fixed_Costs. EBT = EBIT - Interest. Net_Income = EBT × (1 - Tax).\nI specifically need these data points: Net_Income=$105K, Revenue=$2M",
+        "aSummary": "To compute the Profit Margin %, we need to use the formula: \n\nProfit Margin % = (Net_Income / Revenue) × 100\n\nGiven data points:\n- Net_Income = $105,000\n- Revenue = $2,000,000\n\nNow, plug these values into the formula:\n\nProfit Margin % = ($105,000 / $2,000,000) × 100 = 5.25%\n\nThe Profit Margin % is 5.25%.",
+        "bOutput": "5.25",
+        "score": 1,
+        "parsed": 5.25,
+        "expected": 5.25
+      },
+      {
+        "condition": "mutual",
+        "problemId": 4,
+        "bRequest": "I need to compute: Compute Ending Cash Balance = Beginning_Cash + Total_Inflows - Total_Outflows. Inflows include: Sales_Receipts, Loan_Received. Outflows include: Cost_Payments, Salary, Rent, Equipment_Purchase, Loan_Repayment, Tax_Paid, Dividend.\nI specifically need these data points: Beginning_Cash=$500K, Sales_Receipts=$3M, Cost_Payments=$2M, Salary=$400K, Rent=$120K, Equipment_Purchase=$300K, Loan_Received=$500K, Loan_Repayment=$200K, Tax_Paid=$150K, Dividend=$100K",
+        "aSummary": "Beginning_Cash = $500,000  \nSales_Receipts = $3,000,000  \nLoan_Received = $500,000  \n\nTotal_Inflows = Sales_Receipts + Loan_Received  \nTotal_Inflows = $3,000,000 + $500,000 = $3,500,000  \n\nCost_Payments = $2,000,000  \nSalary = $400,000  \nRent = $120,000  \nEquipment_Purchase = $300,000  \nLoan_Repayment = $200,000  \nTax_Paid = $150,000  \nDividend = $100,000  \n\nTotal_Outflows = Cost_Payments + Salary + Rent + Equipment_Purchase + Loan_Repayment + Tax_Paid + Dividend  \nTotal_Outflows = $2,000,000 + $400,000 + $120,000 + $300,000 + $200,000 + $150,000 + $100,000 = $3,270,000  \n\nEnding Cash Balance = Beginning_Cash + Total_Inflows - Total_Outflows  \nEnding Cash Balance = $500,000 + $3,500,000 - $3,270,000 = $730,000",
+        "bOutput": "730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "mutual",
+        "problemId": 5,
+        "bRequest": "I need to compute: Compute Return on Assets (ROA) = Net_Income / Total_Assets.\nI specifically need these data points: Net_Income=$500K, Total_Assets=$10M",
+        "aSummary": "Net_Income = $500K  \nTotal_Assets = $10M  \n\nReturn on Assets (ROA) = Net_Income / Total_Assets = $500K / $10M = 0.05 or 5%",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "mutual",
+        "problemId": 6,
+        "bRequest": "I need to compute: Compute Reorder Point = Mean_Demand × Lead_Time + Safety_Stock. Safety_Stock = 1.645 × Demand_Std × sqrt(Lead_Time).\nI specifically need these data points: Daily_Demand_Mean=200, Daily_Demand_Std=40, Lead_Time=5 days",
+        "aSummary": "Here are the specific data points you requested:\n\n- Daily_Demand_Mean = 200\n- Daily_Demand_Std = 40\n- Lead_Time = 5 days",
+        "bOutput": "To compute the Reorder Point, we need to calculate the Safety Stock first and then use it in the Reorder Point formula.\n\nGiven:\n- Mean_Demand = 200\n- Demand_Std = 40\n- Lead_Time = 5 days\n\nSafety_Stock = 1.645 × Demand_Std × sqrt(Lead_Time)\nSafety_Stock = 1.645 × 40 × sqrt(5)\n\nFirst, calculate sqrt(5):\nsqrt(5) ≈ 2.236\n\nNow, calculate Safety_Stock:\nSafety_Stock = 1.645 × 40 × 2.236\nSafety_Stock ≈ 147.1968\n\nNow, calculate the Reorder Point:\nReorder Point = Mean_Demand × Lead_Time + Safety_Stock\nReorder Point = 200 × 5 + 147.1968\nReorder Point = 1000 + 147.1968\nReorder Point ≈ 1147.1968\n\nRounding to the nearest whole number, the Reorder Point is 1147.\n\n1147",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "mutual",
+        "problemId": 7,
+        "bRequest": "I need to compute: Determine which single machine can produce 10000 units within 100 hours (excluding setup), then compute cost per good unit for that machine. Cost_per_good_unit = (Production_Hours × Hourly_Cost) / (Total_Units × (1 - Defect_Rate)). Machine A: 10000/100=100hr (just meets deadline). Cost = 100×$50 = $5000. Good units = 10000×0.98 = 9800. Cost/good = 5000/9800 = 0.51.\nI specifically need these data points: Machine_A: rate=100units/hr, cost=$50/hr, defect=2%. Deadline=100hr. Order=10000.",
+        "aSummary": "Machine_A: rate=100units/hr, cost=$50/hr, defect=2%. Deadline=100hr. Order=10000.",
+        "bOutput": "0.51",
+        "score": 1,
+        "parsed": 0.51,
+        "expected": 0.51
+      },
+      {
+        "condition": "mutual",
+        "problemId": 8,
+        "bRequest": "I need to compute: Compute Server Utilization = Arrival_Rate / (Servers × Service_Rate). Service_Rate = 60 / Avg_Service_Time (customers per hour per server).\nI specifically need these data points: Customers_per_hour=30, Avg_Service_Time=4min, Servers=3",
+        "aSummary": "To compute the Server Utilization, we need the following data points:\n\n- Arrival Rate (Customers_per_hour): 30\n- Avg_Service_Time: 4 minutes\n- Servers: 3\n\nFirst, calculate the Service Rate:\n\nService_Rate = 60 / Avg_Service_Time = 60 / 4 = 15 customers per hour per server\n\nNow, compute the Server Utilization:\n\nServer Utilization = Arrival_Rate / (Servers × Service_Rate) = 30 / (3 × 15) = 30 / 45 = 0.6667\n\nTherefore, the Server Utilization is approximately 0.6667 or 66.67%.",
+        "bOutput": "0.6667",
+        "score": 1,
+        "parsed": 0.6667,
+        "expected": 0.667
+      },
+      {
+        "condition": "mutual",
+        "problemId": 9,
+        "bRequest": "I need to compute: Compute Cost Performance Index (CPI) = Earned_Value / Actual_Cost.\nI specifically need these data points: Earned_Value=$600K, Actual_Cost=$700K",
+        "aSummary": "Earned_Value = $600K  \nActual_Cost = $700K  \n\nCost Performance Index (CPI) = Earned_Value / Actual_Cost = $600K / $700K = 0.857",
+        "bOutput": "0.857",
+        "score": 1,
+        "parsed": 0.857,
+        "expected": 0.857
+      },
+      {
+        "condition": "mutual",
+        "problemId": 10,
+        "bRequest": "I need to compute: Compute Economic Order Quantity (EOQ) = sqrt(2 × Annual_Demand × Order_Cost / Holding_Cost).\nI specifically need these data points: Annual_Demand=12000, Order_Cost=$75, Holding_Cost=$4/unit/year",
+        "aSummary": "Annual_Demand = 12000  \nOrder_Cost = $75  \nHolding_Cost = $4/unit/year",
+        "bOutput": "300",
+        "score": 0,
+        "parsed": 300,
+        "expected": 670.8
+      },
+      {
+        "condition": "mutual",
+        "problemId": 11,
+        "bRequest": "I need to compute: Compute Kinetic Energy = 0.5 × Mass × Velocity².\nI specifically need these data points: Mass=2kg, Velocity=10m/s",
+        "aSummary": "Mass = 2 kg, Velocity = 10 m/s",
+        "bOutput": "100",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "mutual",
+        "problemId": 12,
+        "bRequest": "I need to compute: Compute Current (Amperes) = Voltage / Resistance.\nI specifically need these data points: Voltage=240V, Resistance=60Ω",
+        "aSummary": "To compute the Current (Amperes) using the formula Current = Voltage / Resistance with the given data points:\n\nVoltage = 240V\nResistance = 60Ω\n\nCurrent = 240V / 60Ω = 4 Amperes\n\nThe computed current is 4 Amperes.",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "mutual",
+        "problemId": 13,
+        "bRequest": "I need to compute: Compute Annual Population Growth = Births - Deaths + Net_Migration. Births = Population × Birth_Rate. Deaths = Population × Death_Rate. Net_Migration = Immigration - Emigration.\nI specifically need these data points: Population=100000, Birth_Rate=12/1000, Death_Rate=8/1000, Immigration=500, Emigration=200",
+        "aSummary": "To compute the Annual Population Growth, we will use the provided formulas and data points:\n\n1. **Births** = Population × Birth_Rate = 100,000 × (12/1000) = 1,200\n2. **Deaths** = Population × Death_Rate = 100,000 × (8/1000) = 800\n3. **Net_Migration** = Immigration - Emigration = 500 - 200 = 300\n\nNow, compute the Annual Population Growth:\n\nAnnual Population Growth = Births - Deaths + Net_Migration = 1,200 - 800 + 300 = 700\n\nThe Annual Population Growth is 700.",
+        "bOutput": "700",
+        "score": 1,
+        "parsed": 700,
+        "expected": 700
+      },
+      {
+        "condition": "mutual",
+        "problemId": 14,
+        "bRequest": "I need to compute: Compute Time to fill tank (minutes) = (Tank_Volume - Initial_Level) / (Inflow_Rate - Outflow_Rate).\nI specifically need these data points: Tank_Volume=1000L, Initial_Level=400L, Inflow_Rate=5L/min, Outflow_Rate=3L/min",
+        "aSummary": "To compute the Time to fill the tank, use the formula:\n\nTime to fill tank (minutes) = (Tank_Volume - Initial_Level) / (Inflow_Rate - Outflow_Rate).\n\nGiven data points:\n- Tank_Volume = 1000L\n- Initial_Level = 400L\n- Inflow_Rate = 5L/min\n- Outflow_Rate = 3L/min\n\nPlugging in the values:\n\nTime to fill tank = (1000L - 400L) / (5L/min - 3L/min) = 600L / 2L/min = 300 minutes.",
+        "bOutput": "300",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "mutual",
+        "problemId": 15,
+        "bRequest": "I need to compute: Compute Total fuel cost for Vehicle A = Distance × (Fuel_A / 100) × Fuel_Price.\nI specifically need these data points: Distance=500km, Fuel_A=8L/100km, Fuel_Price=$1.50/L",
+        "aSummary": "To compute the total fuel cost for Vehicle A, use the formula:\n\nTotal fuel cost = Distance × (Fuel_A / 100) × Fuel_Price\n\nGiven data points:\n- Distance = 500 km\n- Fuel_A = 8 L/100 km\n- Fuel_Price = $1.50/L\n\nPlugging in the values:\n\nTotal fuel cost = 500 × (8 / 100) × 1.50\n\nTotal fuel cost = 500 × 0.08 × 1.50\n\nTotal fuel cost = 40 × 1.50\n\nTotal fuel cost = $60\n\nThe total fuel cost for Vehicle A is $60.",
+        "bOutput": "60",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ],
+    "progressive_R1": [
+      {
+        "condition": "progressive_R1",
+        "problemId": 1,
+        "aSummary": "The dataset provides a snapshot of a company's financial performance and position. Here are the key findings:\n\n1. **Revenue and Profitability**: The company generated a revenue of $10 million. After accounting for the Cost of Goods Sold (COGS) of $6 million, the Gross Profit stands at $4 million. \n\n2. **Operating Expenses**: Selling, General, and Administrative (SGA) expenses are $1.5 million, and Research and Development (RnD) expenses are $500,000. This results in total operating expenses of $2 million.\n\n3. **Operating Income**: Subtracting the total operating expenses from the Gross Profit, the Operating Income is $2 million.\n\n4. **Interest and Taxes**: The company incurred $300,000 in interest expenses. With a tax rate of 25%, the tax expense is calculated on the pre-tax income. The pre-tax income is $1.7 million ($2 million Operating Income - $300,000 Interest), leading to a tax expense of $425,000.\n\n5. **Net Income**: After accounting for taxes, the Net Income is $1.275 million.\n\n6. **Dividends**: The company paid out $400,000 in dividends, which indicates a portion of the profits was distributed to shareholders.\n\n7. **Balance Sheet Metrics**: The company has Total Assets valued at $20 million and Equity of $12 million. This implies a Debt of $8 million, assuming no other liabilities.\n\n8. **Earnings Per Share (EPS)**: With 1 million shares outstanding, the Earnings Per Share is $1.275.\n\n9. **Return on Equity (ROE)**: The Return on Equity, calculated as Net Income divided by Equity, is approximately 10.63%.\n\n10. **Profit Margins**: The Net Profit Margin, calculated as Net Income divided by Revenue, is 12.75%.\n\nThese metrics provide a comprehensive overview of the company's financial health, highlighting its profitability, efficiency in managing expenses, and return on equity for shareholders.",
+        "bOutput": "1.275",
+        "score": 1,
+        "parsed": 1.275,
+        "expected": 1.275
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 2,
+        "aSummary": "The dataset provides a snapshot of a company's financial position, highlighting several key metrics:\n\n1. **Sales**: The company has generated $8 million in sales, indicating a strong revenue stream. This figure is crucial as it reflects the company's ability to generate income from its core operations.\n\n2. **Accounts Receivable (AR)**: At $600,000, the accounts receivable represents the amount owed to the company by its customers. This is a significant portion of the sales, suggesting that a notable amount of revenue is yet to be collected.\n\n3. **Inventory**: Valued at $900,000, the inventory level suggests the company has a substantial amount of goods available for sale. This is important for meeting customer demand but also ties up capital.\n\n4. **Prepaid Expenses**: With $100,000 in prepaid expenses, the company has made advance payments for services or goods, which will be recognized as expenses in future periods.\n\n5. **Accounts Payable (AP)**: The accounts payable stands at $400,000, indicating the amount the company owes to its suppliers. This is a critical component of the company's short-term liabilities.\n\n6. **Accrued Liabilities**: At $200,000, these are expenses that have been incurred but not yet paid, reflecting the company's obligations that need to be settled in the near term.\n\n7. **Cash**: The company holds $300,000 in cash, providing liquidity to meet immediate financial obligations and operational needs.\n\n8. **Long-Term Debt**: The company has $3 million in long-term debt, which is a significant liability that will require future cash flows for servicing.\n\n9. **Equipment**: Valued at $5 million, the equipment represents a major asset, indicating substantial investment in the company's operational capacity.\n\n10. **Depreciation**: With $500,000 in depreciation, this non-cash expense reflects the wear and tear on the company's equipment, impacting the net book value of its assets.\n\nOverall, the company appears to have a solid revenue base with $8 million in sales, supported by a substantial asset base including equipment and inventory. However, it also carries significant liabilities, particularly in long-term debt, which will require careful management to ensure financial stability. The balance between accounts receivable and accounts payable suggests a need for effective cash flow management to maintain liquidity.",
+        "bOutput": "To compute the Current Ratio, we need to calculate Current Assets and Current Liabilities using the provided data.\n\n**Current Assets** are calculated as:\n- Cash: $300,000\n- Accounts Receivable (AR): $600,000\n- Inventory: $900,000\n- Prepaid Expenses: $100,000\n\nCurrent Assets = Cash + AR + Inventory + Prepaid\nCurrent Assets = $300,000 + $600,000 + $900,000 + $100,000 = $1,900,000\n\n**Current Liabilities** are calculated as:\n- Accounts Payable (AP): $400,000\n- Accrued Liabilities: $200,000\n\nCurrent Liabilities = AP + Accrued\nCurrent Liabilities = $400,000 + $200,000 = $600,000\n\nNow, compute the Current Ratio:\nCurrent Ratio = Current Assets / Current Liabilities\nCurrent Ratio = $1,900,000 / $600,000 ≈ 3.1667\n\nTherefore, the Current Ratio is approximately 3.1667.",
+        "score": 1,
+        "parsed": 3.1667,
+        "expected": 3.167
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 3,
+        "aSummary": "The dataset provides a snapshot of a company's financial performance and structure. Here are the key findings:\n\n1. **Revenue and Costs**:\n   - **Units Sold**: The company sold 50,000 units.\n   - **Price per Unit**: Each unit was sold at $40, leading to total revenue of $2,000,000 (50,000 units x $40).\n   - **Variable Costs**: With a variable cost of $25 per unit, the total variable costs amount to $1,250,000 (50,000 units x $25).\n   - **Fixed Costs**: The company incurred fixed costs of $500,000.\n\n2. **Profitability**:\n   - **Gross Profit**: The gross profit is $750,000, calculated as total revenue ($2,000,000) minus total variable costs ($1,250,000).\n   - **Operating Profit**: Subtracting fixed costs from the gross profit, the operating profit is $250,000 ($750,000 - $500,000).\n   - **Interest Expense**: The company paid $100,000 in interest.\n   - **Earnings Before Tax (EBT)**: The EBT is $150,000, calculated by subtracting interest from operating profit ($250,000 - $100,000).\n   - **Tax**: With a tax rate of 30%, the tax expense is $45,000 (30% of $150,000).\n   - **Net Income**: The net income after tax is $105,000 ($150,000 - $45,000).\n\n3. **Capital Structure**:\n   - **Debt**: The company has a total debt of $2,000,000.\n   - **Equity**: The equity stands at $3,000,000.\n   - **Debt-to-Equity Ratio**: This ratio is 0.67, indicating the company uses $0.67 of debt for every dollar of equity.\n\n4. **Shareholder Metrics**:\n   - **Shares Outstanding**: There are 500,000 shares outstanding.\n   - **Earnings Per Share (EPS)**: The EPS is $0.21, calculated by dividing net income ($105,000) by the number of shares (500,000).\n   - **Retained Earnings**: The company has retained earnings of $800,000, which reflects the cumulative amount of net income retained in the business rather than distributed as dividends.\n\nOverall, the company demonstrates a solid revenue stream with a positive net income, indicating profitability. The debt-to-equity ratio suggests a balanced approach to financing, with a slight preference for equity. The EPS provides a measure of profitability on a per-share basis, which is useful for assessing shareholder value.",
+        "bOutput": "To compute the Profit Margin %, we use the formula:\n\n\\[ \\text{Profit Margin \\%} = \\left( \\frac{\\text{Net Income}}{\\text{Revenue}} \\right) \\times 100 \\]\n\nFrom the data summary, we have:\n- Net Income = $105,000\n- Revenue = $2,000,000\n\nSubstituting these values into the formula gives:\n\n\\[ \\text{Profit Margin \\%} = \\left( \\frac{105,000}{2,000,000} \\right) \\times 100 = 5.25 \\]\n\nTherefore, the Profit Margin % is 5.25.",
+        "score": 1,
+        "parsed": 5.25,
+        "expected": 5.25
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 4,
+        "aSummary": "The dataset provides a snapshot of financial activities, highlighting cash inflows and outflows. Here's a summary of the key findings:\n\n1. **Beginning Cash Balance**: The initial cash balance was $500,000.\n\n2. **Cash Inflows**:\n   - **Sales Receipts**: The company generated $3 million from sales, which is the primary source of cash inflow.\n   - **Loan Received**: An additional $500,000 was received from a loan, contributing to the cash inflow.\n\n3. **Cash Outflows**:\n   - **Cost Payments**: The company spent $2 million on costs, which is the largest cash outflow.\n   - **Salaries**: Employee salaries accounted for $400,000 of the cash outflow.\n   - **Rent**: Rent payments totaled $120,000.\n   - **Equipment Purchase**: A significant investment of $300,000 was made in purchasing equipment.\n   - **Loan Repayment**: $200,000 was used to repay part of the loan.\n   - **Tax Paid**: Taxes paid amounted to $150,000.\n   - **Dividend**: A dividend payment of $100,000 was made to shareholders.\n\n4. **Net Cash Flow**:\n   - The total cash inflow was $3.5 million (Sales Receipts + Loan Received).\n   - The total cash outflow was $3.27 million (sum of all outflows).\n   - This results in a net cash inflow of $230,000.\n\n5. **Ending Cash Balance**:\n   - Adding the net cash inflow to the beginning cash balance, the ending cash balance is $730,000.\n\nOverall, the company experienced a positive cash flow, increasing its cash reserves by $230,000 over the period. The substantial sales receipts and the loan received were key contributors to the positive cash position, while cost payments and equipment purchases were the major outflows.",
+        "bOutput": "730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 5,
+        "aSummary": "The dataset provides a snapshot of the financial performance and position of a company. Here are the key findings:\n\n1. **Revenue and Profitability**: The company generated a revenue of $5 million. From this, it achieved an operating income of $800,000, indicating an operating margin of 16%. The net income stands at $500,000, resulting in a net profit margin of 10%. This suggests that the company is able to retain a significant portion of its revenue as profit after accounting for all expenses, including taxes and interest.\n\n2. **EBITDA**: The Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) is $1.2 million. This metric is often used to assess a company's operational performance and cash flow generation capability, excluding the effects of capital structure and tax regimes. The EBITDA margin is 24%, which is relatively healthy and indicates strong operational efficiency.\n\n3. **Balance Sheet Strength**: The company has total assets of $10 million and total equity of $6 million, resulting in an equity ratio of 60%. This suggests a solid equity base relative to its assets. The total debt is $4 million, which means the company has a debt-to-equity ratio of 0.67, indicating a moderate level of leverage.\n\n4. **Interest Coverage**: With an interest expense of $200,000 and an operating income of $800,000, the interest coverage ratio is 4. This implies that the company earns four times its interest obligations, suggesting it is comfortably able to meet its interest payments.\n\n5. **Market Capitalization**: The market capitalization of the company is $15 million, which is three times its total equity. This could indicate that the market values the company at a premium relative to its book value, possibly due to growth prospects or strong financial performance.\n\n6. **Free Cash Flow**: The company has a free cash flow of $600,000, which is a positive indicator of its ability to generate cash after accounting for capital expenditures. This cash can be used for various purposes such as paying dividends, reducing debt, or reinvesting in the business.\n\nOverall, the company appears to be in a strong financial position with healthy profitability, efficient operations, and a solid balance sheet. The moderate leverage and strong interest coverage ratio further enhance its financial stability.",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 6,
+        "aSummary": "The dataset provides a snapshot of the inventory and supply chain metrics for a business. Here are the key findings:\n\n1. **Daily Demand**: The average daily demand is 200 units, with a standard deviation of 40 units. This indicates a moderate level of variability in daily demand, which could impact inventory management and order planning.\n\n2. **Lead Time**: The lead time for receiving orders is 5 days. This is a critical factor in determining reorder points and ensuring that stock levels are maintained to meet demand without interruption.\n\n3. **Cost Metrics**: \n   - The unit cost is $15, which is the cost incurred for each unit of product.\n   - The holding rate is 20% per year, which represents the cost of holding inventory, including storage, insurance, and opportunity costs.\n   - The order cost is $100 per order, which includes all costs associated with placing and receiving an order.\n\n4. **Service Level**: The desired service level is 95%, indicating that the business aims to meet customer demand 95% of the time without stockouts. This high service level suggests a focus on customer satisfaction and reliability.\n\n5. **Warehouse Capacity and Current Stock**: The warehouse has a capacity of 5,000 units, and the current stock level is 800 units. This indicates that the warehouse is currently operating at 16% of its capacity, suggesting there is significant room for additional inventory if needed.\n\n6. **Suppliers**: There are three suppliers, which provides some level of diversification and potential flexibility in sourcing. This can be beneficial in mitigating risks associated with supply chain disruptions.\n\nOverall, the data suggests a well-structured inventory system with a focus on maintaining a high service level. However, the current stock level is relatively low compared to the warehouse capacity, which may require careful monitoring to avoid stockouts, especially given the variability in daily demand. The presence of multiple suppliers is a positive aspect, providing options for managing lead times and costs effectively.",
+        "bOutput": "To compute the Reorder Point, we use the formula:\n\n\\[ \\text{Reorder Point} = \\text{Mean Demand} \\times \\text{Lead Time} + \\text{Safety Stock} \\]\n\nWhere:\n\n\\[ \\text{Safety Stock} = 1.645 \\times \\text{Demand Std} \\times \\sqrt{\\text{Lead Time}} \\]\n\nGiven data:\n\n- Mean Demand = 200 units\n- Demand Std = 40 units\n- Lead Time = 5 days\n\nFirst, calculate the Safety Stock:\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times \\sqrt{5} \\]\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times 2.236 \\]\n\n\\[ \\text{Safety Stock} \\approx 1.645 \\times 89.44 \\]\n\n\\[ \\text{Safety Stock} \\approx 147.08 \\]\n\nNow, calculate the Reorder Point:\n\n\\[ \\text{Reorder Point} = 200 \\times 5 + 147.08 \\]\n\n\\[ \\text{Reorder Point} = 1000 + 147.08 \\]\n\n\\[ \\text{Reorder Point} = 1147.08 \\]\n\nTherefore, the Reorder Point is approximately 1147 units.",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 7,
+        "aSummary": "Based on the provided dataset, we can analyze the performance and cost-effectiveness of each machine in relation to the order of 10,000 units with a deadline of 100 hours.\n\n1. **Production Rate and Time Efficiency:**\n   - **Machine C** has the highest production rate at 120 units per hour, which allows it to complete the order in approximately 83.33 hours (excluding setup time). This is the fastest among the three machines.\n   - **Machine A** produces 100 units per hour, completing the order in 100 hours, exactly matching the deadline (excluding setup time).\n   - **Machine B** has the lowest production rate at 80 units per hour, requiring 125 hours to complete the order, which exceeds the deadline.\n\n2. **Cost Analysis:**\n   - **Machine A** costs $50 per hour, resulting in a total operational cost of $5,000 for 100 hours, plus an additional $100 for the 2-hour setup, totaling $5,100.\n   - **Machine B** costs $40 per hour, leading to a total operational cost of $5,000 for 125 hours, plus $120 for the 3-hour setup, totaling $5,120.\n   - **Machine C** costs $60 per hour, resulting in a total operational cost of $5,000 for 83.33 hours, plus $60 for the 1-hour setup, totaling $5,060.\n\n3. **Defect Rate:**\n   - **Machine B** has the lowest defect rate at 1%, resulting in 100 defective units out of 10,000.\n   - **Machine A** has a 2% defect rate, leading to 200 defective units.\n   - **Machine C** has the highest defect rate at 3%, resulting in 300 defective units.\n\n4. **Setup Time:**\n   - **Machine C** has the shortest setup time of 1 hour.\n   - **Machine A** requires 2 hours for setup.\n   - **Machine B** has the longest setup time at 3 hours.\n\n**Summary:**\n- **Machine C** is the most time-efficient option, completing the order within the deadline with the highest production rate, but it has the highest defect rate and a moderate cost.\n- **Machine A** meets the deadline exactly, with a moderate defect rate and cost, making it a balanced choice.\n- **Machine B** is the least time-efficient, exceeding the deadline, but it offers the lowest defect rate and a competitive cost, albeit with the longest setup time.\n\nOverall, the choice of machine will depend on the priority between meeting the deadline, minimizing defects, and controlling costs.",
+        "bOutput": "0.51",
+        "score": 1,
+        "parsed": 0.51,
+        "expected": 0.51
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 8,
+        "aSummary": "The dataset provides insights into the operational metrics of a service-oriented business. Here are the key findings:\n\n1. **Customer Flow and Service Capacity**: The business serves an average of 30 customers per hour with an average service time of 4 minutes per customer. With 3 servers available, each server can handle up to 15 customers per hour (60 minutes / 4 minutes per customer), which means the total capacity is 45 customers per hour. This indicates that the current setup can accommodate the average customer flow without exceeding capacity.\n\n2. **Operating Hours and Staffing Costs**: The business operates for 10 hours a day. With an hourly wage of $20, the daily wage cost per server is $200, totaling $600 for all three servers. If overtime is required, the rate increases to $30 per hour, which could impact costs if demand exceeds regular operating hours.\n\n3. **Wait Time and Customer Experience**: The maximum wait target is set at 5 minutes. Given the average service time and customer flow, the system is designed to meet this target under normal conditions. However, during peak times, when the customer flow increases by a peak multiplier of 1.5 (45 customers per hour), the wait time could potentially exceed the target, affecting customer satisfaction.\n\n4. **Customer Value and Abandonment**: Each customer is valued at $50. With an abandonment rate of 10%, the business potentially loses $150 per hour (3 customers abandoning x $50 per customer) due to customers leaving before being served. This highlights the importance of managing wait times and service efficiency to minimize revenue loss.\n\n5. **Peak Demand Considerations**: During peak periods, the customer flow increases to 45 customers per hour. The current server capacity matches this demand, but any inefficiencies or delays could lead to increased wait times and higher abandonment rates, emphasizing the need for effective peak time management strategies.\n\nOverall, the business appears to be well-structured to handle average customer flow efficiently, but there are potential challenges during peak times that could impact customer satisfaction and revenue. Addressing these challenges through strategic staffing and process improvements could enhance overall performance.",
+        "bOutput": "0.6666666666666666",
+        "score": 1,
+        "parsed": 0.6666666666666666,
+        "expected": 0.667
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 9,
+        "aSummary": "The project has a budget of $1 million and is planned to be completed over a 12-month period. As of now, the project has achieved 55% completion. The earned value of the project is $600,000, indicating the value of work actually performed. However, the actual cost incurred so far is $700,000, which suggests that the project is over budget at this point.\n\nThe planned value, which represents the expected value of work to be completed by now, is $650,000. This indicates that the project is slightly behind schedule in terms of planned progress, as the earned value ($600,000) is less than the planned value.\n\nThe team size for the project is 10 members, and there is a risk reserve of $100,000 set aside to manage unforeseen risks. The project has an overhead cost of 15%, which needs to be factored into the overall budget management.\n\nIn terms of milestones, the project has successfully hit 5 out of 8 planned milestones. This suggests that while some progress has been made, there are still key deliverables that have not been met according to the initial schedule.\n\nOverall, the project is experiencing cost overruns and is slightly behind schedule. The team may need to reassess resource allocation and risk management strategies to bring the project back on track and ensure successful completion within the planned duration and budget.",
+        "bOutput": "0.857",
+        "score": 1,
+        "parsed": 0.857,
+        "expected": 0.857
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 10,
+        "aSummary": "The dataset provides key metrics related to inventory management and order processing for a business. Here is a summary of the notable findings:\n\n1. **Annual Demand**: The business has an annual demand of 12,000 units, indicating a consistent need for inventory replenishment throughout the year.\n\n2. **Order Cost**: Each order placed incurs a cost of $75. This fixed cost per order suggests that optimizing the number of orders could lead to cost savings.\n\n3. **Holding Cost**: The holding cost is $4 per unit per year. This cost is associated with storing inventory and suggests that maintaining a large inventory could lead to higher expenses.\n\n4. **Unit Price**: The price per unit is $25. This is the cost at which the business acquires each unit of inventory.\n\n5. **Lead Time**: The lead time for orders is 7 days. This is the time taken from placing an order to receiving it, which is crucial for planning inventory levels to avoid stockouts.\n\n6. **Working Days**: The business operates on 250 working days per year, which affects the frequency and timing of orders and inventory turnover.\n\n7. **Warehouse Capacity**: The maximum warehouse capacity is 2,000 units. This limits the amount of inventory that can be stored at any given time and impacts order size decisions.\n\n8. **Minimum Order Quantity**: The minimum order quantity is 500 units. This constraint must be considered when planning order sizes to ensure compliance with supplier requirements.\n\n9. **Discount Opportunity**: A 5% discount is available for orders of 1,000 units or more. This presents an opportunity for cost savings if the business can accommodate larger order sizes within its warehouse capacity.\n\n10. **Current Inventory**: The current inventory level is 300 units. This is below the minimum order quantity and suggests that an order will need to be placed soon to meet ongoing demand.\n\nOverall, the data highlights the need for strategic inventory management to balance order costs, holding costs, and potential discounts while ensuring that demand is consistently met without exceeding warehouse capacity.",
+        "bOutput": "1000",
+        "score": 0,
+        "parsed": 1000,
+        "expected": 670.8
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 11,
+        "aSummary": "The dataset provided contains several physical parameters that can be used to analyze the dynamics of an object in motion. Here is a summary of the key findings based on the given data:\n\n1. **Mass and Velocity**: The object has a mass of 2 kg and is moving with a velocity of 10 m/s. These values are crucial for calculating kinetic energy and momentum. The kinetic energy of the object can be calculated using the formula \\( KE = \\frac{1}{2}mv^2 \\), which results in 100 Joules.\n\n2. **Height and Gravity**: The object is positioned at a height of 5 meters above a reference point, with gravity acting at 9.81 m/s². This information is essential for determining the potential energy, which can be calculated using \\( PE = mgh \\), resulting in 98.1 Joules.\n\n3. **Spring Constant**: The spring constant is given as 500 N/m, indicating the stiffness of a spring if the object is involved in a spring-mass system. This parameter is important for calculating the potential energy stored in the spring when compressed or stretched.\n\n4. **Friction Coefficient**: The friction coefficient is 0.3, which suggests moderate frictional resistance between the object and the surface it is moving on. This value is important for calculating the force of friction, which affects the net force and acceleration of the object.\n\n5. **Angle**: The angle of 30 degrees could be relevant in scenarios involving inclined planes or projectile motion, affecting the components of gravitational force acting along and perpendicular to the plane.\n\n6. **Air Density, Cross-Section, and Drag Coefficient**: The air density is 1.225 kg/m³, the cross-sectional area is 0.1 m², and the drag coefficient is 0.5. These parameters are critical for calculating the drag force experienced by the object as it moves through the air, using the formula \\( F_d = \\frac{1}{2} \\cdot \\text{Air Density} \\cdot \\text{Velocity}^2 \\cdot \\text{Cross Section} \\cdot \\text{Drag Coefficient} \\).\n\nOverall, the dataset provides a comprehensive set of parameters that can be used to analyze various physical phenomena such as energy transformations, motion dynamics, and the effects of forces like friction and air resistance on the object.",
+        "bOutput": "100",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 12,
+        "aSummary": "The dataset provides a comprehensive overview of an electrical system with several key parameters. Here are the notable metrics:\n\n1. **Voltage and Resistance**: The system operates at a voltage of 240 volts with a resistance of 60 ohms. This indicates a moderate level of resistance relative to the voltage, which can affect the current flow and energy efficiency.\n\n2. **Capacitance and Inductance**: The capacitance is 100 microfarads (μF), and the inductance is 0.5 henries (H). These values suggest the system has a significant ability to store electrical energy in both electric and magnetic fields, which is crucial for managing power quality and stability.\n\n3. **Frequency**: The system operates at a frequency of 50 hertz (Hz), which is standard for many regions worldwide, particularly in Europe and Asia. This frequency is essential for the synchronization of electrical devices and systems.\n\n4. **Wire Specifications**: The wire length is 100 meters, and the diameter is 2 millimeters. These dimensions are important for calculating the wire's resistance and potential voltage drop over the distance, impacting the overall efficiency and performance of the system.\n\n5. **Temperature**: The system is measured at a temperature of 25 degrees Celsius, which is a typical ambient temperature. Temperature can affect the resistance and performance of electrical components, so this is a relevant factor for operational considerations.\n\n6. **Power Factor**: With a power factor of 0.9, the system is relatively efficient, as a power factor close to 1 indicates that most of the power is being effectively converted into work. This is beneficial for reducing energy losses and improving the system's overall efficiency.\n\n7. **Phase**: The system is a three-phase system, which is common in industrial and large-scale electrical systems. Three-phase power is more efficient for transmitting electricity over long distances and is capable of powering heavy loads.\n\nOverall, the dataset describes a well-balanced electrical system with standard operating conditions and efficient power usage. The combination of these parameters suggests a system designed for reliable and effective performance in typical industrial or commercial applications.",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 13,
+        "aSummary": "The dataset provides a snapshot of demographic and economic indicators for a population of 100,000. The birth rate is 12 per 1,000 people, while the death rate is 8 per 1,000 people, indicating a natural increase in population. Additionally, the net migration rate, calculated from 500 immigrants and 200 emigrants per year, contributes to a further increase in population size.\n\nThe fertility rate is 1.8, which is below the replacement level of 2.1, suggesting that without immigration, the population might eventually decline. Life expectancy is relatively high at 78 years, indicating good health conditions and healthcare services. The median age of the population is 35, which suggests a relatively young population, but not extremely so.\n\nUrbanization is significant, with 65% of the population living in urban areas, which may imply a concentration of resources and services in cities. The growth budget is $2 million, which will need to be allocated efficiently to support the growing population and urban infrastructure.\n\nOverall, the data suggests a population that is growing due to both natural increase and net migration, with a strong urban presence and a need for strategic planning to maintain and improve living standards.",
+        "bOutput": "To compute the Annual Population Growth, we need to calculate the number of Births, Deaths, and Net Migration using the provided data.\n\n1. **Births**: \n   - Population = 100,000\n   - Birth Rate = 12 per 1,000 people\n   - Births = Population × (Birth Rate / 1,000) = 100,000 × (12 / 1,000) = 1,200\n\n2. **Deaths**: \n   - Death Rate = 8 per 1,000 people\n   - Deaths = Population × (Death Rate / 1,000) = 100,000 × (8 / 1,000) = 800\n\n3. **Net Migration**:\n   - Immigration = 500\n   - Emigration = 200\n   - Net Migration = Immigration - Emigration = 500 - 200 = 300\n\nNow, we can calculate the Annual Population Growth:\n\nAnnual Population Growth = Births - Deaths + Net Migration\nAnnual Population Growth = 1,200 - 800 + 300 = 700\n\nTherefore, the Annual Population Growth is 700.",
+        "score": 1,
+        "parsed": 700,
+        "expected": 700
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 14,
+        "aSummary": "The dataset provides information about a tank system with a total volume capacity of 1000 liters. The current inflow rate into the tank is 5 liters per minute, while the outflow rate is 3 liters per minute. This results in a net inflow of 2 liters per minute, indicating that the tank's liquid level is increasing over time.\n\nInitially, the tank had a liquid level of 400 liters. Given the net inflow rate, the tank will reach its full capacity in approximately 300 minutes (or 5 hours), assuming constant inflow and outflow rates and no other changes in conditions.\n\nThe concentration of the substance entering the tank is 0.5 grams per liter, while the current concentration within the tank is 0.2 grams per liter. This suggests that the concentration of the substance in the tank is lower than that of the inflow, which may indicate dilution or mixing effects within the tank.\n\nThe temperature of the liquid in the tank is maintained at 20°C, and the pressure is at 1 atmosphere, which are standard conditions for many liquid systems. The density of the liquid is 1.0 kg/L, which is typical for water or similar fluids. The viscosity is 0.001 Pa·s, indicating a low resistance to flow, which is also characteristic of water-like fluids.\n\nOverall, the key findings highlight a system where the tank is gradually filling up with a liquid that has a lower concentration than the inflow, under standard temperature and pressure conditions, with properties similar to water.",
+        "bOutput": "300",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "progressive_R1",
+        "problemId": 15,
+        "aSummary": "The dataset provides information on two vehicles, A and B, traveling a distance of 500 kilometers. Key metrics include speed, fuel efficiency, fuel costs, toll costs, and departure times.\n\n1. **Speed and Travel Time**:\n   - Vehicle A travels at a speed of 80 km/h, while Vehicle B travels at 120 km/h.\n   - The travel time for Vehicle A is approximately 6 hours and 15 minutes, including a 15-minute rest stop.\n   - Vehicle B, with a higher speed, completes the journey in about 4 hours and 15 minutes, also including a 15-minute rest stop.\n\n2. **Fuel Efficiency and Costs**:\n   - Vehicle A has a fuel consumption rate of 8 liters per 100 kilometers, resulting in a total fuel usage of 40 liters for the trip.\n   - Vehicle B consumes 12 liters per 100 kilometers, totaling 60 liters for the journey.\n   - At a fuel price of $1.50 per liter, the fuel cost for Vehicle A is $60, while for Vehicle B, it is $90.\n\n3. **Toll Costs**:\n   - Both vehicles incur a toll cost of $30 for the trip.\n\n4. **Departure Times**:\n   - Vehicle A departs at 8 AM, and Vehicle B departs at 9 AM.\n\nIn summary, Vehicle B completes the journey faster due to its higher speed but incurs higher fuel costs due to lower fuel efficiency. Vehicle A, while slower, is more fuel-efficient and thus has lower fuel expenses. Both vehicles face the same toll costs, and their departure times are staggered by one hour.",
+        "bOutput": "60",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ],
+    "progressive_R2": [
+      {
+        "condition": "progressive_R2",
+        "problemId": 1,
+        "aSummary": "Based on the provided dataset, let's break down the financial metrics and performance indicators:\n\n1. **Revenue and Expenses:**\n   - **Revenue:** $10 million\n   - **Cost of Goods Sold (COGS):** $6 million\n   - **Selling, General, and Administrative Expenses (SGA):** $1.5 million\n   - **Research and Development (RnD):** $500,000\n   - **Interest Expense:** $300,000\n\n2. **Profitability:**\n   - **Gross Profit:** Revenue - COGS = $10M - $6M = $4 million\n   - **Operating Expenses:** SGA + RnD = $1.5M + $0.5M = $2 million\n   - **Operating Income (EBIT):** Gross Profit - Operating Expenses = $4M - $2M = $2 million\n   - **Earnings Before Tax (EBT):** Operating Income - Interest = $2M - $0.3M = $1.7 million\n   - **Tax Expense:** EBT * Tax Rate = $1.7M * 25% = $425,000\n   - **Net Income:** EBT - Tax Expense = $1.7M - $0.425M = $1.275 million\n\n3. **Dividends and Retained Earnings:**\n   - **Dividends Paid:** $400,000\n   - **Retained Earnings:** Net Income - Dividends = $1.275M - $0.4M = $875,000\n\n4. **Balance Sheet Metrics:**\n   - **Total Assets:** $20 million\n   - **Equity:** $12 million\n   - **Liabilities:** Total Assets - Equity = $20M - $12M = $8 million\n\n5. **Shareholder Metrics:**\n   - **Number of Shares Outstanding:** 1 million\n   - **Earnings Per Share (EPS):** Net Income / Shares = $1.275M / 1M = $1.275 per share\n   - **Dividends Per Share (DPS):** Dividends / Shares = $0.4M / 1M = $0.40 per share\n\n6. **Profitability Ratios:**\n   - **Gross Margin:** (Gross Profit / Revenue) * 100 = ($4M / $10M) * 100 = 40%\n   - **Operating Margin:** (Operating Income / Revenue) * 100 = ($2M / $10M) * 100 = 20%\n   - **Net Profit Margin:** (Net Income / Revenue) * 100 = ($1.275M / $10M) * 100 = 12.75%\n\n7. **Return on Equity (ROE):**\n   - **ROE:** (Net Income / Equity) * 100 = ($1.275M / $12M) * 100 = 10.625%\n\n8. **Return on Assets (ROA):**\n   - **ROA:** (Net Income / Total Assets) * 100 = ($1.275M / $20M) * 100 = 6.375%\n\nThis comprehensive analysis provides insights into the company's financial health, profitability, and efficiency in utilizing its assets and equity.",
+        "bOutput": "1.275",
+        "score": 1,
+        "parsed": 1.275,
+        "expected": 1.275
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 2,
+        "aSummary": "The dataset provided contains financial figures for a company, detailing various aspects of its financial position and performance. Here's a thorough summary of the data:\n\n1. **Sales**: The company has generated total sales amounting to $8 million. This figure represents the total revenue from goods or services sold during the period.\n\n2. **Accounts Receivable (AR)**: The accounts receivable stands at $600,000. This amount represents the money owed to the company by its customers for sales made on credit.\n\n3. **Inventory**: The company holds inventory valued at $900,000. This figure includes all goods and materials that are held by the company for the purpose of resale.\n\n4. **Prepaid Expenses**: The prepaid expenses are $100,000. These are payments made in advance for goods or services to be received in the future.\n\n5. **Accounts Payable (AP)**: The accounts payable is $400,000. This amount represents the company's obligations to pay off short-term debts to its creditors or suppliers.\n\n6. **Accrued Liabilities**: The accrued liabilities total $200,000. These are expenses that have been incurred but not yet paid, such as wages, taxes, and interest.\n\n7. **Cash**: The company has cash reserves of $300,000. This is the amount of liquid assets available for immediate use.\n\n8. **Long-Term Debt**: The long-term debt is $3 million. This represents the total amount of debt that is due for repayment in more than one year.\n\n9. **Equipment**: The value of the company's equipment is $5 million. This includes all machinery, tools, and other physical assets used in operations.\n\n10. **Depreciation**: The accumulated depreciation is $500,000. This figure represents the reduction in value of the company's equipment over time due to wear and tear.\n\nThese figures provide a snapshot of the company's financial health, indicating its revenue generation, asset management, liabilities, and capital investments.",
+        "bOutput": "To compute the Current Ratio, we need to calculate Current Assets and Current Liabilities using the provided data.\n\n**Current Assets** are calculated as:\n- Cash = $300,000\n- Accounts Receivable (AR) = $600,000\n- Inventory = $900,000\n- Prepaid Expenses = $100,000\n\nCurrent Assets = Cash + AR + Inventory + Prepaid\nCurrent Assets = $300,000 + $600,000 + $900,000 + $100,000 = $1,900,000\n\n**Current Liabilities** are calculated as:\n- Accounts Payable (AP) = $400,000\n- Accrued Liabilities = $200,000\n\nCurrent Liabilities = AP + Accrued\nCurrent Liabilities = $400,000 + $200,000 = $600,000\n\nNow, compute the Current Ratio:\nCurrent Ratio = Current Assets / Current Liabilities\nCurrent Ratio = $1,900,000 / $600,000 = 3.1667\n\nTherefore, the Current Ratio is approximately 3.17.",
+        "score": 1,
+        "parsed": 3.17,
+        "expected": 3.167
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 3,
+        "aSummary": "Based on the provided dataset, let's break down the financial metrics and performance indicators:\n\n1. **Revenue**: \n   - Revenue is calculated by multiplying the Units Sold by the Price per unit.\n   - Revenue = 50,000 units * $40/unit = $2,000,000.\n\n2. **Total Variable Costs**:\n   - Total Variable Costs are calculated by multiplying the Units Sold by the Variable Cost per unit.\n   - Total Variable Costs = 50,000 units * $25/unit = $1,250,000.\n\n3. **Total Costs**:\n   - Total Costs include both Variable Costs and Fixed Costs.\n   - Total Costs = Total Variable Costs + Fixed Costs = $1,250,000 + $500,000 = $1,750,000.\n\n4. **Operating Income (EBIT)**:\n   - Operating Income, or Earnings Before Interest and Taxes (EBIT), is calculated by subtracting Total Costs from Revenue.\n   - EBIT = Revenue - Total Costs = $2,000,000 - $1,750,000 = $250,000.\n\n5. **Interest Expense**:\n   - The Interest Expense is given as $100,000.\n\n6. **Earnings Before Tax (EBT)**:\n   - EBT is calculated by subtracting Interest Expense from EBIT.\n   - EBT = EBIT - Interest = $250,000 - $100,000 = $150,000.\n\n7. **Tax Expense**:\n   - Tax Expense is calculated by applying the Tax rate to the EBT.\n   - Tax Expense = EBT * Tax Rate = $150,000 * 30% = $45,000.\n\n8. **Net Income**:\n   - Net Income is calculated by subtracting the Tax Expense from EBT.\n   - Net Income = EBT - Tax Expense = $150,000 - $45,000 = $105,000.\n\n9. **Earnings Per Share (EPS)**:\n   - EPS is calculated by dividing the Net Income by the number of Shares.\n   - EPS = Net Income / Shares = $105,000 / 500,000 shares = $0.21 per share.\n\n10. **Debt-to-Equity Ratio**:\n    - This ratio is calculated by dividing the total Debt by the total Equity.\n    - Debt-to-Equity Ratio = Debt / Equity = $2,000,000 / $3,000,000 = 0.67.\n\n11. **Return on Equity (ROE)**:\n    - ROE is calculated by dividing the Net Income by the total Equity.\n    - ROE = Net Income / Equity = $105,000 / $3,000,000 = 3.5%.\n\n12. **Retained Earnings**:\n    - The Retained Earnings are given as $800,000.\n\nThis summary provides a comprehensive overview of the financial performance and position based on the dataset provided.",
+        "bOutput": "To compute the Profit Margin %, we use the formula:\n\n\\[ \\text{Profit Margin \\%} = \\left( \\frac{\\text{Net Income}}{\\text{Revenue}} \\right) \\times 100 \\]\n\nFrom the data summary, we have:\n\n- Net Income = $105,000\n- Revenue = $2,000,000\n\nPlugging these values into the formula:\n\n\\[ \\text{Profit Margin \\%} = \\left( \\frac{105,000}{2,000,000} \\right) \\times 100 = 5.25\\% \\]\n\nTherefore, the Profit Margin % is 5.25.",
+        "score": 1,
+        "parsed": 5.25,
+        "expected": 5.25
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 4,
+        "aSummary": "Based on the provided dataset, here is a detailed financial summary:\n\n1. **Beginning Cash Balance**: The initial cash balance at the start of the period was $500,000.\n\n2. **Cash Inflows**:\n   - **Sales Receipts**: The total cash received from sales amounted to $3,000,000.\n   - **Loan Received**: An additional $500,000 was received from a loan.\n\n3. **Total Cash Inflows**: The total cash inflows for the period were $3,500,000 (Sales Receipts of $3,000,000 + Loan Received of $500,000).\n\n4. **Cash Outflows**:\n   - **Cost Payments**: Payments for costs totaled $2,000,000.\n   - **Salary**: Salaries paid amounted to $400,000.\n   - **Rent**: Rent payments were $120,000.\n   - **Equipment Purchase**: Cash spent on purchasing equipment was $300,000.\n   - **Loan Repayment**: $200,000 was used to repay part of the loan.\n   - **Tax Paid**: Taxes paid during the period were $150,000.\n   - **Dividend**: Dividends paid out totaled $100,000.\n\n5. **Total Cash Outflows**: The total cash outflows for the period were $3,270,000 (Cost Payments of $2,000,000 + Salary of $400,000 + Rent of $120,000 + Equipment Purchase of $300,000 + Loan Repayment of $200,000 + Tax Paid of $150,000 + Dividend of $100,000).\n\n6. **Net Cash Flow**: The net cash flow for the period is calculated as total cash inflows minus total cash outflows, which is $230,000 ($3,500,000 - $3,270,000).\n\n7. **Ending Cash Balance**: The ending cash balance is the beginning cash balance plus the net cash flow, resulting in $730,000 ($500,000 + $230,000).\n\nIn summary, the company started with $500,000 in cash, generated $3,500,000 in cash inflows, and had $3,270,000 in cash outflows, resulting in a net cash flow of $230,000. This led to an ending cash balance of $730,000.",
+        "bOutput": "730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 5,
+        "aSummary": "The dataset provides a snapshot of a company's financial performance and position. Here's a detailed summary of the key financial metrics:\n\n1. **Revenue**: The company generated a total revenue of $5 million. This figure represents the total income from its business activities before any expenses are deducted.\n\n2. **Operating Income**: The operating income stands at $800,000. This is the profit realized from the company's core business operations, calculated before deducting interest and taxes.\n\n3. **Net Income**: The net income is $500,000. This is the company's total profit after all expenses, including taxes and interest, have been subtracted from total revenue.\n\n4. **Total Assets**: The company has total assets valued at $10 million. This includes everything the company owns that has value, such as cash, inventory, property, and equipment.\n\n5. **Total Equity**: Total equity is reported at $6 million. This represents the shareholders' stake in the company, calculated as total assets minus total liabilities.\n\n6. **Total Debt**: The company has total debt amounting to $4 million. This includes all short-term and long-term obligations the company must repay.\n\n7. **Interest**: The interest expense is $200,000. This is the cost incurred by the company for borrowed funds.\n\n8. **EBITDA**: The Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) is $1.2 million. This metric provides a view of the company's operational profitability by excluding non-operating expenses and non-cash charges.\n\n9. **Market Capitalization**: The market cap is $15 million. This is the total market value of the company's outstanding shares of stock, reflecting the company's size and investor perception.\n\n10. **Free Cash Flow**: The free cash flow is $600,000. This represents the cash generated by the company that is available for distribution among all the securities holders, including equity and debt holders.\n\nThese figures collectively provide insights into the company's financial health, operational efficiency, and market valuation.",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 6,
+        "aSummary": "The dataset provides key metrics and parameters related to inventory management and supply chain operations. Here's a detailed summary of each component:\n\n1. **Daily Demand**: The average daily demand for the product is 200 units, with a standard deviation of 40 units. This indicates that while the typical demand is 200 units per day, it can vary, with most fluctuations falling within 40 units above or below the mean.\n\n2. **Lead Time**: The lead time, which is the time taken from placing an order to receiving it, is 5 days. This is a critical factor in determining reorder points and ensuring that stock levels are maintained to meet demand without interruption.\n\n3. **Unit Cost**: Each unit of the product costs $15. This cost is essential for calculating the total cost of goods sold and for pricing strategies.\n\n4. **Holding Rate**: The holding rate is 20% per year. This rate is used to calculate the cost of holding inventory, which includes storage, insurance, and opportunity costs. It is a significant factor in determining the economic order quantity and overall inventory costs.\n\n5. **Order Cost**: Each order placed incurs a cost of $100. This fixed cost per order affects the total cost of inventory management and is considered when calculating the optimal order quantity.\n\n6. **Service Level**: The desired service level is 95%. This means the company aims to meet 95% of customer demand without stockouts, which influences safety stock levels and reorder points.\n\n7. **Warehouse Capacity**: The warehouse can hold up to 5,000 units. This capacity constraint must be considered when planning inventory levels to avoid overstocking and associated costs.\n\n8. **Current Stock**: The current inventory level is 800 units. This figure is crucial for determining when to reorder and how much to order to maintain desired service levels and avoid stockouts.\n\n9. **Suppliers**: There are 3 suppliers available. Having multiple suppliers can provide flexibility and reduce risks associated with supply chain disruptions.\n\nOverall, these parameters are essential for effective inventory management, helping to balance costs with service level goals and ensuring that customer demand is met efficiently.",
+        "bOutput": "To compute the Reorder Point, we use the formula:\n\n\\[ \\text{Reorder Point} = \\text{Mean Demand} \\times \\text{Lead Time} + \\text{Safety Stock} \\]\n\nWhere:\n\n\\[ \\text{Safety Stock} = 1.645 \\times \\text{Demand Std} \\times \\sqrt{\\text{Lead Time}} \\]\n\nGiven:\n- Mean Demand = 200 units\n- Demand Std = 40 units\n- Lead Time = 5 days\n\nFirst, calculate the Safety Stock:\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times \\sqrt{5} \\]\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times 2.236 \\]\n\n\\[ \\text{Safety Stock} \\approx 1.645 \\times 40 \\times 2.236 \\approx 147.2 \\]\n\nNow, calculate the Reorder Point:\n\n\\[ \\text{Reorder Point} = 200 \\times 5 + 147.2 \\]\n\n\\[ \\text{Reorder Point} = 1000 + 147.2 \\]\n\n\\[ \\text{Reorder Point} = 1147.2 \\]\n\nTherefore, the Reorder Point is approximately 1147.2 units. Since we typically round to whole units in inventory management, the Reorder Point is 1147 units.",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 7,
+        "aSummary": "To analyze the dataset and determine the most efficient machine for completing the order of 10,000 units within the 100-hour deadline, we need to consider the production rate, cost, defect rate, and setup time for each machine.\n\n**Machine A:**\n- Production Rate: 100 units per hour\n- Cost: $50 per hour\n- Defect Rate: 2%\n- Setup Time: 2 hours\n\n**Machine B:**\n- Production Rate: 80 units per hour\n- Cost: $40 per hour\n- Defect Rate: 1%\n- Setup Time: 3 hours\n\n**Machine C:**\n- Production Rate: 120 units per hour\n- Cost: $60 per hour\n- Defect Rate: 3%\n- Setup Time: 1 hour\n\n**Calculations:**\n\n1. **Net Production Rate (considering defect rate):**\n   - Machine A: 100 units/hr * (1 - 0.02) = 98 units/hr\n   - Machine B: 80 units/hr * (1 - 0.01) = 79.2 units/hr\n   - Machine C: 120 units/hr * (1 - 0.03) = 116.4 units/hr\n\n2. **Time to Produce 10,000 Units (excluding setup time):**\n   - Machine A: 10,000 units / 98 units/hr ≈ 102.04 hours\n   - Machine B: 10,000 units / 79.2 units/hr ≈ 126.26 hours\n   - Machine C: 10,000 units / 116.4 units/hr ≈ 85.94 hours\n\n3. **Total Time Including Setup:**\n   - Machine A: 102.04 hours + 2 hours = 104.04 hours\n   - Machine B: 126.26 hours + 3 hours = 129.26 hours\n   - Machine C: 85.94 hours + 1 hour = 86.94 hours\n\n4. **Total Cost:**\n   - Machine A: 104.04 hours * $50/hr = $5,202\n   - Machine B: 129.26 hours * $40/hr = $5,170.40\n   - Machine C: 86.94 hours * $60/hr = $5,216.40\n\n**Summary:**\n- **Machine C** is the only machine capable of completing the order within the 100-hour deadline, taking approximately 86.94 hours.\n- **Machine B** is the most cost-effective option at $5,170.40, but it exceeds the deadline.\n- **Machine A** also exceeds the deadline and costs $5,202.\n\nGiven the constraints, Machine C is the optimal choice to meet the deadline, despite being slightly more expensive than Machine B.",
+        "bOutput": "0.53",
+        "score": 1,
+        "parsed": 0.53,
+        "expected": 0.51
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 8,
+        "aSummary": "The dataset provides information about a service operation, likely a customer service or retail environment. Here's a detailed summary of the data:\n\n1. **Customers per Hour**: The operation handles 30 customers every hour. This is the baseline rate of customer flow into the service environment.\n\n2. **Average Service Time**: Each customer requires an average of 4 minutes of service. This metric is crucial for understanding how quickly customers can be processed and how it impacts wait times.\n\n3. **Servers**: There are 3 servers available to handle the customers. This indicates the number of employees or service points available to assist customers.\n\n4. **Operating Hours**: The operation runs for 10 hours each day. This gives a total potential customer capacity of 300 customers per day (30 customers/hour * 10 hours).\n\n5. **Hourly Wage**: Each server earns $20 per hour. This is the base wage cost for staffing the operation.\n\n6. **Overtime Rate**: If servers work beyond the standard operating hours, they earn $30 per hour. This is 1.5 times the regular hourly wage, reflecting a common overtime pay structure.\n\n7. **Max Wait Target**: The target maximum wait time for customers is set at 5 minutes. This is a service level goal to ensure customer satisfaction and minimize wait times.\n\n8. **Customer Value**: Each customer is valued at $50. This could represent the average revenue or profit generated per customer.\n\n9. **Abandon Rate**: 10% of customers abandon the service before being served. This is a critical metric as it reflects potential lost revenue and customer dissatisfaction.\n\n10. **Peak Multiplier**: During peak times, the customer flow increases by a factor of 1.5. This means that during peak periods, the operation could expect up to 45 customers per hour (30 customers/hour * 1.5).\n\nThese metrics provide a comprehensive view of the operational dynamics, including customer flow, service capacity, staffing costs, and revenue potential. Understanding these figures can help in optimizing operations, managing staffing levels, and improving customer satisfaction.",
+        "bOutput": "To compute the Server Utilization, we need to use the formula:\n\n\\[ \\text{Server Utilization} = \\frac{\\text{Arrival Rate}}{\\text{Servers} \\times \\text{Service Rate}} \\]\n\nFrom the data summary:\n\n- **Arrival Rate**: 30 customers per hour\n- **Servers**: 3 servers\n- **Average Service Time**: 4 minutes per customer\n\nFirst, we need to calculate the **Service Rate**:\n\n\\[ \\text{Service Rate} = \\frac{60}{\\text{Avg Service Time}} = \\frac{60}{4} = 15 \\text{ customers per hour per server} \\]\n\nNow, we can calculate the Server Utilization:\n\n\\[ \\text{Server Utilization} = \\frac{30}{3 \\times 15} = \\frac{30}{45} = \\frac{2}{3} \\]\n\nTherefore, the Server Utilization is:\n\n\\[ 0.6667 \\] (rounded to four decimal places)",
+        "score": 1,
+        "parsed": 0.6667,
+        "expected": 0.667
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 9,
+        "aSummary": "The dataset provides a snapshot of a project's financial and progress metrics. Here's a detailed summary:\n\n1. **Project Budget**: The total budget allocated for the project is $1 million.\n\n2. **Planned Duration**: The project is scheduled to be completed over a period of 12 months.\n\n3. **Earned Value (EV)**: The value of work actually performed is $600,000. This indicates the project's progress in terms of budgeted cost.\n\n4. **Actual Cost (AC)**: The total cost incurred so far is $700,000. This is the amount spent on the project to date.\n\n5. **Planned Value (PV)**: The budgeted cost for the work scheduled to be completed by now is $650,000.\n\n6. **Team Size**: The project team consists of 10 members.\n\n7. **Risk Reserve**: A contingency fund of $100,000 is set aside to address potential risks.\n\n8. **Overhead**: The project has an overhead cost of 15%, which is typically used to cover indirect costs associated with the project.\n\n9. **Completion**: The project is currently 55% complete, indicating that just over half of the project work has been finished.\n\n10. **Milestones Hit**: Out of 8 planned milestones, 5 have been successfully achieved.\n\nFrom these metrics, we can derive several insights:\n\n- **Cost Performance Index (CPI)**: This is calculated as EV/AC, which is $600,000/$700,000 = 0.857. A CPI less than 1 indicates that the project is over budget.\n\n- **Schedule Performance Index (SPI)**: This is calculated as EV/PV, which is $600,000/$650,000 = 0.923. An SPI less than 1 suggests that the project is behind schedule.\n\n- **Budget at Completion (BAC)**: The total budget for the project is $1 million.\n\n- **Estimate at Completion (EAC)**: Assuming the current cost performance continues, EAC can be calculated as BAC/CPI, which is $1,000,000/0.857 ≈ $1,167,000. This suggests the project may exceed the budget by approximately $167,000 if current trends continue.\n\n- **Variance at Completion (VAC)**: This is calculated as BAC - EAC, which is $1,000,000 - $1,167,000 = -$167,000, indicating a potential budget overrun.\n\n- **Milestone Achievement Rate**: The project has achieved 5 out of 8 milestones, which is 62.5%.\n\nOverall, the project is currently over budget and behind schedule, with a significant portion of the work still remaining. The team may need to reassess resource allocation, risk management, and project strategies to bring the project back on track.",
+        "bOutput": "0.857",
+        "score": 1,
+        "parsed": 0.857,
+        "expected": 0.857
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 10,
+        "aSummary": "To ensure the recipient has all the necessary data to compute their task correctly, here is a comprehensive summary of the dataset with all specific numerical values:\n\n1. **Annual Demand**: 12,000 units\n2. **Order Cost**: $75 per order\n3. **Holding Cost**: $4 per unit per year\n4. **Unit Price**: $25 per unit\n5. **Lead Time**: 7 days\n6. **Working Days**: 250 days per year\n7. **Warehouse Maximum Capacity**: 2,000 units\n8. **Minimum Order Quantity**: 500 units\n9. **Discount at 1,000 Units**: 5% discount on the unit price\n10. **Current Inventory**: 300 units\n\nThese data points should provide a complete picture for any calculations or analyses needed regarding inventory management, order planning, or cost analysis.",
+        "bOutput": "To compute the Economic Order Quantity (EOQ), we use the formula:\n\n\\[ \\text{EOQ} = \\sqrt{\\frac{2 \\times \\text{Annual Demand} \\times \\text{Order Cost}}{\\text{Holding Cost}}} \\]\n\nGiven:\n- Annual Demand = 12,000 units\n- Order Cost = $75 per order\n- Holding Cost = $4 per unit per year\n\nSubstitute these values into the formula:\n\n\\[ \\text{EOQ} = \\sqrt{\\frac{2 \\times 12,000 \\times 75}{4}} \\]\n\n\\[ \\text{EOQ} = \\sqrt{\\frac{1,800,000}{4}} \\]\n\n\\[ \\text{EOQ} = \\sqrt{450,000} \\]\n\n\\[ \\text{EOQ} = 670.82 \\]\n\nRounding to the nearest whole number, the EOQ is 671 units.\n\n671",
+        "score": 1,
+        "parsed": 671,
+        "expected": 670.8
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 11,
+        "aSummary": "The dataset provided contains various physical parameters that can be used to analyze the dynamics of a system. Here is a detailed summary of each parameter:\n\n1. **Mass**: The mass of the object is 2 kilograms (kg). This is a fundamental property that will affect the object's inertia and gravitational force.\n\n2. **Velocity**: The object is moving with a velocity of 10 meters per second (m/s). This indicates the speed and direction of the object's motion.\n\n3. **Height**: The object is positioned at a height of 5 meters (m) above a reference point. This height can be used to calculate potential energy in a gravitational field.\n\n4. **Gravity**: The acceleration due to gravity is given as 9.81 meters per second squared (m/s²). This is the standard gravitational acceleration on Earth's surface.\n\n5. **Spring Constant (Spring_K)**: The spring constant is 500 Newtons per meter (N/m). This value indicates the stiffness of a spring, determining how much force is needed to compress or extend the spring by a unit length.\n\n6. **Friction Coefficient (Friction_Coeff)**: The coefficient of friction is 0.3. This dimensionless value represents the ratio of the force of friction between two bodies and the force pressing them together.\n\n7. **Angle**: The angle of inclination is 30 degrees (deg). This angle can be used in calculations involving inclined planes or projectile motion.\n\n8. **Air Density**: The density of air is 1.225 kilograms per cubic meter (kg/m³). This value is essential for calculating aerodynamic drag and lift forces.\n\n9. **Cross-Sectional Area (Cross_Section)**: The cross-sectional area of the object is 0.1 square meters (m²). This area is used in determining the drag force experienced by the object as it moves through a fluid.\n\n10. **Drag Coefficient (Drag_Coeff)**: The drag coefficient is 0.5. This dimensionless number quantifies the drag or resistance of an object in a fluid environment, such as air or water.\n\nThese parameters can be used in various physics equations to analyze the motion, energy, and forces acting on the object. For example, they can be used to calculate kinetic energy, potential energy, drag force, and the effects of friction and spring forces on the object's motion.",
+        "bOutput": "100.0",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 12,
+        "aSummary": "The dataset provided contains electrical and physical parameters for a three-phase system. Here is a detailed summary of each parameter:\n\n1. **Voltage**: The system operates at a voltage of 240 volts (V). This is a common voltage level for residential and commercial electrical systems.\n\n2. **Resistance**: The resistance in the system is 60 ohms (Ω). Resistance is a measure of the opposition to the flow of current in an electrical circuit.\n\n3. **Capacitance**: The capacitance is 100 microfarads (μF). Capacitance is the ability of a system to store an electric charge.\n\n4. **Inductance**: The inductance is 0.5 henries (H). Inductance is a property of an electrical conductor by which a change in current through it induces an electromotive force (emf).\n\n5. **Frequency**: The system operates at a frequency of 50 hertz (Hz). This is the standard frequency for electrical systems in many parts of the world, including Europe and Asia.\n\n6. **Wire Length**: The length of the wire used in the system is 100 meters (m). This is a measure of the physical length of the conductor.\n\n7. **Wire Diameter**: The diameter of the wire is 2 millimeters (mm). This dimension affects the wire's resistance and current-carrying capacity.\n\n8. **Temperature**: The system is operating at a temperature of 25 degrees Celsius (°C). Temperature can affect the resistance and performance of electrical components.\n\n9. **Power Factor**: The power factor is 0.9. Power factor is a measure of how effectively electrical power is being used. A power factor of 0.9 indicates that 90% of the power is being effectively converted into work, while 10% is lost.\n\n10. **Phase**: The system is a three-phase system. Three-phase power is a common method of alternating current electric power generation, transmission, and distribution.\n\nThese parameters collectively describe the electrical and physical characteristics of the system, which can be used for further analysis, such as calculating power consumption, efficiency, and potential losses in the system.",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 13,
+        "aSummary": "The dataset provides a snapshot of demographic and budgetary statistics for a given population. Here is a detailed summary of the data:\n\n1. **Population**: The total population is 100,000 individuals.\n\n2. **Birth Rate**: The birth rate is 12 per 1,000 people. This translates to approximately 1,200 births per year in the population.\n\n3. **Death Rate**: The death rate is 8 per 1,000 people, which equates to about 800 deaths annually.\n\n4. **Net Migration**: \n   - **Immigration**: There are 500 people immigrating to the area each year.\n   - **Emigration**: Conversely, 200 people emigrate from the area annually.\n   - The net migration rate is therefore 300 people per year (500 immigrants - 200 emigrants).\n\n5. **Fertility Rate**: The fertility rate is 1.8, indicating that, on average, a woman is expected to have 1.8 children over her lifetime.\n\n6. **Life Expectancy**: The average life expectancy in the population is 78 years.\n\n7. **Median Age**: The median age of the population is 35 years, suggesting a relatively young population.\n\n8. **Urban Population Percentage**: 65% of the population resides in urban areas, indicating a majority urban population.\n\n9. **Growth Budget**: The budget allocated for growth-related activities is $2 million.\n\nThese figures provide insights into the demographic dynamics, such as population growth, age distribution, and urbanization, as well as the financial resources available for managing growth. The combination of birth and death rates, along with net migration, suggests a modest population growth rate. The fertility rate below the replacement level of 2.1 indicates potential long-term challenges in maintaining population size without immigration. The life expectancy and median age reflect the health and age distribution of the population, while the urban percentage highlights the degree of urbanization. The growth budget of $2 million will be crucial in addressing the needs arising from these demographic trends.",
+        "bOutput": "700",
+        "score": 1,
+        "parsed": 700,
+        "expected": 700
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 14,
+        "aSummary": "The dataset provides information about a tank system with the following parameters:\n\n1. **Tank Volume**: The total capacity of the tank is 1000 liters (L).\n\n2. **Inflow Rate**: The rate at which fluid enters the tank is 5 liters per minute (L/min).\n\n3. **Outflow Rate**: The rate at which fluid exits the tank is 3 liters per minute (L/min).\n\n4. **Initial Level**: The initial volume of fluid in the tank is 400 liters (L).\n\n5. **Concentration In**: The concentration of a substance in the inflow is 0.5 grams per liter (g/L).\n\n6. **Concentration Current**: The current concentration of the substance in the tank is 0.2 grams per liter (g/L).\n\n7. **Temperature**: The temperature of the fluid in the tank is 20 degrees Celsius (°C).\n\n8. **Pressure**: The pressure within the tank is 1 atmosphere (atm).\n\n9. **Density**: The density of the fluid is 1.0 kilograms per liter (kg/L), which is typical for water.\n\n10. **Viscosity**: The viscosity of the fluid is 0.001 Pascal-seconds (Pa·s), which is also typical for water at room temperature.\n\nFrom this dataset, we can infer that the tank is currently operating with a net inflow of fluid, as the inflow rate (5 L/min) exceeds the outflow rate (3 L/min). This means the fluid level in the tank will increase over time. The concentration of the substance in the tank is lower than that of the inflow, suggesting dilution or mixing effects. The conditions of temperature and pressure are standard, indicating no extreme environmental factors affecting the system. The density and viscosity values confirm that the fluid behaves like water under these conditions.",
+        "bOutput": "300",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "progressive_R2",
+        "problemId": 15,
+        "aSummary": "Based on the provided dataset, we can analyze the travel details for two vehicles, A and B, traveling a distance of 500 kilometers.\n\n**Vehicle A:**\n- **Speed:** 80 km/h\n- **Fuel Consumption:** 8 liters per 100 kilometers\n- **Departure Time:** 8 AM\n\n**Vehicle B:**\n- **Speed:** 120 km/h\n- **Fuel Consumption:** 12 liters per 100 kilometers\n- **Departure Time:** 9 AM\n\n**Fuel Price:** $1.50 per liter\n**Toll Cost:** $30\n**Rest Stop Duration:** 15 minutes\n\n### Calculations:\n\n1. **Travel Time:**\n   - **Vehicle A:**\n     - Time = Distance / Speed = 500 km / 80 km/h = 6.25 hours\n     - Including a 15-minute rest stop, total travel time = 6.25 hours + 0.25 hours = 6.5 hours\n     - Arrival Time = 8 AM + 6.5 hours = 2:30 PM\n\n   - **Vehicle B:**\n     - Time = Distance / Speed = 500 km / 120 km/h = 4.1667 hours (approximately 4 hours and 10 minutes)\n     - Including a 15-minute rest stop, total travel time = 4.1667 hours + 0.25 hours = 4.4167 hours (approximately 4 hours and 25 minutes)\n     - Arrival Time = 9 AM + 4.4167 hours = 1:25 PM\n\n2. **Fuel Consumption:**\n   - **Vehicle A:**\n     - Fuel Used = (Fuel Consumption Rate) x (Distance / 100) = 8 L/100 km x 500 km / 100 = 40 liters\n     - Fuel Cost = 40 liters x $1.50/L = $60\n\n   - **Vehicle B:**\n     - Fuel Used = 12 L/100 km x 500 km / 100 = 60 liters\n     - Fuel Cost = 60 liters x $1.50/L = $90\n\n3. **Total Cost:**\n   - **Vehicle A:**\n     - Total Cost = Fuel Cost + Toll = $60 + $30 = $90\n\n   - **Vehicle B:**\n     - Total Cost = Fuel Cost + Toll = $90 + $30 = $120\n\n### Summary:\n- Vehicle A departs at 8 AM, travels at 80 km/h, and arrives at 2:30 PM, with a total travel time of 6.5 hours. The total cost for Vehicle A, including fuel and toll, is $90.\n- Vehicle B departs at 9 AM, travels at 120 km/h, and arrives at 1:25 PM, with a total travel time of approximately 4 hours and 25 minutes. The total cost for Vehicle B, including fuel and toll, is $120.\n\nVehicle B arrives earlier than Vehicle A despite departing later, due to its higher speed, but incurs a higher total cost due to greater fuel consumption.",
+        "bOutput": "60",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ],
+    "progressive_R3": [
+      {
+        "condition": "progressive_R3",
+        "problemId": 1,
+        "aSummary": "The dataset provides a financial overview of a company with the following specific numerical values:\n\n- **Revenue**: $10 million\n- **Cost of Goods Sold (COGS)**: $6 million\n- **Selling, General and Administrative Expenses (SGA)**: $1.5 million\n- **Research and Development (RnD)**: $500,000\n- **Interest Expense**: $300,000\n- **Tax Rate**: 25%\n- **Total Assets**: $20 million\n- **Equity**: $12 million\n- **Number of Shares**: 1 million\n- **Dividends**: $400,000\n\nThese figures provide insights into the company's financial performance, including its revenue generation, cost structure, and distribution of profits. The tax rate indicates the percentage of taxable income that is paid as tax, and the equity and total assets figures give an idea of the company's financial position. The number of shares and dividends provide information on shareholder returns.",
+        "bOutput": "To compute the Earnings Per Share (EPS), we first need to calculate the Net Income using the provided formula:\n\nNet_Income = (Revenue - COGS - SGA - RnD - Interest) × (1 - Tax_Rate).\n\nSubstitute the given values into the formula:\n\nRevenue = $10,000,000\nCOGS = $6,000,000\nSGA = $1,500,000\nRnD = $500,000\nInterest = $300,000\nTax_Rate = 25% = 0.25\n\nNet_Income = ($10,000,000 - $6,000,000 - $1,500,000 - $500,000 - $300,000) × (1 - 0.25)\nNet_Income = ($10,000,000 - $8,300,000) × 0.75\nNet_Income = $1,700,000 × 0.75\nNet_Income = $1,275,000\n\nNext, we calculate the EPS:\n\nEPS = Net_Income / Shares_Outstanding\nShares_Outstanding = 1,000,000\n\nEPS = $1,275,000 / 1,000,000\nEPS = $1.275\n\nTherefore, the Earnings Per Share (EPS) is 1.275.",
+        "score": 1,
+        "parsed": 1.275,
+        "expected": 1.275
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 2,
+        "aSummary": "The dataset provides a snapshot of a company's financial figures. Here is a summary of the key financial metrics:\n\n- **Sales**: The company has generated sales amounting to $8 million.\n- **Accounts Receivable (AR)**: The company has $600,000 in accounts receivable, indicating the amount owed by customers.\n- **Inventory**: The value of the company's inventory is $900,000.\n- **Prepaid Expenses**: The company has prepaid expenses totaling $100,000.\n- **Accounts Payable (AP)**: The company owes $400,000 to its suppliers.\n- **Accrued Liabilities**: The company has accrued liabilities of $200,000, representing expenses that have been incurred but not yet paid.\n- **Cash**: The company holds $300,000 in cash.\n- **Long-Term Debt**: The company has long-term debt obligations amounting to $3 million.\n- **Equipment**: The value of the company's equipment is $5 million.\n- **Depreciation**: The accumulated depreciation on the company's equipment is $500,000.\n\nThese figures provide an overview of the company's financial position, including its assets, liabilities, and equity components.",
+        "bOutput": "To compute the Current Ratio, we need to calculate Current Assets and Current Liabilities using the provided data.\n\nCurrent Assets = Cash + AR + Inventory + Prepaid\n= $300,000 (Cash) + $600,000 (AR) + $900,000 (Inventory) + $100,000 (Prepaid)\n= $1,900,000\n\nCurrent Liabilities = AP + Accrued\n= $400,000 (AP) + $200,000 (Accrued)\n= $600,000\n\nCurrent Ratio = Current Assets / Current Liabilities\n= $1,900,000 / $600,000\n= 3.1667\n\nTherefore, the Current Ratio is approximately 3.17.",
+        "score": 1,
+        "parsed": 3.17,
+        "expected": 3.167
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 3,
+        "aSummary": "The dataset provides financial and operational metrics for a company. Here is a comprehensive summary of the data:\n\n1. **Units Sold**: The company sold a total of 50,000 units.\n\n2. **Price**: Each unit was sold at a price of $40.\n\n3. **Variable Cost**: The cost incurred per unit sold is $25.\n\n4. **Fixed Costs**: The company has fixed costs amounting to $500,000.\n\n5. **Interest**: The interest expense for the company is $100,000.\n\n6. **Tax Rate**: The company is subject to a tax rate of 30%.\n\n7. **Debt**: The total debt of the company is $2,000,000.\n\n8. **Equity**: The company has equity totaling $3,000,000.\n\n9. **Shares**: There are 500,000 shares outstanding.\n\n10. **Retained Earnings**: The retained earnings of the company amount to $800,000.\n\nThese figures provide a snapshot of the company's financial health and operational performance, including its sales volume, pricing strategy, cost structure, and capital composition.",
+        "bOutput": "To compute the Profit Margin %, we need to find the Net Income and Revenue.\n\nFirst, calculate the Revenue:\n\\[ \\text{Revenue} = \\text{Units Sold} \\times \\text{Price} = 50,000 \\times 40 = 2,000,000 \\]\n\nNext, calculate the Gross Profit:\n\\[ \\text{Gross Profit} = \\text{Revenue} - (\\text{Units Sold} \\times \\text{Variable Cost}) \\]\n\\[ \\text{Gross Profit} = 2,000,000 - (50,000 \\times 25) = 2,000,000 - 1,250,000 = 750,000 \\]\n\nThen, calculate the EBIT (Earnings Before Interest and Taxes):\n\\[ \\text{EBIT} = \\text{Gross Profit} - \\text{Fixed Costs} = 750,000 - 500,000 = 250,000 \\]\n\nNow, calculate the EBT (Earnings Before Taxes):\n\\[ \\text{EBT} = \\text{EBIT} - \\text{Interest} = 250,000 - 100,000 = 150,000 \\]\n\nCalculate the Net Income:\n\\[ \\text{Net Income} = \\text{EBT} \\times (1 - \\text{Tax Rate}) = 150,000 \\times (1 - 0.30) = 150,000 \\times 0.70 = 105,000 \\]\n\nFinally, calculate the Profit Margin %:\n\\[ \\text{Profit Margin \\%} = \\left( \\frac{\\text{Net Income}}{\\text{Revenue}} \\right) \\times 100 = \\left( \\frac{105,000}{2,000,000} \\right) \\times 100 = 5.25 \\]\n\nThe Profit Margin % is 5.25.",
+        "score": 1,
+        "parsed": 5.25,
+        "expected": 5.25
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 4,
+        "aSummary": "The dataset provides a financial overview with specific monetary values for various categories. The initial cash balance is $500,000. The company generated $3,000,000 in sales receipts. Cost payments amounted to $2,000,000, while salaries totaled $400,000. Rent expenses were $120,000, and equipment purchases cost $300,000. The company received a loan of $500,000 and repaid $200,000 of it. Taxes paid amounted to $150,000, and dividends distributed were $100,000.",
+        "bOutput": "To compute the Ending Cash Balance, we need to calculate the Total Inflows and Total Outflows first.\n\nGiven:\n- Beginning_Cash = $500,000\n- Sales_Receipts = $3,000,000\n- Loan_Received = $500,000\n- Cost_Payments = $2,000,000\n- Salary = $400,000\n- Rent = $120,000\n- Equipment_Purchase = $300,000\n- Loan_Repayment = $200,000\n- Tax_Paid = $150,000\n- Dividend = $100,000\n\nTotal_Inflows = Sales_Receipts + Loan_Received\nTotal_Inflows = $3,000,000 + $500,000 = $3,500,000\n\nTotal_Outflows = Cost_Payments + Salary + Rent + Equipment_Purchase + Loan_Repayment + Tax_Paid + Dividend\nTotal_Outflows = $2,000,000 + $400,000 + $120,000 + $300,000 + $200,000 + $150,000 + $100,000 = $3,270,000\n\nEnding Cash Balance = Beginning_Cash + Total_Inflows - Total_Outflows\nEnding Cash Balance = $500,000 + $3,500,000 - $3,270,000 = $730,000\n\n730000",
+        "score": 1,
+        "parsed": 730000,
+        "expected": 730000
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 5,
+        "aSummary": "The dataset provides a financial overview of a company with the following key figures:\n\n- **Revenue**: The company generated $5 million in revenue.\n- **Operating Income**: The operating income stands at $800,000.\n- **Net Income**: The net income is reported as $500,000.\n- **Total Assets**: The company holds total assets valued at $10 million.\n- **Total Equity**: The total equity amounts to $6 million.\n- **Total Debt**: The company has a total debt of $4 million.\n- **Interest**: Interest expenses are $200,000.\n- **EBITDA**: Earnings before interest, taxes, depreciation, and amortization (EBITDA) is $1.2 million.\n- **Market Capitalization**: The market capitalization of the company is $15 million.\n- **Free Cash Flow**: The free cash flow is $600,000.\n\nThese figures provide a snapshot of the company's financial health, indicating its profitability, asset management, and market valuation.",
+        "bOutput": "0.05",
+        "score": 1,
+        "parsed": 0.05,
+        "expected": 0.05
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 6,
+        "aSummary": "The dataset provides key metrics and parameters related to inventory management and supply chain operations. Here is a comprehensive summary:\n\n1. **Daily Demand**:\n   - Mean: 200 units\n   - Standard Deviation: 40 units\n\n2. **Lead Time**:\n   - 5 days\n\n3. **Cost Parameters**:\n   - Unit Cost: $15 per unit\n   - Holding Rate: 20% per year\n   - Order Cost: $100 per order\n\n4. **Service Level**:\n   - 95%\n\n5. **Warehouse Capacity**:\n   - 5,000 units\n\n6. **Current Stock**:\n   - 800 units\n\n7. **Suppliers**:\n   - 3 suppliers\n\nThese parameters are crucial for determining inventory policies, such as reorder points and order quantities, to ensure efficient operations while maintaining desired service levels. The service level of 95% indicates a high priority on meeting customer demand without stockouts. The holding rate and order cost are essential for calculating the total cost of inventory management. The current stock level and warehouse capacity provide insights into the available space and potential need for replenishment.",
+        "bOutput": "To compute the Reorder Point, we use the formula:\n\n\\[ \\text{Reorder Point} = \\text{Mean Demand} \\times \\text{Lead Time} + \\text{Safety Stock} \\]\n\nThe Safety Stock is calculated as:\n\n\\[ \\text{Safety Stock} = 1.645 \\times \\text{Demand Std} \\times \\sqrt{\\text{Lead Time}} \\]\n\nGiven:\n- Mean Demand = 200 units\n- Demand Standard Deviation = 40 units\n- Lead Time = 5 days\n\nFirst, calculate the Safety Stock:\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times \\sqrt{5} \\]\n\n\\[ \\text{Safety Stock} = 1.645 \\times 40 \\times 2.236 \\]\n\n\\[ \\text{Safety Stock} \\approx 1.645 \\times 89.44 \\]\n\n\\[ \\text{Safety Stock} \\approx 147.1 \\]\n\nNow, calculate the Reorder Point:\n\n\\[ \\text{Reorder Point} = 200 \\times 5 + 147.1 \\]\n\n\\[ \\text{Reorder Point} = 1000 + 147.1 \\]\n\n\\[ \\text{Reorder Point} = 1147.1 \\]\n\nTherefore, the Reorder Point is approximately 1147 units.",
+        "score": 1,
+        "parsed": 1147,
+        "expected": 1147
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 7,
+        "aSummary": "The dataset provides information on three machines, each with different production capabilities, costs, defect rates, and setup times. Here's a detailed summary:\n\n1. **Machine A**:\n   - Production Rate: 100 units per hour\n   - Operating Cost: $50 per hour\n   - Defect Rate: 2%\n   - Setup Time: 2 hours\n\n2. **Machine B**:\n   - Production Rate: 80 units per hour\n   - Operating Cost: $40 per hour\n   - Defect Rate: 1%\n   - Setup Time: 3 hours\n\n3. **Machine C**:\n   - Production Rate: 120 units per hour\n   - Operating Cost: $60 per hour\n   - Defect Rate: 3%\n   - Setup Time: 1 hour\n\nThe order requires the production of 10,000 units, and the deadline for completing this order is 100 hours.\n\nTo meet the order requirements, each machine's production capabilities and defect rates must be considered to determine the most efficient and cost-effective machine or combination of machines to use. Additionally, the setup time for each machine will impact the total production time available within the 100-hour deadline.",
+        "bOutput": "0.51",
+        "score": 1,
+        "parsed": 0.51,
+        "expected": 0.51
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 8,
+        "aSummary": "The dataset provides information about a service operation with the following specifics:\n\n- **Customers per Hour**: The service handles 30 customers each hour.\n- **Average Service Time**: Each customer is served in an average of 4 minutes.\n- **Servers**: There are 3 servers available to handle the customers.\n- **Operating Hours**: The service operates for 10 hours each day.\n- **Hourly Wage**: Each server is paid $20 per hour.\n- **Overtime Rate**: If servers work overtime, they are paid at a rate of $30 per hour.\n- **Maximum Wait Target**: The target is to keep customer wait times under 5 minutes.\n- **Customer Value**: Each customer is valued at $50.\n- **Abandon Rate**: 10% of customers abandon the service before being served.\n- **Peak Multiplier**: During peak times, the customer arrival rate increases by a factor of 1.5.\n\nThis dataset can be used to analyze the efficiency and cost-effectiveness of the service operation, including labor costs, customer satisfaction, and potential revenue.",
+        "bOutput": "To compute the Server Utilization, we need to use the formula:\n\n\\[ \\text{Server Utilization} = \\frac{\\text{Arrival Rate}}{\\text{Servers} \\times \\text{Service Rate}} \\]\n\nFrom the data summary:\n\n- **Arrival Rate**: The service handles 30 customers each hour.\n- **Servers**: There are 3 servers available.\n- **Average Service Time**: Each customer is served in an average of 4 minutes.\n\nFirst, we need to calculate the Service Rate:\n\n\\[ \\text{Service Rate} = \\frac{60}{\\text{Avg Service Time}} = \\frac{60}{4} = 15 \\text{ customers per hour per server} \\]\n\nNow, we can calculate the Server Utilization:\n\n\\[ \\text{Server Utilization} = \\frac{30}{3 \\times 15} = \\frac{30}{45} = \\frac{2}{3} \\]\n\nTherefore, the Server Utilization is:\n\n\\[ \\frac{2}{3} \\]\n\nConverting this to a decimal:\n\n\\[ \\frac{2}{3} \\approx 0.6667 \\]\n\nSo, the Server Utilization is approximately 0.6667.",
+        "score": 1,
+        "parsed": 0.6667,
+        "expected": 0.667
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 9,
+        "aSummary": "The dataset provides a snapshot of a project's financial and progress metrics. The project has a total budget of $1 million and is planned to be completed over a duration of 12 months. As of the current reporting, the Earned Value (EV) of the project is $600,000, indicating the value of work actually performed. The Actual Cost (AC) incurred so far is $700,000, which is higher than the EV, suggesting potential cost overruns.\n\nThe Planned Value (PV), which represents the value of work planned to be completed by this time, is $650,000. This indicates that the project is slightly behind schedule, as the EV is less than the PV. The project is reported to be 55% complete, with 5 out of 8 milestones achieved, showing progress but also highlighting that some milestones have not been met as planned.\n\nThe project team consists of 10 members, and there is a Risk Reserve of $100,000 set aside to manage unforeseen risks. Additionally, the project has an overhead cost of 15%, which needs to be factored into the overall budget management.\n\nOverall, the project is experiencing a cost overrun and is slightly behind schedule, with a need to address the remaining milestones and manage costs effectively to stay within budget.",
+        "bOutput": "0.857",
+        "score": 1,
+        "parsed": 0.857,
+        "expected": 0.857
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 10,
+        "aSummary": "Based on the provided dataset, here is a comprehensive summary of the inventory and ordering parameters:\n\n1. **Annual Demand**: 12,000 units\n   - This is the total number of units required per year.\n\n2. **Order Cost**: $75 per order\n   - This is the fixed cost incurred every time an order is placed.\n\n3. **Holding Cost**: $4 per unit per year\n   - This is the cost to hold one unit in inventory for a year.\n\n4. **Unit Price**: $25 per unit\n   - This is the cost to purchase one unit.\n\n5. **Lead Time**: 7 days\n   - This is the time between placing an order and receiving it.\n\n6. **Working Days**: 250 days per year\n   - This is the number of days the business operates in a year.\n\n7. **Warehouse Maximum Capacity**: 2,000 units\n   - This is the maximum number of units that can be stored in the warehouse.\n\n8. **Minimum Order Quantity**: 500 units\n   - This is the smallest number of units that can be ordered at one time.\n\n9. **Discount at 1,000 Units**: 5%\n   - A discount of 5% is applied to the unit price if 1,000 or more units are ordered at once.\n\n10. **Current Inventory**: 300 units\n    - This is the current number of units available in inventory.\n\nThese parameters are crucial for determining optimal order quantities, managing inventory levels, and minimizing costs associated with ordering and holding inventory.",
+        "bOutput": "1000",
+        "score": 0,
+        "parsed": 1000,
+        "expected": 670.8
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 11,
+        "aSummary": "The dataset provides various physical parameters related to an object and its environment. Here are the specific numerical values:\n\n- Mass of the object: 2 kg\n- Velocity of the object: 10 m/s\n- Height from which the object is situated or falls: 5 m\n- Acceleration due to gravity: 9.81 m/s²\n- Spring constant (stiffness of the spring): 500 N/m\n- Coefficient of friction (indicating the frictional resistance): 0.3\n- Angle of inclination or trajectory: 30 degrees\n- Air density (density of the air through which the object moves): 1.225 kg/m³\n- Cross-sectional area (area facing the direction of motion): 0.1 m²\n- Drag coefficient (indicating the drag force experienced by the object): 0.5\n\nThese values can be used to calculate various physical phenomena such as kinetic energy, potential energy, spring force, frictional force, and drag force, among others.",
+        "bOutput": "100.0",
+        "score": 1,
+        "parsed": 100,
+        "expected": 100
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 12,
+        "aSummary": "The dataset provides the following electrical and physical parameters:\n\n- **Voltage**: 240 Volts\n- **Resistance**: 60 Ohms\n- **Capacitance**: 100 microfarads (μF)\n- **Inductance**: 0.5 Henry (H)\n- **Frequency**: 50 Hertz (Hz)\n- **Wire Length**: 100 meters (m)\n- **Wire Diameter**: 2 millimeters (mm)\n- **Temperature**: 25 degrees Celsius (°C)\n- **Power Factor**: 0.9\n- **Phase**: 3\n\nThese values describe the characteristics of an electrical system, including its electrical properties (such as voltage, resistance, capacitance, and inductance), physical dimensions (wire length and diameter), operating conditions (frequency and temperature), and performance metrics (power factor and phase).",
+        "bOutput": "4",
+        "score": 1,
+        "parsed": 4,
+        "expected": 4
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 13,
+        "aSummary": "The dataset provides demographic and budgetary information for a population of 100,000 individuals. The birth rate is 12 per 1,000 people, while the death rate is 8 per 1,000 people. Annually, there are 500 immigrants and 200 emigrants. The fertility rate is 1.8 children per woman, and the life expectancy is 78 years. The median age of the population is 35 years, with 65% of the population living in urban areas. The budget allocated for growth is $2 million.",
+        "bOutput": "To compute the Annual Population Growth, we need to calculate Births, Deaths, and Net_Migration using the provided data.\n\n1. **Births**: \n   - Birth Rate = 12 per 1,000 people\n   - Population = 100,000\n   - Births = Population × (Birth Rate / 1,000) = 100,000 × (12 / 1,000) = 1,200\n\n2. **Deaths**: \n   - Death Rate = 8 per 1,000 people\n   - Population = 100,000\n   - Deaths = Population × (Death Rate / 1,000) = 100,000 × (8 / 1,000) = 800\n\n3. **Net_Migration**:\n   - Immigration = 500\n   - Emigration = 200\n   - Net_Migration = Immigration - Emigration = 500 - 200 = 300\n\nNow, we can compute the Annual Population Growth:\n\nAnnual Population Growth = Births - Deaths + Net_Migration\nAnnual Population Growth = 1,200 - 800 + 300 = 700\n\nThe Annual Population Growth is 700.",
+        "score": 1,
+        "parsed": 700,
+        "expected": 700
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 14,
+        "aSummary": "The dataset provides information about a tank system with the following specifications:\n\n- **Tank Volume**: The total capacity of the tank is 1000 liters.\n- **Inflow Rate**: The rate at which fluid enters the tank is 5 liters per minute.\n- **Outflow Rate**: The rate at which fluid exits the tank is 3 liters per minute.\n- **Initial Level**: The initial volume of fluid in the tank is 400 liters.\n- **Concentration In**: The concentration of a substance in the inflow is 0.5 grams per liter.\n- **Concentration Current**: The current concentration of the substance in the tank is 0.2 grams per liter.\n- **Temperature**: The temperature of the fluid in the tank is 20 degrees Celsius.\n- **Pressure**: The pressure within the tank is 1 atmosphere.\n- **Density**: The density of the fluid is 1.0 kilograms per liter.\n- **Viscosity**: The viscosity of the fluid is 0.001 Pascal-seconds.\n\nThis dataset provides a comprehensive overview of the physical and chemical properties of the fluid in the tank, as well as the dynamics of fluid flow into and out of the tank.",
+        "bOutput": "To compute the Time to fill the tank, we use the formula:\n\n\\[ \\text{Time to fill tank (minutes)} = \\frac{\\text{Tank Volume} - \\text{Initial Level}}{\\text{Inflow Rate} - \\text{Outflow Rate}} \\]\n\nFrom the data summary, we have:\n- Tank Volume = 1000 liters\n- Initial Level = 400 liters\n- Inflow Rate = 5 liters per minute\n- Outflow Rate = 3 liters per minute\n\nSubstituting these values into the formula:\n\n\\[ \\text{Time to fill tank} = \\frac{1000 - 400}{5 - 3} = \\frac{600}{2} = 300 \\text{ minutes} \\]\n\nTherefore, the time to fill the tank is 300 minutes.",
+        "score": 1,
+        "parsed": 300,
+        "expected": 300
+      },
+      {
+        "condition": "progressive_R3",
+        "problemId": 15,
+        "aSummary": "The dataset provides information about a journey involving two vehicles, A and B, traveling a distance of 500 kilometers. Here are the details:\n\n- **Distance**: 500 kilometers.\n\n- **Vehicle A**:\n  - **Speed**: 80 kilometers per hour.\n  - **Fuel Consumption**: 8 liters per 100 kilometers.\n  - **Departure Time**: 8 AM.\n\n- **Vehicle B**:\n  - **Speed**: 120 kilometers per hour.\n  - **Fuel Consumption**: 12 liters per 100 kilometers.\n  - **Departure Time**: 9 AM.\n\n- **Fuel Price**: $1.50 per liter.\n\n- **Toll Cost**: $30.\n\n- **Rest Stop Duration**: 15 minutes.\n\nThis dataset can be used to calculate various metrics such as travel time, fuel cost, and total trip cost for each vehicle.",
+        "bOutput": "60",
+        "score": 1,
+        "parsed": 60,
+        "expected": 60
+      }
+    ]
+  }
+}

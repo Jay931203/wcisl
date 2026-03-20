@@ -1,0 +1,2533 @@
+{
+  "experiment": "KI-4 A2A Adaptive Scheduling (GPT-4o)",
+  "model": "gpt-4o",
+  "timestamp": "2026-03-19T18:00:35.428Z",
+  "channels": {
+    "Good": {
+      "maxTokens": 500,
+      "corruptionRate": 0
+    },
+    "Medium": {
+      "maxTokens": 120,
+      "corruptionRate": 0.25
+    },
+    "Bad": {
+      "maxTokens": 50,
+      "corruptionRate": 0.5
+    }
+  },
+  "channel_weights": {
+    "Good": 1,
+    "Medium": 0.4,
+    "Bad": 0.1
+  },
+  "expertise_map": {
+    "medical": {
+      "Medical": 1,
+      "Legal": 0.2,
+      "Finance": 0.2,
+      "Tech": 0.2
+    },
+    "legal": {
+      "Medical": 0.2,
+      "Legal": 1,
+      "Finance": 0.5,
+      "Tech": 0.2
+    },
+    "finance": {
+      "Medical": 0.2,
+      "Legal": 0.5,
+      "Finance": 1,
+      "Tech": 0.2
+    },
+    "tech": {
+      "Medical": 0.2,
+      "Legal": 0.2,
+      "Finance": 0.2,
+      "Tech": 1
+    }
+  },
+  "channel_assignments": {
+    "1": {
+      "Medical": "Good",
+      "Legal": "Bad",
+      "Finance": "Medium",
+      "Tech": "Bad"
+    },
+    "2": {
+      "Medical": "Bad",
+      "Legal": "Medium",
+      "Finance": "Good",
+      "Tech": "Bad"
+    },
+    "3": {
+      "Medical": "Good",
+      "Legal": "Bad",
+      "Finance": "Bad",
+      "Tech": "Medium"
+    },
+    "4": {
+      "Medical": "Bad",
+      "Legal": "Bad",
+      "Finance": "Good",
+      "Tech": "Medium"
+    },
+    "5": {
+      "Medical": "Medium",
+      "Legal": "Bad",
+      "Finance": "Good",
+      "Tech": "Bad"
+    },
+    "6": {
+      "Medical": "Good",
+      "Legal": "Medium",
+      "Finance": "Bad",
+      "Tech": "Bad"
+    },
+    "7": {
+      "Medical": "Bad",
+      "Legal": "Bad",
+      "Finance": "Medium",
+      "Tech": "Good"
+    },
+    "8": {
+      "Medical": "Bad",
+      "Legal": "Bad",
+      "Finance": "Medium",
+      "Tech": "Good"
+    },
+    "9": {
+      "Medical": "Bad",
+      "Legal": "Bad",
+      "Finance": "Good",
+      "Tech": "Medium"
+    },
+    "10": {
+      "Medical": "Bad",
+      "Legal": "Good",
+      "Finance": "Medium",
+      "Tech": "Bad"
+    },
+    "11": {
+      "Medical": "Medium",
+      "Legal": "Bad",
+      "Finance": "Bad",
+      "Tech": "Good"
+    },
+    "12": {
+      "Medical": "Medium",
+      "Legal": "Bad",
+      "Finance": "Good",
+      "Tech": "Bad"
+    },
+    "13": {
+      "Medical": "Bad",
+      "Legal": "Medium",
+      "Finance": "Bad",
+      "Tech": "Good"
+    },
+    "14": {
+      "Medical": "Bad",
+      "Legal": "Medium",
+      "Finance": "Good",
+      "Tech": "Bad"
+    },
+    "15": {
+      "Medical": "Bad",
+      "Legal": "Medium",
+      "Finance": "Bad",
+      "Tech": "Good"
+    }
+  },
+  "summary": {
+    "fixed_order": {
+      "avg_score": 8.67,
+      "total_consultations": 30,
+      "avg_consultations": 2,
+      "efficiency": 4.33,
+      "n": 15
+    },
+    "expertise_only": {
+      "avg_score": 8.4,
+      "total_consultations": 30,
+      "avg_consultations": 2,
+      "efficiency": 4.2,
+      "n": 15
+    },
+    "channel_only": {
+      "avg_score": 8.73,
+      "total_consultations": 30,
+      "avg_consultations": 2,
+      "efficiency": 4.37,
+      "n": 15
+    },
+    "joint": {
+      "avg_score": 9,
+      "total_consultations": 30,
+      "avg_consultations": 2,
+      "efficiency": 4.5,
+      "n": 15
+    },
+    "joint_early_stop": {
+      "avg_score": 8.93,
+      "total_consultations": 24,
+      "avg_consultations": 1.6,
+      "efficiency": 5.58,
+      "n": 15
+    }
+  },
+  "results": [
+    {
+      "question_id": 1,
+      "question": "First-line treatment for hypertension with comorbid diabetes?",
+      "domain": "medical",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2347,
+          "corrupted_preview": "When managing hypertension in patients with comorbid diabetes, the choice of first-line antihypertensive medication is crucial due to the increased ri..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 265,
+          "corrupted_preview": "When treating [???] [???] [???] [???] comorbid diabetes, the first-line [???] typically [???] the [???] [???] [???] [???] [???] (ACE) inhibitor [???] ..."
+        }
+      ],
+      "receiving_answer_preview": "When managing hypertension in patients with comorbid diabetes, the first-line treatment typically involves the use of either Angiotensin-Converting Enzyme Inhibitors (ACE inhibitors) or Angiotensin II...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, covering ACE inhibitors and ARBs as first-line treatments, their renal protective effects, and additional agents like CCBs and thiazides. It also mentions target BP and lifestyle modifications. However, it lacks mention of SGLT2 inhibitors, which provide dual benefits."
+    },
+    {
+      "question_id": 2,
+      "question": "Differential diagnosis for acute chest pain with troponin elevation?",
+      "domain": "medical",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 257,
+          "corrupted_preview": "Acute [???] pain [???] [???] elevation is a clinical [???] that [???] [???] injury, [???] it is [???] [???] recognize [???] not [???] cases are [???] ..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 532,
+          "corrupted_preview": "[???] evaluating a patient with [???] chest pain [???] [???] troponin levels, it is crucial [???] [???] a range of [???] [???] Elevated troponin is a ..."
+        }
+      ],
+      "receiving_answer_preview": "When evaluating a patient with acute chest pain and elevated troponin levels, it is important to consider a range of potential diagnoses. Elevated troponin is a marker of myocardial injury, but it is ...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering most of the key differential diagnoses for acute chest pain with troponin elevation. It includes ACS, myocarditis, pulmonary embolism, aortic dissection, takotsubo cardiomyopathy, hypertensive crisis, renal failure, sepsis, and cardiac trauma. However, it omits severe heart failure and cardiac contusion, which are mentioned in the reference."
+    },
+    {
+      "question_id": 3,
+      "question": "Emergency management of anaphylaxis?",
+      "domain": "medical",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2126,
+          "corrupted_preview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 317,
+          "corrupted_preview": "[???] is a severe, potentially life-threatening allergic reaction that requires [???] [???] attention. The [???] management of [???] involves [???] [?..."
+        }
+      ],
+      "receiving_answer_preview": "Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anaphylaxis involves several critical steps to stab...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering all key aspects of anaphylaxis management, including epinephrine administration, positioning, oxygen therapy, IV access, and adjunctive medications. It lacks mention of H2 blockers and nebulized albuterol for bronchospasm, which are included in the reference."
+    },
+    {
+      "question_id": 4,
+      "question": "Warfarin drug interactions and INR management?",
+      "domain": "medical",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 250,
+          "corrupted_preview": "[???] [???] [???] [???] [???] [???] [???] prevent [???] treat thromboembolic disorders. [???] [???] [???] [???] vitamin [???] clotting [???] Managing ..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 262,
+          "corrupted_preview": "Warfarin is an anticoagulant [???] [???] [???] [???] [???] and treat thromboembolic disorders. [???] [???] [???] [???] are closely [???] through the [..."
+        }
+      ],
+      "receiving_answer_preview": "Warfarin is an anticoagulant medication used to prevent and treat thromboembolic disorders, such as deep vein thrombosis and pulmonary embolism. It works by inhibiting the synthesis of vitamin K-depen...",
+      "score": 6,
+      "reason": "The answer provides a good overview of warfarin's mechanism, INR management, and interactions. However, it lacks specific details on CYP2C9/3A4 interactions, target INR ranges, genetic testing, and bridging with LMWH, which are present in the reference."
+    },
+    {
+      "question_id": 5,
+      "question": "Elements required to prove negligence in tort law?",
+      "domain": "legal",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Medium",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 581,
+          "corrupted_preview": "[???] tort law, to establish [???] [???] of negligence, the plaintiff must prove the following [???] elements: [???] **Duty of Care**: The plaintiff m..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 272,
+          "corrupted_preview": "In [???] law, negligence is [???] fundamental [???] that [???] [???] plaintiff to prove certain elements [???] [???] a [???] [???] The elements requir..."
+        }
+      ],
+      "receiving_answer_preview": "To prove negligence in tort law, the plaintiff must establish the following four key elements:\n\n1. **Duty of Care**: The plaintiff must demonstrate that the defendant owed them a legal duty of care. T...",
+      "score": 9,
+      "reason": "The answer accurately and completely describes the four elements of negligence: duty of care, breach, causation, and damages. It also explains the concepts of actual and proximate cause. However, it lacks mention of the burden of proof and potential defenses, which are included in the reference."
+    },
+    {
+      "question_id": 6,
+      "question": "Difference between merger and acquisition legally?",
+      "domain": "legal",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2455,
+          "corrupted_preview": "In the context of business law, mergers and acquisitions (M&A) are both strategies used by companies to achieve growth, diversification, or other stra..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 597,
+          "corrupted_preview": "Legally, mergers and acquisitions (M&A) [???] distinct processes, though they are [???] discussed [???] due to their similar [???] of business consoli..."
+        }
+      ],
+      "receiving_answer_preview": "In the realm of business law, mergers and acquisitions (M&A) are both strategies used by companies to achieve growth, diversification, or other strategic objectives. However, they differ significantly...",
+      "score": 8,
+      "reason": "The answer is detailed and covers most aspects of mergers and acquisitions, including definitions, legal processes, types, and regulatory considerations. However, it lacks specific mention of tax implications, due diligence, and antitrust review, which are present in the reference."
+    },
+    {
+      "question_id": 7,
+      "question": "Tenant rights when landlord fails to make repairs?",
+      "domain": "legal",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 264,
+          "corrupted_preview": "Tenant [???] regarding a [???] failure to [???] [???] repairs can [???] [???] on the [???] but [???] are some [???] principles that [???] in [???] are..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 269,
+          "corrupted_preview": "When a [???] [???] to [???] [???] repairs, tenants [???] several rights and potential [???] which [???] vary [???] [???] the jurisdiction. [???] there..."
+        }
+      ],
+      "receiving_answer_preview": "When a landlord fails to make necessary repairs, tenants have several rights and potential remedies, although these can vary depending on the jurisdiction. Here are some general principles and steps t...",
+      "score": 9,
+      "reason": "The answer is accurate and covers most key points, including habitability, repair and deduct, rent withholding, reporting to authorities, legal action, and breaking the lease. It lacks explicit mention of constructive eviction and retaliation being illegal."
+    },
+    {
+      "question_id": 8,
+      "question": "Non-compete clause enforceability requirements?",
+      "domain": "legal",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 311,
+          "corrupted_preview": "[???] [???] [???] [???] as [???] [???] [???] contractual [???] that [???] [???] employee [???] [???] in [???] activities [???] [???] [???] employer af..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 317,
+          "corrupted_preview": "Non-compete clauses, [???] known as restrictive [???] are [???] provisions [???] restrict [???] [???] [???] engaging in [???] activities [???] [???] [..."
+        }
+      ],
+      "receiving_answer_preview": "Non-compete clauses, also known as restrictive covenants, are contractual provisions that restrict an employee from engaging in certain activities that compete with their employer after the employment...",
+      "score": 9,
+      "reason": "The answer is accurate and covers most key points: reasonableness, legitimate business interest, consideration, and jurisdictional variance. It misses mentioning the blue-pencil doctrine and voluntary signing."
+    },
+    {
+      "question_id": 9,
+      "question": "Calculate NPV: $100K investment, $30K/yr 5 years, 10% discount?",
+      "domain": "finance",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 217,
+          "corrupted_preview": "To calculate the Net Present Value (NPV) of an [???] [???] need [???] discount the [???] [???] [???] [???] to their present [???] and [???] subtract t..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 217,
+          "corrupted_preview": "[???] [???] the Net [???] [???] (NPV) [???] an [???] [???] need [???] [???] the [???] cash flows [???] to their [???] value [???] then [???] [???] [??..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Net Present Value (NPV) of an investment, you need to discount the future cash flows to their present value and then subtract the initial investment. The formula for NPV is:\n\n\\[ \nNPV ...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, with a minor rounding difference in the final NPV value compared to the reference."
+    },
+    {
+      "question_id": 10,
+      "question": "Calculate WACC: 60% equity at 12%, 40% debt at 6%, tax 25%?",
+      "domain": "finance",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 238,
+          "corrupted_preview": "To calculate the Weighted Average [???] of Capital (WACC), [???] [???] to consider the [???] [???] [???] and debt in [???] company's capital structure..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Good",
+          "raw_length": 1199,
+          "corrupted_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportion of equity and debt in the company's capital structure, t..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportions of equity and debt in the company's capital structure, the cost of equity, the cost of debt, and the corp...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the WACC as 9.0%, matching the reference answer."
+    },
+    {
+      "question_id": 11,
+      "question": "Break-even: fixed $500K, variable $30/unit, price $80/unit?",
+      "domain": "finance",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Medium",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 488,
+          "corrupted_preview": "To calculate the break-even [???] in units, you need to determine how many units [???] be sold to cover all fixed and [???] [???] The [???] point [???..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 257,
+          "corrupted_preview": "To [???] [???] [???] [???] you need to calculate the [???] of units that [???] be [???] [???] [???] all [???] [???] variable costs. The [???] [???] [?..."
+        }
+      ],
+      "receiving_answer_preview": "To determine the break-even point in units, you need to calculate how many units must be sold to cover all fixed and variable costs. The break-even point is where total revenue equals total costs (fix...",
+      "score": 8,
+      "reason": "The answer correctly calculates the break-even point in units as 10,000, matching the reference. However, it lacks the calculation of break-even revenue, contribution margin per unit, and contribution margin ratio, which are present in the reference answer."
+    },
+    {
+      "question_id": 12,
+      "question": "Explain operating leverage vs financial leverage?",
+      "domain": "finance",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Medium",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 645,
+          "corrupted_preview": "[???] leverage and financial leverage are [???] important concepts in finance and business management, each [???] to different aspects [???] a [???] o..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 299,
+          "corrupted_preview": "[???] leverage and financial [???] [???] two important [???] in finance that relate to how [???] company can [???] its profitability and [???] [???] r..."
+        }
+      ],
+      "receiving_answer_preview": "Operating leverage and financial leverage are two important concepts in finance and business management, each relating to different aspects of a company's operations and financial structure. Both invo...",
+      "score": 8,
+      "reason": "The answer accurately explains operating and financial leverage, including their effects on risk and returns. However, it lacks specific formulas (DOL and DFL) and the concept of combined leverage, which are present in the reference."
+    },
+    {
+      "question_id": 13,
+      "question": "TCP vs UDP: differences and use cases?",
+      "domain": "tech",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 300,
+          "corrupted_preview": "TCP [???] [???] Protocol) and [???] [???] [???] Protocol) are two fundamental protocols used for [???] [???] [???] [???] internet. [???] operate at [?..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 669,
+          "corrupted_preview": "[???] [???] Protocol (TCP) and User Datagram Protocol [???] are two fundamental protocols used for [???] data over the [???] [???] operate at the [???..."
+        }
+      ],
+      "receiving_answer_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols used for transmitting data over the internet. They operate at the transport layer of the Internet Pro...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key characteristics and use cases of both TCP and UDP. It includes details on connection orientation, reliability, and specific applications. However, it misses mentioning the size of TCP and UDP headers, which is a minor detail."
+    },
+    {
+      "question_id": 14,
+      "question": "SQL injection prevention methods?",
+      "domain": "tech",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 305,
+          "corrupted_preview": "[???] [???] is a [???] and [???] devastating security [???] [???] allows an attacker [???] interfere with [???] [???] [???] [???] [???] makes to its [..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 685,
+          "corrupted_preview": "[???] [???] is [???] [???] [???] dangerous security vulnerability [???] allows an attacker to interfere [???] the queries [???] [???] [???] [???] [???..."
+        }
+      ],
+      "receiving_answer_preview": "SQL injection is a serious and potentially devastating security vulnerability that allows an attacker to interfere with the queries an application makes to its database. Preventing SQL injection is cr...",
+      "score": 9,
+      "reason": "The answer is accurate and covers most primary and secondary methods mentioned in the reference, including parameterized queries, stored procedures, input validation, ORM, least privilege, and WAF. It also adds regular security audits, which is a good practice. However, it misses mentioning error handling and escaping special characters is not emphasized as a secondary method."
+    },
+    {
+      "question_id": 15,
+      "question": "CAP theorem explanation with examples?",
+      "domain": "tech",
+      "condition": "fixed_order",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 280,
+          "corrupted_preview": "The CAP theorem, [???] [???] [???] [???] [???] [???] [???] fundamental [???] [???] [???] [???] that [???] the trade-offs between [???] key properties:..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 607,
+          "corrupted_preview": "The CAP theorem, [???] [???] as Brewer's theorem, [???] a fundamental [???] in distributed [???] that [???] [???] [???] [???] three key properties: Co..."
+        }
+      ],
+      "receiving_answer_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that describes the trade-offs between three key properties: Consistency, Availability, and Partition ...",
+      "score": 9,
+      "reason": "The answer accurately explains the CAP theorem and its components with examples. It correctly describes the trade-offs and provides examples for CP and AP systems. However, it lacks specific examples of systems like MongoDB or Cassandra, which are mentioned in the reference."
+    },
+    {
+      "question_id": 1,
+      "question": "First-line treatment for hypertension with comorbid diabetes?",
+      "domain": "medical",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 1782,
+          "corrupted_preview": "When managing hypertension in patients with comorbid diabetes, the first-line treatment typically involves the use of an angiotensin-converting enzyme..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 261,
+          "corrupted_preview": "When [???] hypertension in patients [???] comorbid diabetes, the first-line [???] [???] involves the [???] of an angiotensin-converting enzyme [???] i..."
+        }
+      ],
+      "receiving_answer_preview": "When managing hypertension in patients with comorbid diabetes, the first-line treatment typically involves the use of either an angiotensin-converting enzyme (ACE) inhibitor or an angiotensin II recep...",
+      "score": 9,
+      "reason": "The answer is accurate and complete regarding the use of ACE inhibitors and ARBs as first-line treatments for hypertension in diabetes, including their renal protective effects. It lacks mention of the specific target BP and the role of SGLT2 inhibitors, which are noted in the reference."
+    },
+    {
+      "question_id": 2,
+      "question": "Differential diagnosis for acute chest pain with troponin elevation?",
+      "domain": "medical",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 242,
+          "corrupted_preview": "Acute [???] [???] [???] troponin elevation is a clinical [???] that [???] [???] myocardial injury, [???] [???] is important [???] [???] a broad [???] ..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 520,
+          "corrupted_preview": "When evaluating [???] patient with acute [???] pain and elevated troponin [???] it is [???] [???] consider a range of potential diagnoses. [???] tropo..."
+        }
+      ],
+      "receiving_answer_preview": "When evaluating a patient with acute chest pain and elevated troponin levels, it is crucial to consider a broad differential diagnosis, as elevated troponin indicates myocardial injury but is not excl...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering most key causes of elevated troponin with chest pain. It includes ACS, myocarditis, pulmonary embolism, aortic dissection, takotsubo cardiomyopathy, severe hypertension, renal failure, sepsis, and cardiac trauma. However, it incorrectly includes pericarditis, which typically does not cause elevated troponins, and omits hypertensive crisis and heart failure."
+    },
+    {
+      "question_id": 3,
+      "question": "Emergency management of anaphylaxis?",
+      "domain": "medical",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2199,
+          "corrupted_preview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 314,
+          "corrupted_preview": "Anaphylaxis is [???] severe, [???] life-threatening allergic reaction [???] [???] [???] [???] attention. The [???] management [???] [???] involves sev..."
+        }
+      ],
+      "receiving_answer_preview": "Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anaphylaxis involves several critical steps to stab...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering all key aspects of anaphylaxis management, including epinephrine administration, positioning, oxygen, adjunctive treatments, and monitoring. It lacks specific mention of H2 blockers and nebulized albuterol, which are included in the reference."
+    },
+    {
+      "question_id": 4,
+      "question": "Warfarin drug interactions and INR management?",
+      "domain": "medical",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 250,
+          "corrupted_preview": "Warfarin [???] an [???] medication used to [???] and [???] [???] [???] [???] works by [???] [???] [???] clotting factors. Managing warfarin [???] requ..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 262,
+          "corrupted_preview": "Warfarin [???] [???] [???] medication commonly used to prevent and treat thromboembolic [???] [???] [???] [???] [???] [???] [???] monitored [???] the ..."
+        }
+      ],
+      "receiving_answer_preview": "Warfarin is an anticoagulant medication commonly used to prevent and treat thromboembolic disorders, such as deep vein thrombosis and pulmonary embolism. It works by inhibiting the synthesis of vitami...",
+      "score": 7,
+      "reason": "The answer provides a good overview of warfarin's mechanism, INR management, and interactions. However, it lacks specific details on CYP2C9/3A4 interactions, genetic testing, and bridging with LMWH, which are mentioned in the reference."
+    },
+    {
+      "question_id": 5,
+      "question": "Elements required to prove negligence in tort law?",
+      "domain": "legal",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Bad",
+        "Finance": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 272,
+          "corrupted_preview": "[???] [???] [???] [???] [???] [???] [???] concept [???] [???] the [???] to [???] [???] [???] to establish a [???] [???] [???] [???] required [???] [??..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1617,
+          "corrupted_preview": "In tort law, to establish a case of negligence, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonst..."
+        }
+      ],
+      "receiving_answer_preview": "To prove negligence in tort law, the plaintiff must establish four key elements:\n\n1. **Duty of Care**: The plaintiff must demonstrate that the defendant owed them a legal duty of care. This duty arise...",
+      "score": 9,
+      "reason": "The answer accurately and completely describes the four elements of negligence: duty of care, breach, causation, and damages. It also explains the components of causation. However, it lacks mention of the burden of proof and defenses, which are included in the reference."
+    },
+    {
+      "question_id": 6,
+      "question": "Difference between merger and acquisition legally?",
+      "domain": "legal",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Medium",
+        "Finance": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 613,
+          "corrupted_preview": "[???] mergers [???] acquisitions (M&A) [???] distinct processes, [???] they [???] [???] [???] together due [???] their similar objectives of [???] con..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Bad",
+          "raw_length": 245,
+          "corrupted_preview": "Legally, [???] [???] acquisitions (M&A) are [???] processes, [???] with its own implications and procedures. [???] a [???] [???] [???] [???] differenc..."
+        }
+      ],
+      "receiving_answer_preview": "The terms \"merger\" and \"acquisition\" are often used interchangeably in the business world, but they have distinct legal implications and processes.\n\n1. **Merger**: Legally, a merger involves the combi...",
+      "score": 8,
+      "reason": "The answer accurately describes the legal differences between mergers and acquisitions, including the outcomes for the entities involved. However, it lacks details on board and shareholder approval, tax implications, due diligence, antitrust review, and specific types of acquisitions mentioned in the reference."
+    },
+    {
+      "question_id": 7,
+      "question": "Tenant rights when landlord fails to make repairs?",
+      "domain": "legal",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Bad",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 281,
+          "corrupted_preview": "When a landlord fails to make necessary [???] [???] [???] [???] rights and [???] [???] which [???] vary depending [???] [???] jurisdiction. [???] ther..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 670,
+          "corrupted_preview": "When a landlord fails to make necessary repairs, [???] have several rights and potential courses of [???] which [???] vary [???] on the jurisdiction. ..."
+        }
+      ],
+      "receiving_answer_preview": "When a landlord fails to make necessary repairs, tenants have several rights and potential courses of action, which can vary depending on the jurisdiction. However, there are some common principles an...",
+      "score": 9,
+      "reason": "The answer is accurate and covers most key points such as habitability, notice, repair and deduct, rent withholding, lease termination, and legal action. It lacks mention of retaliation being illegal and constructive eviction."
+    },
+    {
+      "question_id": 8,
+      "question": "Non-compete clause enforceability requirements?",
+      "domain": "legal",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Bad",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 279,
+          "corrupted_preview": "Non-compete [???] also [???] [???] restrictive [???] are contractual provisions that [???] an employee's ability to [???] in a [???] business [???] st..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 683,
+          "corrupted_preview": "The enforceability [???] non-compete clauses varies [???] by jurisdiction, but there are common [???] and considerations that [???] [???] Here are the..."
+        }
+      ],
+      "receiving_answer_preview": "[ERROR: API call failed after retries]...",
+      "score": 0,
+      "reason": "The answer provided is not an actual response to the question but an error message indicating a failed API call."
+    },
+    {
+      "question_id": 9,
+      "question": "Calculate NPV: $100K investment, $30K/yr 5 years, 10% discount?",
+      "domain": "finance",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1203,
+          "corrupted_preview": "To calculate the Net Present Value (NPV) of an investment, we need to discount the future cash flows back to their present value and then subtract the..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 217,
+          "corrupted_preview": "To calculate the [???] [???] Value (NPV) [???] an [???] you need [???] [???] the future [???] flows [???] [???] [???] present value and then [???] the..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Net Present Value (NPV) of the investment, we need to discount each of the future cash flows back to their present value using the given discount rate and then subtract the initial in...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the NPV, matching the reference answer."
+    },
+    {
+      "question_id": 10,
+      "question": "Calculate WACC: 60% equity at 12%, 40% debt at 6%, tax 25%?",
+      "domain": "finance",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Medium",
+        "Legal": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 370,
+          "corrupted_preview": "To calculate [???] Weighted Average [???] [???] [???] (WACC), we use the formula: \\[ \\text{WACC} [???] \\left( [???] [???] [???] \\text{Re} [???] \\left(..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Good",
+          "raw_length": 1225,
+          "corrupted_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportion of equity and debt in the company's capital structure, t..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportions of equity and debt in the company's capital structure, the cost of equity, the cost of debt, and the corp...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the WACC using the given data and formula."
+    },
+    {
+      "question_id": 11,
+      "question": "Break-even: fixed $500K, variable $30/unit, price $80/unit?",
+      "domain": "finance",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Bad",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Bad",
+          "raw_length": 243,
+          "corrupted_preview": "To [???] [???] break-even [???] we [???] [???] [???] [???] [???] of [???] that [???] be [???] to [???] all [???] and variable [???] The [???] [???] in..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 247,
+          "corrupted_preview": "[???] determine [???] break-even [???] you [???] to calculate the number of [???] [???] must be [???] [???] [???] all fixed and [???] costs. The [???]..."
+        }
+      ],
+      "receiving_answer_preview": "To determine the break-even point, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even point is where total revenue equals total costs (bo...",
+      "score": 8,
+      "reason": "The answer correctly calculates the break-even point in units as 10,000, matching the reference. However, it does not include the break-even revenue, contribution margin per unit, or contribution margin ratio, which are part of the reference answer."
+    },
+    {
+      "question_id": 12,
+      "question": "Explain operating leverage vs financial leverage?",
+      "domain": "finance",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2580,
+          "corrupted_preview": "Operating leverage and financial leverage are two important concepts in financial analysis that help in understanding how a company's earnings are aff..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 294,
+          "corrupted_preview": "[???] [???] [???] financial leverage [???] two [???] concepts used in [???] analysis to assess how different [???] [???] costs [???] [???] [???] profi..."
+        }
+      ],
+      "receiving_answer_preview": "Operating leverage and financial leverage are two critical concepts in financial analysis that help assess how a company's earnings are influenced by changes in sales and capital structure, respective...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, covering definitions, characteristics, and calculations for both operating and financial leverage. It aligns well with the reference, but lacks mention of combined leverage and the specific risks associated with high leverage."
+    },
+    {
+      "question_id": 13,
+      "question": "TCP vs UDP: differences and use cases?",
+      "domain": "tech",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Tech",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2499,
+          "corrupted_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, used for transmitting data..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 300,
+          "corrupted_preview": "TCP (Transmission [???] [???] and [???] [???] Datagram [???] are [???] [???] protocols used [???] transmitting data [???] [???] internet. [???] [???] ..."
+        }
+      ],
+      "receiving_answer_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols within the Internet Protocol Suite, each serving distinct purposes and offering unique characteristic...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly explains the differences and use cases of TCP and UDP, matching the reference answer."
+    },
+    {
+      "question_id": 14,
+      "question": "SQL injection prevention methods?",
+      "domain": "tech",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Tech",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Bad",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Bad",
+          "raw_length": 294,
+          "corrupted_preview": "[???] injection [???] [???] critical [???] vulnerability that allows [???] [???] to interfere with [???] [???] that [???] [???] [???] [???] [???] data..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 312,
+          "corrupted_preview": "[???] injection is [???] [???] [???] [???] [???] [???] vulnerability [???] [???] an attacker to interfere [???] the queries that an [???] makes [???] ..."
+        }
+      ],
+      "receiving_answer_preview": "SQL injection is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can lead to unauthorized data access, data corr...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly covers all primary and secondary SQL injection prevention methods mentioned in the reference."
+    },
+    {
+      "question_id": 15,
+      "question": "CAP theorem explanation with examples?",
+      "domain": "tech",
+      "condition": "expertise_only",
+      "agents_selected": [
+        "Tech",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2760,
+          "corrupted_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that describes the trade-offs between three key pro..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 280,
+          "corrupted_preview": "[???] [???] theorem, also known as [???] [???] is a fundamental principle in distributed [???] [???] describes the [???] [???] three [???] [???] [???]..."
+        }
+      ],
+      "receiving_answer_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental concept in distributed systems that outlines the trade-offs between three key properties: Consistency, Availability, and Partition Tol...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, providing a detailed explanation of the CAP theorem and examples for each category. It aligns well with the reference, but it could be slightly more concise."
+    },
+    {
+      "question_id": 1,
+      "question": "First-line treatment for hypertension with comorbid diabetes?",
+      "domain": "medical",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Medical",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2389,
+          "corrupted_preview": "When managing hypertension in patients with comorbid diabetes, the choice of first-line antihypertensive medication is crucial due to the increased ri..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 686,
+          "corrupted_preview": "While I [???] provide general information, it's important to consult a healthcare professional for medical advice tailored to individual circumstances..."
+        }
+      ],
+      "receiving_answer_preview": "When managing hypertension in patients with comorbid diabetes, the choice of first-line antihypertensive medication is crucial due to the increased risk of cardiovascular and renal complications in th...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering ACE inhibitors and ARBs as first-line treatments, their renal protective effects, and the target BP. It also discusses additional agents and considerations, aligning well with the reference. However, it lacks mention of SGLT2 inhibitors' dual benefit."
+    },
+    {
+      "question_id": 2,
+      "question": "Differential diagnosis for acute chest pain with troponin elevation?",
+      "domain": "medical",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2246,
+          "corrupted_preview": "Acute chest pain with troponin elevation is a critical clinical scenario that often suggests myocardial injury. However, there are several potential c..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 520,
+          "corrupted_preview": "When [???] [???] [???] with acute chest pain and [???] troponin [???] it is [???] to consider a range of potential diagnoses. Elevated troponin is a m..."
+        }
+      ],
+      "receiving_answer_preview": "When evaluating a patient with acute chest pain and elevated troponin levels, it is crucial to consider a broad differential diagnosis, as elevated troponin indicates myocardial injury but is not spec...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering most of the key conditions listed in the reference. It includes additional details like pericarditis and coronary vasospasm, which are relevant. However, it misses hypertensive crisis and severe heart failure, which are mentioned in the reference."
+    },
+    {
+      "question_id": 3,
+      "question": "Emergency management of anaphylaxis?",
+      "domain": "medical",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Medical",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Tech": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2187,
+          "corrupted_preview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Medium",
+          "raw_length": 655,
+          "corrupted_preview": "[???] is a severe, potentially [???] allergic reaction that requires immediate medical attention. [???] emergency management of anaphylaxis involves s..."
+        }
+      ],
+      "receiving_answer_preview": "Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anaphylaxis involves several critical steps to stab...",
+      "score": 8,
+      "reason": "The answer is comprehensive and covers most key aspects of anaphylaxis management, including epinephrine administration, positioning, oxygen therapy, and adjunctive medications. However, it lacks specific mention of H2 blockers and nebulized albuterol for bronchospasm, which are included in the reference answer."
+    },
+    {
+      "question_id": 4,
+      "question": "Warfarin drug interactions and INR management?",
+      "domain": "medical",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Tech": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1951,
+          "corrupted_preview": "Warfarin is an anticoagulant medication used to prevent blood clots. Its effectiveness is measured by the International Normalized Ratio (INR), which ..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Medium",
+          "raw_length": 589,
+          "corrupted_preview": "Warfarin is an anticoagulant medication commonly used to [???] and treat thromboembolic disorders, such [???] deep vein thrombosis (DVT), pulmonary em..."
+        }
+      ],
+      "receiving_answer_preview": "Warfarin is an anticoagulant medication used to prevent and treat thromboembolic disorders such as deep vein thrombosis (DVT), pulmonary embolism (PE), and to prevent stroke in patients with atrial fi...",
+      "score": 7,
+      "reason": "The answer provides a comprehensive overview of warfarin interactions and INR management, but lacks specific mention of CYP2C9/3A4 interactions, genetic testing, and bridging with LMWH for procedures."
+    },
+    {
+      "question_id": 5,
+      "question": "Elements required to prove negligence in tort law?",
+      "domain": "legal",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1558,
+          "corrupted_preview": "In tort law, to establish a case of negligence, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonst..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 588,
+          "corrupted_preview": "In tort law, to establish a case of negligence, [???] plaintiff must prove the following four elements: [???] **Duty of Care**: [???] plaintiff [???] ..."
+        }
+      ],
+      "receiving_answer_preview": "To establish a case of negligence in tort law, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonstrate that the defendant owed them a legal duty of c...",
+      "score": 9,
+      "reason": "The answer accurately and thoroughly covers the four elements of negligence: duty of care, breach, causation, and damages. It also mentions the burden of proof (preponderance of evidence). However, it lacks mention of defenses like contributory/comparative negligence and assumption of risk, which were included in the reference."
+    },
+    {
+      "question_id": 6,
+      "question": "Difference between merger and acquisition legally?",
+      "domain": "legal",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Medical",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2485,
+          "corrupted_preview": "In the context of business law, mergers and acquisitions (M&A) are both strategies used by companies to achieve growth, diversification, or other stra..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 584,
+          "corrupted_preview": "Legally, mergers [???] acquisitions (M&A) are distinct processes, each with unique [???] and implications. Here’s [???] detailed analysis [???] the [?..."
+        }
+      ],
+      "receiving_answer_preview": "In the realm of business law, mergers and acquisitions (M&A) are both strategies employed by companies to achieve growth, diversification, or other strategic objectives. However, they differ significa...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and covers key legal differences, including definitions, processes, and regulatory aspects. However, it lacks specific mention of tax implications, due diligence, and detailed aspects like representations and warranties, which are present in the reference."
+    },
+    {
+      "question_id": 7,
+      "question": "Tenant rights when landlord fails to make repairs?",
+      "domain": "legal",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Tech",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2673,
+          "corrupted_preview": "Tenant rights regarding landlord obligations to make repairs can vary significantly depending on the jurisdiction, but there are some common principle..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 617,
+          "corrupted_preview": "Tenant rights regarding landlord failures to make [???] [???] can vary depending on the jurisdiction, [???] there are [???] common principles and [???..."
+        }
+      ],
+      "receiving_answer_preview": "When a landlord fails to make necessary repairs, tenants have several rights and options, which can vary depending on the jurisdiction. However, there are common principles and steps that tenants can ...",
+      "score": 8,
+      "reason": "The answer is comprehensive and covers most key points, including implied warranty of habitability, repair and deduct, rent withholding, and legal action. However, it lacks explicit mention of reporting to housing authorities and constructive eviction, which are in the reference."
+    },
+    {
+      "question_id": 8,
+      "question": "Non-compete clause enforceability requirements?",
+      "domain": "legal",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Tech",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2761,
+          "corrupted_preview": "Non-compete clauses, also known as non-compete agreements or covenants not to compete, are contractual provisions that restrict an employee from engag..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 683,
+          "corrupted_preview": "[???] [???] [???] non-compete clauses varies significantly by jurisdiction, [???] there are common [???] and considerations that [???] [???] Here are ..."
+        }
+      ],
+      "receiving_answer_preview": "Non-compete clauses, also known as non-compete agreements or covenants not to compete, are contractual provisions that restrict an employee from engaging in business activities that compete with their...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key enforceability requirements such as legitimate business interest, reasonableness in scope, consideration, and state-specific laws. It also mentions judicial modification. However, it lacks mention of voluntary signing and the blue-pencil doctrine, which are included in the reference."
+    },
+    {
+      "question_id": 9,
+      "question": "Calculate NPV: $100K investment, $30K/yr 5 years, 10% discount?",
+      "domain": "finance",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Tech": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1203,
+          "corrupted_preview": "To calculate the Net Present Value (NPV) of an investment, we need to discount the future cash flows back to their present value and then subtract the..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Medium",
+          "raw_length": 390,
+          "corrupted_preview": "[???] calculate the [???] [???] Value [???] [???] [???] investment, you need to discount the future cash flows back to their present value and then su..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Net Present Value (NPV) of the given investment, we need to discount each of the future cash flows back to their present value using the specified discount rate, and then subtract the...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the NPV, matching the reference answer."
+    },
+    {
+      "question_id": 10,
+      "question": "Calculate WACC: 60% equity at 12%, 40% debt at 6%, tax 25%?",
+      "domain": "finance",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Good",
+          "raw_length": 1215,
+          "corrupted_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportion of equity and debt in the company's capital structure, t..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 382,
+          "corrupted_preview": "To [???] the Weighted Average Cost of Capital (WACC), we use the following [???] \\[ [???] = \\left( E/V \\times [???] \\right) + \\left( D/V [???] Rd \\tim..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportions of equity and debt in the company's capital structure, the cost of equity, the cost of debt, and the corp...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the WACC as 9.0%, matching the reference answer."
+    },
+    {
+      "question_id": 11,
+      "question": "Break-even: fixed $500K, variable $30/unit, price $80/unit?",
+      "domain": "finance",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Tech",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Medical": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 932,
+          "corrupted_preview": "To determine the break-even point, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even p..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 495,
+          "corrupted_preview": "[???] calculate the break-even point in units, you need to determine [???] many units must [???] sold to cover all fixed and variable costs. The [???]..."
+        }
+      ],
+      "receiving_answer_preview": "To determine the break-even point, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even point is where total revenue equals total costs (bo...",
+      "score": 8,
+      "reason": "The answer accurately calculates the break-even point in units, matching the reference. However, it lacks the calculation of break-even revenue, contribution margin per unit, and contribution margin ratio, which are present in the reference."
+    },
+    {
+      "question_id": 12,
+      "question": "Explain operating leverage vs financial leverage?",
+      "domain": "finance",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2594,
+          "corrupted_preview": "Operating leverage and financial leverage are two important concepts in financial analysis that help assess a company's risk and potential return. Bot..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 677,
+          "corrupted_preview": "Operating leverage [???] [???] [???] are two important concepts in finance and business management, each [???] to different [???] of a company's opera..."
+        }
+      ],
+      "receiving_answer_preview": "Operating leverage and financial leverage are two critical concepts in financial analysis that help assess a company's risk profile and potential for returns. Both involve the use of fixed costs, but ...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, covering definitions, characteristics, and calculations for both operating and financial leverage. It explains the impact on profitability and risk, aligning well with the reference. However, it lacks a brief mention of combined leverage and the distinction between business and financial risk."
+    },
+    {
+      "question_id": 13,
+      "question": "TCP vs UDP: differences and use cases?",
+      "domain": "tech",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Tech",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2467,
+          "corrupted_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, used for transmitting data..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 669,
+          "corrupted_preview": "Transmission [???] Protocol (TCP) and User Datagram Protocol (UDP) are two fundamental protocols used for transmitting data over the Internet. They op..."
+        }
+      ],
+      "receiving_answer_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols within the Internet Protocol Suite, each serving distinct purposes and use cases due to their unique ...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key characteristics and use cases of both TCP and UDP. It includes details like connection orientation, reliability, flow control, and typical applications. However, it misses mentioning the specific header sizes for TCP and UDP, which were included in the reference."
+    },
+    {
+      "question_id": 14,
+      "question": "SQL injection prevention methods?",
+      "domain": "tech",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2570,
+          "corrupted_preview": "SQL injection is a common attack vector that can compromise the security of a database. To prevent SQL injection, it is crucial to implement a combina..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 662,
+          "corrupted_preview": "SQL [???] is a common attack vector that exploits [???] [???] [???] [???] software by [???] [???] queries. To prevent SQL injection, [???] best practi..."
+        }
+      ],
+      "receiving_answer_preview": "SQL injection is a prevalent security threat that targets the database layer of an application by manipulating SQL queries through user inputs. To effectively prevent SQL injection attacks, it is esse...",
+      "score": 9,
+      "reason": "The answer is comprehensive and covers all primary methods mentioned in the reference, including parameterized queries, stored procedures, input validation, and ORM frameworks. It also includes secondary methods like least privilege, WAF, escaping inputs, and error handling. However, it adds extra points like regular audits and software updates, which, while useful, are not directly mentioned in the reference."
+    },
+    {
+      "question_id": 15,
+      "question": "CAP theorem explanation with examples?",
+      "domain": "tech",
+      "condition": "channel_only",
+      "agents_selected": [
+        "Tech",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2748,
+          "corrupted_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that describes the trade-offs between three key pro..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 607,
+          "corrupted_preview": "[???] CAP theorem, also [???] as Brewer's theorem, is [???] fundamental principle in distributed systems [???] [???] the trade-offs [???] three key pr..."
+        }
+      ],
+      "receiving_answer_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental concept in distributed systems that outlines the trade-offs between three critical properties: Consistency, Availability, and Partitio...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, providing a detailed explanation of the CAP theorem and examples for each category. It aligns well with the reference, but lacks mention of MongoDB and HBase as CP systems, which were included in the reference."
+    },
+    {
+      "question_id": 1,
+      "question": "First-line treatment for hypertension with comorbid diabetes?",
+      "domain": "medical",
+      "condition": "joint",
+      "agents_selected": [
+        "Medical",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2053,
+          "corrupted_preview": "When managing hypertension in patients with comorbid diabetes, the choice of first-line antihypertensive medication is crucial due to the increased ri..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 675,
+          "corrupted_preview": "While I can provide general information, [???] important [???] consult [???] [???] [???] [???] medical advice tailored to individual [???] For patient..."
+        }
+      ],
+      "receiving_answer_preview": "When managing hypertension in patients with comorbid diabetes, the choice of first-line antihypertensive medication is crucial due to the increased risk of cardiovascular and renal complications in th...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, covering ACE inhibitors and ARBs as first-line treatments, their renal protective effects, and target BP. It also mentions additional agents like thiazide diuretics and CCBs. However, it lacks mention of SGLT2 inhibitors, which provide dual benefits."
+    },
+    {
+      "question_id": 2,
+      "question": "Differential diagnosis for acute chest pain with troponin elevation?",
+      "domain": "medical",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2177,
+          "corrupted_preview": "Acute chest pain with troponin elevation is a critical clinical scenario that often suggests myocardial injury. However, there are several potential c..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 242,
+          "corrupted_preview": "[???] [???] [???] [???] troponin elevation is a [???] scenario [???] [???] [???] [???] [???] but [???] [???] important [???] [???] [???] broad differe..."
+        }
+      ],
+      "receiving_answer_preview": "Acute chest pain with troponin elevation is a critical clinical scenario that often indicates myocardial injury. However, it is essential to consider a broad differential diagnosis to guide appropriat...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering most of the key conditions listed in the reference. It includes additional details like pericarditis and coronary vasospasm, which are relevant but not in the reference. The explanation is thorough, but it slightly deviates by including conditions not explicitly mentioned in the reference."
+    },
+    {
+      "question_id": 3,
+      "question": "Emergency management of anaphylaxis?",
+      "domain": "medical",
+      "condition": "joint",
+      "agents_selected": [
+        "Medical",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Medical": "Good",
+        "Tech": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2185,
+          "corrupted_preview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Medium",
+          "raw_length": 632,
+          "corrupted_preview": "Anaphylaxis is a [???] potentially life-threatening [???] reaction [???] [???] immediate [???] attention. The [???] management of anaphylaxis [???] se..."
+        }
+      ],
+      "receiving_answer_preview": "Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires immediate medical intervention. The emergency management of anaphylaxis involves several critical steps to stab...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering all key aspects of anaphylaxis management. It includes immediate epinephrine administration, positioning, oxygen therapy, IV access, adjunctive medications, and observation. However, it lacks mention of H2 blockers and nebulized albuterol for bronchospasm, which are included in the reference."
+    },
+    {
+      "question_id": 4,
+      "question": "Warfarin drug interactions and INR management?",
+      "domain": "medical",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1944,
+          "corrupted_preview": "Warfarin is an anticoagulant medication used to prevent blood clots. Its effectiveness is measured by the International Normalized Ratio (INR), which ..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 250,
+          "corrupted_preview": "Warfarin [???] [???] anticoagulant medication [???] [???] [???] and treat thromboembolic [???] It [???] [???] inhibiting [???] K-dependent [???] [???]..."
+        }
+      ],
+      "receiving_answer_preview": "Warfarin is an anticoagulant medication used to prevent and treat thromboembolic disorders by inhibiting vitamin K-dependent clotting factors. Its effectiveness is measured by the International Normal...",
+      "score": 8,
+      "reason": "The answer is comprehensive and covers most key points, including drug interactions and INR management. However, it lacks specific mention of CYP2C9/3A4 interactions, genetic testing, and bridging with LMWH for procedures."
+    },
+    {
+      "question_id": 5,
+      "question": "Elements required to prove negligence in tort law?",
+      "domain": "legal",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1681,
+          "corrupted_preview": "In tort law, to establish a case of negligence, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonst..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 272,
+          "corrupted_preview": "In [???] law, [???] [???] a fundamental concept that [???] [???] [???] [???] [???] [???] elements to [???] a defendant's [???] [???] [???] [???] to pr..."
+        }
+      ],
+      "receiving_answer_preview": "In tort law, to establish a case of negligence, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonstrate that the defendant owed them a legal duty of ...",
+      "score": 9,
+      "reason": "The answer accurately and completely describes the four elements of negligence: duty of care, breach, causation, and damages. It also mentions the burden of proof. However, it lacks mention of defenses like contributory/comparative negligence and assumption of risk."
+    },
+    {
+      "question_id": 6,
+      "question": "Difference between merger and acquisition legally?",
+      "domain": "legal",
+      "condition": "joint",
+      "agents_selected": [
+        "Legal",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Medium",
+        "Medical": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 596,
+          "corrupted_preview": "Legally, mergers and acquisitions (M&A) are distinct processes, each with unique characteristics and [???] for the entities involved. Here’s a detaile..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2253,
+          "corrupted_preview": "In the context of business law, mergers and acquisitions (M&A) are both strategies used by companies to achieve growth, diversification, or other stra..."
+        }
+      ],
+      "receiving_answer_preview": "Legally, mergers and acquisitions (M&A) are distinct processes with different structures and implications for the entities involved. Here’s a detailed analysis of the differences:\n\n1. **Definition and...",
+      "score": 8,
+      "reason": "The answer is mostly accurate and complete, covering definitions, structures, and legal processes of mergers and acquisitions. However, it lacks specific mention of tax implications, due diligence, and the Hart-Scott-Rodino Act, which are present in the reference."
+    },
+    {
+      "question_id": 7,
+      "question": "Tenant rights when landlord fails to make repairs?",
+      "domain": "legal",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Medium",
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 672,
+          "corrupted_preview": "When a [???] [???] to make necessary [???] [???] have several [???] and potential courses of action, which can [???] depending on the jurisdiction. [?..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2609,
+          "corrupted_preview": "Tenant rights regarding landlord obligations to make repairs can vary significantly depending on the jurisdiction, but there are some common principle..."
+        }
+      ],
+      "receiving_answer_preview": "When a landlord fails to make necessary repairs, tenants have several rights and potential courses of action, which can vary depending on the jurisdiction. Here are some common rights and remedies ava...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key tenant rights and remedies. It includes the implied warranty of habitability, repair and deduct, rent withholding, contacting authorities, lease termination, and legal action. However, it lacks explicit mention of constructive eviction and retaliation being illegal, which are in the reference."
+    },
+    {
+      "question_id": 8,
+      "question": "Non-compete clause enforceability requirements?",
+      "domain": "legal",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Medium",
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 677,
+          "corrupted_preview": "[???] [???] [???] non-compete clauses varies significantly by jurisdiction, but there are common [???] [???] considerations that courts typically eval..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2689,
+          "corrupted_preview": "Non-compete clauses, also known as non-compete agreements or covenants not to compete, are contractual provisions that restrict an employee from engag..."
+        }
+      ],
+      "receiving_answer_preview": "The enforceability of non-compete clauses, also known as non-compete agreements or covenants not to compete, varies significantly by jurisdiction. However, there are several common factors that courts...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key enforceability factors like legitimate business interest, reasonableness, consideration, and state-specific laws. It also mentions the blue-pencil doctrine and employee role, aligning well with the reference. However, it lacks mention of voluntary signing and being not unduly burdensome on the employee."
+    },
+    {
+      "question_id": 9,
+      "question": "Calculate NPV: $100K investment, $30K/yr 5 years, 10% discount?",
+      "domain": "finance",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Tech": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1188,
+          "corrupted_preview": "To calculate the Net Present Value (NPV) of an investment, we need to discount the future cash flows back to their present value and then subtract the..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Medium",
+          "raw_length": 390,
+          "corrupted_preview": "To calculate the Net Present Value [???] [???] an investment, you need to discount the future cash [???] back to their [???] value and then subtract t..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Net Present Value (NPV) of the given investment, we need to discount each of the future cash flows back to their present value and then subtract the initial investment. The formula fo...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the NPV, matching the reference answer."
+    },
+    {
+      "question_id": 10,
+      "question": "Calculate WACC: 60% equity at 12%, 40% debt at 6%, tax 25%?",
+      "domain": "finance",
+      "condition": "joint",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Good",
+          "raw_length": 1219,
+          "corrupted_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportion of equity and debt in the company's capital structure, t..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 393,
+          "corrupted_preview": "To [???] the Weighted Average [???] [???] Capital (WACC), [???] [???] [???] following formula: \\[ [???] [???] [???] E/V \\right) \\times [???] [???] \\le..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportions of equity and debt in the company's capital structure, the cost of equity, the cost of debt, and the corp...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the WACC as 9.0%, matching the reference answer."
+    },
+    {
+      "question_id": 11,
+      "question": "Break-even: fixed $500K, variable $30/unit, price $80/unit?",
+      "domain": "finance",
+      "condition": "joint",
+      "agents_selected": [
+        "Tech",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Finance": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 1416,
+          "corrupted_preview": "To determine the break-even point, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even p..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Bad",
+          "raw_length": 243,
+          "corrupted_preview": "[???] [???] the break-even [???] [???] need [???] [???] the [???] [???] units that [???] [???] sold to [???] [???] [???] [???] variable [???] The brea..."
+        }
+      ],
+      "receiving_answer_preview": "To determine the break-even point for your scenario, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even point is where total revenue equa...",
+      "score": 9,
+      "reason": "The answer accurately calculates the break-even point in units and explains the process clearly. However, it omits the break-even revenue and contribution margin ratio, which are included in the reference answer."
+    },
+    {
+      "question_id": 12,
+      "question": "Explain operating leverage vs financial leverage?",
+      "domain": "finance",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2559,
+          "corrupted_preview": "Operating leverage and financial leverage are two important concepts in financial analysis that help in understanding how a company's earnings are aff..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Medium",
+          "raw_length": 675,
+          "corrupted_preview": "Operating [???] [???] [???] leverage are two important concepts in finance and business management, [???] relating to [???] aspects of [???] company's..."
+        }
+      ],
+      "receiving_answer_preview": "Operating leverage and financial leverage are two critical concepts in financial analysis that help understand how a company's earnings are affected by changes in sales and capital structure, respecti...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering definitions, characteristics, and calculations for both operating and financial leverage. It also compares the two effectively. However, it lacks the mention of combined leverage, which is present in the reference."
+    },
+    {
+      "question_id": 13,
+      "question": "TCP vs UDP: differences and use cases?",
+      "domain": "tech",
+      "condition": "joint",
+      "agents_selected": [
+        "Tech",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2465,
+          "corrupted_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, used for transmitting data..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 669,
+          "corrupted_preview": "[???] [???] Protocol (TCP) [???] User Datagram [???] (UDP) are [???] fundamental protocols used for transmitting data over the Internet. They operate ..."
+        }
+      ],
+      "receiving_answer_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols within the Internet Protocol Suite, used for transmitting data over networks. They operate at the tra...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key characteristics and use cases of both TCP and UDP. It includes additional details like error checking and specific congestion control algorithms for TCP, which are not in the reference. However, it misses mentioning the specific header sizes for TCP and UDP."
+    },
+    {
+      "question_id": 14,
+      "question": "SQL injection prevention methods?",
+      "domain": "tech",
+      "condition": "joint",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Tech": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2573,
+          "corrupted_preview": "SQL injection is a common attack vector that can compromise the security of a database. To prevent SQL injection, it is crucial to implement a combina..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Bad",
+          "raw_length": 294,
+          "corrupted_preview": "[???] [???] [???] a critical security vulnerability that allows [???] attacker [???] interfere with [???] queries that an application [???] [???] [???..."
+        }
+      ],
+      "receiving_answer_preview": "SQL injection is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can lead to unauthorized access, data leakage, ...",
+      "score": 9,
+      "reason": "The answer is comprehensive and covers all primary methods mentioned in the reference, including parameterized queries, stored procedures, input validation, and ORM frameworks. It also includes secondary methods like least privilege, WAF, and error handling. However, it does not explicitly mention escaping special characters as a secondary method, which is noted in the reference."
+    },
+    {
+      "question_id": 15,
+      "question": "CAP theorem explanation with examples?",
+      "domain": "tech",
+      "condition": "joint",
+      "agents_selected": [
+        "Tech",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Legal": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2809,
+          "corrupted_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that describes the trade-offs between three key pro..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 607,
+          "corrupted_preview": "[???] CAP [???] also known as Brewer's [???] is a [???] principle in distributed systems that describes [???] [???] between three [???] properties: Co..."
+        }
+      ],
+      "receiving_answer_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental concept in distributed systems that outlines the trade-offs between three key properties: Consistency, Availability, and Partition Tol...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, providing a detailed explanation of the CAP theorem and examples for each component. It correctly describes the trade-offs and gives relevant examples for CP, AP, and CA systems. However, it could mention specific technologies as examples, like the reference answer does."
+    },
+    {
+      "question_id": 1,
+      "question": "First-line treatment for hypertension with comorbid diabetes?",
+      "domain": "medical",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Medical"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Medical": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 1746,
+          "corrupted_preview": "When managing hypertension in patients with comorbid diabetes, the first-line treatment typically involves the use of an angiotensin-converting enzyme..."
+        }
+      ],
+      "receiving_answer_preview": "When treating hypertension in patients with comorbid diabetes, the first-line treatment typically involves the use of either an angiotensin-converting enzyme (ACE) inhibitor or an angiotensin II recep...",
+      "score": 8,
+      "reason": "The answer accurately identifies ACE inhibitors and ARBs as first-line treatments and explains their renal protective effects. However, it lacks specific mention of the target BP <130/80 mmHg and does not address the avoidance of beta-blockers or the potential use of SGLT2 inhibitors."
+    },
+    {
+      "question_id": 2,
+      "question": "Differential diagnosis for acute chest pain with troponin elevation?",
+      "domain": "medical",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2198,
+          "corrupted_preview": "Acute chest pain with troponin elevation is a critical clinical scenario that often suggests myocardial injury. However, there are several potential c..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 257,
+          "corrupted_preview": "[???] chest pain [???] [???] [???] is a [???] scenario [???] [???] myocardial injury, [???] it is [???] to recognize [???] not all [???] are [???] to ..."
+        }
+      ],
+      "receiving_answer_preview": "Acute chest pain with troponin elevation is a critical clinical scenario that often indicates myocardial injury. However, it is important to recognize that not all cases are due to acute coronary synd...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering most of the key conditions listed in the reference. It includes additional details like pericarditis and coronary vasospasm, which are relevant but not in the reference. The explanation is thorough and aligns well with the reference, but the inclusion of pericarditis and coronary vasospasm slightly deviates from the reference list."
+    },
+    {
+      "question_id": 3,
+      "question": "Emergency management of anaphylaxis?",
+      "domain": "medical",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Medical"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Medical": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2217,
+          "corrupted_preview": "Anaphylaxis is a severe, potentially life-threatening allergic reaction that requires immediate medical attention. The emergency management of anaphyl..."
+        }
+      ],
+      "receiving_answer_preview": "Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires immediate and effective emergency management. Here are the critical steps involved in managing anaphylaxis:\n\n1....",
+      "score": 9,
+      "reason": "The answer is comprehensive and covers all critical aspects of anaphylaxis management, including epinephrine administration, positioning, oxygen therapy, adjunctive treatments, fluid resuscitation, and monitoring. It lacks specific mention of nebulized albuterol for bronchospasm and the observation period for biphasic reactions, which are included in the reference."
+    },
+    {
+      "question_id": 4,
+      "question": "Warfarin drug interactions and INR management?",
+      "domain": "medical",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Medical": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2115,
+          "corrupted_preview": "Warfarin is an anticoagulant medication used to prevent blood clots. Its effectiveness is monitored using the International Normalized Ratio (INR), wh..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Bad",
+          "raw_length": 250,
+          "corrupted_preview": "Warfarin [???] an anticoagulant medication used to [???] [???] treat thromboembolic disorders. It works [???] [???] [???] [???] [???] factors. Managin..."
+        }
+      ],
+      "receiving_answer_preview": "Warfarin is an anticoagulant medication commonly used to prevent and treat thromboembolic disorders, such as deep vein thrombosis and pulmonary embolism. Its effectiveness is monitored using the Inter...",
+      "score": 8,
+      "reason": "The answer is comprehensive and covers most key points, including drug interactions and INR management. However, it lacks specific mention of CYP2C9/3A4 interactions, genetic testing, and bridging with LMWH for procedures."
+    },
+    {
+      "question_id": 5,
+      "question": "Elements required to prove negligence in tort law?",
+      "domain": "legal",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Legal"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Legal": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1635,
+          "corrupted_preview": "In tort law, to establish a case of negligence, the plaintiff must prove the following four elements:\n\n1. **Duty of Care**: The plaintiff must demonst..."
+        },
+        {
+          "agent": "Legal",
+          "channel": "Bad",
+          "raw_length": 272,
+          "corrupted_preview": "[???] tort [???] negligence is a [???] concept [???] requires [???] [???] [???] [???] [???] elements [???] [???] [???] [???] liability. [???] [???] re..."
+        }
+      ],
+      "receiving_answer_preview": "To prove negligence in tort law, a plaintiff must establish four key elements:\n\n1. **Duty of Care**: The plaintiff must demonstrate that the defendant owed them a legal duty of care. This duty arises ...",
+      "score": 9,
+      "reason": "The answer accurately and comprehensively covers the four elements of negligence: duty of care, breach, causation, and damages. It explains each element in detail, similar to the reference. However, it omits the burden of proof and defenses mentioned in the reference."
+    },
+    {
+      "question_id": 6,
+      "question": "Difference between merger and acquisition legally?",
+      "domain": "legal",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Legal",
+        "Medical"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Medium",
+        "Medical": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Medium",
+          "raw_length": 597,
+          "corrupted_preview": "Legally, [???] and acquisitions (M&A) are distinct processes, though they [???] often [???] together [???] [???] [???] [???] goal of business consolid..."
+        },
+        {
+          "agent": "Medical",
+          "channel": "Good",
+          "raw_length": 2545,
+          "corrupted_preview": "In the context of business law, mergers and acquisitions (M&A) are both strategies used by companies to achieve growth, diversification, or other stra..."
+        }
+      ],
+      "receiving_answer_preview": "Legally, mergers and acquisitions (M&A) are distinct processes, each with its own legal structures and implications, although they are often grouped together under the umbrella of business consolidati...",
+      "score": 8,
+      "reason": "The answer is detailed and covers most key legal aspects of mergers and acquisitions, including definitions, processes, and types. However, it lacks specific mention of tax implications, due diligence, and antitrust review, which are important legal considerations."
+    },
+    {
+      "question_id": 7,
+      "question": "Tenant rights when landlord fails to make repairs?",
+      "domain": "legal",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Medium",
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 631,
+          "corrupted_preview": "When [???] [???] fails to [???] necessary repairs, tenants have several rights and potential courses of action, [???] on the jurisdiction. Here are so..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2739,
+          "corrupted_preview": "Tenant rights regarding landlord failures to make repairs can vary significantly depending on the jurisdiction, but there are some common principles a..."
+        }
+      ],
+      "receiving_answer_preview": "When a landlord fails to make necessary repairs, tenants have several rights and potential courses of action, which can vary depending on the jurisdiction. Here is a comprehensive overview of tenant r...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key points like implied warranty of habitability, notification, reasonable repair time, and legal remedies. It lacks mention of reporting to housing authority and retaliation being illegal, which are in the reference."
+    },
+    {
+      "question_id": 8,
+      "question": "Non-compete clause enforceability requirements?",
+      "domain": "legal",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Medium",
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 700,
+          "corrupted_preview": "The enforceability [???] non-compete [???] varies [???] [???] on jurisdiction, but there are common factors that courts generally consider when determ..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2686,
+          "corrupted_preview": "Non-compete clauses, also known as non-compete agreements or covenants not to compete, are contractual provisions that restrict an employee from engag..."
+        }
+      ],
+      "receiving_answer_preview": "The enforceability of non-compete clauses, also known as non-compete agreements or covenants not to compete, varies significantly depending on the jurisdiction. However, there are several common facto...",
+      "score": 9,
+      "reason": "The answer is accurate and comprehensive, covering key enforceability factors such as legitimate business interest, reasonableness, consideration, public interest, clarity, state-specific laws, and judicial modification. It aligns well with the reference, but lacks mention of voluntary signing."
+    },
+    {
+      "question_id": 9,
+      "question": "Calculate NPV: $100K investment, $30K/yr 5 years, 10% discount?",
+      "domain": "finance",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Finance": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 1203,
+          "corrupted_preview": "To calculate the Net Present Value (NPV) of an investment, we need to discount the future cash flows back to their present value and then subtract the..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Net Present Value (NPV) of the investment, we need to determine the present value of each future cash flow and then subtract the initial investment. The formula for NPV is:\n\n\\[ \nNPV =...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and matches the reference answer in both calculation and explanation."
+    },
+    {
+      "question_id": 10,
+      "question": "Calculate WACC: 60% equity at 12%, 40% debt at 6%, tax 25%?",
+      "domain": "finance",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Legal",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Legal": "Good",
+        "Finance": "Medium"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Legal",
+          "channel": "Good",
+          "raw_length": 1199,
+          "corrupted_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportion of equity and debt in the company's capital structure, t..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Medium",
+          "raw_length": 375,
+          "corrupted_preview": "To calculate the Weighted Average [???] of Capital (WACC), we [???] the formula: \\[ \\text{WACC} = \\left( E/V \\times Re \\right) + [???] [???] \\times Rd..."
+        }
+      ],
+      "receiving_answer_preview": "To calculate the Weighted Average Cost of Capital (WACC), you need to consider the proportions of equity and debt in the company's capital structure, the cost of equity, the cost of debt, and the corp...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly calculates the WACC as 9.0%, matching the reference answer."
+    },
+    {
+      "question_id": 11,
+      "question": "Break-even: fixed $500K, variable $30/unit, price $80/unit?",
+      "domain": "finance",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Tech",
+        "Finance"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Tech": "Good",
+        "Finance": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 932,
+          "corrupted_preview": "To determine the break-even point, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even p..."
+        },
+        {
+          "agent": "Finance",
+          "channel": "Bad",
+          "raw_length": 243,
+          "corrupted_preview": "[???] calculate the [???] [???] we [???] to [???] the number of [???] [???] must be [???] [???] cover [???] fixed [???] [???] costs. [???] [???] [???]..."
+        }
+      ],
+      "receiving_answer_preview": "To determine the break-even point for your business, you need to calculate the number of units that must be sold to cover all fixed and variable costs. The break-even point is where total revenue equa...",
+      "score": 8,
+      "reason": "The answer correctly calculates the break-even point in units as 10,000, matching the reference. However, it lacks the calculation of break-even revenue, contribution margin per unit, and contribution margin ratio, which are present in the reference answer."
+    },
+    {
+      "question_id": 12,
+      "question": "Explain operating leverage vs financial leverage?",
+      "domain": "finance",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Finance": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2632,
+          "corrupted_preview": "Operating leverage and financial leverage are two important concepts in financial analysis that help in understanding how a company's earnings are aff..."
+        }
+      ],
+      "receiving_answer_preview": "Operating leverage and financial leverage are two critical concepts in financial analysis that help assess how a company's earnings are influenced by changes in sales and its capital structure. Here's...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, covering definitions, characteristics, impacts, and calculations for both operating and financial leverage. It aligns well with the reference, but the explanation of combined leverage is missing."
+    },
+    {
+      "question_id": 13,
+      "question": "TCP vs UDP: differences and use cases?",
+      "domain": "tech",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Tech"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2487,
+          "corrupted_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core protocols of the Internet Protocol Suite, used for transmitting data..."
+        }
+      ],
+      "receiving_answer_preview": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two fundamental protocols used for transmitting data over networks, each with distinct characteristics and suitable for differe...",
+      "score": 10,
+      "reason": "The answer is accurate, complete, and correctly explains the differences and use cases of TCP and UDP, matching the reference answer."
+    },
+    {
+      "question_id": 14,
+      "question": "SQL injection prevention methods?",
+      "domain": "tech",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Finance",
+        "Tech"
+      ],
+      "num_consultations": 2,
+      "channel_assignments": {
+        "Finance": "Good",
+        "Tech": "Bad"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Finance",
+          "channel": "Good",
+          "raw_length": 2597,
+          "corrupted_preview": "SQL injection is a common attack vector that can compromise the security of a database. To prevent SQL injection, it is crucial to implement a combina..."
+        },
+        {
+          "agent": "Tech",
+          "channel": "Bad",
+          "raw_length": 296,
+          "corrupted_preview": "[???] injection [???] a critical [???] [???] that allows [???] attacker [???] [???] [???] [???] [???] that [???] [???] makes [???] [???] database. [??..."
+        }
+      ],
+      "receiving_answer_preview": "SQL injection is a critical security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can lead to unauthorized data access, data modi...",
+      "score": 9,
+      "reason": "The answer is comprehensive and covers all primary methods mentioned in the reference, including parameterized queries, stored procedures, input validation, and ORM frameworks. It also includes secondary methods like least privilege, WAF, escaping inputs, and error handling. The additional points on regular audits and database security features are relevant but not in the reference, slightly deviating from the expected answer."
+    },
+    {
+      "question_id": 15,
+      "question": "CAP theorem explanation with examples?",
+      "domain": "tech",
+      "condition": "joint_early_stop",
+      "agents_selected": [
+        "Tech"
+      ],
+      "num_consultations": 1,
+      "channel_assignments": {
+        "Tech": "Good"
+      },
+      "specialist_outputs": [
+        {
+          "agent": "Tech",
+          "channel": "Good",
+          "raw_length": 2702,
+          "corrupted_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that describes the trade-offs between three key pro..."
+        }
+      ],
+      "receiving_answer_preview": "The CAP theorem, also known as Brewer's theorem, is a fundamental concept in distributed systems that outlines the trade-offs between three key properties: Consistency, Availability, and Partition Tol...",
+      "score": 9,
+      "reason": "The answer is accurate and complete, providing a detailed explanation of the CAP theorem and examples for each component. It correctly describes the trade-offs and provides examples of CP and AP systems. However, it lacks a specific example of a CA system, which is mentioned in the reference."
+    }
+  ]
+}

@@ -1,0 +1,727 @@
+{
+  "experiment": "KI-1 Natural Token",
+  "model": "gpt-4o",
+  "temperature": 0,
+  "timestamp": "2026-03-20T00:23:51.245Z",
+  "design": "No max_tokens limit. Large datasets (15-20 points). B needs 2-5 specific values.",
+  "problems": [
+    {
+      "id": 1,
+      "domain": "Corporate Finance",
+      "dataCount": 20,
+      "answer": 0.667,
+      "formula": "LongTerm_Debt / Equity"
+    },
+    {
+      "id": 2,
+      "domain": "Manufacturing",
+      "dataCount": 18,
+      "answer": 11115,
+      "formula": "500 × 0.975 × 8 × 3 × 0.95"
+    },
+    {
+      "id": 3,
+      "domain": "Healthcare",
+      "dataCount": 18,
+      "answer": 6.8,
+      "formula": "3400 / 500"
+    },
+    {
+      "id": 4,
+      "domain": "Investment Portfolio",
+      "dataCount": 20,
+      "answer": 7.95,
+      "formula": "0.30×12 + 0.25×8 + 0.20×4 + 0.15×9 + 0.10×2"
+    },
+    {
+      "id": 5,
+      "domain": "City Demographics",
+      "dataCount": 18,
+      "answer": 119000,
+      "formula": "850000 × 0.14"
+    },
+    {
+      "id": 6,
+      "domain": "Logistics",
+      "dataCount": 18,
+      "answer": 18700,
+      "formula": "2200 × 8.50"
+    },
+    {
+      "id": 7,
+      "domain": "Energy Utility",
+      "dataCount": 19,
+      "answer": 19.05,
+      "formula": "(5000 - 4200) / 4200 × 100"
+    },
+    {
+      "id": 8,
+      "domain": "Agriculture",
+      "dataCount": 20,
+      "answer": 835200,
+      "formula": "800 × 180 × 5.80"
+    },
+    {
+      "id": 9,
+      "domain": "Retail Chain",
+      "dataCount": 18,
+      "answer": 9333333,
+      "formula": "4200000000 / 450"
+    },
+    {
+      "id": 10,
+      "domain": "University",
+      "dataCount": 19,
+      "answer": 15.91,
+      "formula": "35000 / 2200"
+    },
+    {
+      "id": 11,
+      "domain": "Professional Sports Team",
+      "dataCount": 19,
+      "answer": 95.14,
+      "formula": "68500 / 72000 × 100"
+    },
+    {
+      "id": 12,
+      "domain": "Weather Station",
+      "dataCount": 19,
+      "answer": 53,
+      "formula": "98 - 45"
+    },
+    {
+      "id": 13,
+      "domain": "Telecom Provider",
+      "dataCount": 18,
+      "answer": 1375000000,
+      "formula": "25000000 × 55"
+    },
+    {
+      "id": 14,
+      "domain": "Airline",
+      "dataCount": 19,
+      "answer": 294.74,
+      "formula": "28000000000 / 95000000"
+    },
+    {
+      "id": 15,
+      "domain": "Real Estate Developer",
+      "dataCount": 20,
+      "answer": 71.11,
+      "formula": "3200 / 4500 × 100"
+    }
+  ],
+  "summary": {
+    "noContext": {
+      "label": "No Context",
+      "avgTokens": 936,
+      "accuracy": 80,
+      "minTokens": 723,
+      "maxTokens": 1399,
+      "correct": 12,
+      "total": 15
+    },
+    "oneWay": {
+      "label": "One-Way",
+      "avgTokens": 175,
+      "accuracy": 93.3,
+      "minTokens": 64,
+      "maxTokens": 319,
+      "correct": 14,
+      "total": 15
+    },
+    "mutual": {
+      "label": "Mutual",
+      "avgTokens": 20,
+      "accuracy": 93.3,
+      "minTokens": 9,
+      "maxTokens": 75,
+      "correct": 14,
+      "total": 15
+    },
+    "progressiveR1": {
+      "label": "Progressive R1",
+      "avgTokens": 930,
+      "accuracy": 86.7,
+      "minTokens": 781,
+      "maxTokens": 1166,
+      "correct": 13,
+      "total": 15
+    },
+    "progressiveR2": {
+      "label": "Progressive R2",
+      "avgTokens": 119,
+      "accuracy": 100,
+      "minTokens": 69,
+      "maxTokens": 213,
+      "correct": 15,
+      "total": 15
+    },
+    "progressiveR3": {
+      "label": "Progressive R3",
+      "avgTokens": 19,
+      "accuracy": 86.7,
+      "minTokens": 9,
+      "maxTokens": 38,
+      "correct": 13,
+      "total": 15
+    }
+  },
+  "perProblem": [
+    {
+      "id": 1,
+      "domain": "Corporate Finance",
+      "expected": 0.667,
+      "noContext": {
+        "aTokens": 1399,
+        "bAnswer": 12,
+        "correct": false
+      },
+      "oneWay": {
+        "aTokens": 319,
+        "bAnswer": 12,
+        "correct": false
+      },
+      "mutual": {
+        "aTokens": 14,
+        "bAnswer": 0.67,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 955,
+          "bAnswer": 0.67,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 128,
+          "bAnswer": 0.67,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 25,
+          "bAnswer": 0.67,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 2,
+      "domain": "Manufacturing",
+      "expected": 11115,
+      "noContext": {
+        "aTokens": 920,
+        "bAnswer": 500,
+        "correct": false
+      },
+      "oneWay": {
+        "aTokens": 138,
+        "bAnswer": 11115,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 38,
+        "bAnswer": 11115,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 1166,
+          "bAnswer": 500,
+          "correct": false
+        },
+        "r2": {
+          "aTokens": 213,
+          "bAnswer": 11115,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 38,
+          "bAnswer": 11115,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 3,
+      "domain": "Healthcare",
+      "expected": 6.8,
+      "noContext": {
+        "aTokens": 920,
+        "bAnswer": 6.8,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 168,
+        "bAnswer": 6.8,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 9,
+        "bAnswer": 6.8,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 1008,
+          "bAnswer": 6.8,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 113,
+          "bAnswer": 6.8,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 12,
+          "bAnswer": 6.8,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 4,
+      "domain": "Investment Portfolio",
+      "expected": 7.95,
+      "noContext": {
+        "aTokens": 1108,
+        "bAnswer": 7.95,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 272,
+        "bAnswer": 7.95,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 75,
+        "bAnswer": 7.95,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 1024,
+          "bAnswer": 7.95,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 184,
+          "bAnswer": 7.95,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 9,
+          "bAnswer": -999,
+          "correct": false
+        }
+      }
+    },
+    {
+      "id": 5,
+      "domain": "City Demographics",
+      "expected": 119000,
+      "noContext": {
+        "aTokens": 849,
+        "bAnswer": 119000,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 64,
+        "bAnswer": 119000,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 10,
+        "bAnswer": 119000,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 781,
+          "bAnswer": 119000,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 123,
+          "bAnswer": 119000,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 13,
+          "bAnswer": 119000,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 6,
+      "domain": "Logistics",
+      "expected": 18700,
+      "noContext": {
+        "aTokens": 1021,
+        "bAnswer": 18700,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 180,
+        "bAnswer": 18700,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 18,
+        "bAnswer": 18700,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 980,
+          "bAnswer": 18700,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 92,
+          "bAnswer": 18700,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 20,
+          "bAnswer": 18700,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 7,
+      "domain": "Energy Utility",
+      "expected": 19.05,
+      "noContext": {
+        "aTokens": 945,
+        "bAnswer": 19.05,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 158,
+        "bAnswer": 19.05,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 16,
+        "bAnswer": 800,
+        "correct": false
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 987,
+          "bAnswer": 19.05,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 114,
+          "bAnswer": 19.05,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 15,
+          "bAnswer": 800,
+          "correct": false
+        }
+      }
+    },
+    {
+      "id": 8,
+      "domain": "Agriculture",
+      "expected": 835200,
+      "noContext": {
+        "aTokens": 998,
+        "bAnswer": 835200,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 187,
+        "bAnswer": 835200,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 27,
+        "bAnswer": 835200,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 973,
+          "bAnswer": 835200,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 131,
+          "bAnswer": 835200,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 26,
+          "bAnswer": 835200,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 9,
+      "domain": "Retail Chain",
+      "expected": 9333333,
+      "noContext": {
+        "aTokens": 827,
+        "bAnswer": 9.333,
+        "correct": false
+      },
+      "oneWay": {
+        "aTokens": 185,
+        "bAnswer": 9333333.33,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 12,
+        "bAnswer": 9333333.33,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 980,
+          "bAnswer": 9333333.33,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 100,
+          "bAnswer": 9333333.33,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 31,
+          "bAnswer": 9333333.33,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 10,
+      "domain": "University",
+      "expected": 15.91,
+      "noContext": {
+        "aTokens": 906,
+        "bAnswer": 15.9,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 159,
+        "bAnswer": 15.91,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 11,
+        "bAnswer": 15.91,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 800,
+          "bAnswer": 2200,
+          "correct": false
+        },
+        "r2": {
+          "aTokens": 97,
+          "bAnswer": 15.91,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 14,
+          "bAnswer": 15.91,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 11,
+      "domain": "Professional Sports Team",
+      "expected": 95.14,
+      "noContext": {
+        "aTokens": 723,
+        "bAnswer": 95.1,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 128,
+        "bAnswer": 95.14,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 15,
+        "bAnswer": 95.14,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 805,
+          "bAnswer": 95.1,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 112,
+          "bAnswer": 95.13888889,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 17,
+          "bAnswer": 95.14,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 12,
+      "domain": "Weather Station",
+      "expected": 53,
+      "noContext": {
+        "aTokens": 938,
+        "bAnswer": 53,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 105,
+        "bAnswer": 53,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 13,
+        "bAnswer": 53,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 960,
+          "bAnswer": 53,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 69,
+          "bAnswer": 53,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 13,
+          "bAnswer": 53,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 13,
+      "domain": "Telecom Provider",
+      "expected": 1375000000,
+      "noContext": {
+        "aTokens": 859,
+        "bAnswer": 1375000000,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 182,
+        "bAnswer": 1375000000,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 9,
+        "bAnswer": 1375000000,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 822,
+          "bAnswer": 1375000000,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 118,
+          "bAnswer": 1375000000,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 27,
+          "bAnswer": 1375000000,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 14,
+      "domain": "Airline",
+      "expected": 294.74,
+      "noContext": {
+        "aTokens": 783,
+        "bAnswer": 294.74,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 165,
+        "bAnswer": 294.74,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 14,
+        "bAnswer": 294.74,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 853,
+          "bAnswer": 294.74,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 97,
+          "bAnswer": 294.74,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 14,
+          "bAnswer": 294.74,
+          "correct": true
+        }
+      }
+    },
+    {
+      "id": 15,
+      "domain": "Real Estate Developer",
+      "expected": 71.11,
+      "noContext": {
+        "aTokens": 841,
+        "bAnswer": 71.11,
+        "correct": true
+      },
+      "oneWay": {
+        "aTokens": 209,
+        "bAnswer": 71.11,
+        "correct": true
+      },
+      "mutual": {
+        "aTokens": 13,
+        "bAnswer": 71.11,
+        "correct": true
+      },
+      "progressive": {
+        "r1": {
+          "aTokens": 856,
+          "bAnswer": 71.11,
+          "correct": true
+        },
+        "r2": {
+          "aTokens": 101,
+          "bAnswer": 71.11,
+          "correct": true
+        },
+        "r3": {
+          "aTokens": 10,
+          "bAnswer": 71.11,
+          "correct": true
+        }
+      }
+    }
+  ]
+}
