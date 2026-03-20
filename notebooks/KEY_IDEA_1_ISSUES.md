@@ -66,3 +66,39 @@
 - "mutual cognition이 통신 품질을 개선한다" (같은 토큰 예산에서 더 나은 답)
 - 토큰 측정은 이종 모델 후속 연구에서
 - 가장 현실적이지만, 논문 스토리가 약해질 수 있음
+
+---
+
+## 2026-03-21 Fix: Rx N/A 문제 근본 해결
+
+### 근본 원인 (정확한 진단)
+`\boxed{X}` 포맷이 Qwen3-4B 4B 모델에서 48 토큰 내에 생성 불가능한 이유:
+
+1. **`\boxed{?}` 프라이밍 실패**: user message 끝에 `\boxed{?}`를 넣었지만, 모델은 이것을
+   입력의 일부로 보고 새로운 문장을 시작함. 완성(completion)이 아닌 응답(response)을 생성.
+2. **Preamble 문제**: "Reply ONLY with \boxed{X}"라고 해도 4B 모델은 greedy decoding에서
+   "Based on the analysis..." 같은 서두를 20-40 토큰 생성한 후에야 \boxed{} 도달.
+   48 토큰 한도에서 서두만으로 예산 소진.
+3. **LaTeX 포맷 오버헤드**: `\boxed{A}`는 토큰화 시 `\`, `boxed`, `{`, `A`, `}` = 최소 5토큰.
+   단순 "A"는 1토큰.
+
+### 적용한 수정 (2가지)
+
+**수정 A: Rx 프롬프트를 bare letter 출력으로 변경**
+- Before: "Reply ONLY with \boxed{X} where X is A, B, C, or D."
+- After: "Output ONLY a single letter: A, B, C, or D. Do not write anything else. No explanation. Just the letter."
+- User message를 `"Answer:"` 로 끝냄 → 모델의 첫 토큰이 바로 A/B/C/D가 되도록 프라이밍
+
+**수정 B: 다단계 답 추출기 (extract_answer)**
+- Strategy 1: 응답이 정확히 "A"/"B"/"C"/"D" 한 글자 (이상적)
+- Strategy 2: `\boxed{X}` (하위 호환)
+- Strategy 3: "Answer: X", "answer is X" 패턴
+- Strategy 4: 줄 시작이 "A)" 또는 "A." 형태
+- Strategy 5: 단어 경계로 둘러싸인 첫 A-D 문자
+- Strategy 6: 최후 수단 — 구두점 뒤의 첫 A-D
+
+### 왜 이것이 작동하는가
+- "Just the letter" + `Answer:` 프라이밍 = 모델의 첫 토큰이 높은 확률로 A/B/C/D
+- 서두를 쓰더라도 extract_answer가 다단계로 잡아냄
+- 48 토큰은 bare letter 출력에 충분히 넉넉 (1-5 토큰이면 됨)
+- 실험 공정성 유지: 모든 4개 조건이 동일한 Rx 로직 사용
