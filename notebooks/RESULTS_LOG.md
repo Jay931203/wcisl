@@ -271,6 +271,7 @@ Budget   blind    choices    full
 16tok     63%      57%       77%
 24tok     60%      63%       87%
 32tok     63%      60%       90%
+64tok     77%      63%       87%
 ```
 
 ### Rate-Distortion 커브
@@ -289,35 +290,3 @@ full_aware:      16(77%) → 24(87%) → 32(90%)
 - **choices_aware는 중간 단계로 부적합** — blind와 유의미한 차이 없음
 
 ---
-
-## 2026-03-21: Segment QAT (MambaCompression 별도 프로젝트)
-
-### Design
-- Policy-Constrained Quantization-Aware Training
-- UE Encoder [mamba-L2] + BS Decoder [transnet-L2]
-- LoRA: rank=8, alpha=16.0, trainable=20,480 / 2,738,050 (0.75%)
-- 50 epochs, LR=0.0001, Lambda_q=0.5
-- Test samples: 20,000
-
-### Results: PTQ vs QAT
-
-```
-gamma=0.99
-  87.5%: PTQ outage=0.993 NMSE=-9.78dB | QAT outage=1.000 NMSE=-4.25dB
-  90.0%: PTQ outage=1.000 NMSE=-4.81dB | QAT outage=1.000 NMSE=-3.07dB
-  92.5%: PTQ outage=1.000 NMSE=-2.44dB | QAT outage=1.000 NMSE=-2.07dB
-  95.0%: PTQ outage=0.147 NMSE=-15.37dB | QAT outage=1.000 NMSE=-4.97dB
-
-gamma=0.95
-  87.5%: PTQ outage=0.003 NMSE=-9.78dB | QAT outage=0.857 NMSE=-4.25dB
-  90.0%: PTQ outage=0.903 NMSE=-4.81dB | QAT outage=0.999 NMSE=-3.07dB
-  92.5%: PTQ outage=1.000 NMSE=-2.44dB | QAT outage=1.000 NMSE=-2.07dB
-  95.0%: PTQ outage=0.000 NMSE=-15.37dB | QAT outage=0.643 NMSE=-4.97dB
-```
-
-### 분석
-- QAT best val_NMSE: -15.45dB (epoch 8)
-- PTQ baseline: -15.37dB
-- 95% saving에서 PTQ가 QAT보다 NMSE 우수 (-15.37 vs -4.97dB)
-- QAT가 outage는 높지만 NMSE가 크게 열화
-- 결과 파일: segment_qat_comparison.csv, plots/segment_qat_comparison_*.png
