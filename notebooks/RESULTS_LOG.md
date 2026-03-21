@@ -436,6 +436,23 @@ Budget   blind    a_aware  b_aware  mutual
 
 ---
 
+## 2026-03-22: VQA Qwen2.5-VL-3B (ScienceQA, 10문제, 24tok)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+24tok     60%      70%      60%      60%
+A-effect: +5.0pp  B-effect: -5.0pp  Interaction: -10.0pp (SUB-ADDITIVE)
+```
+
+### 분석
+- a_aware > blind (+10%p) ✓
+- b_aware = blind (효과 없음)
+- mutual = blind (a_aware보다 나쁨!) — B_AWARE가 mutual에서 역효과
+- → B_AWARE를 A의 상태에 따라 분리 필요 (B_AWARE_FOR_A_BLIND / B_AWARE_FOR_A_AWARE)
+
+---
+
 ## ★★ 2026-03-21: GPT-4o-mini 4조건 v3 (B출력강제 없음, 30문제)
 
 ### 프롬프트
