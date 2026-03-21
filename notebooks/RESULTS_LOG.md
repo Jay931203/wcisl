@@ -304,15 +304,71 @@ Budget   blind    a_aware  b_aware  mutual
 
 ---
 
-## 2026-03-21: Qwen3-4B 4조건 ext 결과 (b_aware=첫문장, A캐싱, 30문제)
+## 2026-03-21: Qwen3-4B 4조건 ext (b_aware=첫문장 집중, A캐싱, 30문제)
 
 ### Results
 ```
 Budget   blind    a_aware  b_aware  mutual
 16tok     63%      57%      57%      53%
+24tok     60%      63%      63%      57%
 32tok     63%      60%      60%      60%
 48tok     73%      67%      73%      70%
+64tok     77%      63%      73%      67%
 ```
+
+---
+
+## 2026-03-21: Qwen3-4B 4조건 ext (b_aware 수정="선택지 관련 정보 우선", A캐싱, 30문제)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     63%      57%      63%      57%
+24tok     60%      63%      57%      63%
+```
+- 돌리는 중 (32/48/64tok 대기)
+
+---
+
+## 2026-03-21: GPT-4o-mini 4조건 개선 (토큰명시 + B_AWARE 수정, 30문제)
+
+### 변경점
+- A 프롬프트에 "You have at most {budget} tokens. Be concise." 추가
+- B_AWARE: "첫문장 집중" → "Summarizer가 선택지를 봤고 정답 관련 사실을 강조했을 수 있다"
+- A_CHOICES: "구분하라" 지시 유지 (다음 개선 대상)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual   avg_tok(blind/aware)
+16tok     63%      67%      63%      67%      16/15
+32tok     73%      73%      73%      73%      30/25
+48tok     60%      70%      63%      70%      44/28  ← sweet spot
+64tok     67%      73%      67%      73%      54/34  ← sweet spot
+80tok     77%      67%      73%      73%      61/40
+96tok     80%      67%      80%      67%      76/45
+112tok    73%      67%      73%      67%      81/47
+128tok    70%      67%      73%      67%      81/50
+```
+
+### 2x2 Interaction
+```
+@16tok:  A=+3.3%p  B=+0.0%p  mutual 67% > blind 63%
+@32tok:  A=+0.0%p  B=+0.0%p  mutual 73% = blind 73%
+@48tok:  A=+8.3%p  B=+1.7%p  mutual 70% > blind 60% ← 최대 효과
+@64tok:  A=+6.7%p  B=+0.0%p  mutual 73% > blind 67%
+@80tok:  A=-5.0%p  B=+1.7%p  mutual 73% < blind 77%
+@96tok:  A=-13.3%p B=+0.0%p  mutual 67% < blind 80%
+@112tok: A=-6.7%p  B=+0.0%p  mutual 67% < blind 73%
+@128tok: A=-5.0%p  B=+1.7%p  mutual 67% < blind 70%
+```
+
+### 핵심 발견
+1. **48-64tok에서 mutual > blind** (+6~10%p) — 이전 대비 개선!
+2. **80tok+ 에서 역전** — blind가 더 많은 토큰으로 더 많은 정보 담아 유리
+3. **B_AWARE 중립화 성공** — B_effect 0~+1.7%p (이전 -3~-7%p에서 개선)
+4. **자연 압축 확인**: aware avg_tok ~28-50tok, blind ~44-81tok
+   → aware가 ~40% 적은 토큰 사용하면서 48-64tok에서 동등 이상 정확도
+5. **다음 개선**: A_CHOICES에서 "구분하라" 제거 → "선택지는 참고용" 으로
 
 ---
 
