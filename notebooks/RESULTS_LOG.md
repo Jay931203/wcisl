@@ -254,3 +254,36 @@ Budget   blind    a_aware  b_aware  mutual
 ### 종합 주장
 > **Tx의 Rx 인지 수준이 높을수록, 더 적은 토큰으로 동일 성능 달성.
 > 특히 bandwidth가 극도로 제한될 때(32tok) 인지 효과가 극대화된다.**
+
+---
+
+## 2026-03-21: 3조건 30문제 (16/24/32tok, "중요 먼저" 프롬프트)
+
+### Design
+- 이전과 동일 프롬프트, **30문제**로 확대
+- TX_BUDGETS: [16, 24, 32]
+- 3조건 (blind/choices_aware/full_aware)
+
+### Results
+
+```
+Budget   blind    choices    full
+16tok     63%      57%       77%
+24tok     60%      63%       87%
+32tok     63%      60%       90%
+```
+
+### Rate-Distortion 커브
+```
+blind:           16(63%) → 24(60%) → 32(63%)
+choices_aware:   16(57%) → 24(63%) → 32(60%)
+full_aware:      16(77%) → 24(87%) → 32(90%)
+```
+
+### Key Findings
+- **full > blind > choices** 패턴 — choices가 blind보다 나쁜 경우 다수
+- full_aware: 16tok에서도 77%, 32tok에서 90% — 일관되게 최고
+- blind: 60-63% 안정 — 토큰에 무관
+- choices_aware: 57-63% 불안정 — blind와 비슷하거나 나쁨
+- 30문제에서도 **full vs blind 갭은 확인** (Δ14~27%p)
+- **choices_aware는 중간 단계로 부적합** — blind와 유의미한 차이 없음

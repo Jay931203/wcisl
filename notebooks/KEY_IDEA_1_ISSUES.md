@@ -290,3 +290,22 @@ structural arguments above suggest the effect is not there to find.
 wording) or adding more token budgets. The problem is not in the prompts; it is in the
 experimental design. No prompt change will create genuine cognitive asymmetry between
 two copies of the same 4B model.
+
+
+KI1 테스트를 하는데 직관적으로 설정했던 초기 실험 (LLMU+math&science expert)이 몇가지 한계가 관찰되어서, 예전에 범듦이 세미나때 나왔던 얘기처럼 협업 필수인 task로 변경하니 의도한 성능이 좀 나오기 시작했고, 실험팀 친구들과 공유하고, 문제 설정을 좀 더 다듬어서 최종 성능을 다시 뽑는중
+
+*한계
+1. prompt만으로는 LLM의 전문 지식을 강요해도, 백본이 동일한 사전 지식을 공유하고 있어 한계가 있어보이고, 이종간 협업 성능을 유도하는 방향으로 설정하면 좋음
+2. prompt로 출력 토큰의 양을 유동적으로 조절하는건 너무 의도적인 결과.
+위 두개는 하려면 가능하긴 한데, prompt로 너무 결과를 강요해서 그냥 원하는 결과나 나올뿐이고, 우리가 원하는 상호 인지는 테스트가 힘듦
+
+*변경 1
+1. 기존 LLMU(수학/과학 산술 문제)에서 협업해야 풀수있는 문제와 역할(RACE,문장 독해 및 요약 전달 + 요약으로 문제풀기)문제로 변경
+2. 요약 하는 prompt limit을 제한했을때,(48 vs 128) 결과 비교
+
+위 두 방향을 좀 조정 하니 평균적으로 의도된 결과가 나오기 시작해서, 좀더 정제해서 성능 뽑는중
+
+Budget   Metric       blind      a_aware    b_aware    mutual
+------------------------------------------------------------
+48tok  Accuracy       50%       90%       60%       90%
+128tok  Accuracy       80%       95%       95%       90%
