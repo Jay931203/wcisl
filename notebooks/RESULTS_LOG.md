@@ -42,12 +42,12 @@ Budget   Metric       blind      a_aware    b_aware    mutual
 
 ---
 
-## 2026-03-21: 구조화 추출 포맷 (TOPIC/KEY_FACT/CAUSE/RESULT)
+## 2026-03-21: 서술형 요약 + 질문 타입 힌트 (핵심 정보 앞배치)
 
 ### Design
-- A는 "information extractor" — 4필드 구조화 추출
-- a_aware: A가 질문 타입을 앎 → 해당 필드 상세화 (인코딩 적응)
-- b_aware: B가 포맷을 앎 → 관련 필드 집중 (디코딩 적응)
+- A는 "Summarizer" — 서술형 요약 (핵심을 첫 문장에)
+- a_aware: A가 질문 타입을 앎 → 해당 유형 정보 우선 요약
+- b_aware: B가 "A는 핵심을 첫 문장에 넣는다"를 앎
 - 20 RACE questions, budgets 64/128 tokens
 - Initial guess 없음 — B가 바로 답
 
