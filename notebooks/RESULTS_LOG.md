@@ -350,6 +350,48 @@ Budget   blind    a_aware  b_aware  mutual
 
 ---
 
+## 2026-03-21: GPT-4o-mini 4조건 v3+B출력강제 (30문제, 16~128tok)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual   avg_tok(bl/a)
+16tok     60%      53%      63%      60%      16/15
+32tok     70%      67%      67%      67%      32/30
+48tok     70%      70%      67%      70%      43/39
+64tok     70%      77%      67%      77%      45/40
+80tok     73%      70%      70%      70%      45/40
+96tok     70%      70%      67%      70%      45/39
+112tok    70%      73%      67%      70%      45/39
+128tok    70%      73%      67%      77%      45/37
+```
+
+### 핵심 발견
+- @64tok: mutual 77% > blind 70% (+7%p)
+- @128tok: mutual 77% > blind 70% (+7%p)
+- b_aware 효과 없음 (mutual = a_aware)
+- 자연 압축: blind ~45tok, aware ~39tok (48tok 이상에서 포화)
+
+---
+
+## ★ 종합 비교: Qwen3-4B vs GPT-4o-mini (프로토콜 v3)
+
+### a_aware > blind 패턴
+```
+          Qwen3-4B                    GPT-4o-mini
+Budget   blind  a_aware  Δ          blind  a_aware  Δ
+16tok     60%    77%    +17%p        60%    53%    -7%p
+32tok     57%    70%    +13%p        70%    67%    -3%p
+48tok     67%    70%    +3%p         70%    70%    +0%p
+64tok     67%    70%    +3%p         70%    77%    +7%p
+```
+
+### 모델별 특성
+- **Qwen3-4B**: 낮은 예산(16-32tok)에서 a_aware 효과 극대화 (+13~17%p)
+- **GPT-4o-mini**: 높은 예산(64tok+)에서 a_aware 효과 (+7%p), 낮은 예산에서는 역효과
+- **공통**: b_aware 효과 없음, mutual = a_aware
+
+---
+
 ## 2026-03-21: GPT-4o-mini 4조건 개선 (토큰명시 + B_AWARE 수정, 30문제)
 
 ### 변경점
