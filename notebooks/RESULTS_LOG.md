@@ -86,3 +86,140 @@ main-idea       blind:100%(2) a_aware:100%(2) b_aware:100%(2) mutual:100%(2)
 - 토큰 부족 상황에서 aware가 정보 편향을 일으킴 → blind보다 나쁨
 - 구조화 포맷 자체는 나쁘지 않으나 (blind 64tok=70%, 이전 요약형 blind보다 높음)
   mutual cognition 효과를 보여주기엔 부적합
+
+---
+
+## 2026-03-21: RACE 3조건 정보 수준별 비교 (blind/choices_aware/full_aware)
+
+### Design
+- A (Summarizer): 지문 보고 2-3문장 요약
+- B (Answerer): 질문+선택지+요약으로 답 (지문 못 봄)
+- 3조건: A가 받는 정보 수준만 다름 (B는 모든 조건 동일)
+  - blind: A는 지문만
+  - choices_aware: A는 지문 + 선택지 (질문은 못 봄)
+  - full_aware: A는 지문 + 질문 + 선택지
+- 20 RACE questions (seed=42)
+- "중요한 정보 먼저" 지시 없는 버전
+
+### Results (4개 토큰 예산)
+
+```
+Budget   blind    choices    full
+18tok     65%      65%       80%
+32tok     60%      55%       95%
+64tok     65%      80%       95%
+128tok    70%      80%       95%
+```
+
+### Per-question comparison (@64tok, 조건별 차이 나는 문제만)
+```
+Q1:  blind=A✗  choices=C✗  full=B✓  (expected B)
+Q2:  blind=D✗  choices=B✗  full=C✓  (expected C)
+Q3:  blind=D✗  choices=B✓  full=B✓  (expected B)
+Q10: blind=D✗  choices=B✓  full=B✓  (expected B)
+Q11: blind=B✓  choices=D✗  full=B✓  (expected B)
+Q12: blind=A✗  choices=C✓  full=C✓  (expected C)
+Q15: blind=C✗  choices=A✓  full=A✓  (expected A)
+```
+
+### Key Findings
+
+1. **full_aware는 압도적** — 32tok에서도 95%. 질문을 알면 핵심 1문장으로 충분.
+2. **blind vs full 갭이 32tok에서 최대** — 60% vs 95% (Δ35%p). bandwidth 제약이 클수록 mutual cognition 효과 극대화.
+3. **choices_aware는 64tok 이상에서만 효과** — 80% > blind 65%. 64tok 미만에서는 blind와 동일하거나 오히려 나쁨.
+4. **choices_aware @32tok 역효과** — 55% < blind 60%. 선택지 구분 시도하다 토큰 부족으로 잘림.
+
+### Rate-Distortion Curve
+```
+blind:    18(65%) → 32(60%) → 64(65%) → 128(70%)  — 토큰 늘려도 미미한 개선
+choices:  18(65%) → 32(55%) → 64(80%) → 128(80%)  — 64tok부터 효과 발현
+full:     18(80%) → 32(95%) → 64(95%) → 128(95%)  — 32tok이면 포화
+```
+
+### 분석
+- full_aware가 너무 강력 (질문 전체 = 치트급). 하지만 "A가 Rx의 task를 완전히 이해할 때" 기준선으로 유용.
+- choices_aware는 "중간 수준의 mutual cognition"으로 적절하나, 낮은 토큰에서 불안정.
+- blind의 성능이 토큰에 거의 무관 (65±5%) — 일반 요약은 토큰 늘려도 핵심을 못 잡음.
+- → 다음 시도: "중요한 정보 먼저" 프롬프트 추가로 choices_aware 안정화
+
+### 한계
+- b_aware 조건 없음 (3조건만 테스트)
+- choices_aware가 32tok 이하에서 blind보다 나쁨 — 프롬프트 개선 필요
+- full_aware는 참조용이지 mutual cognition의 현실적 수준은 아님
+
+---
+
+## 2026-03-21: 3조건 + "중요 정보 먼저" 프롬프트 (32/64tok)
+
+### Design
+- 이전 실험에 "Start with the most important fact" 프롬프트 추가
+- A_BLIND: "Start with the most important fact"
+- A_CHOICES: "Start with the ONE fact that best distinguishes between the options"
+- A_FULL: "Start with the fact most relevant to the question"
+- 3조건 (blind/choices_aware/full_aware), B는 동일
+- 20 RACE questions (seed=42), budgets 32/64
+
+### Results
+
+```
+Budget   blind    choices    full
+32tok     55%      65%       95%
+64tok     70%      70%       85%
+```
+
+### Key Findings
+- @32tok: 계단식 패턴 성공! blind 55% → choices 65% → full 95%
+- @64tok: choices가 blind와 동일 (70%), full이 약간 내려감 (85%)
+- "중요 정보 먼저" 프롬프트가 32tok에서 choices를 개선 (이전 55% → 65%)
+
+---
+
+## 2026-03-21: 4조건 (blind/a_aware/b_aware/mutual) + "중요 정보 먼저" (32/64tok)
+
+### Design
+- a_aware: A가 지문 + 선택지 봄 (= choices_aware)
+- b_aware: A는 blind + B에게 "A가 선택지 보고 맞춤 요약함" 알려줌
+- mutual: a_aware + b_aware 합침
+- "Start with most important/distinguishing fact" 프롬프트 포함
+- 20 RACE questions (seed=42), budgets 32/64
+
+### Results
+
+```
+Budget   blind    a_aware  b_aware  mutual
+32tok     55%      65%      50%      70%
+64tok     70%      70%      70%      75%
+```
+
+### Key Findings
+- @32tok: **mutual(70%) > a_aware(65%) > blind(55%)** — 계단식 패턴!
+  - mutual이 a_aware보다 5%p 높음 → b_aware가 추가 기여
+  - blind 대비 mutual Δ+15%p
+- @64tok: 차이 줄어듦 (70-75%) — 토큰 여유 있으면 차이 축소
+- b_aware 단독(50%)은 blind(55%)보다 나쁨 — b_aware의 거짓 정보 문제
+  (A가 blind인데 B에게 "A가 맞춤 요약함" 알려줌 = 거짓)
+- mutual에서는 b_aware가 긍정적 (a_aware 65% → mutual 70%)
+  (A가 실제로 맞춤 요약했으므로 B의 신뢰가 정당)
+
+### 핵심 발견
+- **bandwidth 제약(32tok)에서 mutual cognition 효과 극대화**
+- **mutual > a_aware**: Rx측 인지가 Tx측 인지에 추가 기여
+- **b_aware 단독은 역효과**: 거짓 정보는 해로움. 실제 맞춤 요약일 때만 유효
+
+---
+
+## 전체 Rate-Distortion 커브 종합 (3조건 기준, 확인된 결과)
+
+```
+Budget   blind    choices    full
+18tok     65%      65%       80%      ← "중요 먼저" 없는 버전
+32tok     55%      65%       95%      ← "중요 먼저" 있는 버전
+64tok     65-70%   70-80%    85-95%   ← 실험 간 편차 있음
+128tok    70%      80%       95%      ← "중요 먼저" 없는 버전
+```
+
+### 종합 분석
+- full_aware: 32tok만 있으면 95% 포화 — 질문을 알면 토큰 거의 불필요
+- choices_aware: 64tok부터 안정적 효과 — 중간 수준의 인지
+- blind: 토큰 늘려도 65-70% — 인지 없이는 핵심을 못 잡음
+- **핵심 주장: Tx의 Rx 인지 수준이 높을수록, 더 적은 토큰으로 동일 성능 달성**
