@@ -392,6 +392,50 @@ Budget   blind  a_aware  Δ          blind  a_aware  Δ
 
 ---
 
+## 2026-03-21: Social IQa Groq (Llama 3.1 8B, 30문제, word-controlled)
+
+### 프롬프트
+- A: 3-fragment 구조 (EVENT/BEFORE/AFTER → main objects/action/context)
+- B_AWARE: A의 관측 제약을 앎
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     53%      50%      43%      43%
+24tok     53%      53%      50%      53%
+32tok     53%      53%      50%      57%
+48tok     53%      53%      50%      57%
+```
+
+### 분석
+- @32-48tok: mutual(57%) > blind(53%) (+4%p)
+- A_effect: +3.3%p @32-48tok
+- B_effect: 0%p (중립)
+- 16tok에서 역전 — 토큰 부족 시 역효과
+- 차이가 작음 — Llama 8B가 구조화 프롬프트를 잘 못 따름
+
+---
+
+## 2026-03-21: VQA Gemini 2.5 Flash (ScienceQA 이미지, 10문제)
+
+### 프롬프트
+- A: 이미지 관측 제약 프롬프트 (15 words, 3 phrases)
+- B_AWARE: A의 관측 제약 (large objects 신뢰, small details 주의)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     40%      70%      40%      70%
+```
+
+### 분석
+- **a_aware/mutual(70%) >> blind(40%) (+30%p!)** — 이미지에서 극적 효과
+- b_aware = blind (40%) — B측 인지는 아직 효과 없음
+- mutual = a_aware — A측 인지가 지배적
+- 10문제, 16tok만 → 더 많은 예산/문제로 확인 필요
+
+---
+
 ## ★★ 2026-03-21: GPT-4o-mini 4조건 v3 (B출력강제 없음, 30문제)
 
 ### 프롬프트
