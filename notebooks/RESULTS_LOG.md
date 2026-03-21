@@ -372,6 +372,29 @@ Budget   blind    a_aware  b_aware  mutual   avg_tok(blind/aware)
 
 ---
 
+## 2026-03-21: GPT-4o-mini 3조건 개선 (토큰명시, 30문제, 16~128tok)
+
+### Results
+```
+Budget   blind    choices    full     avg_tok(bl/ch/fu)
+16tok     60%      67%       83%      16/14/12
+32tok     70%      70%       90%      30/24/22
+48tok     60%      73%       90%      44/29/29
+64tok     70%      70%       90%      55/34/37
+80tok     73%      67%       80%      60/39/42
+96tok     80%      67%       87%      75/47/51
+112tok    73%      67%       87%      81/46/54
+128tok    73%      63%       87%      81/47/54
+```
+
+### 핵심 발견
+- **full > choices ≥ blind** 16tok부터 전 예산에서 유지
+- **full: 32tok에서 90% (avg 22tok 사용)** — blind가 128tok에서도 못 달성하는 수준
+- **자연 압축**: full avg 12~54tok, choices avg 14~47tok, blind avg 16~81tok
+- choices가 80tok+ 에서 하락 (67→63%) — 포화 후 역효과
+
+---
+
 ## 2026-03-21: GPT-4o-mini API 전체 결과 (30문제, temperature=0)
 
 ### 3조건 (blind/choices_aware/full_aware)
