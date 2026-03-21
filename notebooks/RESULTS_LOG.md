@@ -330,6 +330,26 @@ Budget   blind    a_aware  b_aware  mutual
 
 ---
 
+## 2026-03-21: Qwen3-4B 4조건 ext (프로토콜 v3 + B출력강제, 30문제)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     60%      77%      63%      77%
+32tok     57%      70%      57%      70%
+48tok     67%      70%      67%      67%
+64tok     67%      70%      67%      70%
+```
+
+### 분석
+- **a_aware/mutual > blind 패턴 성공!** 16tok: +17%p, 32tok: +13%p
+- a_aware = mutual (b_aware 효과 없음)
+- b_aware = blind (B측 인지 효과 없음)
+- 48tok에서 mutual이 약간 하락 (67% < a_aware 70%)
+- **프로토콜 v3가 이전 버전 대비 확실히 개선**
+
+---
+
 ## 2026-03-21: GPT-4o-mini 4조건 개선 (토큰명시 + B_AWARE 수정, 30문제)
 
 ### 변경점
