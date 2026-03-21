@@ -392,6 +392,55 @@ Budget   blind  a_aware  Δ          blind  a_aware  Δ
 
 ---
 
+## ★★ 2026-03-21: GPT-4o-mini 4조건 v3 (B출력강제 없음, 30문제)
+
+### 프롬프트
+- A_BLIND/A_CHOICES: 프로토콜 v3 (첫문장 핵심, 1-2문장)
+- B_BLIND: "FIRST sentence is most decision-relevant" (Choose the best answer)
+- B_AWARE: "FIRST sentence contains the key fact that distinguishes" (Choose the best answer)
+- B에 "output ONLY one letter" 강제 **없음**
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual   avg_tok(bl/a)
+16tok     37%      57%      47%      60%      16/15
+32tok     53%      63%      57%      63%      32/29
+48tok     53%      67%      47%      67%      42/37
+64tok     47%      70%      47%      73%      45/39
+80tok     47%      77%      43%      70%      45/40
+96tok     50%      67%      53%      73%      45/39
+112tok    57%      57%      47%      70%      46/39
+128tok    50%      63%      50%      67%      44/38
+```
+
+### 2x2 Interaction
+```
+@16tok:  A=+16.7%p  B=+6.7%p  mutual 60% >> blind 37%
+@32tok:  A=+8.3%p   B=+1.7%p  mutual 63% >> blind 53%
+@48tok:  A=+16.7%p  B=-3.3%p  mutual 67% >> blind 53%
+@64tok:  A=+25.0%p  B=+1.7%p  mutual 73% >> blind 47%
+@80tok:  A=+28.3%p  B=-5.0%p  mutual 70% >> blind 47%
+@96tok:  A=+18.3%p  B=+5.0%p  mutual 73% >> blind 50%
+@112tok: A=+11.7%p  B=+1.7%p  mutual 70% >> blind 57%
+@128tok: A=+15.0%p  B=+1.7%p  mutual 67% >> blind 50%
+```
+
+### ★ 핵심 발견 — 최고 결과!
+1. **mutual이 거의 모든 예산에서 BEST** (60-73%)
+2. **mutual > blind 갭: +10~26%p** — 지금까지 최대
+3. **A_effect: +8~28%p** — 매우 크고 일관적
+4. **B_effect: 대부분 양수** (+1.7~6.7%p) — 처음으로 양수!
+5. **@64tok 최적**: mutual 73% vs blind 47% (Δ+26%p)
+6. **자연 압축**: blind ~45tok, aware ~39tok (예산 무관 포화)
+
+### 왜 B출력강제 없는 버전이 더 좋은가?
+- B출력강제("ONLY one letter") 추가하면 blind 성능이 올라감 (37→60%)
+- 이유: 출력강제가 B의 판단을 개선하여 blind에서도 잘 맞추게 함
+- 결과적으로 blind↑ → mutual과의 갭↓
+- v3 원본(강제 없음)에서는 blind가 낮아서 mutual과의 갭이 극대화됨
+
+---
+
 ## 2026-03-21: GPT-4o-mini 4조건 개선 (토큰명시 + B_AWARE 수정, 30문제)
 
 ### 변경점
