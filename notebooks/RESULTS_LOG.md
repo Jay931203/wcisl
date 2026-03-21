@@ -271,6 +271,7 @@ Budget   blind    choices    full
 16tok     63%      57%       77%
 24tok     60%      63%       87%
 32tok     63%      60%       90%
+48tok     73%      67%       90%
 64tok     77%      63%       87%
 ```
 
