@@ -291,3 +291,75 @@ full_aware:      16(77%) → 24(87%) → 32(90%)
 - **choices_aware는 중간 단계로 부적합** — blind와 유의미한 차이 없음
 
 ---
+
+## 2026-03-21: Qwen3-4B 4조건 16tok (ext, b_aware=첫문장 집중, A캐싱)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     63%      57%      57%      53%
+```
+- 16tok에서는 모든 aware 조건이 blind보다 나쁨
+- mutual이 최저(53%) — 토큰이 너무 적으면 awareness가 역효과
+
+---
+
+## 2026-03-21: Qwen3-4B 4조건 ext 결과 (b_aware=첫문장, A캐싱, 30문제)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     63%      57%      57%      53%
+32tok     63%      60%      60%      60%
+48tok     73%      67%      73%      70%
+```
+
+---
+
+## 2026-03-21: GPT-4o-mini API 전체 결과 (30문제, temperature=0)
+
+### 3조건 (blind/choices_aware/full_aware)
+```
+Budget   blind    choices    full     avg_tok(blind/choices/full)
+16tok     70%      53%       57%      16/16/16
+32tok     73%      63%       87%      32/32/32
+48tok     70%      73%       80%      48/46/46
+64tok     77%      77%       87%      64/52/56
+80tok     77%      77%       87%      77/56/58
+96tok     80%      73%       87%      83/56/58
+112tok    83%      80%       90%      84/57/58
+128tok    80%      73%       83%      84/53/58
+```
+
+### 4조건 (blind/a_aware/b_aware/mutual)
+```
+Budget   blind    a_aware  b_aware  mutual   avg_tok(blind/a/b/mu)
+16tok     70%      50%      63%      50%      16/16/16/16
+32tok     73%      63%      67%      63%      32/32/32/32
+48tok     70%      80%      67%      77%      48/48/48/48
+64tok     73%      73%      67%      70%      64/52/64/52
+80tok     80%      77%      73%      70%      77/55/77/55
+96tok     80%      80%      73%      80%      83/55/83/55
+112tok    80%      73%      77%      70%      83/55/83/55
+128tok    77%      80%      73%      77%      83/56/83/56
+```
+
+### 2x2 Interaction (4조건)
+```
+@16tok:  A=-16.7%p  B=-3.3%p
+@32tok:  A=-6.7%p   B=-3.3%p
+@48tok:  A=+10.0%p  B=-5.0%p
+@64tok:  A=+0.0%p   B=-3.3%p
+@80tok:  A=-3.3%p   B=-6.7%p
+@96tok:  A=+3.3%p   B=-3.3%p
+@112tok: A=-6.7%p   B=-3.3%p
+@128tok: A=+3.3%p   B=-3.3%p
+```
+
+### 핵심 발견
+- GPT-4o-mini blind 성능이 Qwen보다 높음 (70-80% vs 63-77%)
+- a_aware는 48tok에서만 명확하게 도움 (80% > blind 70%)
+- b_aware("첫문장 집중")는 GPT에서도 효과 없음 (B_effect 항상 음수)
+- choices_aware(3조건)는 64tok 이상에서 blind와 수렴
+- full_aware(3조건)는 32tok에서 87%로 압도적 — 모델 무관 패턴
+- avg_tok: GPT는 자연 종료 가능 → choices/full에서 실제 토큰 사용량 감소 (64tok 예산에서 52-56tok 사용)
