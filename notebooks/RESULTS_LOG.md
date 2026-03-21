@@ -453,6 +453,38 @@ A-effect: +5.0pp  B-effect: -5.0pp  Interaction: -10.0pp (SUB-ADDITIVE)
 
 ---
 
+## ★★★ 2026-03-22: VQA Gemma-3-27B via Gemini API (ScienceQA, 20문제)
+
+### 프롬프트
+- A: 이미지 관측 제약 (15 words, 3 phrases)
+- B_AWARE: A의 관측 제약을 앎 (large objects 신뢰, small details 주의)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     65%      70%      60%      65%
+24tok     70%      60%      60%      65%
+32tok     70%      65%      75%      80%    ← SUPER-ADDITIVE
+48tok     65%      70%      65%      80%    ← SUPER-ADDITIVE
+```
+
+### 2x2 Interaction
+```
+@16tok:  A=+5.0pp  B=-5.0pp  Int=+0.0pp  (ADDITIVE)
+@24tok:  A=-2.5pp  B=-2.5pp  Int=+15.0pp (SUPER-ADDITIVE!)
+@32tok:  A=+0.0pp  B=+10.0pp Int=+10.0pp (SUPER-ADDITIVE!)
+@48tok:  A=+10.0pp B=+5.0pp  Int=+10.0pp (SUPER-ADDITIVE!)
+```
+
+### ★ 핵심 발견
+1. **처음으로 mutual이 모든 조건 중 최고 (80%)** @32-48tok
+2. **처음으로 super-additive interaction** — mutual의 이득이 a_aware + b_aware 합보다 큼
+3. **b_aware가 양수** @32tok (+10pp) — 이미지 관측 제약 정보가 진짜 도움
+4. **32-48tok이 sweet spot** — 16tok은 정보 부족, 24tok부터 시너지 발생
+5. 이미지 + 관측 제약 = b_aware가 처음으로 의미 있는 정보가 됨
+
+---
+
 ## ★★ 2026-03-21: GPT-4o-mini 4조건 v3 (B출력강제 없음, 30문제)
 
 ### 프롬프트
