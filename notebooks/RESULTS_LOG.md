@@ -485,6 +485,28 @@ Budget   blind    a_aware  b_aware  mutual
 
 ---
 
+## 2026-03-22: Social IQa Groq (Llama 3.1 8B, 30문제, 7 budgets, 3-fragment)
+
+### Results
+```
+Budget   blind    a_aware  b_aware  mutual
+16tok     63%      80%      57%      67%
+24tok     70%      70%      67%      63%
+32tok     77%      77%      67%      70%
+40tok     70%      77%      70%      73%
+48tok     70%      73%      67%      70%
+52tok     77%      73%      60%      67%
+64tok     77%      77%      70%      67%
+```
+
+### 분석
+- @16tok: a_aware 80% >> blind 63% (+17%p) — 낮은 budget에서 효과 극대화
+- b_aware: 전 예산 blind보다 낮음 — B_effect 항상 음수
+- mutual: blind보다 낮은 경우 다수 — b_aware가 mutual을 끌어내림
+- 1260 API calls, ~3시간 소요
+
+---
+
 ## ★★ 2026-03-21: GPT-4o-mini 4조건 v3 (B출력강제 없음, 30문제)
 
 ### 프롬프트
