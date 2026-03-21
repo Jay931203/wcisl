@@ -325,8 +325,8 @@ Budget   blind    a_aware  b_aware  mutual
 Budget   blind    a_aware  b_aware  mutual
 16tok     63%      57%      63%      57%
 24tok     60%      63%      57%      63%
+64tok     77%      63%      77%      60%
 ```
-- 돌리는 중 (32/48/64tok 대기)
 
 ---
 
