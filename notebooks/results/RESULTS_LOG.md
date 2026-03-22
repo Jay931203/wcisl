@@ -41,7 +41,7 @@ full_aware:      16(77%) → 24(87%) → 32(90%) → 48(90%) → 64(87%) → 128
 - choices_aware: 57-67% 불안정 — blind와 유의미한 차이 없음
 - ★ **full vs blind 최대 갭: 32tok에서 27%p** (63% vs 90%)
 
-#### ★ GPT-4o-mini (API, 30문제, temperature=0)
+#### GPT-4o-mini (API, 30문제, temperature=0)
 
 ```
 Budget   blind    choices    full     avg_tok(blind/choices/full)
@@ -80,15 +80,6 @@ Budget   blind    a_aware  b_aware  mutual
 128tok    70%      73%      73%      77%
 ```
 
-#### ★ Qwen3-4B (프로토콜 v3 + B출력강제, 30문제, "중요 먼저" 프롬프트)
-
-```
-Budget   blind    a_aware  b_aware  mutual
-16tok     60%      77%      63%      77%
-32tok     57%      70%      57%      70%
-48tok     67%      70%      67%      67%
-64tok     67%      70%      67%      70%
-```
 
 주요 발견:
 - ★ **a_aware/mutual > blind 패턴 성공!** 16tok: +17%p, 32tok: +13%p
@@ -96,7 +87,7 @@ Budget   blind    a_aware  b_aware  mutual
 - b_aware = blind (B측 인지 효과 없음)
 - 프로토콜 v3가 이전 버전 대비 확실히 개선
 
-#### ★★ GPT-4o-mini (API, 30문제, 프로토콜 v3, B출력강제 없음)
+#### GPT-4o-mini (API, 30문제, 프로토콜 v3, B출력강제 없음)
 
 ```
 Budget   blind    a_aware  b_aware  mutual   avg_tok(bl/a_aw/b_aw/mu)
@@ -202,14 +193,14 @@ Budget   blind    a_aware  b_aware  mutual
 > A: 이미지 관측 제약 프롬프트 (15 words, 3 phrases)
 > B_AWARE: A의 관측 제약을 앎 (큰 물체 신뢰, 작은 세부사항 주의)
 
-### ★★★ Gemma-3-27B via Gemini API (ScienceQA, 20문제) — 최고 결과
+### Gemma-3-27B via Gemini API (ScienceQA, 20문제) — 최고 결과
 
 ```
 Budget   blind    a_aware  b_aware  mutual
 16tok     65%      70%      60%      65%
 24tok     70%      60%      60%      65%
-32tok     70%      65%      75%      80%    ← SUPER-ADDITIVE
-48tok     65%      70%      65%      80%    ← SUPER-ADDITIVE
+32tok     70%      65%      75%      80%   
+48tok     65%      70%      65%      80% 
 ```
 
 2x2 상호작용:
@@ -254,26 +245,26 @@ A-effect: +5.0pp  B-effect: -5.0pp  Interaction: -10.0pp (SUB-ADDITIVE)
 
 ## 5. 핵심 발견 요약
 
-### ★ 발견 1: Tx의 Rx 인지 수준이 높을수록 적은 토큰으로 동일 성능 달성
+### 발견 1: Tx의 Rx 인지 수준이 높을수록 적은 토큰으로 동일 성능 달성
 - full_aware는 32tok에서 87-95% 달성 — blind가 128tok에서도 못 미치는 수준
 - bandwidth 제약이 클수록(16-32tok) 인지 효과 극대화
 
-### ★ 발견 2: 32tok 지점이 인지 효과의 sweet spot
+### 발견 2: 32tok 지점이 인지 효과의 sweet spot
 - Qwen 3조건: blind 63% vs full 90% (Δ27%p) @32tok
 - GPT 3조건: blind 73% vs full 87% (Δ14%p) @32tok
 - 1문장 선택이 가장 중요한 지점에서 "무엇을 담을지 아는 것"의 가치 극대화
 
-### ★ 발견 3: A측 인지(a_aware)가 지배적 변수
+### 발견 3: A측 인지(a_aware)가 지배적 변수
 - 전 실험에서 a_aware 효과 >> b_aware 효과
 - 텍스트 태스크에서 b_aware는 대부분 효과 없음 (0%p 또는 음수)
 - mutual = a_aware인 경우가 대부분
 
-### ★★★ 발견 4: 이미지 VQA에서 최초 super-additive 달성
+### 발견 4: 이미지 VQA에서 최초 super-additive 달성
 - Gemma-3-27B @32-48tok: mutual 80% > a_aware + b_aware 단순합
 - b_aware가 처음으로 양수 효과 (+10pp @32tok)
 - 이미지 관측 제약 정보가 텍스트 정보보다 b_aware에 적합
 
-### ★★ 발견 5: GPT-4o-mini v3(B강제 없음)에서 최대 mutual-blind 갭
+### 발견 5: GPT-4o-mini v3(B강제 없음)에서 최대 mutual-blind 갭
 - @64tok: mutual 73% vs blind 47% (Δ+26%p) — 전 실험 최대 차이
 - A_effect +25%p, B_effect +1.7%p 동시 양수
 
