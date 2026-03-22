@@ -234,7 +234,26 @@ A-effect: +5.0pp  B-effect: -5.0pp  Interaction: -10.0pp (SUB-ADDITIVE)
 
 ---
 
-## 4. 한계
+## 4. 핵심 아이디어 2: 단계별 CoT 전환
+
+### Qwen3-4B (RACE 20문제, max_tokens=128)
+
+```
+조건              정확도
+all_general       53%
+all_aware         67%
+tx_switch         67%
+both_switch       70%
+```
+
+핵심 비교:
+- general 53% → tx_switch 67% (+14%p) — Stage 3만 전환해도 효과
+- tx_switch 67% → both_switch 70% (+3%p) — B 인지 추가 기여
+- all_aware 67% = tx_switch 67% — 전 단계 aware ≠ 마지막만 aware와 동일
+
+---
+
+## 5. 한계
 
 - 동일 모델 백본 → 인지 비대칭이 프롬프트 수준에 한정
 - N=20-30 → 5%p 차이는 noise 범위 (10%p 검출에 N≈200 필요)
