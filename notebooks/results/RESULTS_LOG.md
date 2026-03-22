@@ -76,7 +76,7 @@ Budget   blind    choices    full     avg_tok(blind/choices/full)
 ```
 Budget   blind    a_aware  b_aware  mutual
 32tok     55%      65%      50%      70%
-64tok     70%      70%      70%      75%
+64tok     70%      70%      70%      73%
 128tok    70%      73%      73%      77%
 ```
 
