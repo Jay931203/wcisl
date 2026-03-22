@@ -7,7 +7,7 @@ Uses REST API directly (no google-generativeai package needed)
 import requests, json, base64, time, random, re, sys, traceback
 from io import BytesIO
 
-API_KEY = "AIzaSyDsOAshucCLE-jdnN8RmqWYt-8HYZkdaQo"
+import os; API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 # ── Model selection ──────────────────────────────────────────────
 # Try gemini-2.5-flash first, fall back if needed
